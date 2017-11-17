@@ -18,5 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//일반 영업사원
 Route::resource('SalesInfo','SalesController');
+Route::get('/mypage', 'SalesController@mypage');
+Route::get('/profit', 'SalesController@profit');
+Route::get('/Recommender', 'SalesController@Recommender');
+
+//파트너
+Route::resource('Partner','PartnerController');
+
+
+
+
+
+
+Route::get('/admin', 'testcontroller@index');

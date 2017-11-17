@@ -41,6 +41,8 @@ class CreateSalesInfosTable extends Migration
             $table->string('CustomerEmail')->unique();
 
             $table->integer('pay');
+
+            $table->integer('SalesPerson_id')->default(0);
         });
     }
 

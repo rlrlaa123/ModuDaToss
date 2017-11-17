@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SalesInfo;
+use App\User;
+use DB;
 
 class SalesController extends Controller
 {
@@ -40,11 +43,33 @@ class SalesController extends Controller
         //return view('home');
 
         $this->validate($request, [
-          'title' => 'required',
-          'body' => 'required'
+          'CustomerName' => 'required',
+          'BusinessName' => 'required',
+          'CustomerAddress' => 'required',
+          'PhoneNumber' => 'required',
+          'ContactTime' => 'required',
+          'Characteristic' => 'required',
+          'Category' => 'required',
+          'note' => 'required',
+          'CustomerEmail' => 'required',
+          'pay' => 'required',
         ]);
 
-        return 123;
+        $SalesInfo = new SalesInfo;
+        $SalesInfo->CustomerName = $request->input('CustomerName');
+        $SalesInfo->BusinessName = $request->input('BusinessName');
+        $SalesInfo->CustomerAddress = $request->input('CustomerAddress');
+        $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
+        $SalesInfo->ContactTime = $request->input('ContactTime');
+        $SalesInfo->Characteristic = $request->input('Characteristic');
+        $SalesInfo->Category = $request->input('Category');
+        $SalesInfo->note = $request->input('note');
+        $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
+        $SalesInfo->pay = $request->input('pay');
+        $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
+        $SalesInfo->save();
+
+        return redirect('/home');
     }
 
     /**
@@ -56,6 +81,10 @@ class SalesController extends Controller
     public function show($id)
     {
         //
+        //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
+        //return $SalesInfo;
+        $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->get();
+        return view('/SI_show')->with('SalesInfo',$SalesInfo);
     }
 
     /**
@@ -90,5 +119,23 @@ class SalesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mypage()
+    {
+        //
+        return view('/SalesMan/mypage');
+    }
+
+    public function profit()
+    {
+        //
+        return view('/SalesMan/profit');
+    }
+
+    public function Recommender()
+    {
+        //
+        return view('/SalesMan/Recommender');
     }
 }
