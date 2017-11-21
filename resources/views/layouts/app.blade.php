@@ -12,6 +12,25 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      #white-background{
+        display:none;
+        width:100%;
+        height:100%;
+        position:fixed;
+        top:0px;
+        left:0px;
+        background-color:#fefefe;
+        opacity:0.7;
+        z-index:9999;
+      }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -46,9 +65,21 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+
+                        @if (Auth::user()->type == 2)
+                          <li>
+                            <a href="/Partner/{{ Auth::user()->category}}">영업 정보 확인</a>
+                          </li>
+                        @endif
+
+                        @if (Auth::user()->type == 1)
                             <li>
-                              <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인하러 가기</a>
+                              <a href="/SalesInfo/create">영업 정보 등록</a>
                             </li>
+                            <li>
+                              <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
+                            </li>
+                        @endif
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     안녕하세요 {{ Auth::user()->name }} 님<span class="caret"></span>

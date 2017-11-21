@@ -26,6 +26,10 @@ Route::get('/Recommender', 'SalesController@Recommender');
 
 //파트너
 Route::resource('Partner','PartnerController');
+Route::get('/Partner/{Category}/{SalesPerson_id}','PartnerController@show3');
+
+//test
+Route::post('/test','PartnerController@show2');
 
 
 
