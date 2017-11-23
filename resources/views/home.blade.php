@@ -16,7 +16,6 @@
 
                     You are logged in!
                 </div>
-                <a href="/SalesInfo/create">영업정보 등록하러가기</a>
             </div>
         </div>
     </div>

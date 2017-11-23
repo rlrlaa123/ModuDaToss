@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateWithdrawalInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('withdrawal_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Category_of_Business')->default("none");
-            $table->integer('commision')->default(0);
+            $table->integer('memberID');
+            $table->string('memberName');
+            $table->string('bankName');
+            $table->string('account_number');
+            $table->integer('requestmoney');
             $table->timestamps();
         });
+
+
     }
 
     /**
@@ -28,6 +33,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('withdrawal_infos');
     }
 }

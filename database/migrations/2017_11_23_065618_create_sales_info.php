@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSalesInfosTable extends Migration
+class CreateSalesInfo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,21 @@ class CreateSalesInfosTable extends Migration
      */
     public function up()
     {
+        //
         Schema::create('sales_infos', function (Blueprint $table) {
-            $table->increments('salesinfo_id');
+            $table->increments('id');
 
             $table->string('CustomerName');
 
             $table->string('BusinessName');
 
             $table->string('CustomerAddress');
+
+            $table->string('post_number');
+
+            $table->string('CustomerAddress_detail')->nullable();
+
+            $table->string('CustomerAddress_extra')->nullable();
 
             $table->string('PhoneNumber');
 
@@ -34,15 +41,20 @@ class CreateSalesInfosTable extends Migration
 
             $table->timestamps();
 
-            $table->integer('state')->default(1);
+            $table->string('state')->default("접수 완료");
 
             $table->string('note');
 
-            $table->string('CustomerEmail')->unique();
+            $table->string('CustomerEmail');
 
             $table->integer('pay');
 
             $table->integer('SalesPerson_id')->default(0);
+
+            $table->string('Fail_reason')->default("none");
+
+            $table->string('SP_name')->default("none");
+
         });
     }
 
@@ -53,6 +65,7 @@ class CreateSalesInfosTable extends Migration
      */
     public function down()
     {
+        //
         Schema::dropIfExists('sales_infos');
     }
 }

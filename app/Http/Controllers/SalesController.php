@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SalesInfo;
 use App\User;
+use App\Category;
 use DB;
 
 class SalesController extends Controller
@@ -27,8 +28,9 @@ class SalesController extends Controller
      */
     public function create()
     {
+        $category = Category::all();
         //
-        return view('/SalesInfo');
+        return view('/SalesInfo')->with('category',$category);
     }
 
     /**
@@ -39,35 +41,62 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //return view('home');
+        //return $aa.$bb;
+
+
+        $data = array();
+        $number = 0;
+
+        for($i=1 ; $i<=$request->Numberofitem;$i++){
+          $b = $i;
+          $a = 'Category'.$b;
+
+          if(isset($request->$a)){
+            $data[] = $request->$a;
+            $number ++ ;
+          }
+        }
+        if($number == 0){
+            return redirect('/home');
+        }
+
 
         $this->validate($request, [
           'CustomerName' => 'required',
           'BusinessName' => 'required',
           'CustomerAddress' => 'required',
+          'post_number' => 'required',
+          'CustomerAddress_detail' => 'required',
           'PhoneNumber' => 'required',
           'ContactTime' => 'required',
           'Characteristic' => 'required',
-          'Category' => 'required',
           'note' => 'required',
           'CustomerEmail' => 'required',
           'pay' => 'required',
+          'SalesPerson_id' => 'required',
+          'SP_name' => 'required',
         ]);
+        for($i = 0; $i < $number ; $i++){
+          $SalesInfo = new SalesInfo;
+          $SalesInfo->CustomerName = $request->input('CustomerName');
+          $SalesInfo->BusinessName = $request->input('BusinessName');
+          $SalesInfo->CustomerAddress = $request->input('CustomerAddress');
+          $SalesInfo->post_number = $request->input('post_number');
+          $SalesInfo->CustomerAddress_detail=$request->input('CustomerAddress_detail');
+          $SalesInfo->CustomerAddress_extra=$request->input('CustomerAddress_extra');
 
-        $SalesInfo = new SalesInfo;
-        $SalesInfo->CustomerName = $request->input('CustomerName');
-        $SalesInfo->BusinessName = $request->input('BusinessName');
-        $SalesInfo->CustomerAddress = $request->input('CustomerAddress');
-        $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
-        $SalesInfo->ContactTime = $request->input('ContactTime');
-        $SalesInfo->Characteristic = $request->input('Characteristic');
-        $SalesInfo->Category = $request->input('Category');
-        $SalesInfo->note = $request->input('note');
-        $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
-        $SalesInfo->pay = $request->input('pay');
-        $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
-        $SalesInfo->save();
+          $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
+          $SalesInfo->ContactTime = $request->input('ContactTime');
+          $SalesInfo->Characteristic = $request->input('Characteristic');
+          $SalesInfo->Category = $data[$i];
+
+          $SalesInfo->note = $request->input('note');
+          $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
+          $SalesInfo->pay = $request->input('pay');
+          $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
+          $SalesInfo->SP_name = $request->input('SP_name');
+          $SalesInfo->save();
+        }
 
         return redirect('/home');
     }
@@ -121,21 +150,39 @@ class SalesController extends Controller
         //
     }
 
-    public function mypage()
+    public function mypage($id)
     {
         //
-        return view('/SalesMan/mypage');
+
+        $user = User::find($id);
+
+        return view('/SalesMan/mypage')->with('user',$user);
     }
 
-    public function profit()
+    public function profit($id)
     {
         //
-        return view('/SalesMan/profit');
+        $user = User::find($id);
+
+        return view('/SalesMan/profit')->with('user',$user);
     }
 
-    public function Recommender()
+    public function Recommender($id)
     {
         //
         return view('/SalesMan/Recommender');
+    }
+
+    public function withdrawal($id)
+    {
+        //
+        $user = User::find($id);
+
+        return view('/SalesMan/withdrawal')->with('user',$user);
+    }
+
+    public function withdrawalrequest(Request $request, $id){
+
+      return $request.$id;
     }
 }

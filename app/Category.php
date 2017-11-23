@@ -20,7 +20,7 @@ class Category extends Model
    public $timestamps = true;
 
   protected $fillable = [
-      'Category_of_Business',
+      'category',
       'commision',
   ];
 
