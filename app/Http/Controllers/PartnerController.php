@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\SalesInfo;
 use App\User;
+use App\category;
 use DB;
 
 class PartnerController extends Controller
