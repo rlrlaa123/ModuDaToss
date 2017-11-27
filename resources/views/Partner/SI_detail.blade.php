@@ -84,7 +84,7 @@
                 </table>
             @endforeach
 
-            @if($SI->state == 1)
+            @if($SI->state == '접수 완료')
             {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
               {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
               {{Form::hidden('_method','PUT')}}
@@ -92,8 +92,9 @@
             {!! Form::close() !!}
             @endif
 
-            @if($SI->state == 2)
+            @if($SI->state == '진행중')
             {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
+              {{Form::number('pay',' ',['class' => 'form-control','placeholder' => '체결금액','min' => 0])}}
               {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
               {{Form::hidden('_method','PUT')}}
               {{Form::submit('완료',['class' => 'btn btn-primary'])}}

@@ -11,11 +11,11 @@
               <div class="panel-body">
                 {!! Form::open(['action' => ['SalesController@withdrawalrequest',$user->id], 'method' => 'POST']) !!}
                   <div class="form-group">
-                    출금신청 가능 금액 : {{$user->Benefit + $user->Recommender}} 원
+                    출금신청 가능 금액 : {{$user->Benefit + $user->RecommenderCommision + $user->Commision}} 원
                   </div>
                   <div class="form-group">
                     {{Form::label('requestmoney','출금 요청 금액')}}
-                    {{Form::text('requestmoney','',['class' => 'form-control','placeholder' => '출금 요청 금액'])}}
+                    {{Form::number('requestmoney','',['class' => 'form-control','placeholder' => '출금 요청 금액','min'=>1,'max'=> $user->Benefit + $user->RecommenderCommision + $user->Commision])}}
                   </div>
                   <div class="form-group">
                     입금정보

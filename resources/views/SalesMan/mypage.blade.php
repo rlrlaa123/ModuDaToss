@@ -64,6 +64,12 @@
                           <td>{{ $user->Recommender}}</td>
                         </tr>
                       </tbody>
+                      <tbody>
+                        <tr>
+                          <td>추천인코드</td>
+                          <td>{{ $user->RecommenderCode}}</td>
+                        </tr>
+                      </tbody>
                 </table>
               </div>
               <div class="panel-footer">

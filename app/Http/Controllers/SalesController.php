@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\SalesInfo;
 use App\User;
 use App\Category;
+use App\withdrawalInfo;
+use App\Savinghistory;
+
 use DB;
 
 class SalesController extends Controller
@@ -30,7 +34,7 @@ class SalesController extends Controller
     {
         $category = Category::all();
         //
-        return view('/SalesInfo')->with('category',$category);
+        return view('/SI_input')->with('category',$category);
     }
 
     /**
@@ -43,7 +47,7 @@ class SalesController extends Controller
     {
         //return $aa.$bb;
 
-
+        //카테고리 필터
         $data = array();
         $number = 0;
 
@@ -84,12 +88,10 @@ class SalesController extends Controller
           $SalesInfo->post_number = $request->input('post_number');
           $SalesInfo->CustomerAddress_detail=$request->input('CustomerAddress_detail');
           $SalesInfo->CustomerAddress_extra=$request->input('CustomerAddress_extra');
-
           $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
           $SalesInfo->ContactTime = $request->input('ContactTime');
           $SalesInfo->Characteristic = $request->input('Characteristic');
           $SalesInfo->Category = $data[$i];
-
           $SalesInfo->note = $request->input('note');
           $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
           $SalesInfo->pay = $request->input('pay');
@@ -107,13 +109,32 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //영업 리스트
     public function show($id)
     {
         //
         //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
         //return $SalesInfo;
-        $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->get();
+        $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
         return view('/SI_show')->with('SalesInfo',$SalesInfo);
+    }
+    //영업 리스트 항목별로
+    public function showstate($id,$state){
+
+        if($state == '전체'){
+            $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
+            return view('/SI_show')->with('SalesInfo',$SalesInfo);
+
+        }else{
+            $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
+            return view('/SI_show')->with('SalesInfo',$SalesInfo);
+        }
+    }
+    //영업정보별 자세히 보기
+    public function showdetail($SI_id){
+      $SalesInfo = SalesInfo::where('id',$SI_id)->get();
+      return view('/SI_detail')->with('SalesInfo',$SalesInfo);
     }
 
     /**
@@ -163,14 +184,16 @@ class SalesController extends Controller
     {
         //
         $user = User::find($id);
-
-        return view('/SalesMan/profit')->with('user',$user);
+        $SH = Savinghistory::where('SalesPerson_id',$id)->take(4)->orderBy('created_at','desc')->get();
+        return view('/SalesMan/profit')->with('user',$user)->with('SH',$SH);
     }
 
     public function Recommender($id)
     {
         //
-        return view('/SalesMan/Recommender');
+        $user = User::find($id);
+
+        return view('/SalesMan/Recommender')->with('user',$user);
     }
 
     public function withdrawal($id)
@@ -183,6 +206,28 @@ class SalesController extends Controller
 
     public function withdrawalrequest(Request $request, $id){
 
-      return $request.$id;
+      //출금액은 반드시 필요
+      $this->validate($request, [
+        'requestmoney' => 'required',
+      ]);
+
+      //출금액 저장
+      $user = User::where('id',$id)->first();
+
+      $withdrawal = new withdrawalInfo;
+
+      $withdrawal->memberID = $user->id;
+      $withdrawal->memberName = $user->name;
+      $withdrawal->bankName = $user->bankName;
+      $withdrawal->account_number = $user->account_number;
+      $withdrawal->requestmoney=$request->input('requestmoney');
+      $withdrawal->save();
+
+      //제출한 출금액 만큼 빼기
+
+      //아직 구조를 모르겠다.
+
+
+      return redirect('/profit'.'/'.$id);
     }
 }
