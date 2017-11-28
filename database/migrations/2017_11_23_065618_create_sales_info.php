@@ -13,7 +13,6 @@ class CreateSalesInfo extends Migration
      */
     public function up()
     {
-        //
         Schema::create('sales_infos', function (Blueprint $table) {
             $table->increments('id');
 
@@ -65,7 +64,6 @@ class CreateSalesInfo extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('sales_infos');
     }
 }
