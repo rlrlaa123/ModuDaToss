@@ -13,7 +13,7 @@ class SalesInfo extends Model
      *
      * @var array
      */
-     protected $table = 'Sales_infos';
+     protected $table = 'sales_infos';
 
      public $primarykey = 'salesinfo_id';
 
