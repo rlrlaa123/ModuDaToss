@@ -15,8 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','gender','phoneNumber','bankName','account_number','Recommender',
-
+        'name', 'email', 'password',
+        'confirm_code', 'activated',
+        'gender','phone','bank','account','photo','signature','type','recommender','recommend_code',
     ];
 
     /**
@@ -26,5 +27,15 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+        'confirm_code',
     ];
+
+    protected $casts = [
+        'activated' => 'boolean',
+    ];
+
+//    public function articles()
+//    {
+//        return $this->hasMany(Article::class);
+//    }
 }

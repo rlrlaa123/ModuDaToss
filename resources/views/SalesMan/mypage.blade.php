@@ -25,19 +25,19 @@
                       <tbody>
                         <tr>
                           <td>전화 번호</td>
-                          <td>{{ $user->phoneNumber }}</td>
+                          <td>{{ $user->phone }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>은행명</td>
-                          <td>{{ $user->bankName }}</td>
+                          <td>{{ $user->bank }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>계좌 번호</td>
-                          <td>{{ $user->account_number }}</td>
+                          <td>{{ $user->account }}</td>
                         </tr>
                       </tbody>
                       <tbody>
@@ -71,9 +71,6 @@
                         </tr>
                       </tbody>
                 </table>
-              </div>
-              <div class="panel-footer">
-                footer
               </div>
             </div>
         </div>

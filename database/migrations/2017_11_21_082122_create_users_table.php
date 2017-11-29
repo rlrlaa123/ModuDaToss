@@ -13,44 +13,22 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        //
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->string('email')->unique();
-
-            $table->string('password');
-
             $table->string('name');
-            //enum 으로 다시 만들기
-            $table->string('gender')->default("gender");
-            //본인 인증?
-            $table->string('phoneNumber')->default("none");
-            
-            $table->string('bankName')->default("none");
-            //아마다른 형식이 필요할듯
-            $table->string('account_number')->default("none");
-            // string 말고 다른 타입 필요
-            $table->string('photo')->default("photo");
-            // 포토 타입 필요
-            $table->string('signature')->default("signature");
-
-            $table->integer('type')->default(0);
-
-            $table->integer('Benefit')->default(0);
-
-            $table->string('Recommender')->default('none');
-
-            $table->integer('Commision')->default(0);
-
-            $table->integer('RecommenderCommision')->default(0);
-
-            $table->string('RecommenderCode')->default('none');
-
-            $table->string('category')->default("none");
-
+            $table->string('email')->unique();
+            $table->string('password');
             $table->rememberToken();
-
+            $table->integer('income')->unsigned()->default(0);
+            $table->boolean('gender'); /* 남자:0, 여자:1 */
+            $table->integer('phone');
+            $table->string('bank');
+            $table->string('account');
+            $table->string('photo')->nullable();
+            $table->string('signature')->nullable();
+            $table->boolean('type'); /* 영업사원:0, 파트너: 1 */
+            $table->string('recommender')->nullable();
+            $table->string('recommend_code');
             $table->timestamps();
         });
     }
@@ -62,7 +40,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        //
         Schema::dropIfExists('users');
     }
 }
