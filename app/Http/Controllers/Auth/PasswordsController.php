@@ -66,8 +66,6 @@ class PasswordsController extends Controller
         ]);
         \DB::table('password_resets')->whereToken($token)->delete();
 
-        flash('비밀번호를 바꾸었습니다. 새로운 비밀번호로 로그인 하세요.');
-
-        return redirect('/');
+        return redirect('/home')->with('flash_message', '비밀번호를 바꾸었습니다. 새로운 비밀번호로 로그인 하세요.');
     }
 }

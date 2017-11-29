@@ -37,9 +37,23 @@
                         {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
                     {{--</li>--}}
                 @else
-                    {{--<li>--}}
-                        {{--<a href="{{ route('articles.index') }}">게시판</a>--}}
-                    {{--</li>--}}
+                    {{--@if (Auth::user()->type == 2)--}}
+                        <li>
+                            <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>
+                        </li>
+                    {{--@endif--}}
+
+{{--                    @if (Auth::user()->type == 1)--}}
+                        <li>
+                            <a href="/SalesInfo/create">영업 정보 등록</a>
+                        </li>
+                        <li>
+                            <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
+                        </li>
+                    {{--@endif--}}
+                        <li>
+                            <a href="{{ route('articles.index') }}">게시판</a>
+                        </li>
                     {{--<li>--}}
                         {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
                     {{--</li>--}}

@@ -33,11 +33,11 @@
             </select>
         </div>
 
-        <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-            <input type="phone" name="phone" class="form-control" placeholder="휴대폰 번호" />
+        <div class="form-group {{ $errors->has('phoneNumber') ? 'has-error' : '' }}">
+            <input type="phoneNumber" name="phoneNumber" class="form-control" placeholder="휴대폰 번호" />
             <div class="row">
                 <div class="col-xs-6">
-                    {!! $errors->first('phone', '<span class="form-error">:message</span>') !!}
+                    {!! $errors->first('phoneNumber', '<span class="form-error">:message</span>') !!}
                 </div>
                 <div class="col-xs-6">
                     <div class="text-right">'-'없이 숫자만 입력하세요.</div>
@@ -45,14 +45,14 @@
             </div>
         </div>
 
-        <div class="form-group {{ $errors->has('bank') ? 'has-error' : '' }}">
-            <input type="bank" name="bank" class="form-control" placeholder="은행" />
-            {!! $errors->first('bank', '<span class="form-error">:message</span>') !!}
+        <div class="form-group {{ $errors->has('bankName') ? 'has-error' : '' }}">
+            <input type="bankName" name="bankName" class="form-control" placeholder="은행" />
+            {!! $errors->first('bankName', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div class="form-group {{ $errors->has('account') ? 'has-error' : '' }}">
-            <input type="account" name="account" class="form-control" placeholder="계좌번호" />
-            {!! $errors->first('account', '<span class="form-error">:message</span>') !!}
+        <div class="form-group {{ $errors->has('accountNumber') ? 'has-error' : '' }}">
+            <input type="accountNumber" name="accountNumber" class="form-control" placeholder="계좌번호" />
+            {!! $errors->first('accountNumber', '<span class="form-error">:message</span>') !!}
         </div>
 
         <div class="form-group">

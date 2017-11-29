@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public $timestamp = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,7 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
         'confirm_code', 'activated',
-        'gender','phone','bank','account','photo','signature','type','recommender','recommend_code',
+        'gender','phoneNumber','bankName','accountNumber','photo','signature','type','recommender','recommend_code',
     ];
 
     /**
@@ -34,8 +36,8 @@ class User extends Authenticatable
         'activated' => 'boolean',
     ];
 
-//    public function articles()
-//    {
-//        return $this->hasMany(Article::class);
-//    }
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

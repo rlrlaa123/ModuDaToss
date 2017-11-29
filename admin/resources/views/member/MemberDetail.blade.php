@@ -30,7 +30,7 @@
                   </tr>
                   <tr>
                     <td>계좌 번호</td>
-                    <td>{{ $user->account_number }}</td>
+                    <td>{{ $user->accountNumber }}</td>
                   </tr>
                   <tr>
                     <td>회원 등급</td>
@@ -38,7 +38,7 @@
                   </tr>
                   <tr>
                     <td>추천인</td>
-                    <td>{{ $user->Recommender }}</td>
+                    <td>{{ $user->recommender }}</td>
                   </tr>
                   <tr>
                     <td>등록일</td>

@@ -19,7 +19,6 @@
     <!-- jQuery library -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
-
 </head>
 <body>
 <div id="app">
@@ -54,7 +53,6 @@
                         <li><a href="{{ route('sessions.create') }}">Login</a></li>
                         <li><a href="{{ route('users.create') }}">Register</a></li>
                         @else
-
                             @if (Auth::user()->type == 2)
                                 <li>
                                     <a href="/Partner/{{ Auth::user()->category}}">영업 정보 확인</a>
@@ -97,7 +95,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            @endguest
+                        @end
+                    @endguest
                 </ul>
             </div>
         </div>

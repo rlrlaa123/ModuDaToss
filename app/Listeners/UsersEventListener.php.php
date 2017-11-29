@@ -17,7 +17,7 @@ class UsersEventListener
 
     public function handle(Login $event)
     {
-        $event->user->last_login = \Carbon\Carbon::now();
+        $event->user->updated_at = \Carbon\Carbon::now();
 
         return $event->user->save();
     }

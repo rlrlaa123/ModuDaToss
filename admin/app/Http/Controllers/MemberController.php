@@ -16,8 +16,6 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
-
         return view('member.main');
     }
 
@@ -48,7 +46,7 @@ class MemberController extends Controller
           'name' => 'required',
           'phoneNumber' => 'required',
           'bankName' => 'required',
-          'account_number' => 'required',
+          'accountNumber' => 'required',
           'category' => 'required',
         ]);
 
@@ -56,9 +54,9 @@ class MemberController extends Controller
           'email' => $request->email,
           'password' => bcrypt($request->password),
           'name' => $request->name,
-          'phoneNumber' => $request->phoneNumber,
-          'bankName' => $request->bankName,
-          'account_number' => $request->account_number,
+          'phoneNumber' => $request->phone,
+          'bankName' => $request->bank,
+          'accountNumber' => $request->account,
           'photo' => $request->photo,
           'signature' => $request->signature,
           'category' => $request->category,
@@ -77,7 +75,7 @@ class MemberController extends Controller
     public function show($id)
     {
         //
-        $users = DB::select('select * from users where type = ?',[$id]);
+        $users = DB::select('select * from users where type = ? ',[$id]);
 
         return view('member.main', ['users' => $users]);
     }

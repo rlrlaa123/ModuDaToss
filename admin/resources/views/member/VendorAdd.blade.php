@@ -32,7 +32,7 @@
                 {{Form::text('bankName','',['class' => 'form-control','placeholder' => '은행이름'])}}
               </div>
               <div class="form-group">
-                {{Form::label('account_number', 'account_number')}}
+                {{Form::label('accountNumber', 'accountNumber')}}
                 {{Form::text('account_number','',['class' => 'form-control','placeholder' => '계좌 번호'])}}
               </div>
               <div class="form-group">

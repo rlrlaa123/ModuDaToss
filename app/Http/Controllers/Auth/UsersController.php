@@ -29,14 +29,14 @@ class UsersController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'gender' => 'required',
-            'phone' => 'required|min:11',
-            'bank' => 'required',
-            'account' => 'required',
+            'phoneNumber' => 'required|min:11',
+            'bankName' => 'required',
+            'accountNumber' => 'required',
             'recommend_code' => 'required',
         ]);
 
         $confirmCode = str_random(60);
-        $type = '일반회원';
+        $type = 0; # 일반회원
 
         $user = \App\User::create([
             'name' => $request->input('name'),
@@ -44,9 +44,9 @@ class UsersController extends Controller
             'password' => bcrypt($request->input('password')),
             'confirm_code' => $confirmCode,
             'gender' => $request->input('gender'),
-            'phone' => $request->input('phone'),
-            'bank' => $request->input('bank'),
-            'account' => $request->input('account'),
+            'phoneNumber' => $request->input('phoneNumber'),
+            'bankName' => $request->input('bankName'),
+            'accountNumber' => $request->input('accountNumber'),
             'photo' => $request->input('photo'),
             'signature' => $request->input('signature'),
             'type' => $type,

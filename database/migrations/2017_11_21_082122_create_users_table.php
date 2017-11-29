@@ -21,14 +21,15 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('income')->unsigned()->default(0);
             $table->boolean('gender'); /* 남자:0, 여자:1 */
-            $table->integer('phone');
-            $table->string('bank');
-            $table->string('account');
+            $table->integer('phoneNumber');
+            $table->string('bankName');
+            $table->string('accountNumber');
             $table->string('photo')->nullable();
             $table->string('signature')->nullable();
             $table->boolean('type'); /* 영업사원:0, 파트너: 1 */
             $table->string('recommender')->nullable();
             $table->string('recommend_code');
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }

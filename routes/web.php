@@ -20,7 +20,6 @@ Route::get('home', [
     'uses' => 'HomeController@index',
 ]);
 
-//
 // 사용자 가입
 Route::get('auth/register', [
     'as' => 'users.create',
@@ -86,3 +85,6 @@ Route::get('/Partner/{Category}/{SalesPerson_id}','PartnerController@show3');
 
 //test
 Route::post('/test','PartnerController@show2');
+
+// 게시판
+Route::resource('articles','ArticlesController');
