@@ -25,6 +25,8 @@
 @section('script')
     @parent
     <script>
+        document.getElementById(".btn__reply__comment").style.display="none";
+        document.getElementById(".btn__edit__comment").style.display="none";
         // 댓글 삭제 요청을 처리한다.
         $('.btn__delete__comment').on('click', function(e) {
             var commentId = $(this).closest('.item__comment').data('id'),
