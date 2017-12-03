@@ -17,11 +17,17 @@ class Article extends Model
 
     /* Relationships */
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
 //    public function tags() {
 //        return $this->belongsToMany(Tag::class);
 //    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

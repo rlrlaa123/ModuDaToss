@@ -48,37 +48,7 @@ class ArticlesController extends Controller
     public function store(ArticlesRequest $request)
     {
 
-//        // 유효성 검사 규칙
-//        $rules = [
-//            'title' => ['required'],
-//            'content' => ['required', 'min:10'],
-//        ];
-//        // Validator::make(유효성 검사의 대상 데이터, 검사 규칙)
-//        $validator = \Validator::make($request->all(), $rules);
-//
-//        // back() (이전 페이지로 리디렉션)
-//        // withErrors() (검사 실패 이유를 세션에 굽는 일) -> 뷰에서 $errors 변수가 이 데이터를 받는다.
-//        // withInput() (폼 데이터를 세션에 넣는다) -> 뷰의 old() 함수는 이 데이터를 읽는다
-//        if($validator->fails()) {
-//            return back()->withErrors($validator)
-//                ->withInput();
-//        }
         $article = $request->user()->articles()->create($request->all());
-
-//        if ($request->hasFile('files')) {
-//            $files = $request->file('files');
-//
-//            foreach($files as $file) {
-//                $filename = str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-//                $file->move(attachments_path(), $filename);
-//
-//                $article->attachments()->create([
-//                    'filename' => $filename,
-//                    'bytes' => $file->getSize(),
-//                    'mime' => $file->getClientMimeType()
-//                ]);
-//            }
-//        }
 
         if(! $article) {
             return back()->with('flash_message', '글이 저장되지 않았습니다.')
@@ -97,7 +67,9 @@ class ArticlesController extends Controller
      */
     public function show(\App\Article $article)
     {
-        return view('articles.show', compact('article'));
+        $comments = $article->comments()->with('replies')->whereNull('parent_id')->latest()->get();
+
+        return view('articles.show', compact('article','comments'));
     }
 
     /**

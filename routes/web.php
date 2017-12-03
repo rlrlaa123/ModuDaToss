@@ -88,3 +88,7 @@ Route::post('/test','PartnerController@show2');
 
 // 게시판
 Route::resource('articles','ArticlesController');
+
+// 댓글
+Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
+Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);

@@ -25,19 +25,19 @@
                       <tbody>
                         <tr>
                           <td>전화 번호</td>
-                          <td>{{ $user->phone }}</td>
+                          <td>{{ $user->phoneNumber }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>은행명</td>
-                          <td>{{ $user->bank }}</td>
+                          <td>{{ $user->bankName }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>계좌 번호</td>
-                          <td>{{ $user->account }}</td>
+                          <td>{{ $user->accountNumber }}</td>
                         </tr>
                       </tbody>
                       <tbody>
@@ -61,13 +61,13 @@
                       <tbody>
                         <tr>
                           <td>추천인</td>
-                          <td>{{ $user->Recommender}}</td>
+                          <td>{{ $user->recommender}}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>추천인코드</td>
-                          <td>{{ $user->RecommenderCode}}</td>
+                          <td>{{ $user->recommend_code}}</td>
                         </tr>
                       </tbody>
                 </table>
