@@ -22,7 +22,7 @@
                   <a href="/withdrawal">입출금 관리</a>
                 </div>
                 <div class="panel-body">
-                  <a href="">게시판 관리</a>
+                  <a href="/article">게시판 관리</a>
                 </div>
                 <div class="panel-body">
                   <a href="">기타 관리</a>

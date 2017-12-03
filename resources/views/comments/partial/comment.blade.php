@@ -1,3 +1,8 @@
+<style>
+    p {
+        margin: 0px;
+    }
+</style>
 <div class="media item__comment {{ $isReply ? 'sub' : 'top' }}" data-id= "{{ $comment->id }}" id="comment_{{ $comment->id }}">
 {{--    @include('users.partial.avatar', ['user' => $comment->user, 'size' => 32])--}}
 
@@ -17,12 +22,12 @@
 
         <div class="action__comment">
             @can('update', $comment)
-                <button class="btn__delete__comment">댓글 삭제</button> •
-                <button class="btn__edit__comment">댓글 수정</button> •
+                <button class="btn__delete__comment btn-link">댓글 삭제</button> •
+                <button class="btn__edit__comment btn-link">댓글 수정</button> •
             @endcan
 
             @if ($currentUser)
-                <button class="btn__reply__comment">
+                <button class="btn__reply__comment btn-link" style="margin:0">
                     답글 쓰기
                 </button>
             @endif

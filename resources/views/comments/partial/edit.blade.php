@@ -4,15 +4,15 @@
             {!! csrf_field() !!}
             {!! method_field('PUT') !!}
 
-            <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-                <textarea name="content" class="form-control">{{ old('content', $comment->content) }}</textarea>
+            <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}" style="margin: 0;" type="hidden">
+                <textarea name="content" class="form-control" style="margin:0 20px">{{ old('content', $comment->content) }}</textarea>
                 {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
-                <div class="preview__content">
-                    {!! markdown(old('content', '...')) !!}
-                </div>
+                {{--<div class="preview__content">--}}
+                    {{--{!! markdown(old('content', '...')) !!}--}}
+                {{--</div>--}}
             </div>
 
-            <div class="text-right">
+            <div class="text-right" style="margin:10px 0px 0px 0px;">
                 <button type="submit" class="btn btn-primary btn-sm">
                     수정하기
                 </button>

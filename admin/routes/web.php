@@ -33,3 +33,6 @@ Route::resource('/category','CategoryController');
 //인출
 Route::resource('/withdrawal','WithdrawalController');
 Route::get('/excel/{place}','WithdrawalController@exceltest');
+
+//게시판
+Route::resource('article', 'ArticlesController');
