@@ -94,7 +94,7 @@ class ArticlesController extends Controller
      */
     public function update(ArticlesRequest $request, \App\Article $article)
     {
-        $this->authorize('delete', $article);
+//        $this->authorize('delete', $article);
 
         $article->update($request->all());
         flash()->success('수정하신 내용을 저장했습니다.');

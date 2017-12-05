@@ -13,7 +13,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = \App\Article::latest()->paginate(3);
+        $articles = \App\Article::all();
 
         return (view('articles.index', compact('articles')));
     }
@@ -45,9 +45,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(\App\Article $article)
     {
-        //
+//        $comments = $article->comments()->with('replies')->whereNull('parent_id')->latest()->get();
+
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -56,9 +58,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -68,9 +70,12 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, \App\Article $article)
     {
-        //
+        $article->update($request->all());
+//        flash()->success('수정하신 내용을 저장했습니다.');
+
+        return redirect(route('articles.show', $article->id));
     }
 
     /**
@@ -79,8 +84,10 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Article $article)
     {
-        //
+        $article->delete();
+
+        return response()->json([], 204);
     }
 }

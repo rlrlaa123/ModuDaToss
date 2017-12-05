@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::resource('/show','MemberController');
+Route::resource('member','MemberController');
 //회원들 개인 페이지
-Route::get('/show/{type}/{userid}','MemberController@Memberdetail');
+Route::get('/member/{type}/{userid}','MemberController@Memberdetail');
 
 //영업 정보
 Route::get('/show2','SIController@index');
@@ -35,4 +35,8 @@ Route::resource('/withdrawal','WithdrawalController');
 Route::get('/excel/{place}','WithdrawalController@exceltest');
 
 //게시판
-Route::resource('article', 'ArticlesController');
+Route::resource('articles', 'ArticlesController');
+
+// 댓글
+Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
+Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);

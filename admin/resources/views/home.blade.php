@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                  <a href="show">회원관리</a>
+                  <a href="member">회원관리</a>
                 </div>
 
 
@@ -22,7 +22,7 @@
                   <a href="/withdrawal">입출금 관리</a>
                 </div>
                 <div class="panel-body">
-                  <a href="/article">게시판 관리</a>
+                  <a href="/articles">게시판 관리</a>
                 </div>
                 <div class="panel-body">
                   <a href="">기타 관리</a>

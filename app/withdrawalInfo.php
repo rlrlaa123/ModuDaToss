@@ -17,7 +17,7 @@ class withdrawalInfo extends Model
        'memberID',
        'memberName',
        'bankName',
-       'account_number',
+       'accountNumber',
        'requestmoney',   
    ];
 

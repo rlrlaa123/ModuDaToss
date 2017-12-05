@@ -34,7 +34,7 @@ class SalesController extends Controller
     {
         $category = Category::all();
         //
-        return view('/SI_input')->with('category',$category);
+        return view('SalesInfo.SI_input')->with('category',$category);
     }
 
     /**
@@ -63,6 +63,7 @@ class SalesController extends Controller
         if($number == 0){
             return redirect('/home');
         }
+
 
 
         $this->validate($request, [
@@ -97,6 +98,7 @@ class SalesController extends Controller
           $SalesInfo->pay = $request->input('pay');
           $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
           $SalesInfo->SP_name = $request->input('SP_name');
+          $SalesInfo->state= '진행중';
           $SalesInfo->save();
         }
 
@@ -117,7 +119,7 @@ class SalesController extends Controller
         //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
         //return $SalesInfo;
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-        return view('/SI_show')->with('SalesInfo',$SalesInfo);
+        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
     }
     //영업 리스트 항목별로
     public function showstate($id,$state){
@@ -134,7 +136,7 @@ class SalesController extends Controller
     //영업정보별 자세히 보기
     public function showdetail($SI_id){
       $SalesInfo = SalesInfo::where('id',$SI_id)->get();
-      return view('/SI_detail')->with('SalesInfo',$SalesInfo);
+      return view('SalesInfo.SI_detail')->with('SalesInfo',$SalesInfo);
     }
 
     /**
@@ -219,7 +221,7 @@ class SalesController extends Controller
       $withdrawal->memberID = $user->id;
       $withdrawal->memberName = $user->name;
       $withdrawal->bankName = $user->bankName;
-      $withdrawal->account_number = $user->account_number;
+      $withdrawal->accountNumber = $user->accountNumber;
       $withdrawal->requestmoney=$request->input('requestmoney');
       $withdrawal->save();
 

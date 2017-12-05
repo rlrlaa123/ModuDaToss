@@ -18,7 +18,11 @@
                   </tr>
                   <tr>
                     <td>성별</td>
-                    <td>{{ $user->gender }}</td>
+                    @if ($user->gender == 0 )
+                      <td>{{ '남자' }}</td>
+                    @else
+                      <td>{{ '여자' }}</td>
+                    @endif
                   </tr>
                   <tr>
                     <td>핸드폰 번호</td>
@@ -43,6 +47,10 @@
                   <tr>
                     <td>등록일</td>
                     <td>{{ $user->created_at }}</td>
+                  </tr>
+                  <tr>
+                    <td>추천인 코드</td>
+                    <td>{{ $user->recommend_code }}</td>
                   </tr>
                 </tbody>
               </table>

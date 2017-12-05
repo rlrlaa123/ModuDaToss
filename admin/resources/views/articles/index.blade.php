@@ -30,8 +30,12 @@
                             <tbody>
                             @foreach($articles as $article)
                                 <tr>
-                                    <td>{{ $article->user_id }}</td>
-                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->user->name }}</td>
+                                    <td>
+                                        <a href="{{ route('articles.show', $article->id) }}">
+                                            {{ $article->title }}
+                                        </a>
+                                    </td>
                                     <td>{{ $article->content }}</td>
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>

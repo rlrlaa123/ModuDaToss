@@ -39,28 +39,35 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
           'email' => 'required',
           'password' => 'required',
           'name' => 'required',
+          'gender' => 'required',
           'phoneNumber' => 'required',
           'bankName' => 'required',
           'accountNumber' => 'required',
           'category' => 'required',
         ]);
 
+        $activated = 1;
+
         DB::table('users')->insert([
           'email' => $request->email,
           'password' => bcrypt($request->password),
           'name' => $request->name,
-          'phoneNumber' => $request->phone,
-          'bankName' => $request->bank,
-          'accountNumber' => $request->account,
+          'gender' => $request->gender,
+          'phoneNumber' => $request->phoneNumber,
+          'bankName' => $request->bankName,
+          'accountNumber' => $request->accountNumber,
           'photo' => $request->photo,
           'signature' => $request->signature,
           'category' => $request->category,
-          'type' => $request->type
+          'type' => $request->type,
+            'activated' => $activated,
+            'recommend_code' => $request->recommend_code,
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
         ]);
 
         return redirect('/home');
