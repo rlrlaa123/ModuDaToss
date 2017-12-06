@@ -16,8 +16,8 @@
                       {{Form::text('category','',['class' => 'form-control','placeholder' => '상품명'])}}
                     </div>
                     <div class="form-group">
-                      {{Form::label('commision','commision')}}
-                      {{Form::text('commision','',['class' => 'form-control','placeholder' => '수수료'])}}
+                      {{Form::label('commission','commission')}}
+                      {{Form::text('commission','',['class' => 'form-control','placeholder' => '수수료'])}}
                     </div>
                     {{Form::submit('제출',['class' => 'btn btn-primary'])}}
                   {!! Form::close() !!}

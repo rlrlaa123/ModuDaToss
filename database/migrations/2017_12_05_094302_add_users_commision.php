@@ -15,11 +15,11 @@ class AddUsersCommision extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->integer('Benefit')->default(0);
+            $table->integer('benefit')->default(0);
 
-            $table->integer('Commision')->default(0);
+            $table->integer('commission')->default(0);
 
-            $table->integer('RecommenderCommision')->default(0);
+            $table->integer('recommender_commission')->default(0);
         });
     }
 
@@ -31,9 +31,9 @@ class AddUsersCommision extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('Benefit');
-            $table->dropColumn('Commision');
-            $table->dropColumn('RecommenderCommision');
+            $table->dropColumn('benefit');
+            $table->dropColumn('commission');
+            $table->dropColumn('recommender_commission');
         });
     }
 }

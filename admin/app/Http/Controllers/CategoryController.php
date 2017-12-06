@@ -44,11 +44,11 @@ class CategoryController extends Controller
         //
         $this->validate($request, [
           'category' => 'required',
-          'commision' => 'required',
+          'commission' => 'required',
         ]);
         $category = new category;
         $category->category = $request->input('category');
-        $category->commision = $request->input('commision');
+        $category->commission = $request->input('commission');
         $category->save();
 
         return redirect('/category');
@@ -93,7 +93,7 @@ class CategoryController extends Controller
         //
         $Category = category::find($id);
 
-        $Category -> commision = $request -> commision;
+        $Category -> commission = $request -> commission;
 
         $Category -> save();
 

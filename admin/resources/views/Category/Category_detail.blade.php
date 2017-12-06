@@ -23,7 +23,7 @@
                             <td>수수료</td>
                             <td>
                               {!! Form::open(['action' => ['CategoryController@update',$Category->id], 'method' => 'POST']) !!}
-                                {{Form::text('commision',$Category->commision,['placeholder' => '수수료'])}}
+                                {{Form::text('commission',$Category->commission,['placeholder' => '수수료'])}}
                                 {{Form::hidden('_method','PUT')}}
 
                             </td>

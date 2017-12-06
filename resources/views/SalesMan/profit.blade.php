@@ -14,25 +14,25 @@
                       <tbody>
                         <tr>
                           <td>수익금 현황</td>
-                          <td>{{ $user->Benefit + $user->Commision + $user->RecommenderCommision }}</td>
+                          <td>{{ $user->benefit + $user->commission + $user->recommender_commission }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>내 수당</td>
-                          <td>{{ $user->Benefit }}</td>
+                          <td>{{ $user->benefit }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>내 수수료</td>
-                          <td>{{ $user->Commision }}</td>
+                          <td>{{ $user->commission }}</td>
                         </tr>
                       </tbody>
                       <tbody>
                         <tr>
                           <td>추천인 수당</td>
-                          <td>{{ $user->RecommenderCommision }}</td>
+                          <td>{{ $user->recommender_commission }}</td>
                         </tr>
                       </tbody>
                 </table>
