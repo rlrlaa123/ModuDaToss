@@ -26,7 +26,6 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
         $Category = category::all();
         return view('member.VendorAdd')->with('Category',$Category);
     }
@@ -81,7 +80,6 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        //
         $users = DB::select('select * from users where type = ? ',[$id]);
 
         return view('member.main', ['users' => $users]);
@@ -140,10 +138,26 @@ class MemberController extends Controller
 
     }
 
-    public function Memberdetail($type,$userid){
+    public function Memberdetail($userid){
 
       $users = DB::select('select * from users where id = ?',[$userid]);
       return view('member.MemberDetail',['users' => $users]);
+    }
+    
+    public function CreateAClass(){
 
+        $users = \App\Real_User::all();
+
+        return view('member.A_ClassAdd', compact('users'));
+    }
+
+    public function UpdateAClass($userid){
+        $user = \App\Real_User::find($userid);
+
+        $user->type = 4;
+
+        $user->save();
+
+        return redirect('/member/4');
     }
 }

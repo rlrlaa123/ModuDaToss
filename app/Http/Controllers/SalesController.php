@@ -33,7 +33,7 @@ class SalesController extends Controller
     public function create()
     {
         $category = Category::all();
-        //
+
         return view('SalesInfo.SI_input')->with('category',$category);
     }
 
@@ -45,8 +45,6 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //return $aa.$bb;
-
         //카테고리 필터
         $data = array();
         $number = 0;
@@ -71,7 +69,7 @@ class SalesController extends Controller
           'BusinessName' => 'required',
           'CustomerAddress' => 'required',
           'post_number' => 'required',
-          'CustomerAddress_detail' => 'required',
+//          'CustomerAddress_detail' => 'required',
           'PhoneNumber' => 'required',
           'ContactTime' => 'required',
           'Characteristic' => 'required',
@@ -126,11 +124,11 @@ class SalesController extends Controller
 
         if($state == '전체'){
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-            return view('/SI_show')->with('SalesInfo',$SalesInfo);
+            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
 
         }else{
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
-            return view('/SI_show')->with('SalesInfo',$SalesInfo);
+            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
         }
     }
     //영업정보별 자세히 보기

@@ -19,7 +19,7 @@ class Article extends Model
 
     public function user()
     {
-        return $this->belongsTo(Article_User::class);
+        return $this->belongsTo(Real_User::class);
     }
 
     public function comments()

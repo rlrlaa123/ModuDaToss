@@ -76,61 +76,91 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        //
         $SI = DB::table('sales_infos')->where('id',$id)->first();
         $category = DB::table('categories')->where('category',$SI->Category)->first();
 
         if( $SI->state == '접수 완료'){
-          DB::table('sales_infos')->where('id',$id)->update(['state' => '진행중']);
+            DB::table('sales_infos')->where('id',$id)->update(['state' => '진행중']);
         }else if($SI->state == '진행중'){
 
-          if(isset($request->reason))
-          {
-            DB::table('sales_infos')->where('id',$id)->update(['state' => '실패']);
-            DB::table('sales_infos')->where('id',$id)->update(['Fail_reason' => $request->reason]);
-          }else{
+            if(isset($request->reason))
+            {
+                DB::table('sales_infos')->where('id',$id)->update(['state' => '실패']);
+                DB::table('sales_infos')->where('id',$id)->update(['Fail_reason' => $request->reason]);
+            }else{
+                DB::table('sales_infos')->where('SalesPerson_id',$SI->SalesPerson_id)->update(['pay'=>$request->pay]);
+                //최종 체결 금액 SalesInfo에서 update
+//              $SalesInfo = \App\SalesInfo::find(1);
+//              $SalesInfo->pay = $request->pay;
+//              $SalesInfo->save();
 
-            //금액 벤더사에게 지금
-            $benefit = DB::table('users')->where('id',$request->SalesPerson_id)->first();
-            $sum = $benefit->Benefit + $request->pay;
-            DB::table('users')
-            ->where('id', $request->SalesPerson_id)
-            ->update(['Benefit' => $sum]);
+                //금액 벤더사에게 지금
+                $benefit = DB::table('users')->where('id',$request->SalesPerson_id)->first();
+                $sum = $benefit->Benefit + $request->pay;
+                DB::table('users')
+                ->where('id', $request->SalesPerson_id)
+                ->update(['Benefit' => $sum]);
 
-            //적립내역에 입력
-            DB::table('savinghistories')->insert(
-              ['SalesPerson_id' => $request->SalesPerson_id, 'SalesPerson_name' => $benefit->name ,'MoneyType' => '거래성사금액' ,'MoneySum' => $request->pay,'created_at' => now()]
-            );
+                //적립내역에 입력
+                DB::table('savinghistories')->insert(
+                  ['SalesPerson_id' => $request->SalesPerson_id, 'SalesPerson_name' => $benefit->name ,'MoneyType' => '거래성사금액' ,'MoneySum' => $request->pay,'created_at' => now()]
+                );
 
+                // 수수료 지급
+                $user = DB::table('users')->where('id',$SI->SalesPerson_id)->first();
+                $commision = ($user->Commision)+($request->pay)*(($category->commision)/100);
+                DB::table('users')->where('id',$SI->SalesPerson_id)->update(['Commision' => $commision]);
+    //
+    //            //적립내역에 입력
+                DB::table('savinghistories')->insert([
+                    'SalesPerson_id' => $user->id,
+                    'SalesPerson_name' => $user->name,
+                    'MoneyType' => '거래성사수수료',
+                    'MoneySum' => (($request->pay)*(($category->commision)/100)),
+                    'created_at' => now()
+                ]);
 
-            // 수수료 지급
-//            $user = DB::table('users')->where('id',$SI->SalesPerson_id)->first();
-//            $commision = ($user->Commision)+($request->pay)*(($category->commision)/100);
-//            DB::table('users')->where('id',$SI->SalesPerson_id)->update(['Commision' => $commision]);
-//
-//            //적립내역에 입력
-//            DB::table('savinghistories')->insert(
-//              ['SalesPerson_id' => $user->id, 'SalesPerson_name' => $user->name ,'MoneyType' => '거래성사수수료' ,'MoneySum' => (($request->pay)*(($category->commision)/100)),'created_at' => now()]
-//            );
-//
-//            //추천인 수수료 지금
-//            $recommendercode = $user->recommender;
-//            return $user->email;
-//            return $recommendercode;
-//            $Recommender = DB::table('users')->where('recommend_code',$recommendercode)->first();
-//            return $Recommender;
-//            $RecommenderCommision = ($Recommender->Commision)+($request->pay)*(3/100);
-//            DB::table('users')->where('recommend_code',$recommendercode)->update(['RecommenderCommision' => $RecommenderCommision]);
+                // A 클래스 추천인 수수료 지급
+//                return $SI->SalesPerson_id;
+                $a_class=\App\A_Class::where('recommend_commissioner_id',$SI->SalesPerson_id)->first();
 
-//            //적립내역에 입력
-//            DB::table('savinghistories')->insert(
-//              ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(3/100)),'created_at' => now()]
-//            );
+                if($a_class)
+                {
+                    // A 클래스 유저
+                    $a_class_user = \App\User::where('id',$a_class->a_class_id)->first();
+                    // A 클래스 유저 추천인 수수료 추가
+                    $commision = $a_class_user->Commision + ($request->pay) * 3/100;
+                    // A 클래스 유저 추천인 수수료 업데이트
+                    $a_class_user->Commision = $commision;
+                    $a_class_user->save();
 
-            //영업정보 상태 변화
-            DB::table('sales_infos')->where('id',$id)->update(['state' => '완료']);
-          }
+                    DB::table('savinghistories')->insert([
+                        'SalesPerson_id' => $user->id,
+                        'SalesPerson_name' => $user->name,
+                        'MoneyType' => 'A 클래스 추천인 수수료',
+                        'MoneySum' => ($request->pay) * 3/100,
+                        'created_at' => now()
+                    ]);
+                }
+
+                //
+    //            //추천인 수수료 지금
+    //            $recommendercode = $user->recommender;
+    //            return $user->email;
+    //            return $recommendercode;
+    //            $Recommender = DB::table('users')->where('recommend_code',$recommendercode)->first();
+    //            return $Recommender;
+    //            $RecommenderCommision = ($Recommender->Commision)+($request->pay)*(3/100);
+    //            DB::table('users')->where('recommend_code',$recommendercode)->update(['RecommenderCommision' => $RecommenderCommision]);
+
+    //            //적립내역에 입력
+    //            DB::table('savinghistories')->insert(
+    //              ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(3/100)),'created_at' => now()]
+    //            );
+
+                //영업정보 상태 변화
+                DB::table('sales_infos')->where('id',$id)->update(['state' => '완료']);
+            }
         }
 
         //

@@ -22,7 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('member','MemberController');
 //회원들 개인 페이지
-Route::get('/member/{type}/{userid}','MemberController@Memberdetail');
+Route::get('/member/detail/{userid}','MemberController@Memberdetail');
+//A 클래스 회원 추가 페이지
+Route::get('/member/a_class/create','MemberController@CreateAClass');
+//A 클래스 회원 추가
+Route::get('/member/a_class/create/{userid}','MemberController@UpdateAClass');
 
 //영업 정보
 Route::get('/show2','SIController@index');
