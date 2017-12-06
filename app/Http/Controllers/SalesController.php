@@ -98,6 +98,7 @@ class SalesController extends Controller
           $SalesInfo->pay = $request->input('pay');
           $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
           $SalesInfo->SP_name = $request->input('SP_name');
+          $SalesInfo->state= '진행중';
           $SalesInfo->save();
         }
 
@@ -125,11 +126,11 @@ class SalesController extends Controller
 
         if($state == '전체'){
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+            return view('/SI_show')->with('SalesInfo',$SalesInfo);
 
         }else{
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
-            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+            return view('/SI_show')->with('SalesInfo',$SalesInfo);
         }
     }
     //영업정보별 자세히 보기

@@ -41,7 +41,7 @@
                           <td>{{ $SI->CustomerAddress }}</td>
                           <td>{{ $SI->Category }}</td>
                           <td>{{ $SI->state }}</td>
-                          <td><a href="/detail/{{$SI->id}}">자세히 보기</a></td>
+                          <td><a href="/detail/{{$SI->id}}">자세히 보기</td>
                         </tr>
                       </tbody>
                   @endforeach

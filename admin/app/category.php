@@ -15,7 +15,7 @@ class category extends Model
 
     protected $fillable = [
         'category',
-        'commission',
+        'commision',
     ];
 
     protected $hidden = [

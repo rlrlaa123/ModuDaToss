@@ -16,7 +16,7 @@
                         <tbody>
                           <tr>
                             <td>{{ $category->category }}</td>
-                            <td>{{ $category->commission }}</td>
+                            <td>{{ $category->commision }}</td>
                             <td><a href="/category/{{ $category->id }}">자세히 보기</a></td>
                           </tr>
                         </tbody>
