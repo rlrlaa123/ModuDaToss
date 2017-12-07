@@ -11,34 +11,38 @@
                     <div class="panel-body">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>이름</th>
-                                    <th>이메일</th>
-                                    <th>성별</th>
-                                    <th>휴대폰 번호</th>
-                                    <th>회원 타입</th>
-                                    <th>비고</th>
-                                </tr>
+                            <tr>
+                                <th>이름</th>
+                                <th>이메일</th>
+                                <th>성별</th>
+                                <th>휴대폰 번호</th>
+                                <th>회원 타입</th>
+                                <th>비고</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach( $users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->gender }}</td>
-                                        <td>{{ $user->phoneNumber }}</td>
-                                        <td>{{ $user->type }}</td>
-                                        <td>
-                                            @if( $user->type != 4 )
-                                                <a href="/member/a_class/create/{{ $user->id }}">
-                                                    A 클래스 회원 추가
-                                                </a>
-                                            @else
-                                                A 클래스 회원
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            @foreach( $users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    @if ($user->gender == 0 )
+                                        <td>{{ '남자' }}</td>
+                                    @else
+                                        <td>{{ '여자' }}</td>
+                                    @endif
+                                    <td>{{ $user->phoneNumber }}</td>
+                                    <td>{{ $user->type }}</td>
+                                    <td>
+                                        @if( $user->type != 4 )
+                                            <a href="/member/a_class/create/{{ $user->id }}">
+                                                A 클래스 회원 추가
+                                            </a>
+                                        @else
+                                            A 클래스 회원
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

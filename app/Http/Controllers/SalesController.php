@@ -24,17 +24,19 @@ class SalesController extends Controller
         //
         return view('home');
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
+
         $category = Category::all();
 
         return view('SalesInfo.SI_input')->with('category',$category);
+
     }
 
     /**
@@ -45,6 +47,7 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
+  
         //카테고리 필터
         $data = array();
         $number = 0;

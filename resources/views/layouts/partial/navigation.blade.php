@@ -15,6 +15,20 @@
             /*right: 0;*/
         }
     }
+    .col-sm-6{
+      text-align:center;
+      background-color:skyblue;
+    }
+    .dropdown-menu {
+        width: 200px;
+    }
+    .recommend {
+        padding-left: 25px;
+        padding-bottom: 3px;
+        text-align: left;
+        border-radius: 5px;
+        -webkit-tap-highlight-color: transparent;
+    }
 </style>
 
 <nav class="navbar navbar-default navbar-side navbar-static-top">
@@ -47,15 +61,18 @@
                         <li><a href="{{ route('articles.index') }}">게시판</a></li>
 {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                     @else
+                        <li>
+                            <a href="{{ route('home') }}">메인화면</a>
+                        </li>
                         @if (Auth::user()->type == 2)
                             <li>
                                 <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>
                             </li>
                         @endif
 
-                        @if (Auth::user()->type == 1)
+                        @if (Auth::user()->type == 1 || Auth::user()->type == 4)
                             <li>
-                                <a href="/SalesInfo/create">영업 정보 등록</a>
+                                <a href="{{ route('SalesInfo.create') }}">영업 정보 등록</a>
                             </li>
                             <li>
                                 <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
@@ -75,6 +92,23 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                @if (Auth::user()->type==0)
+                                    <li>
+                                        <a href="{{route('regular.create')}}">
+                                            정회원 신청
+                                        </a>
+                                    </li>
+                                @elseif (Auth::user()->type==5)
+                                    <li>
+                                        <a>
+                                            정회원 승인 대기중
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="recommend">
+                                        추천인 코드 {{ Auth::user()->recommend_code }}
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="/mypage/{{ Auth::user()->id }}">
                                         내 정보 확인
@@ -85,11 +119,11 @@
                                         수익 조회 및 출금
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="/Recommender/{{ Auth::user()->id }}">
-                                        추천인 조회
-                                    </a>
-                                </li>
+                                {{--<li>--}}
+                                    {{--<a href="/Recommender/{{ Auth::user()->id }}">--}}
+                                        {{--추천인 조회--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
                                 <li>
                                     <a href="{{ route('sessions.destroy') }}">
                                         로그아웃

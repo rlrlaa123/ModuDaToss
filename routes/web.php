@@ -71,6 +71,7 @@ Route::post('auth/reset', [
 //일반 영업사원
 Route::resource('SalesInfo','SalesController');
 
+
 Route::get('/mypage/{id}', 'SalesController@mypage');
 Route::get('/profit/{id}', 'SalesController@profit');
 Route::get('/Recommender/{id}', 'SalesController@Recommender');
@@ -79,9 +80,12 @@ Route::post('/withdrawal/{id}' ,'SalesController@withdrawalrequest');
 Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
 Route::get('/detail/{SIid}','SalesController@showdetail');
 
+
+
 //파트너
 Route::resource('Partner','PartnerController');
-Route::get('/Partner/{Category}/{SalesPerson_id}','PartnerController@show3');
+Route::get('/Partner/{Category}/{state}','PartnerController@showbystate');
+Route::get('/Partner/detail/{Category}/{SalesPerson_id}','PartnerController@show3');
 
 //test
 Route::post('/test','PartnerController@show2');

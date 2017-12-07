@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $currentUser = auth()->user();
         View::share($currentUser);
+        Schema::defaultStringLength(191);
 //        View->with(compact('currentUser'));
     }
 

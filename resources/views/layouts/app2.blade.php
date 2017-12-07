@@ -10,10 +10,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     <!-- jQuery library -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
@@ -39,73 +35,16 @@
                     </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('sessions.create') }}">Login</a></li>
-                            <li><a href="{{ route('users.store') }}">Register</a></li>
-                        @else
+                        <li><a href="{{ route('home') }}">돌아가기</a></li>
 
-                        @if (Auth::user()->type == 2)
-                          <li>
-                            <a href="/Partner/{{ Auth::user()->category}}">영업 정보 확인</a>
-                          </li>
-                        @endif
-
-                        @if (Auth::user()->type == 1)
-                            <li>
-                              <a href="/SalesInfo/create">영업 정보 등록</a>
-                            </li>
-                            <li>
-                              <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
-                            </li>
-                        @endif
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    안녕하세요 {{ Auth::user()->name }} 님<span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="/mypage/{{ Auth::user()->id }}">
-                                            내 정보 확인
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/profit/{{ Auth::user()->id }}">
-                                            수익 조회 및 출금
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/Recommender/{{ Auth::user()->id }}">
-                                            추천인 조회
-                                        </a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                            {{ Auth::user()->name }} <span class="caret"></span>
-                                        </a>
-
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="{{ route('sessions.destroy') }}">
-                                                    로그아웃
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
                     </ul>
-                </div>
+
             </div>
         </nav>
         @include('inc.messages')

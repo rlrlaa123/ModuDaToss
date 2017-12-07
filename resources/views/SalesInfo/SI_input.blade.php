@@ -16,19 +16,31 @@
                             {{Form::label('BusinessName','사업장명')}}
                             {{Form::text('BusinessName','',['class' => 'form-control','placeholder' => '사업장명'])}}
                         </div>
-                        <div class="form-group">
-                            {{Form::text('post_number','',['class' => 'postcodify_postcode5','size' => '50'])}}
-                            {{Form::text('CustomerAddress','',['class' => 'postcodify_address','size' => '50'])}}
-                            {{Form::text('CustomerAddress_detail','',['class' => 'postcodify_details','size' => '50'])}}
-                            {{Form::text('CustomerAddress_extra','',['class' => 'postcodify_extra_info','size' => '50'])}}
-                            <div id="postcodify_search_button">검색</div><br />
+                        <div class="jumbotron">
+                          <p> 고객 주소 </p>
+                          <div class="form-group">
+                              {{Form::label('post_number','우편번호')}}
+                              {{Form::text('post_number','',['class' => 'form-control postcodify_postcode5','size' => '50'])}}
+                              {{Form::label('CustomerAddress','주소지')}}
+                              {{Form::text('CustomerAddress','',['class' => 'form-control postcodify_address','size' => '50'])}}
+                              {{Form::label('CustomerAddress_detail','주소지 추가')}}
+                              {{Form::text('CustomerAddress_detail','',['class' => 'form-control postcodify_details','size' => '50'])}}
+                              {{Form::label('CustomerAddress_extra','주소지 그외')}}
+                              {{Form::text('CustomerAddress_extra','',['class' => 'form-control postcodify_extra_info','size' => '50'])}}
+                              <br />
+                              <input type="button"
+                              id="postcodify_search_button"
+                              value="검색"
+                              class="btn btn-default"
+                              ><br />
+                          </div>
                         </div>
                         <div class="form-group">
-                            {{Form::label('PhoneNumber','PhoneNumber')}}
+                            {{Form::label('PhoneNumber','고객전화번호')}}
                             {{Form::text('PhoneNumber','',['class' => 'form-control','placeholder' => '전화 번호'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('Characteristic','Characteristic')}}
+                            {{Form::label('Characteristic','특이사항')}}
                             {{Form::text('Characteristic','',['class' => 'form-control','placeholder' => '특이 사항'])}}
                         </div>
                         <div class="form-group">
@@ -44,32 +56,38 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            {{Form::label('note','note')}}
+                            {{Form::label('note','비고')}}
                             {{Form::text('note','',['class' => 'form-control','placeholder' => '비고'])}}
                         </div>
 
                         <div class="form-group">
-                            {{Form::label('CustomerEmail','CustomerEmail')}}
+                            {{Form::label('CustomerEmail','고객이메일')}}
                             {{Form::email('CustomerEmail','',['class' => 'form-control','placeholder' => '고객 이메일'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('pay','pay')}}
+                            {{Form::label('pay','예상 체결 금액')}}
                             {{Form::number('pay','',['class' => 'form-control','placeholder' => '금액'])}}
                         </div>
                         <div class="form-group">
-                            {{Form::label('ContactTime','ContactTime')}}
+                            {{Form::label('ContactTime','접촉 예정 시간')}}
                             {{Form::date('ContactTime','',['class' => 'form-control','placeholder' => '접촉시간'])}}
                         </div>
                         <div class="form-group">
                             {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                             {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
                         </div>
-                        {{Form::submit('Submit',['class' => 'btn btn-primary'])}}
-                        {!! Form::close() !!}
+                    </div>
+                    <div class="panel-footer">
+                      {{Form::submit('등록',['class' => 'btn btn-primary btn-lg'])}}
+                      {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
-        <script> $(function() { $("#postcodify_search_button").postcodifyPopUp(); }); </script>
+        <script>
+         $(function() {
+           $("#postcodify_search_button").postcodifyPopUp();
+         });
+        </script>
     </div>
 @endsection

@@ -24,58 +24,63 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+        //추천인 코드가 맞는지 확인
+        if ($request->recommender)
+        {
+            if(! \DB::table('users')->where('recommend_code',$request->recommender)->first()) {
+
+                return redirect(route('users.create'))->with('flash_message','추천인 코드가 정확하지 않습니다. 뒤로 가세요')->withInput();
+            }
+        }
+
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'gender' => 'required',
-            'phoneNumber' => 'required|min:11',
-            'bankName' => 'required',
-            'accountNumber' => 'required',
-            'recommend_code' => 'required',
         ]);
 
         $confirmCode = str_random(60);
         $type = 0; # 일반회원
+
+        $AclassRecommender = null;
+
+        if(isset($request->recommender)){
+          $var = \App\User::where('recommend_code',$request->recommender)->first();
+          if(isset($var)){
+
+            if($var->type == 4){
+              $AclassRecommender = $var->recommend_code;
+            }
+            else{
+              if(isset($var->AclassRecommender)){
+                $AclassRecommender = $var->AclassRecommender;
+              }
+              else{
+                $AclassRecommender = null;
+              }
+            }
+          }
+        }
 
         $user = \App\User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'confirm_code' => $confirmCode,
-            'gender' => $request->input('gender'),
-            'phoneNumber' => $request->input('phoneNumber'),
-            'bankName' => $request->input('bankName'),
-            'accountNumber' => $request->input('accountNumber'),
-            'photo' => $request->input('photo'),
-            'signature' => $request->input('signature'),
             'type' => $type,
             'recommender' => $request->input('recommender'),
-            'recommend_code' => $request->input('recommend_code'),
+            'AclassRecommender' => $AclassRecommender,
         ]);
-
 //        \Mail::send('emails.auth.confirm', compact('user'), function ($message) use ($user) {
 //            $message->to($user->email);
 //            $message->subject(
 //                sprintf('[%s] 회원가입을 확인해 주세요.', config('app.name'))
 //            );
 //        });
-        event(new \App\Events\UserCreated($user));
+//        event(new \App\Events\UserCreated($user));
 
-        // 추천인 A클래스 추천인 체크
-        $a_class_recommender = \App\User::where('recommend_code',$request->recommender)->first();
-        if ($a_class_recommender->type==4)
-        {
-            // user id
-            $recommend_commissioner_id = \App\User::where('email',$request->email)->first();
-//            return $recommend_commissioner_id;
-            // A클래스 id
-            $a_class = \App\A_Class::create([
-                'a_class_id' => $a_class_recommender->id,
-                'a_class_recommend_code' => $a_class_recommender->recommend_code,
-                'recommend_commissioner_id' => $recommend_commissioner_id->id,
-            ]);
-        }
+
+        auth()->login($user);
 
         return redirect(route('home'))->with('flash_message','가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인하시고 로그인해 주세요.');
     }
@@ -95,10 +100,4 @@ class UsersController extends Controller
 
         return redirect(route('home'))->with('flash_message', auth()->user()->name . '님, 환영합니다 가입 확인되었습니다.');
     }
-//    protected function respondCreated($message)
-//    {
-//        flash($message);
-//
-//        return redirect('/home');
-//    }
 }

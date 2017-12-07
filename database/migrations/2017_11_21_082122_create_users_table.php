@@ -30,6 +30,15 @@ class CreateUsersTable extends Migration
             $table->string('recommender')->nullable();
             $table->string('recommend_code');
             $table->string('category')->nullable();
+            $table->string('AclassRecommender')->nullable();
+
+            $table->string('confirm_code', 60)->nullable();
+            $table->boolean('activated')->default(0);
+
+            $table->integer('Benefit')->default(0);
+            $table->integer('Commision')->default(0);
+            $table->integer('RecommenderCommision')->default(0);
+
             $table->timestamps();
         });
     }

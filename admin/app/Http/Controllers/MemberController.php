@@ -39,30 +39,30 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-          'email' => 'required',
-          'password' => 'required',
-          'name' => 'required',
-          'gender' => 'required',
-          'phoneNumber' => 'required',
-          'bankName' => 'required',
-          'accountNumber' => 'required',
-          'category' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'phoneNumber' => 'required',
+            'bankName' => 'required',
+            'accountNumber' => 'required',
+            'category' => 'required',
         ]);
 
         $activated = 1;
 
         DB::table('users')->insert([
-          'email' => $request->email,
-          'password' => bcrypt($request->password),
-          'name' => $request->name,
-          'gender' => $request->gender,
-          'phoneNumber' => $request->phoneNumber,
-          'bankName' => $request->bankName,
-          'accountNumber' => $request->accountNumber,
-          'photo' => $request->photo,
-          'signature' => $request->signature,
-          'category' => $request->category,
-          'type' => $request->type,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'phoneNumber' => $request->phoneNumber,
+            'bankName' => $request->bankName,
+            'accountNumber' => $request->accountNumber,
+            'photo' => $request->photo,
+            'signature' => $request->signature,
+            'category' => $request->category,
+            'type' => $request->type,
             'activated' => $activated,
             'recommend_code' => $request->recommend_code,
             'created_at'=> date('Y-m-d H:i:s'),
@@ -106,13 +106,15 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         if($request->type == 0){
-          DB::table('users')->where('id',$id)->update(['type' => 1]);
+            DB::table('users')->where('id',$id)->update(['type' => 1]);
         }else if($request->type == 1){
-          DB::table('users')->where('id',$id)->update(['type' => 3]);
+            DB::table('users')->where('id',$id)->update(['type' => 3]);
         }else if($request->type == 2){
-          DB::table('users')->where('id',$id)->update(['type' => 2]);
+            DB::table('users')->where('id',$id)->update(['type' => 2]);
         }else if($request->type == 3){
-          DB::table('users')->where('id',$id)->update(['type' => 1]);
+            DB::table('users')->where('id',$id)->update(['type' => 1]);
+        }else if($request->type == 5){
+            DB::table('users')->where('id',$id)->update(['type' => 1]);
         }
 
         return redirect('/home');
@@ -140,10 +142,10 @@ class MemberController extends Controller
 
     public function Memberdetail($userid){
 
-      $users = DB::select('select * from users where id = ?',[$userid]);
-      return view('member.MemberDetail',['users' => $users]);
+        $users = DB::select('select * from users where id = ?',[$userid]);
+        return view('member.MemberDetail',['users' => $users]);
     }
-    
+
     public function CreateAClass(){
 
         $users = \App\Real_User::all();

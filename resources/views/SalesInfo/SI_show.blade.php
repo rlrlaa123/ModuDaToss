@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-head">
+                <div class="panel-heading">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <ul class="nav navbar-nav">

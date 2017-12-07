@@ -56,6 +56,18 @@ class PartnerController extends Controller
         return view('/Partner/SI_show')->with('SalesInfo',$SalesInfo);
     }
 
+    public function showbystate($category,$state){
+
+      if($state == '전체'){
+          $SalesInfo = SalesInfo::where('Category',$category)->orderBy('created_at','desc')->get();
+          return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
+
+      }else{
+          $SalesInfo = SalesInfo::where('Category',$category)->where('state',$state)->orderBy('created_at','desc')->get();
+          return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
+      }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,8 +99,10 @@ class PartnerController extends Controller
             {
                 DB::table('sales_infos')->where('id',$id)->update(['state' => '실패']);
                 DB::table('sales_infos')->where('id',$id)->update(['Fail_reason' => $request->reason]);
+                DB::table('sales_infos')->where('id',$id)->update(['pay' => 0]);
+
             }else{
-                DB::table('sales_infos')->where('SalesPerson_id',$SI->SalesPerson_id)->update(['pay'=>$request->pay]);
+                DB::table('sales_infos')->where('id',$id)->update(['pay'=>$request->pay]);
                 //최종 체결 금액 SalesInfo에서 update
 //              $SalesInfo = \App\SalesInfo::find(1);
 //              $SalesInfo->pay = $request->pay;
@@ -122,6 +136,24 @@ class PartnerController extends Controller
 
                 // A 클래스 추천인 수수료 지급
 //                return $SI->SalesPerson_id;
+                if(isset($user->AclassRecommender)){
+
+                  $AclassRecommender = DB::table('users')->where('recommend_code',$user->AclassRecommender)->first();
+                  $ARcommision = ($AclassRecommender->RecommenderCommision) + ($request->pay)*(3/100);
+                  DB::table('users')->where('recommend_code',$user->AclassRecommender)->update(['RecommenderCommision' => $ARcommision]);
+
+                  DB::table('savinghistories')->insert([
+                      'SalesPerson_id' => $AclassRecommender->id,
+                      'SalesPerson_name' => $AclassRecommender->name,
+                      'MoneyType' => 'A클래스회원수수료',
+                      'MoneySum' => (($request->pay)*(3/100)),
+                      'created_at' => now()
+                  ]);
+
+                }
+
+
+                /*
                 $a_class=\App\A_Class::where('recommend_commissioner_id',$SI->SalesPerson_id)->first();
 
                 if($a_class)
@@ -142,21 +174,21 @@ class PartnerController extends Controller
                         'created_at' => now()
                     ]);
                 }
+                */
 
-                //
-    //            //추천인 수수료 지금
-    //            $recommendercode = $user->recommender;
-    //            return $user->email;
-    //            return $recommendercode;
-    //            $Recommender = DB::table('users')->where('recommend_code',$recommendercode)->first();
-    //            return $Recommender;
-    //            $RecommenderCommision = ($Recommender->Commision)+($request->pay)*(3/100);
-    //            DB::table('users')->where('recommend_code',$recommendercode)->update(['RecommenderCommision' => $RecommenderCommision]);
+
+
+              //추천인 수수료 지금
+                $recommendercode = $user->recommender;
+                $Recommender = DB::table('users')->where('recommend_code',$recommendercode)->first();
+                $RecommenderCommision = ($Recommender->Commision)+($request->pay)*(3/100);
+                DB::table('users')->where('recommend_code',$recommendercode)->update(['RecommenderCommision' => $RecommenderCommision]);
 
     //            //적립내역에 입력
-    //            DB::table('savinghistories')->insert(
-    //              ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(3/100)),'created_at' => now()]
-    //            );
+                DB::table('savinghistories')->insert(
+                  ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(3/100)),'created_at' => now()]
+                );
+
 
                 //영업정보 상태 변화
                 DB::table('sales_infos')->where('id',$id)->update(['state' => '완료']);
@@ -200,4 +232,5 @@ class PartnerController extends Controller
         //return $SalesInfo;
         return view('Partner/SI_detail')->with('SalesInfo',$SalesInfo);
     }
+
 }
