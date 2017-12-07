@@ -79,7 +79,6 @@ class UsersController extends Controller
 //        });
 //        event(new \App\Events\UserCreated($user));
 
-
         auth()->login($user);
 
         return redirect(route('home'))->with('flash_message','가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인하시고 로그인해 주세요.');
