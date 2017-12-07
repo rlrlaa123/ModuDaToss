@@ -60,22 +60,27 @@ class UsersController extends Controller
 //                sprintf('[%s] 회원가입을 확인해 주세요.', config('app.name'))
 //            );
 //        });
-        event(new \App\Events\UserCreated($user));
+//        event(new \App\Events\UserCreated($user));
 
         // 추천인 A클래스 추천인 체크
         $a_class_recommender = \App\User::where('recommend_code',$request->recommender)->first();
-        if ($a_class_recommender->type==4)
+        if ($a_class_recommender)
         {
-            // user id
-            $recommend_commissioner_id = \App\User::where('email',$request->email)->first();
-//            return $recommend_commissioner_id;
-            // A클래스 id
-            $a_class = \App\A_Class::create([
-                'a_class_id' => $a_class_recommender->id,
-                'a_class_recommend_code' => $a_class_recommender->recommend_code,
-                'recommend_commissioner_id' => $recommend_commissioner_id->id,
-            ]);
+            if ($a_class_recommender->type==4)
+            {
+                // user id
+                $recommend_commissioner_id = \App\User::where('email',$request->email)->first();
+                //            return $recommend_commissioner_id;
+                // A클래스 id
+                $a_class = \App\A_Class::create([
+                    'a_class_id' => $a_class_recommender->id,
+                    'a_class_recommend_code' => $a_class_recommender->recommend_code,
+                    'recommend_commissioner_id' => $recommend_commissioner_id->id,
+                ]);
+            }
         }
+
+        auth()->login($user);
 
         return redirect(route('home'))->with('flash_message','가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인하시고 로그인해 주세요.');
     }

@@ -23,15 +23,16 @@ class SessionsController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if(!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
-
-            return back()->with('flash_message','이메일 또는 비밀번호가 맞지 않습니다.')->withInput();
-        }
-
-        if(! auth()->user()->activated) {
-            auth()->logout();
-            return back()->with('flash_message','이메일에서 본인인증을 해주세요.')->withInput();
-        }
+//        if(!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
+//
+//            return back()->with('flash_message','이메일 또는 비밀번호가 맞지 않습니다.')->withInput();
+//        }
+//
+//        if(! auth()->user()->activated) {
+//            auth()->logout();
+//            return back()->with('flash_message','이메일에서 본인인증을 해주세요.')->withInput();
+//        }
+        auth()->attempt($request->only('email','password'), $request->has('remember'));
 
         return redirect()->intended('home')->with('flash_message', auth()->user()->name . '님, 환영합니다.');
     }
