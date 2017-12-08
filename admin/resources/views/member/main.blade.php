@@ -32,9 +32,8 @@
 									<th>비고</th>
 								</tr>
 								</thead>
-
 								@if(isset($users) && count($users) > 0)
-									@if($_SERVER['PHP_SELF'] == '/index.php/member/0')
+									@if( Request::path() == 'member/0')
 										@foreach($users as $user)
 											<tbody>
 											<tr>
@@ -67,7 +66,7 @@
 								@endif
 
 								@if(isset($users) && count($users) > 0)
-									@if($_SERVER['PHP_SELF'] == '/index.php/member/5')
+									@if(Request::path() == 'member/5')
 										@foreach($users as $user)
 											<tbody>
 											<tr>
@@ -100,7 +99,7 @@
 								@endif
 
 								@if(isset($users) && count($users) > 0)
-									@if($_SERVER['PHP_SELF'] == '/index.php/member/1')
+									@if(Request::path() == 'member/1')
 										@foreach($users as $user)
 											<tbody>
 											<tr>
@@ -133,7 +132,7 @@
 									@endif
 								@endif
 
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/2')
+								@if(Request::path() == 'member/2')
 									@if(isset($users) && count($users) > 0)
 										@foreach($users as $user)
 											<tbody>
@@ -168,7 +167,7 @@
 								@endif
 
 								@if(isset($users) && count($users) > 0)
-									@if($_SERVER['PHP_SELF'] == '/index.php/member/3')
+									@if(Request::path() == 'member/3')
 										@foreach($users as $user)
 											<tbody>
 											<tr>
@@ -200,7 +199,7 @@
 									@endif
 								@endif
 
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/4')
+								@if(Request::path() == 'member/4')
 									@if(isset($users) && count($users) > 0)
 										@foreach($users as $user)
 											<tbody>

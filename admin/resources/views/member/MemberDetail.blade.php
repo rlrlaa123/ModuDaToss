@@ -11,7 +11,6 @@
                     <div class="panel-body">
                         @foreach( $users as $user)
                             <div class="table-responsive">
-
                                 <table class="table">
                                     <tbody>
                                     <tr>
