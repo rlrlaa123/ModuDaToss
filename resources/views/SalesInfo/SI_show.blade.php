@@ -21,8 +21,9 @@
                     </nav>
                 </div>
             <div class="panel-body">
-                <table class="table">
-                    <thead>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
                             <th>사업장</th>
                             <th>전화번호</th>
@@ -31,21 +32,22 @@
                             <th>상태</th>
                             <th>비고</th>
                         </tr>
-                    </thead>
-                    @if(count($SalesInfo) > 0)
-                        @foreach($SalesInfo as $SI)
-                            <tbody>
+                        </thead>
+                        @if(count($SalesInfo) > 0)
+                            @foreach($SalesInfo as $SI)
+                                <tbody>
                                 <tr>
-                                  <td>{{ $SI->BusinessName }}</td>
-                                  <td>{{ $SI->PhoneNumber }}</td>
-                                  <td>{{ $SI->CustomerAddress }}</td>
-                                  <td>{{ $SI->Category }}</td>
-                                  <td>{{ $SI->state }}</td>
-                                  <td><a href="/detail/{{$SI->id}}">자세히 보기</a></td>
+                                    <td>{{ $SI->BusinessName }}</td>
+                                    <td>{{ $SI->PhoneNumber }}</td>
+                                    <td>{{ $SI->CustomerAddress }}</td>
+                                    <td>{{ $SI->Category }}</td>
+                                    <td>{{ $SI->state }}</td>
+                                    <td><a href="/detail/{{$SI->id}}">자세히 보기</a></td>
                                 </tr>
-                            </tbody>
-                        @endforeach
+                                </tbody>
+                            @endforeach
                     </table>
+                </div>
                     @else
                     <p> 현재 영업 정보가 없습니다.</p>
                     @endif
