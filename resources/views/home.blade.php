@@ -1,9 +1,3 @@
-<style>
-    .table-responsive a thead tr th, .table tbody tr td {
-        border: none;
-    }
-</style>
-
 @extends('layouts.app')
 
 @section('content')
@@ -76,13 +70,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-3">영업 Tip</div>
-        <div class="col-sm-3">자유게시판</div>
-        <div class="col-sm-3">**게시판</div>
-        <div class="col-sm-3">**게시판</div>
     </div>
 
     <script>

@@ -149,46 +149,18 @@ class PartnerController extends Controller
                       'MoneySum' => (($request->pay)*(3/100)),
                       'created_at' => now()
                   ]);
-
                 }
-
-
-                /*
-                $a_class=\App\A_Class::where('recommend_commissioner_id',$SI->SalesPerson_id)->first();
-
-                if($a_class)
-                {
-                    // A 클래스 유저
-                    $a_class_user = \App\User::where('id',$a_class->a_class_id)->first();
-                    // A 클래스 유저 추천인 수수료 추가
-                    $commision = $a_class_user->Commision + ($request->pay) * 3/100;
-                    // A 클래스 유저 추천인 수수료 업데이트
-                    $a_class_user->Commision = $commision;
-                    $a_class_user->save();
-
-                    DB::table('savinghistories')->insert([
-                        'SalesPerson_id' => $user->id,
-                        'SalesPerson_name' => $user->name,
-                        'MoneyType' => 'A 클래스 추천인 수수료',
-                        'MoneySum' => ($request->pay) * 3/100,
-                        'created_at' => now()
-                    ]);
-                }
-                */
-
-
 
               //추천인 수수료 지금
                 $recommendercode = $user->recommender;
                 $Recommender = DB::table('users')->where('recommend_code',$recommendercode)->first();
-                $RecommenderCommision = ($Recommender->Commision)+($request->pay)*(3/100);
+                $RecommenderCommision = ($Recommender->RecommenderCommision)+($request->pay)*(5/100);
                 DB::table('users')->where('recommend_code',$recommendercode)->update(['RecommenderCommision' => $RecommenderCommision]);
 
-    //            //적립내역에 입력
+                //적립내역에 입력
                 DB::table('savinghistories')->insert(
-                  ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(3/100)),'created_at' => now()]
+                  ['SalesPerson_id' => $Recommender->id, 'SalesPerson_name' => $Recommender->name,'MoneyType' => '추천인 수수료' ,'MoneySum' => (($request->pay)*(5/100)),'created_at' => now()]
                 );
-
 
                 //영업정보 상태 변화
                 DB::table('sales_infos')->where('id',$id)->update(['state' => '완료']);

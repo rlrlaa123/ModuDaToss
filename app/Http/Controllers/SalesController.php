@@ -222,7 +222,7 @@ class SalesController extends Controller
       $withdrawal->memberID = $user->id;
       $withdrawal->memberName = $user->name;
       $withdrawal->bankName = $user->bankName;
-      $withdrawal->accountNumber = $user->accountNumber;
+      $withdrawal->account_number = $user->accountNumber;
       $withdrawal->requestmoney=$request->input('requestmoney');
       $withdrawal->save();
 

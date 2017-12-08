@@ -4,11 +4,6 @@
     <form action="{{ route('regular.store',auth()->user()->id) }}" method="POST" role="form" class="form__auth">
         {!! csrf_field() !!}
 
-        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-            <input type="text" name="name" class="form-control" placeholder="이름" value="{{ old('name') }}" autofocus/>
-            {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
-        </div>
-
         <div class="form-group {{ $errors->has('gender') ? 'has-error' : '' }}">
             <label>성별:</label>
             <select class="form-control" id="gender" name="gender">

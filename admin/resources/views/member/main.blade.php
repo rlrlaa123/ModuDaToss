@@ -19,149 +19,222 @@
 							</div>
 						</nav>
 					</div>
-
 					<div class="panel-body">
-						<table class="table">
-							<thead>
-							<tr>
-								<th>이름</th>
-								<th>이메일</th>
-								<th>성별</th>
-								<th>휴대폰 번호</th>
-								<th>회원 타입</th>
-								<th>비고</th>
-							</tr>
-							</thead>
+						<div class="table-responsive">
+							<table class="table" style="vertical-align: middle">
+								<thead>
+								<tr>
+									<th>이름</th>
+									<th>이메일</th>
+									<th>성별</th>
+									<th>휴대폰 번호</th>
+									<th>회원 타입</th>
+									<th>비고</th>
+								</tr>
+								</thead>
 
-							@if(isset($users) && count($users) > 0)
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/0')
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
-								@endif
-							@endif
-
-							@if(isset($users) && count($users) > 0)
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/5')
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
-								@endif
-							@endif
-
-							@if(isset($users) && count($users) > 0)
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/1')
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
-								@endif
-							@endif
-
-							@if($_SERVER['PHP_SELF'] == '/index.php/member/2')
 								@if(isset($users) && count($users) > 0)
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
+									@if($_SERVER['PHP_SELF'] == '/index.php/member/0')
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
 								@endif
-								<button><a href="/member/create">벤더사 추가</a></button>
-							@endif
 
-							@if(isset($users) && count($users) > 0)
-								@if($_SERVER['PHP_SELF'] == '/index.php/member/3')
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
-								@endif
-							@endif
-
-							@if($_SERVER['PHP_SELF'] == '/index.php/member/4')
 								@if(isset($users) && count($users) > 0)
-									@foreach($users as $user)
-										<tbody>
-										<tr>
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
-											@if ($user->gender == 0 )
-												<td>{{ '남자' }}</td>
-											@else
-												<td>{{ '여자' }}</td>
-											@endif
-											<td>{{ $user->phoneNumber }}</td>
-											<td>{{ $user->type }}</td>
-											<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
-										</tr>
-										</tbody>
-									@endforeach
+									@if($_SERVER['PHP_SELF'] == '/index.php/member/5')
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
 								@endif
-								<button><a href="/member/a_class/create">A클래스 추가</a></button>
-							@endif
 
-						</table>
+								@if(isset($users) && count($users) > 0)
+									@if($_SERVER['PHP_SELF'] == '/index.php/member/1')
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
+								@endif
+
+								@if($_SERVER['PHP_SELF'] == '/index.php/member/2')
+									@if(isset($users) && count($users) > 0)
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
+									<button><a href="/member/create">벤더사 추가</a></button>
+								@endif
+
+								@if(isset($users) && count($users) > 0)
+									@if($_SERVER['PHP_SELF'] == '/index.php/member/3')
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
+								@endif
+
+								@if($_SERVER['PHP_SELF'] == '/index.php/member/4')
+									@if(isset($users) && count($users) > 0)
+										@foreach($users as $user)
+											<tbody>
+											<tr>
+												<td>{{ $user->name }}</td>
+												<td>{{ $user->email }}</td>
+												@if ($user->gender == 0 )
+													<td>{{ '남자' }}</td>
+												@else
+													<td>{{ '여자' }}</td>
+												@endif
+												<td>{{ $user->phoneNumber }}</td>
+												@if ($user->type == 0)
+													<td>일반회원</td>
+												@elseif ($user->type == 1)
+													<td>정회원</td>
+												@elseif ($user->type == 2)
+													<td>벤더사</td>
+												@elseif ($user->type == 3)
+													<td>차단회원</td>
+												@elseif ($user->type == 4)
+													<td>A 클래스 회원</td>
+												@elseif ($user->type == 5)
+													<td>정회원 대기 회원</td>
+												@endif
+												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+											</tr>
+											</tbody>
+										@endforeach
+									@endif
+									<button><a href="/member/a_class/create">A클래스 추가</a></button>
+								@endif
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

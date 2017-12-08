@@ -83,11 +83,6 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="recommend_code" name="recommend_code" class="form-control" value="{{ str_random(8) }}" readonly="readonly">
-                            {!! $errors->first('recommend_code', '<span class="form-error">:message</span>') !!}
-                        </div>
-
-                        <div class="form-group">
                             {{Form::hidden('type', 2,['class' => 'form-control'])}}
                         </div>
                         {{Form::submit('벤더사 추가',['class' => 'btn btn-primary'])}}

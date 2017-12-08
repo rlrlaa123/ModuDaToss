@@ -94,7 +94,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 @if (Auth::user()->type==0)
                                     <li>
-                                        <a href="{{route('regular.create')}}">
+                                        <a href="{{route('regular.create',Auth::user()->id)}}">
                                             정회원 신청
                                         </a>
                                     </li>
@@ -104,7 +104,11 @@
                                             정회원 승인 대기중
                                         </a>
                                     </li>
-                                @else
+                                @elseif (Auth::user()->type==4)
+                                    <li class="recommend">
+                                        추천인 코드 {{ Auth::user()->recommend_code }}
+                                    </li>
+                                @elseif (Auth::user()->type==1)
                                     <li class="recommend">
                                         추천인 코드 {{ Auth::user()->recommend_code }}
                                     </li>

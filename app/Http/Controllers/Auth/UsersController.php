@@ -71,17 +71,10 @@ class UsersController extends Controller
             'recommender' => $request->input('recommender'),
             'AclassRecommender' => $AclassRecommender,
         ]);
-//        \Mail::send('emails.auth.confirm', compact('user'), function ($message) use ($user) {
-//            $message->to($user->email);
-//            $message->subject(
-//                sprintf('[%s] 회원가입을 확인해 주세요.', config('app.name'))
-//            );
-//        });
-//        event(new \App\Events\UserCreated($user));
 
         auth()->login($user);
 
-        return redirect(route('home'))->with('flash_message','가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인하시고 로그인해 주세요.');
+        return redirect(route('home'))->with('flash_message', auth()->user()->name . '님, 환영합니다 가입 확인되었습니다.');
     }
     public function confirm($code)
     {

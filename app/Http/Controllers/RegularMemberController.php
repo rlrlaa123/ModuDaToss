@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 
 class RegularMemberController extends Controller
 {
-    public function create()
+    public function create($userid)
     {
-        return view('RegularMember.create');
+        return view('RegularMember.create',compact('userid'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
             'gender' => 'required',
             'phoneNumber' => 'required|min:11',
             'bankName' => 'required',
@@ -23,7 +22,6 @@ class RegularMemberController extends Controller
         ]);
 
         $user = \App\User::where('id',$request->id)->first();
-        $user->name = $request->name;
         $user->gender = $request->gender;
         $user->phoneNumber = $request->phoneNumber;
         $user->bankName = $request->bankName;
