@@ -16,7 +16,7 @@
                 <tr>
                     <td>{{$notice->id}}</td>
                     <td>
-                        <a href="servicecenter/notice/{id}">
+                        <a href="/servicecenter/notice/{{$notice->user_id}}">
                             {{$notice->title}}
                         </a>
                     </td>

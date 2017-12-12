@@ -26,7 +26,7 @@ class SessionsController extends Controller
         if(!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
 
             flash('이메일 또는 비밀번호가 맞지 않습니다.');
-            return redirect()->back()->withInput();
+            return back()->withInput();
         }
 //j
 //        if(! auth()->user()->activated) {
@@ -35,7 +35,7 @@ class SessionsController extends Controller
 //        }
 //        auth()->attempt($request->only('email','password'), $request->has('remember'));
 
-        return redirect()->intended('home')->with('flash_message', auth()->user()->name . '님, 환영합니다.');
+        return redirect(route('home'))->with('flash_message', auth()->user()->name . '님, 환영합니다.');
     }
 
     public function destroy()

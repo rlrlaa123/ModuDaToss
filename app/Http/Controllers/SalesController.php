@@ -116,7 +116,6 @@ class SalesController extends Controller
      //영업 리스트
     public function show($id)
     {
-        //
         //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
         //return $SalesInfo;
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
@@ -128,7 +127,6 @@ class SalesController extends Controller
         if($state == '전체'){
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
             return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
-
         }else{
             $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
             return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);

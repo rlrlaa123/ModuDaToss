@@ -104,3 +104,10 @@ Route::resource('articles','ArticlesController');
 // 댓글
 Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
 Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);
+
+//고객센터
+Route::get('/servicecenter/{notice}','ServiceCenterController@index');
+Route::get('/servicecenter/{notice}/{id}', 'ServiceCenterController@show');
+
+Route::get('/servicecenter/{frequently}','ServiceCenterController@index');
+Route::get('/servicecenter/{frequently}/{id}', 'ServiceCenterController@show');

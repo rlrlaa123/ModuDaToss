@@ -22,7 +22,7 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        $articles = \App\Article::latest()->paginate(3);
+        $articles = \App\Article::latest()->paginate(5);
 
         return view('articles.index', compact('articles'));
     }
@@ -47,7 +47,6 @@ class ArticlesController extends Controller
      */
     public function store(ArticlesRequest $request)
     {
-
         $article = $request->user()->articles()->create($request->all());
 
         if(! $article) {
@@ -55,8 +54,10 @@ class ArticlesController extends Controller
                 ->withInput();
         }
 
-        return redirect(route('articles.index'))
-            ->with('flash_message', '작성하신 글이 저장되었습니다.');
+        $articles = \App\Article::latest()->paginate(3);
+        flash('작성하신 글이 저장되었습니다.');
+        return view('articles.index', compact('articles'));
+//            ->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
     /**

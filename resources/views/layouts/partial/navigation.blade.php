@@ -61,31 +61,6 @@
                         <li><a href="{{ route('articles.index') }}">게시판</a></li>
 {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                     @else
-                        <li>
-                            <a href="{{ route('home') }}">메인화면</a>
-                        </li>
-                        @if (Auth::user()->type == 2)
-                            <li>
-                                <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>
-                            </li>
-                        @endif
-
-                        @if (Auth::user()->type == 1 || Auth::user()->type == 4)
-                            <li>
-                                <a href="{{ route('SalesInfo.create') }}">영업 정보 등록</a>
-                            </li>
-                            <li>
-                                <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
-                            </li>
-                        @endif
-
-                        <li>
-                            <a href="{{ route('articles.index') }}">게시판</a>
-                        </li>
-
-                        {{--<li>--}}
-                            {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
-                        {{--</li>--}}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -124,9 +99,9 @@
                                     </a>
                                 </li>
                                 {{--<li>--}}
-                                    {{--<a href="/Recommender/{{ Auth::user()->id }}">--}}
-                                        {{--추천인 조회--}}
-                                    {{--</a>--}}
+                                {{--<a href="/Recommender/{{ Auth::user()->id }}">--}}
+                                {{--추천인 조회--}}
+                                {{--</a>--}}
                                 {{--</li>--}}
                                 <li>
                                     <a href="{{ route('sessions.destroy') }}">
@@ -135,6 +110,56 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="{{ route('home') }}">메인화면</a>
+                        </li>
+                        @if (Auth::user()->type == 2)
+                            <li>
+                                <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>
+                            </li>
+                        @endif
+
+                        @if (Auth::user()->type == 1 || Auth::user()->type == 4)
+                            <li>
+                                <a href="{{ route('SalesInfo.create') }}">영업 정보 등록</a>
+                            </li>
+                            <li>
+                                <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
+                            </li>
+                        @endif
+
+                        <li>
+                            <a href="{{ route('articles.index') }}">게시판</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                고객센터 <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href={{url('servicecenter/notice')}}>
+                                        공지사항
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        자주 묻는 질문
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        문의하기
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {{--<li>--}}
+                            {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
+                        {{--</li>--}}
                     @endif
                 </ul>
             </div>
