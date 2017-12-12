@@ -46,8 +46,7 @@ class WithdrawalController extends Controller
 	        {
 				$sheet->fromArray($data);
 	        });
-		  })->download('xlsx');
-
+		  })->export('xlsx');
     }
 
 
