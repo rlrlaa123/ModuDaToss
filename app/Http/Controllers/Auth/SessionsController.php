@@ -25,7 +25,8 @@ class SessionsController extends Controller
 
         if(!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
 
-            return back()->with('flash_message','이메일 또는 비밀번호가 맞지 않습니다.')->withInput();
+            flash('이메일 또는 비밀번호가 맞지 않습니다.');
+            return redirect()->back()->withInput();
         }
 //j
 //        if(! auth()->user()->activated) {
