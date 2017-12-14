@@ -10,18 +10,18 @@
                   <div class="SI_showtitle">누적금액  <span class="Moneysum">10,000원</span></div>
                   <br><br>
                   <div class="divide">
-                    <button class="SI_button" id="mine" style="color:#3473d9;">나의 영업 현황</button>
-                    <a href="/SalesInfoall" style="color:#b7babf;"><button class="SI_button" id="all">전체 영업 현황</button></a>
+                    <a href="/SalesInfo/{{Auth::user()->id}}" style="color:#b7babf;"><button class="SI_button" id="mine">나의 영업 현황</button></a>
+                    <button class="SI_button" id="all" style="color:#3473d9;">전체 영업 현황</button>
                   </div>
 
                   <br><br><br>
 
                   <div class="container">
-                    <a href="/SalesInfo/{{Auth::user()->id}}"><button type="button" class="btn btn-primary btn-sm">전체</button></a>
-                    <a href="/SalesInfo/{{Auth::user()->id}}/접수 완료"><button type="button" class="btn btn-primary btn-sm">접수</button></a>
-                    <a href="/SalesInfo/{{Auth::user()->id}}/진행중"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
-                    <a href="/SalesInfo/{{Auth::user()->id}}/완료"><button type="button" class="btn btn-primary btn-sm">완료</button></a>
-                    <a href="/SalesInfo/{{Auth::user()->id}}/실패"><button type="button" class="btn btn-primary btn-sm">실패</button></a>
+                    <a href="/SalesInfoall"><button type="button" class="btn btn-primary btn-sm">전체</button></a>
+                    <a href="/SalesInfoall/접수 완료"><button type="button" class="btn btn-primary btn-sm">접수</button></a>
+                    <a href="/SalesInfoall/진행중"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
+                    <a href="/SalesInfoall/완료"><button type="button" class="btn btn-primary btn-sm">완료</button></a>
+                    <a href="/SalesInfoall/실패"><button type="button" class="btn btn-primary btn-sm">실패</button></a>
                   </div>
                 </div>
             <div class="panel-body">

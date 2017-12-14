@@ -64,7 +64,6 @@
     @endif
 </div>
 
-@include('layouts.partial.footer')
 
 <!-- Scripts -->
 <script src="{{ elixir('js/app.js') }}"></script>

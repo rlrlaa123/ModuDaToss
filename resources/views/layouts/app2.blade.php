@@ -17,36 +17,20 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+      <div class="upper">
+        <p>영업 정보 등록</p>
+        <button class="return">
+          <a href="{{ route('home') }}">돌아가기</a>
+        </button>
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
+      </div>
+      </br>
 
                     <!-- Left Side Of Navbar -->
 
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ route('home') }}">돌아가기</a></li>
 
-                    </ul>
-
-            </div>
-        </nav>
         @include('inc.messages')
         @yield('content')
     </div>

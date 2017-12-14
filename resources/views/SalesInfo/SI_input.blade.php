@@ -5,89 +5,174 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">영업 정보 등록</div>
+                    <div class="panel-heading">
+                      <span style="color:#2D68AC;font-size:18px">Step 2</span>
+                      <span style="color:#b7babf;margin-left:20px">고객정보 등록</span>
+                    </div>
                     <div class="panel-body">
-                        {!! Form::open(['action' => 'SalesController@store', 'method' => 'POST']) !!}
-                        <div class="form-group">
-                            {{Form::label('CustomerName', '고객명')}}
-                            {{Form::text('CustomerName','',['class' => 'form-control','placeholder' => '고객명'])}}
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('BusinessName','사업장명')}}
-                            {{Form::text('BusinessName','',['class' => 'form-control','placeholder' => '사업장명'])}}
-                        </div>
-                        <div class="jumbotron">
-                          <p> 고객 주소 </p>
-                          <div class="form-group">
-                              {{Form::label('post_number','우편번호')}}
-                              {{Form::text('post_number','',['class' => 'form-control postcodify_postcode5','size' => '50'])}}
-                              {{Form::label('CustomerAddress','주소지')}}
-                              {{Form::text('CustomerAddress','',['class' => 'form-control postcodify_address','size' => '50'])}}
-                              {{Form::label('CustomerAddress_detail','주소지 추가')}}
-                              {{Form::text('CustomerAddress_detail','',['class' => 'form-control postcodify_details','size' => '50'])}}
-                              {{Form::label('CustomerAddress_extra','주소지 그외')}}
-                              {{Form::text('CustomerAddress_extra','',['class' => 'form-control postcodify_extra_info','size' => '50'])}}
-                              <br />
-                              <input type="button"
-                              id="postcodify_search_button"
-                              value="검색"
-                              class="btn btn-default"
-                              ><br />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('PhoneNumber','고객전화번호')}}
-                            {{Form::text('PhoneNumber','',['class' => 'form-control','placeholder' => '전화 번호'])}}
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('Characteristic','특이사항')}}
-                            {{Form::text('Characteristic','',['class' => 'form-control','placeholder' => '특이 사항'])}}
-                        </div>
-                        <div class="form-group">
-                            <p>상품</p>
-                            @php $id = 0; @endphp
-                            @if(count($category) > 0)
-                                @foreach($category as $ct)
-                                    @php  $id++; @endphp
-                                    {{Form::label('Category'.$id,$ct->category)}}
-                                    {{Form::checkbox('Category'.$id,$ct->category,false)}}
-                                @endforeach
-                                {{Form::hidden('Numberofitem', count($category),['class' => 'form-control'])}}
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('note','비고')}}
-                            {{Form::text('note','',['class' => 'form-control','placeholder' => '비고'])}}
+                        {!! Form::open(['action' => 'SalesController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                        <div class="inputbox">
+                            <label for="CustomerName" class="name">고객명</label>
+                            <input type="text" name="CustomerName" class="SI_input form-control" placeholder="고객명">
                         </div>
 
-                        <div class="form-group">
-                            {{Form::label('CustomerEmail','고객이메일')}}
-                            {{Form::email('CustomerEmail','',['class' => 'form-control','placeholder' => '고객 이메일'])}}
+                        <div class="inputbox">
+                            <label for="BusinessName" class="name">사업장명</label>
+                            <input type="text" name="BusinessName" class="SI_input form-control" placeholder="사업장명">
                         </div>
-                        <div class="form-group">
-                            {{Form::label('pay','예상 체결 금액')}}
-                            {{Form::number('pay','',['class' => 'form-control','placeholder' => '금액'])}}
+                        <p> 고객 주소 </p>
+                        <div class="inputbox">
+                            <label for="post_number" class="name">우편번호</label>
+                            <input type="text" name="post_number" class="SI_input form-control postcodify_postcode5" placeholder="사업장명">
                         </div>
-                        <div class="form-group">
-                            {{Form::label('ContactTime','접촉 예정 시간')}}
-                            {{Form::date('ContactTime','',['class' => 'form-control','placeholder' => '접촉시간'])}}
+                        <div class="inputbox">
+                            <label for="CustomerAddress" class="name">주소지</label>
+                            <input type="text" name="CustomerAddress" class="SI_input form-control postcodify_address" placeholder="주소지">
                         </div>
-                        <div class="form-group">
-                            {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
-                            {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
+                        <div class="inputbox">
+                            <label for="CustomerAddress_detail" class="name">주소지 추가</label>
+                            <input type="text" name="CustomerAddress_detail" class="SI_input form-control postcodify_details" placeholder="주소지 추가">
                         </div>
+                        <div class="inputbox">
+                            <label for="CustomerAddress_extra" class="name">주소지 그외</label>
+                            <input type="text" name="CustomerAddress_extra" class="SI_input form-control postcodify_extra_info" placeholder="주소지 그외">
+                        </div>
+                        <div class="inputbox">
+                            <input type="button"
+                            id="postcodify_search_button"
+                            value="주소지 검색"
+                            class="btn btn-default"
+                            >
+                        </div>
+                        <div class="inputbox">
+                          <label for="PhoneNumber" class="name">전화 번호</label>
+                          <input type="text" name="PhoneNumber" class="SI_input form-control" placeholder="전화 번호">
+                        </div>
+                        <div class="inputbox">
+                          <label for="Characteristic" class="name">특이사항</label>
+                          <input type="text" name="Characteristic" class="SI_input form-control" placeholder="특이 사항">
+                        </div>
+                        <div class="inputbox">
+                            <label for="note" class="name">비고</label>
+                            <input type="textarea" name="note" class="SI_input form-control" placeholder="비고">
+                        </div>
+
+                        <div class="inputbox">
+                            <label for="CustomerEmail" class="name">고객이메일</label>
+                            <input type="email" name="CustomerEmail" class="SI_input form-control" placeholder="고객이메일">
+                        </div>
+                        <div class="inputbox">
+                          <label for="ContactTime" class="name">접촉시간</label>
+                          <input type="date" name="ContactTime" class="SI_input form-control" placeholder="접촉시간">
+                        </div>
+                        <div class="inputbox">
+                            <label for="images" class="name">사업장사진</label>
+                            {{Form::file('images'),['class' => 'form-control']}}
+                        </div>
+                        <div class="inputbox" style="height:250px">
+                            <label for="images" class="name">서명</label>
+                            <canvas id="canvas" style="float:right"></canvas>
+                        </div>
+
+
+                          {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
+                          {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
+                          @foreach($passeddata['category'] as $ct)
+                            <input type="hidden" name="category[]" value="{{$ct}}">
+                          @endforeach
+                          @foreach($passeddata['money'] as $money)
+                            <input type="hidden" name="money[]" value="{{$money}}">
+                          @endforeach
+
                     </div>
-                    <div class="panel-footer">
-                      {{Form::submit('등록',['class' => 'btn btn-primary btn-lg'])}}
+                    <div class="panel-footer" style="background-color:white">
+                      {{Form::submit('등록',['class' => 'btn btn-primary btn-lg','style' => 'margin:auto'])}}
                       {!! Form::close() !!}
+
+                    </div>
+                    <div id="save">
+                      Save
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-         $(function() {
-           $("#postcodify_search_button").postcodifyPopUp();
-         });
-        </script>
     </div>
+    <script>
+     $(function() {
+       $("#postcodify_search_button").postcodifyPopUp();
+     });
+
+     var canvas = document.getElementById('canvas');
+     var context= canvas.getContext('2d');
+
+     var radius = 1;
+     var dragging = false;
+
+     canvas.width = 500;
+     canvas.height = 200;
+
+
+
+     function clearCanvas(canvas){
+       canvas.width = canvas.width;
+     }
+
+     context.lineWidth = radius*2;
+
+     var putPoint = function(e){
+       if(dragging){
+         context.lineTo(e.offsetX,e.offsetY);
+         context.stroke();
+         context.beginPath();
+         context.arc(e.offsetX, e.offsetY ,radius ,0 ,Math.PI+2);
+         context.fill();
+         context.beginPath();
+         context.moveTo(e.offsetX,e.offsetY);
+       }
+     };
+
+     var engage = function(e){
+       dragging = true;
+       putPoint(e);
+     }
+
+     var disengage = function(){
+       dragging = false;
+       context.beginPath();
+     }
+     canvas.addEventListener('mousedown',engage);
+     canvas.addEventListener('mousemove',putPoint);
+     canvas.addEventListener('mouseup',disengage);
+
+
+     var saveButton = document.getElementById('save');
+
+     saveButton.addEventListener('click',saveImage);
+
+     function saveImage(canvas){
+       var data = canvas.toDataURL();
+
+       window.open(data, '_blank', 'location=0, menubar=0, ');
+
+       //var request = new XMLHttpRequest();
+       /*
+
+       request.onreadystatechange = function(){
+         if(requests.readyState == 4 && request.status == 200){
+           //do our stuff
+           var response = request.responseText;
+           console.log(response);
+         }
+       }
+
+       request.open('POST', 'save.php', true);
+       request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+       request.send('img=' + data);
+       */
+
+       //  window.open(data,'_blank','location=0, menubar=0');
+     }
+
+    </script>
+
 @endsection
