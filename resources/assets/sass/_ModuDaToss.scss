@@ -91,14 +91,6 @@ body {
   width:100%;
 }
 
-//.btn.category {
-//  //width:200px;
-//  background-color: white;
-//  color:#a6a6a6;
-//  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-//  margin-bottom: 10px;
-//}
-
 .category-button.btn-default.dropdown-toggle {
   width:100%;
   padding:0;
@@ -122,6 +114,8 @@ body {
 .dropdown button {
   margin:0;
   text-align:center;
+  border-radius:10px;
+  border: 1px solid #a6a6a6;
 }
 
 .category.content {
@@ -129,6 +123,7 @@ body {
   width:90%;
   height: 100%;
   margin: 10px;
+  border-radius:10px;
 }
 
 .category.content h3 {
