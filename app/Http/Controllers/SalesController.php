@@ -22,7 +22,7 @@ class SalesController extends Controller
     public function index()
     {
         //
-        return view('home');
+        return view('/');
     }
     /**
      * Show the form for creating a new resource.
@@ -62,7 +62,7 @@ class SalesController extends Controller
           }
         }
         if($number == 0){
-            return redirect('/home');
+            return redirect('/');
         }
 
 
@@ -103,7 +103,7 @@ class SalesController extends Controller
           $SalesInfo->save();
         }
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**

@@ -43,12 +43,15 @@ class CategoryController extends Controller
     {
         //
         $this->validate($request, [
-          'category' => 'required',
-          'commision' => 'required',
+            'category' => 'required',
+            'commision' => 'required',
+            'content' => 'required',
         ]);
         $category = new category;
         $category->category = $request->input('category');
         $category->commision = $request->input('commision');
+        $category->content = $request->input('content');
+
         $category->save();
 
         return redirect('/category');
@@ -93,12 +96,13 @@ class CategoryController extends Controller
         //
         $Category = category::find($id);
 
+        $Category -> category = $request -> category;
         $Category -> commision = $request -> commision;
+        $Category -> content = $request -> content;
 
         $Category -> save();
 
         return redirect('/category');
-
     }
 
     /**

@@ -172,7 +172,7 @@ class PartnerController extends Controller
         //$Salesinfo->state = input($id);
         //$Salesinfo->save();
 
-        return redirect('/home');
+        return redirect('/');
 
     }
 

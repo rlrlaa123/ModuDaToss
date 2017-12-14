@@ -33,6 +33,6 @@ class RegularMemberController extends Controller
 
         $user->save();
         flash('정회원 신청이 완료되었습니다. 승인 요청이 완료될 것입니다.');
-        return redirect('home');
+        return redirect('/');
     }
 }

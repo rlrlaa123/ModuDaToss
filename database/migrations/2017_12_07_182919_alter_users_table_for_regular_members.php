@@ -31,12 +31,12 @@ class AlterUsersTableForRegularMembers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->nullable(false)->change();
-            $table->string('gender')->nullable(false)->change();
-            $table->integer('phoneNumber')->nullable(false)->change();
-            $table->string('bankName')->nullable(false)->change();
-            $table->string('accountNumber')->nullable(false)->change();
-            $table->string('recommend_code')->nullable(false)->change();
+//            $table->string('name')->nullable(false)->change();
+//            $table->string('gender')->nullable(false)->change();
+//            $table->integer('phoneNumber')->nullable(false)->change();
+//            $table->string('bankName')->nullable(false)->change();
+//            $table->string('accountNumber')->nullable(false)->change();
+//            $table->string('recommend_code')->nullable(false)->change();
         });
     }
 }

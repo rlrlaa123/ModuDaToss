@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,7 +19,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        flash('환영합니다.');
+//        $categories = \App\Category::all();
+//        flash('환영합니다.');
 
         return view('home');
     }

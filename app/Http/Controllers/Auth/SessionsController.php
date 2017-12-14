@@ -42,6 +42,6 @@ class SessionsController extends Controller
     {
         auth()->logout();
 
-        return redirect(route('home'))->with('flash_message','또 방문해주세요.');
+        return redirect(route('/'))->with('flash_message','또 방문해주세요.');
     }
 }

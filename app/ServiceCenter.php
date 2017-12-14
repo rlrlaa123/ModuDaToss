@@ -13,8 +13,6 @@ class ServiceCenter extends Model
     public $timestamps = true;
 
     protected $fillable = [
-//        'title',
-//        'content',
     ];
 
     public function user()

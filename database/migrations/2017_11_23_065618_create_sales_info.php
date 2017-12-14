@@ -48,12 +48,14 @@ class CreateSalesInfo extends Migration
 
             $table->integer('pay');
 
-            $table->integer('SalesPerson_id')->default(0);
+            $table->integer('SalesPerson_id')->unsigned()->index();
 
             $table->string('Fail_reason')->default("none");
 
             $table->string('SP_name')->default("none");
 
+            $table->foreign('SalesPerson_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -111,3 +111,6 @@ Route::get('/servicecenter/{notice}/{id}', 'ServiceCenterController@show');
 
 Route::get('/servicecenter/{frequently}','ServiceCenterController@index');
 Route::get('/servicecenter/{frequently}/{id}', 'ServiceCenterController@show');
+
+//영업 라인업
+Route::get('/category/{id}', 'CategoryController@show');

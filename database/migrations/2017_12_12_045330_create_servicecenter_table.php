@@ -16,7 +16,7 @@ class CreateServicecenterTable extends Migration
         Schema::create('servicecenter', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
-            $table->text('menu');
+            $table->string('menu');
             $table->string('title');
             $table->text('content');
             $table->timestamps();
