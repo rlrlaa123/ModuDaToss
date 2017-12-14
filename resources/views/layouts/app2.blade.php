@@ -20,16 +20,11 @@
       <div class="upper">
         <p>영업 정보 등록</p>
         <button class="return">
-          <a href="{{ route('home') }}">돌아가기</a>
+          <a href="{{ route('/') }}">돌아가기</a>
         </button>
 
       </div>
       </br>
-
-                    <!-- Left Side Of Navbar -->
-
-
-                    <!-- Right Side Of Navbar -->
 
         @include('inc.messages')
         @yield('content')

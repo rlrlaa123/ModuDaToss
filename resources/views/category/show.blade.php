@@ -2,7 +2,7 @@
 
 @section('content')
         <div class="category">
-            <h3 class="category title">
+            <h3 class="category title" style="color:#3473d9;">
                 {{$category->category}}
             </h3>
             <div class="dropdown" style="width:90%;">
@@ -20,9 +20,12 @@
                 <h3>{{$category->category}}(이)란?</h3>
                 <p>{{$category->content}}</p>
             </div>
+            @if(Auth::user()->type!=2)
+            @else
             <div class="btn submit" onclick="window.location='{{ route('SalesInfo.create') }}'">
                 영업정보 등록
             </div>
+            @endif
         </div>
             {{--<div class="col-lg-1" style="text-align:center;">--}}
                 {{--<h3 class="title category">{{$category->category}}</h3>--}}

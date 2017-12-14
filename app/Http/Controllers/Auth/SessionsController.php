@@ -35,7 +35,7 @@ class SessionsController extends Controller
 //        }
 //        auth()->attempt($request->only('email','password'), $request->has('remember'));
 
-        return redirect(route('home'))->with('flash_message', auth()->user()->name . '님, 환영합니다.');
+        return redirect(route('/'))->with('flash_message', auth()->user()->name . '님, 환영합니다.');
     }
 
     public function destroy()
