@@ -1,8 +1,3 @@
-.navbar {
-  margin-bottom:0;
-  padding-left:10px;
-}
-
 body {
   background-color:#ffffff;
 }
@@ -13,12 +8,7 @@ body {
   border-radius:0;
 }
 
-.container {
-  padding:0;
-  margin-right:0;
-  margin-left:0;
-}
-
+// 표지
 .front_page {
   text-align:center;
 }
@@ -70,7 +60,7 @@ body {
 .front_page.col.realtime.col {
   display:inline-block;
   padding:5px;
-  margin:7px;
+  margin:5px;
 }
 
 .front_page.col.realtime h4 {
@@ -83,96 +73,74 @@ body {
 }
 
 .front_page.col.realtime p {
-  //float:left;
   text-align:left;
   display:block;
   padding-left:10px;
 }
 
-.front_page.col.realtime p.name {
+.front_page.col.realtime p.realtime_name {
   display:inline-block;
   width:35%;
+  margin:0;
+  padding:0;
 }
-
-
-//.container {
-//  width: 100%;
-//
-//  height: 100%;
-//  margin:auto;
-//}
-//.container img {
-//  margin-bottom:20px;
-//}
-//
-//.row.front {
-//  text-align:center;
-//}
-//
-//.row.realtime {
-//  text-align:center;
-//}
-//
-//.col-sm-6.icon {
-//  display:inline;
-//}
-//
-//.icon.col-sm-4{
-//  display:inline;
-//}
-//
-//.icon.contents {
-//  width:20%;
-//  display:inline-block;
-//  border: 1px solid #ddd;
-//}
-//
-//.container {
-//  padding:0;
-//}
-//.container.home {
-//  padding:10px;
-//}
-//
 
 // 영업 라인업
-.title.category {
-  color:#4e85de;
+.category {
+  text-align:center;
+  width:100%;
 }
 
-.btn-block.category {
-  //width:200px;
-  background-color: white;
-  color:#a6a6a6;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+//.btn.category {
+//  //width:200px;
+//  background-color: white;
+//  color:#a6a6a6;
+//  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+//  margin-bottom: 10px;
+//}
+
+.category-button.btn-default.dropdown-toggle {
+  width:100%;
+  padding:0;
+  margin-left:10px;
+}
+
+.btn.category {
+  color:#3473d9;
+  width:90%;
+  padding:0;
+  margin:0;
+  display:block;
+  background-color:white;
 }
 
 .dropdown-menu.dropdown-menu-center {
-  width: 100%;
-  left: 50% !important;
-  right: auto !important;
-  transform: translate(-50%, 0) !important;
-  background-color: white;
-  color:#a6a6a6;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  width:100%;
+  margin-left:10px;
 }
 
-.text-center.category {
+.dropdown button {
+  margin:0;
+  text-align:center;
+}
+
+.category.content {
   border: 1px solid #a6a6a6;
+  width:90%;
   height: 100%;
+  margin: 10px;
 }
 
-.text-center.category h3 {
+.category.content h3 {
   color:#4e85de;
 }
 
-.text-center.category p {
+.category.content p {
   color:#a6a6a6;
   height: 100px;
 }
 
-.btn.category {
+.category.btn.submit {
   margin:10px;
   color:white;
 }
@@ -191,7 +159,7 @@ body {
   border-bottom:none;
   border-top:none;
 }
-/////////테두리 없애기
+//테두리 없애기
 .navbar{
   box-shadow:0px 5px rgba(0, 0, 0, 0.01);
 }
@@ -282,76 +250,76 @@ body {
   border:none;
   border-radius:15px;
 }
-.category{
+.checkbox_category{
   float:left;
 }
 
 /* checkbox design
 /* The container */
 .checkbox {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight:lighter;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight:lighter;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Hide the browser's default checkbox */
 .checkbox input {
-    position: absolute;
-    opacity: 0;
+  position: absolute;
+  opacity: 0;
 }
 
 /* Create a custom checkbox */
 .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    border-radius:5px;
-    background-color: #3473d9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius:5px;
+  background-color: #3473d9;
 }
 
 /* On mouse-over, add a grey background color */
 .checkbox:hover input ~ .checkmark {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
 .checkbox input:checked ~ .checkmark {
-    background-color: #3473d9;
+  background-color: #3473d9;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 /* Show the checkmark when checked */
 .checkbox input:checked ~ .checkmark:after {
-    display: block;
+  display: block;
 }
 
 /* Style the checkmark/indicator */
 .checkbox .checkmark:after {
-    left: 10px;
-    top: 5px;
-    width: 7px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+  left: 10px;
+  top: 5px;
+  width: 7px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 ////SI_input_category blade
 .checkboxcontainer{

@@ -29,13 +29,13 @@
                 <div class="front_page row">
                     <div class="front_page col realtime">
                         <h4>{{$salesinfos[0]->BusinessName}}</h4>
-                        <p class="name">{{$salesinfos[0]->SP_name}}</p>
+                        <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
                         <p>{{$salesinfos[0]->Category}}</p>
                         <p>{{$salesinfos[0]->state}}</p>
                     </div>
                     <div class="front_page col realtime">
                         <h4>{{$salesinfos[1]->BusinessName}}</h4>
-                        <p class="name">{{$salesinfos[1]->SP_name}}</p>
+                        <p class="realtime_name">{{$salesinfos[1]->SP_name}}</p>
                         <p>{{$salesinfos[1]->Category}}</p>
                         <p>{{$salesinfos[1]->state}}</p>
                     </div>
@@ -43,13 +43,13 @@
                 <div class="front_page row">
                     <div class="front_page col realtime">
                         <h4>{{$salesinfos[2]->BusinessName}}</h4>
-                        <p class="name">{{$salesinfos[2]->SP_name}}</p>
+                        <p class="realtime_name">{{$salesinfos[2]->SP_name}}</p>
                         <p>{{$salesinfos[2]->Category}}</p>
                         <p>{{$salesinfos[2]->state}}</p>
                     </div>
                     <div class="front_page col realtime">
                         <h4>{{$salesinfos[3]->BusinessName}}</h4>
-                        <p class="name">{{$salesinfos[3]->SP_name}}</p>
+                        <p class="realtime_name">{{$salesinfos[3]->SP_name}}</p>
                         <p>{{$salesinfos[3]->Category}}</p>
                         <p>{{$salesinfos[3]->state}}</p>
                     </div>
