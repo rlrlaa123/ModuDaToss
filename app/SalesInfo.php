@@ -31,9 +31,17 @@ class SalesInfo extends Model
         'CustomerEmail',
         'pay',
         'SalesPerson_id',
-
+        'SP_name',
     ];
+//
+//    protected $with = [
+//        'SalesPerson_id',
+//    ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

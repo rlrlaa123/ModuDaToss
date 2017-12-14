@@ -22,7 +22,7 @@ class SalesController extends Controller
     public function index()
     {
         //
-        return view('home');
+        return view('/');
     }
     /**
      * Show the form for creating a new resource.
@@ -56,7 +56,6 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-
         $NumberofCategory = count($request->category);
 
         $this->validate($request, [

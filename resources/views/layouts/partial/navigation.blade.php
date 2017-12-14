@@ -31,8 +31,8 @@
     }
 </style>
 
-<nav class="navbar navbar-default navbar-side navbar-static-top">
-    <div class="container">
+<nav class="navbar navbar-default navbar-side">
+    <div class="navbar container">
         <div class="navbar-header">
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle" data-toggle="collapse-side" data-target=".side-collapse">
@@ -41,10 +41,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                모두다던져
+            <a class="navbar-brand" href="{{ url('/') }}" style="color:#3473d9;">
+                {{ config('app.name', 'Laravel') }}
             </a>
         </div>
 
@@ -61,6 +60,19 @@
                         <li><a href="{{ route('articles.index') }}">게시판</a></li>
 {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                     @else
+                        {{--<div class="container">--}}
+                            {{--<h1 class="container">--}}
+                                {{--hello--}}
+                            {{--</h1>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-sm-6">--}}
+                                    {{--hello--}}
+                                {{--</div>--}}
+                                {{--<div class="col-sm-6">--}}
+                                    {{--hello--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -110,10 +122,23 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                영업 라인업 <span class="caret"></span>
+                            </a>
+                            @php $categories = \App\Category::all() @endphp
+                            @if(isset($categories))
+                                <ul class="dropdown-menu" role="menu">
 
-                        <li>
-                            <a href="{{ route('home') }}">메인화면</a>
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="/category/{{$category->id}}">{{$category->category}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
                         </li>
+
                         @if (Auth::user()->type == 2)
                             <li>
                                 <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>

@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ServiceCenter::class);
     }
+
+    public function salesinfos()
+    {
+        return $this->hasMany(SalesInfo::class);
+    }
 }

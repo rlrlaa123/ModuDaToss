@@ -16,7 +16,7 @@
                   <a href="show2">영업현황 관리</a>
                 </div>
                 <div class="panel-body">
-                  <a href="/category">업종 수수료 관리</a>
+                  <a href="/category">영업 라인업 관리</a>
                 </div>
                 <div class="panel-body">
                   <a href="/withdrawal">입출금 관리</a>
