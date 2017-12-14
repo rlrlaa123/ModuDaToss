@@ -44,7 +44,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                모두다던져
             </a>
         </div>
 
@@ -98,11 +98,11 @@
                                         수익 조회 및 출금
                                     </a>
                                 </li>
-                                {{--<li>--}}
-                                {{--<a href="/Recommender/{{ Auth::user()->id }}">--}}
-                                {{--추천인 조회--}}
-                                {{--</a>--}}
-                                {{--</li>--}}
+                                <li>
+                                    <a href="/Recommender/{{ Auth::user()->id }}">
+                                    추천인 조회
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="{{ route('sessions.destroy') }}">
                                         로그아웃
@@ -122,7 +122,7 @@
 
                         @if (Auth::user()->type == 1 || Auth::user()->type == 4)
                             <li>
-                                <a href="{{ route('SalesInfo.create') }}">영업 정보 등록</a>
+                                <a href="{{ route('SalesInfo.choosecategory') }}">영업 정보 등록</a>
                             </li>
                             <li>
                                 <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>

@@ -29,13 +29,22 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
-
-
+    public function Choosecategory(){
         $category = Category::all();
 
-        return view('SalesInfo.SI_input')->with('category',$category);
+        return view('SalesInfo.SI_input_category')->with('category',$category);
+
+    }
+
+    public function create(Request $request)
+    {
+        if($request->all() == null){
+          return back();
+        };
+
+        $passeddata = $request->all();
+
+        return view('SalesInfo.SI_input')->with('passeddata',$passeddata);
 
     }
 
@@ -47,25 +56,8 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-  
-        //카테고리 필터
-        $data = array();
-        $number = 0;
 
-        for($i=1 ; $i<=$request->Numberofitem;$i++){
-          $b = $i;
-          $a = 'Category'.$b;
-
-          if(isset($request->$a)){
-            $data[] = $request->$a;
-            $number ++ ;
-          }
-        }
-        if($number == 0){
-            return redirect('/home');
-        }
-
-
+        $NumberofCategory = count($request->category);
 
         $this->validate($request, [
           'CustomerName' => 'required',
@@ -78,11 +70,28 @@ class SalesController extends Controller
           'Characteristic' => 'required',
           'note' => 'required',
           'CustomerEmail' => 'required',
-          'pay' => 'required',
           'SalesPerson_id' => 'required',
           'SP_name' => 'required',
+          'images' => 'image|nullable|max:1999'
         ]);
-        for($i = 0; $i < $number ; $i++){
+
+        //Handle File upload
+        if($request->hasFile('images')){
+
+          $filenameWithExt = $request->file('images')->getClientOriginalName();
+
+          $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+          $extension = $request->file('images')->getClientOriginalExtension();
+
+          $fileNameToStore = $filename.'_'.time().'.'.$extension;
+
+          $path = $request->file('images')->storeAs('public/images',$fileNameToStore);
+        }else{
+          $fileNameToStore = 'noimages.jpg';
+        }
+
+        for($i = 0; $i < $NumberofCategory ; $i++){
           $SalesInfo = new SalesInfo;
           $SalesInfo->CustomerName = $request->input('CustomerName');
           $SalesInfo->BusinessName = $request->input('BusinessName');
@@ -93,17 +102,18 @@ class SalesController extends Controller
           $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
           $SalesInfo->ContactTime = $request->input('ContactTime');
           $SalesInfo->Characteristic = $request->input('Characteristic');
-          $SalesInfo->Category = $data[$i];
+          $SalesInfo->Category = $request->category[$i];
           $SalesInfo->note = $request->input('note');
           $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
-          $SalesInfo->pay = $request->input('pay');
+          $SalesInfo->pay = $request->money[$i];
           $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
           $SalesInfo->SP_name = $request->input('SP_name');
           $SalesInfo->state= '진행중';
+          $SalesInfo->images = $fileNameToStore;
           $SalesInfo->save();
         }
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
@@ -118,23 +128,30 @@ class SalesController extends Controller
     {
         //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
         //return $SalesInfo;
+
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
         return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+
+    }
+    public function showall(){
+
+      $SalesInfo = SalesInfo::get();
+      return view('SalesInfo.SI_show_all')->with('SalesInfo',$SalesInfo);
     }
     //영업 리스트 항목별로
     public function showstate($id,$state){
 
-        if($state == '전체'){
-            $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
-        }else{
-            $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
-            return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
-        }
+        $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
+        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+    }
+    public function showstateall($state){
+
+        $SalesInfo = SalesInfo::where('state',$state)->orderBy('created_at','desc')->get();
+        return view('SalesInfo.SI_show_all')->with('SalesInfo',$SalesInfo);
     }
     //영업정보별 자세히 보기
     public function showdetail($SI_id){
-      $SalesInfo = SalesInfo::where('id',$SI_id)->get();
+      $SalesInfo = SalesInfo::where('id',$SI_id)->first();
       return view('SalesInfo.SI_detail')->with('SalesInfo',$SalesInfo);
     }
 
@@ -188,13 +205,34 @@ class SalesController extends Controller
         $SH = Savinghistory::where('SalesPerson_id',$id)->take(4)->orderBy('created_at','desc')->get();
         return view('/SalesMan/profit')->with('user',$user)->with('SH',$SH);
     }
+    public function profitdetail($id){
+        $user = User::find($id);
+        $SH = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
+        return view('/SalesMan/profitdetail')->with('user',$user)->with('SH',$SH);
+
+    }
 
     public function Recommender($id)
     {
         //
         $user = User::find($id);
+        $recommendcode = $user->recommend_code;
+        $recommendee = User::where('recommender',$recommendcode)->get();
 
-        return view('/SalesMan/Recommender')->with('user',$user);
+        $SH = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
+
+        return view('/SalesMan/Recommender')->with('user',$user)
+                                            ->with('SH',$SH)
+                                            ->with('recommendee',$recommendee);
+    }
+    public function Recommenderdetail($id,$recommendeeid){
+        $user = User::find($id);
+        $SH = Savinghistory::where('SalesPerson_id',$id)->where('triggerid',$recommendeeid)->orderBy('created_at','desc')->get();
+        $name = $SH[0]->triggerName;
+
+        return view('/SalesMan/Recommenderdetail')->with('user',$user)
+                                                  ->with('Name',$name)
+                                                  ->with('SH',$SH);
     }
 
     public function withdrawal($id)

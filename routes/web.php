@@ -70,6 +70,12 @@ Route::post('auth/reset', [
 
 //일반 영업사원
 Route::resource('SalesInfo','SalesController');
+Route::get('/SalesInfoall','SalesController@showall');
+Route::get('/SalesInfoall/{state}','SalesController@showstateall');
+Route::get('Choosecategory',[
+  'as' => 'SalesInfo.choosecategory',
+  'uses' => 'SalesController@Choosecategory'
+]);
 
 // 정회원 등록
 Route::get('regular/{id}',[
@@ -83,7 +89,9 @@ Route::post('/regular/{id}',[
 
 Route::get('/mypage/{id}', 'SalesController@mypage');
 Route::get('/profit/{id}', 'SalesController@profit');
+Route::get('/profitdetail/{id}/','SalesController@profitdetail');
 Route::get('/Recommender/{id}', 'SalesController@Recommender');
+Route::get('/Recommenderdetail/{id}/{recommendeeid}','SalesController@Recommenderdetail');
 Route::get('/withdrawal/{id}' ,'SalesController@withdrawal');
 Route::post('/withdrawal/{id}' ,'SalesController@withdrawalrequest');
 Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
