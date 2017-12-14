@@ -117,7 +117,7 @@ class MemberController extends Controller
             DB::table('users')->where('id',$id)->update(['type' => 1]);
         }
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**

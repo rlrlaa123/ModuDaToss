@@ -24,34 +24,42 @@
             <hr>
             <h4>실시간 견적 리스트</h4>
             @php($salesinfos = App\SalesInfo::orderBy('created_at','desc')->take(4)->get())
-            @if(is_null($salesinfos))
+            @if(count($salesinfos) < 4)
             @else
                 <div class="front_page row">
                     <div class="front_page col realtime">
-                        <h4>{{$salesinfos[0]->BusinessName}}</h4>
-                        <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
-                        <p>{{$salesinfos[0]->Category}}</p>
-                        <p>{{$salesinfos[0]->state}}</p>
+                        <a href="detail/{{$salesinfos[0]->id}}">
+                            <h4>{{$salesinfos[0]->BusinessName}}</h4>
+                            <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
+                            <p>{{$salesinfos[0]->Category}}</p>
+                            <p>{{$salesinfos[0]->state}}</p>
+                        </a>
                     </div>
                     <div class="front_page col realtime">
-                        <h4>{{$salesinfos[1]->BusinessName}}</h4>
-                        <p class="realtime_name">{{$salesinfos[1]->SP_name}}</p>
-                        <p>{{$salesinfos[1]->Category}}</p>
-                        <p>{{$salesinfos[1]->state}}</p>
+                        <a href="detail/{{$salesinfos[1]->id}}">
+                            <h4>{{$salesinfos[1]->BusinessName}}</h4>
+                            <p class="realtime_name">{{$salesinfos[1]->SP_name}}</p>
+                            <p>{{$salesinfos[1]->Category}}</p>
+                            <p>{{$salesinfos[1]->state}}</p>
+                        </a>
                     </div>
                 </div>
                 <div class="front_page row">
                     <div class="front_page col realtime">
-                        <h4>{{$salesinfos[2]->BusinessName}}</h4>
-                        <p class="realtime_name">{{$salesinfos[2]->SP_name}}</p>
-                        <p>{{$salesinfos[2]->Category}}</p>
-                        <p>{{$salesinfos[2]->state}}</p>
+                        <a href="detail/{{$salesinfos[2]->id}}">
+                            <h4>{{$salesinfos[2]->BusinessName}}</h4>
+                            <p class="realtime_name">{{$salesinfos[2]->SP_name}}</p>
+                            <p>{{$salesinfos[2]->Category}}</p>
+                            <p>{{$salesinfos[2]->state}}</p>
+                        </a>
                     </div>
                     <div class="front_page col realtime">
-                        <h4>{{$salesinfos[3]->BusinessName}}</h4>
-                        <p class="realtime_name">{{$salesinfos[3]->SP_name}}</p>
-                        <p>{{$salesinfos[3]->Category}}</p>
-                        <p>{{$salesinfos[3]->state}}</p>
+                        <a href="detail/{{$salesinfos[0]->id}}">
+                            <h4>{{$salesinfos[3]->BusinessName}}</h4>
+                            <p class="realtime_name">{{$salesinfos[3]->SP_name}}</p>
+                            <p>{{$salesinfos[3]->Category}}</p>
+                            <p>{{$salesinfos[3]->state}}</p>
+                        </a>
                     </div>
                 </div>
             @endif

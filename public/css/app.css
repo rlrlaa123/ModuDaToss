@@ -8357,7 +8357,7 @@ body {
 .btn {
   background-color: #3473d9;
   color: white;
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .front_page {
@@ -8413,7 +8413,7 @@ body {
 
 .front_page.col.realtime h4 {
   display: inline-block;
-  width: 55%;
+  width: 63%;
   margin-left: 5px;
   color: #3c3d52;
   margin-top: 0;
@@ -8428,7 +8428,7 @@ body {
 
 .front_page.col.realtime p.realtime_name {
   display: inline-block;
-  width: 35%;
+  width: 30%;
   margin: 0;
   padding: 0;
 }
@@ -8461,8 +8461,10 @@ body {
 .dropdown button {
   margin: 0;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #a6a6a6;
+  -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .category.content {
@@ -8470,7 +8472,9 @@ body {
   width: 90%;
   height: 100%;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .category.content h3 {
