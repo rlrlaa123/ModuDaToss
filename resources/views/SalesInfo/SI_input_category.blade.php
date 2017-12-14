@@ -16,7 +16,7 @@
 
                         <div class="checkboxcontainer">
                           <label class="checkbox">{{$ct->category}}
-                            <input class="category" name='category[]'  value="{{$ct->category}}" type="checkbox">
+                            <input class="checkbox_category" name='category[]'  value="{{$ct->category}}" type="checkbox">
                             <span class="checkmark"></span>
                           </label>
                           <div class="tipcontainer">
@@ -63,7 +63,7 @@
     </script>
     <script>
     $(document).ready(function(){
-      $('.category').click(function(event){
+      $('.checkbox_category').click(function(event){
           if(event.target.checked == true){
             $row = $(event.target).parent().next().next();
             $row.append($('script[data-template="money"]').text());

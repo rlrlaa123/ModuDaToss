@@ -9,6 +9,7 @@
             position: fixed;
             overflow: auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
+            z-index:1000;
         }
         .navbar-side .side-collapse.open {
             width: 0;
@@ -32,7 +33,6 @@
 </style>
 
 <nav class="navbar navbar-default navbar-side">
-    <div class="navbar container">
         <div class="navbar-header">
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle" data-toggle="collapse-side" data-target=".side-collapse">
@@ -189,7 +189,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+
 </nav>
 
 <script>
