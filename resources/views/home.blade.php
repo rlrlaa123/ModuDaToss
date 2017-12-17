@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="front_page">
-        <img src="/img/banner.png" width="100%" height="10%">
+        <img src="/img/banner.png" width="70%" height="10%">
         <div class="front_page container">
             <div class="front_page row">
                 <div class="front_page col">

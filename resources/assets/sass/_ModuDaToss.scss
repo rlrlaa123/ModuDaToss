@@ -8,139 +8,143 @@ body {
   border-radius:5px;
 }
 
-// 표지
-.front_page {
-  text-align:center;
+@media (max-width:800px) {
+  // 표지
+  .front_page {
+    text-align:center;
+  }
+
+  .front_page.container {
+    width: 100%;
+    margin-top:10px;
+  }
+
+  .front_page.row {
+    width:100%;
+    margin:auto;
+    text-align:center;
+  }
+
+  .front_page.col {
+    width:25%;
+    height:25%;
+    display:inline-block;
+    border:1px solid #a6a6a6;
+    border-radius:5px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    margin:5px;
+  }
+
+  .front_page.col p {
+    display:block;
+    color:#a6a6a6;
+    margin-bottom:0;
+  }
+
+  .front_page.col image {
+
+  }
+
+  .front_page.col p.num {
+    color:#3473d9;
+  }
+
+  .front_page.container h4 {
+    color:#a6a6a6;
+    text-align:left;
+  }
+
+  .front_page.col.realtime {
+    width:40%;
+  }
+
+  .front_page.col.realtime.col {
+    display:inline-block;
+    padding:5px;
+    margin:5px;
+  }
+
+  .front_page.col.realtime h4 {
+    display:inline-block;
+    width:63%;
+    margin-left:5px;
+    color:#3c3d52;
+    margin-top:0;
+    margin-bottom:0;
+  }
+
+  .front_page.col.realtime p {
+    text-align:left;
+    display:block;
+    padding-left:10px;
+  }
+
+  .front_page.col.realtime p.realtime_name {
+    display:inline-block;
+    width:30%;
+    margin:0;
+    padding:0;
+  }
+
+  // 영업 라인업
+  .category {
+    text-align:center;
+    width:100%;
+  }
+
+  .category-button.btn-default.dropdown-toggle {
+    width:100%;
+    padding:0;
+    margin-left:10px;
+  }
+
+  .btn.category {
+    color:#3473d9;
+    width:90%;
+    padding:0;
+    margin:0;
+    display:block;
+    background-color:white;
+  }
+
+  .dropdown-menu.dropdown-menu-center {
+    width:100%;
+    margin-left:10px;
+  }
+
+  .dropdown button {
+    margin:0;
+    text-align:center;
+    border-radius:5px;
+    border: 1px solid #a6a6a6;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .category.content {
+    border: 1px solid #a6a6a6;
+    width:90%;
+    height: 100%;
+    margin: 10px;
+    border-radius:5px;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .category.content h3 {
+    color:#4e85de;
+  }
+
+  .category.content p {
+    color:#a6a6a6;
+    height: 100px;
+  }
+
+  .category.btn.submit {
+    margin:10px;
+    color:white;
+  }
 }
 
-.front_page.container {
-  width: 100%;
-  margin-top:10px;
-}
 
-.front_page.row {
-  width:100%;
-  margin:auto;
-  text-align:center;
-}
-
-.front_page.col {
-  width:25%;
-  height:25%;
-  display:inline-block;
-  border:1px solid #a6a6a6;
-  border-radius:5px;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-  margin:5px;
-}
-
-.front_page.col p {
-  display:block;
-  color:#a6a6a6;
-  margin-bottom:0;
-}
-
-.front_page.col image {
-
-}
-
-.front_page.col p.num {
-  color:#3473d9;
-}
-
-.front_page.container h4 {
-  color:#a6a6a6;
-  text-align:left;
-}
-
-.front_page.col.realtime {
-  width:40%;
-}
-
-.front_page.col.realtime.col {
-  display:inline-block;
-  padding:5px;
-  margin:5px;
-}
-
-.front_page.col.realtime h4 {
-  display:inline-block;
-  width:63%;
-  margin-left:5px;
-  color:#3c3d52;
-  margin-top:0;
-  margin-bottom:0;
-}
-
-.front_page.col.realtime p {
-  text-align:left;
-  display:block;
-  padding-left:10px;
-}
-
-.front_page.col.realtime p.realtime_name {
-  display:inline-block;
-  width:30%;
-  margin:0;
-  padding:0;
-}
-
-// 영업 라인업
-.category {
-  text-align:center;
-  width:100%;
-}
-
-.category-button.btn-default.dropdown-toggle {
-  width:100%;
-  padding:0;
-  margin-left:10px;
-}
-
-.btn.category {
-  color:#3473d9;
-  width:90%;
-  padding:0;
-  margin:0;
-  display:block;
-  background-color:white;
-}
-
-.dropdown-menu.dropdown-menu-center {
-  width:100%;
-  margin-left:10px;
-}
-
-.dropdown button {
-  margin:0;
-  text-align:center;
-  border-radius:5px;
-  border: 1px solid #a6a6a6;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.category.content {
-  border: 1px solid #a6a6a6;
-  width:90%;
-  height: 100%;
-  margin: 10px;
-  border-radius:5px;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.category.content h3 {
-  color:#4e85de;
-}
-
-.category.content p {
-  color:#a6a6a6;
-  height: 100px;
-}
-
-.category.btn.submit {
-  margin:10px;
-  color:white;
-}
 .panel-default > .panel-heading{
   border:none;
 }
