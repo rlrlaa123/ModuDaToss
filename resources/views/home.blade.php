@@ -59,17 +59,15 @@
                 </div>
             @endif
             <h4>커뮤니티</h4>
-
         </div>
     </div>
+    <p class="GotoSIInput-text">영업정보 등록</p>
+    <a href="/Choosecategory"><div class="GotoSIinput">
+            <img src="{{URL::asset('/img/trace.png')}}">
+        </div>
+    </a>
 @endsection
 
 <script>
 
 </script>
-            <a href="/Choosecategory"><div class="GotoSIinput">
-              <img src="{{URL::asset('/img/trace.png')}}">
-            </div></a>
-        </div>
-    </div>
-@endsection
