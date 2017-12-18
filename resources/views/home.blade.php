@@ -63,6 +63,9 @@
                     </div>
                 </div>
             @endif
+            <a href="/Choosecategory"><div class="GotoSIinput">
+              <img src="{{URL::asset('/img/trace.png')}}">
+            </div></a>
         </div>
     </div>
 @endsection

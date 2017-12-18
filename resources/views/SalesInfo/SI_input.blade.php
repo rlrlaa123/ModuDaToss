@@ -6,8 +6,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                      <span style="color:#2D68AC;font-size:18px">Step 2</span>
-                      <span style="color:#b7babf;margin-left:20px">고객정보 등록</span>
+                      <span class="bluetitle">Step 2</span>
+                      <span class="greytitle">고객정보 등록</span>
                     </div>
                     <div class="panel-body">
                         {!! Form::open(['action' => 'SalesController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
