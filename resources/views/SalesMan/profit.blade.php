@@ -1,68 +1,42 @@
 @extends('layouts.app')
 @if(Auth::user()->id == $user->id)
   @section('content')
-  <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-              <div class="panel-header">
+          <div class="panel-group">
 
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="ProfitName"><span class="bluetitle">{{ Auth::user()->name }}</span> 님의 수익현황</div>
               </div>
               <div class="panel-body">
-                  <div class="table-responsive">
-                      <table class="table" style="text-align:center">
-                          <h4>수익금 현황</h4>
-                          <tbody>
-                          <tr>
-                              <td>수익금 현황</td>
-                              <td>{{ $user->Benefit + $user->Commision + $user->RecommenderCommision }}</td>
-                          </tr>
-                          </tbody>
-                          <tbody>
-                          <tr>
-                              <td>내 수수료</td>
-                              <td>{{ $user->Commision }}</td>
-                          </tr>
-                          </tbody>
-                          <tbody>
-                          <tr>
-                              <td>추천인 수당</td>
-                              <td>{{ $user->RecommenderCommision }}</td>
-                          </tr>
-                          </tbody>
-                      </table>
+                <div class="MoneyAll">
+                  <span>{{ number_format($user->Benefit + $user->Commision + $user->RecommenderCommision) }}</span>원
+                </div>
+                <br>
+                <div class="Accumulate">
+                  <span class="bluetitle">누적금액</span>
+                  <span class="greytitle">10000</span>
+                </div><br><br>
+                <div class="MoneyShow">
+                  <span class="bluetitle">나의 수당</span>
+                  <span class="greytitle">{{ number_format($user->Commision) }}</span>
+                  <br><br>
+                  <span class="bluetitle">추천인 수당</span>
+                  <span class="greytitle">{{ number_format($user->RecommenderCommision) }}</span>
+                </div>
+              </div>
+              <br><br>
+              <div class="buttoncontainer">
+                <a href="/withdrawal/{{ Auth::user()->id }}"><button class="withdrawal">출금하러가기</button></a>
+              </div>
 
-                      <table class="table" style="text-align:center">
-                          <thead>
-                          <tr>
-                              <th>적립금 유형</th>
-                              <th>금액</th>
-                              <th>발생날짜</th>
-                          </tr>
-                          </thead>
-                          <h4>적립 내역</h4>
-                          @if(count($SH) > 0)
-                              @foreach($SH as $sh)
-                                  <tbody>
-                                  <tr>
-                                      <td>{{ $sh->MoneyType }}</td>
-                                      <td>{{ $sh->MoneySum }}</td>
-                                      <td>{{ $sh->created_at }}</td>
-                                  </tr>
-                                  </tbody>
-                              @endforeach
-                          @endif
-                      </table>
-                  </div>
-                <p><a href="/profitdetail/{{Auth::user()->id}} ">자세히 보기 ... </a></p>
-              </div>
-              <div class="panel-footer">
-                <button><a href="/withdrawal/{{Auth::user()->id}}">출금하러 가기</a></button>
-              </div>
+              <a href="/Recommender/{{ Auth::user()->id }}"><div class="Gotorecom">
+                <img src="{{URL::asset('/img/recommendation.png')}}">
+              </div></a>
             </div>
-        </div>
-      </div>
-  </div>
+
+
+
+
   @endsection
 @else
   <p>접근 권한이 없습니다</p>

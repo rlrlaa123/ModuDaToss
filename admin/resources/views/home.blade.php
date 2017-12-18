@@ -28,7 +28,7 @@
                   <a href="">기타 관리</a>
                 </div>
                 <div class="panel-body">
-                  {{ $Now }}
+    
                 </div>
 
             </div>
