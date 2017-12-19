@@ -1,32 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        영업 라인업 추가
-                    </div>
-                    <div class="panel-body">
-                        {!! Form::open(['action' => 'SalesController@mypageupdate', 'method' => 'POST']) !!}
-                        <div class="form-group">
-                            {{Form::label('category', 'category')}}
-                            {{Form::text('category','',['class' => 'form-control','placeholder' => '영업 라인업명'])}}
-                        </div>
-                        <div class="form-group">
-                            {{Form::label('commision','commision')}}
-                            {{Form::text('commision','',['class' => 'form-control','placeholder' => '수수료'])}}
-                        </div>
-                        <div>
-                            {{Form::label('content', 'content')}}
-                            {{Form::textarea('content','',['class' => 'form-control','placeholder' => ''])}}
-                        </div>
-                        {{Form::submit('제출',['class' => 'btn btn-primary'])}}
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
+    <form action="{{ route('mypage.update',$user->id) }}" method="POST" role="form" class="form__auth">
+        {!! csrf_field() !!}
+
+        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+            <input type="name" name="name" class="form-control" placeholder="이름" value="{{$user->name}}"/>
+            {!! $errors->first('name', '<span class="form-error">:message</span>') !!}
         </div>
-    </div>
-@endsection
+
+        <div class="form-group {{ $errors->has('bankName') ? 'has-error' : '' }}">
+            <input type="bankName" name="bankName" class="form-control" placeholder="은행" value="{{$user->bankName}}"/>
+            {!! $errors->first('bankName', '<span class="form-error">:message</span>') !!}
+        </div>
+
+        <div class="form-group {{ $errors->has('accountNumber') ? 'has-error' : '' }}">
+            <input type="accountNumber" name="accountNumber" class="form-control" placeholder="계좌번호" value="{{$user->accountNumber}}"/>
+            {!! $errors->first('accountNumber', '<span class="form-error">:message</span>') !!}
+        </div>
+
+        <div class="form-group">
+            <input type="photo" name="photo" class="form-control" placeholder="사진" value="{{$user->photo}}"/>
+            {!! $errors->first('photo', '<span class="form-error">:message</span>') !!}
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                신청하기
+            </button>
+        </div>
+    </form>
+@stop

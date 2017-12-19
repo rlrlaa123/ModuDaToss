@@ -72,7 +72,7 @@
                           </tbody>
                       </table>
                   </div>
-                  <div class="btn mypage-edit" onclick="window.location='{{ url('/mypage/'.$user->id.'/edit') }}'">
+                  <div class="btn mypage-edit" onclick="window.location='{{ route('mypage.edit',$user->id) }}'">
                      회원정보 수정
                   </div>
               </div>
