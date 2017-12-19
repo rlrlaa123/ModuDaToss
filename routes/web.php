@@ -88,6 +88,8 @@ Route::post('/regular/{id}',[
 ]);
 
 Route::get('/mypage/{id}', 'SalesController@mypage');
+Route::get('/mypage/{id}/edit', 'SalesController@mypageedit');
+Route::post('/mypage/{id}/update', 'SalesController@mypageupdate');
 Route::get('/profit/{id}', 'SalesController@profit');
 Route::get('/profitdetail/{id}/','SalesController@profitdetail');
 Route::get('/Recommender/{id}', 'SalesController@Recommender');

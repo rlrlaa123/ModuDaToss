@@ -85,8 +85,6 @@
             window.location.href = "/Choosecategory";
         }
         else {
-            $row = $(event.target).parent().next().next();
-                $row.append($('script[data-template="money"]').text());
         }
     }
 </script>
