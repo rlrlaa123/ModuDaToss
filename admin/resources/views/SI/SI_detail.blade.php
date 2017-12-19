@@ -81,7 +81,7 @@
                         <tbody>
                           <tr>
                             <td>제보 영업사원</td>
-                            <td>{{ $SI->SalesPerson_id }}</td>
+                            <td>{{ $SI->SP_name }}</td>
                           </tr>
                         </tbody>
                       </table>

@@ -43,19 +43,7 @@
                                     </tr>
                                     <tr>
                                         <td>회원 등급</td>
-                                        @if ($user->type == 0)
-                                            <td>일반회원</td>
-                                        @elseif ($user->type == 1)
-                                            <td>정회원</td>
-                                        @elseif ($user->type == 2)
-                                            <td>벤더사</td>
-                                        @elseif ($user->type == 3)
-                                            <td>차단회원</td>
-                                        @elseif ($user->type == 4)
-                                            <td>A 클래스 회원</td>
-                                        @elseif ($user->type == 5)
-                                            <td>정회원 대기 회원</td>
-                                        @endif
+                                        <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
                                     </tr>
                                     <tr>
                                         <td>추천인</td>
