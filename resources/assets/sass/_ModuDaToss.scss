@@ -888,6 +888,9 @@ body {
   color:white;
 }
 ////panel
+.panel.panel-default{
+  margin-top:50px;
+}
 .panel,.panel-heading,.panel-body,.panel-footer{
   padding:0px;
   border:none;
@@ -937,7 +940,7 @@ body {
   color:#b7babf;
   margin-left:20px;
 }
-.Sireset{
+.SIreset{
   width:60px;
   height:25px;
   background-color:#3473d9;
@@ -955,6 +958,7 @@ body {
 .checkbox {
   display: block;
   position: relative;
+  margin-top:12px;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -1179,6 +1183,16 @@ table td{
   background-color:#3473d9;
   color:white;
   margin:auto;
+}
+.Cashcaculate{
+  text-align:right;
+  padding-right:30px;
+}
+.Cashcaculate div{
+  margin-bottom:5px;
+}
+#Tax span{
+  border-bottom:1px solid black;
 }
 
 ///////수익확인 파트

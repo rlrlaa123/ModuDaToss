@@ -8889,26 +8889,6 @@ body {
     padding: 1%;
   }
 
-  .front_page.table-responsive {
-    margin: 0;
-  }
-
-  .realtime.bname {
-    color: #23243b;
-  }
-
-  .realtime.spname {
-    color: #23243b;
-  }
-
-  .realtime.category {
-    color: #23243b;
-  }
-
-  .realtime.status {
-    color: #23243b;
-  }
-
   .front_page.col.realtime p.realtime_bname {
     display: inline-block;
     width: 45%;
@@ -9275,6 +9255,10 @@ body {
   color: white;
 }
 
+.panel.panel-default {
+  margin-top: 50px;
+}
+
 .panel,
 .panel-heading,
 .panel-body,
@@ -9333,7 +9317,7 @@ body {
   margin-left: 20px;
 }
 
-.Sireset {
+.SIreset {
   width: 60px;
   height: 25px;
   background-color: #3473d9;
@@ -9353,6 +9337,7 @@ body {
 .checkbox {
   display: block;
   position: relative;
+  margin-top: 12px;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
@@ -9608,6 +9593,19 @@ table td {
   background-color: #3473d9;
   color: white;
   margin: auto;
+}
+
+.Cashcaculate {
+  text-align: right;
+  padding-right: 30px;
+}
+
+.Cashcaculate div {
+  margin-bottom: 5px;
+}
+
+#Tax span {
+  border-bottom: 1px solid black;
 }
 
 .ProfitName {

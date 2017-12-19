@@ -5,11 +5,11 @@
     <div class="container Choosecategory" id="app">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default" style="border:none">
-                    <div class="panel-heading" style="border:none">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
                       <span class="bluetitle">Step 1</span>
                       <span class="greytitle">영업카테고리선택</span>
-                      <button type="button" class="Sireset">reset</button>
+                      <button type="button" class="SIreset">reset</button>
                     </div>
                     <div class="panel-body">
                         @foreach($category as $ct)
@@ -71,6 +71,10 @@
             $row = $(event.target).parent().next().next().find('input');
             $row.remove();
           }
+      })
+
+      $('.SIreset').click(function(){
+        location.reload();
       })
 
     })
