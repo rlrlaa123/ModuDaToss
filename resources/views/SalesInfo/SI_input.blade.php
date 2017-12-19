@@ -74,7 +74,6 @@
                             <canvas id="canvas" style="float:right"></canvas>
                         </div>
 
-
                           {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                           {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
                           @foreach($passeddata['category'] as $ct)

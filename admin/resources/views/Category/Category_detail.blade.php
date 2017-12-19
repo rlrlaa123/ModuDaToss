@@ -23,7 +23,7 @@
                                 {!! $errors->first('commision', '<span class="form-error">:message</span>') !!}
                             </div>
                             <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-                                <input type="content" name="content" class="form-control" placeholder="내용" value="{{ old('content', $Category->content) }}"/>
+                                <textarea name="content" id="content" class="form-control" rows="10">{{ old('content', $Category->content) }}</textarea>
                                 {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
                             </div>
                             <div class="form-group">
