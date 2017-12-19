@@ -11,6 +11,7 @@ body {
 .navbar {
   margin:0;
 }
+
 @media (min-width: 1281px){
   // 홈페이지 - 표지
   .front_page {
@@ -155,27 +156,30 @@ body {
     width:100%;
   }
 
+
   .category-button.btn-default.dropdown-toggle {
     width:100%;
-    padding:0;
-    margin-left:10px;
+    padding:2%;
+    margin-left:3%;
+    font-size:100%;
   }
 
   .btn.category {
     color:#3473d9;
     width:90%;
     padding:0;
-    margin:0;
+    margin:3%;
     display:block;
     background-color:white;
   }
 
   .dropdown-menu.dropdown-menu-center {
     width:100%;
-    margin-left:10px;
+    margin-left:3%;
   }
 
   .dropdown button {
+    height: 7%;
     margin:0;
     text-align:center;
     border-radius:5px;
@@ -186,8 +190,8 @@ body {
   .category.content {
     border: 1px solid #a6a6a6;
     width:90%;
-    height: 100%;
-    margin: 10px;
+    height: 60%;
+    margin: 2% 0 0 3%;
     border-radius:5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
   }
@@ -202,7 +206,6 @@ body {
   }
 
   .category.btn.submit {
-    margin:10px;
     color:white;
   }
 
@@ -322,31 +325,31 @@ body {
     color: #23243b;
     font-size: 200%;
   }
-    .GotoSIinput-text{
-      position:fixed;
-      bottom:13%;
-      right:3%;
-      color:#3473d9;
-      text-shadow: grey;
-    }
+  .GotoSIinput-text{
+    position:fixed;
+    bottom:13%;
+    right:3%;
+    color:#3473d9;
+    text-shadow: grey
+  }
 
-    .GotoSIinput{
-      width:20%;
-      height:12%;
-      background-color:#3473d9;
-      position:fixed;
-      bottom:15%;
-      right:3%;
-      border:none;
-      border-radius:100px;
-      margin:auto;
-    }
-    .GotoSIinput img{
-      //margin-top:10px;
-      display:block;
-      margin:13% 6%;
-      width:92%;
-      height: 92%;
+  .GotoSIinput{
+    width:20%;
+    height:12%;
+    background-color:#3473d9;
+    position:fixed;
+    bottom:15%;
+    right:3%;
+    border:none;
+    border-radius:100px;
+    margin:auto;
+  }
+  .GotoSIinput img{
+    //margin-top:10px;
+    display:block;
+    margin:13% 6%;
+    width:92%;
+    height: 92%;
   }
 
   .front_page.col.realtime p.realtime_name {
@@ -380,25 +383,27 @@ body {
 
   .category-button.btn-default.dropdown-toggle {
     width:100%;
-    padding:0;
-    margin-left:10px;
+    padding:2%;
+    margin-left:3%;
+    font-size:100%;
   }
 
   .btn.category {
     color:#3473d9;
     width:90%;
     padding:0;
-    margin:0;
+    margin:3%;
     display:block;
     background-color:white;
   }
 
   .dropdown-menu.dropdown-menu-center {
     width:100%;
-    margin-left:10px;
+    margin-left:3%;
   }
 
   .dropdown button {
+    height: 7%;
     margin:0;
     text-align:center;
     border-radius:5px;
@@ -409,8 +414,8 @@ body {
   .category.content {
     border: 1px solid #a6a6a6;
     width:90%;
-    height: 100%;
-    margin: 10px;
+    height: 65%;
+    margin: 2% 0 2% 3%;
     border-radius:5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
   }
@@ -425,7 +430,6 @@ body {
   }
 
   .category.btn.submit {
-    margin:10px;
     color:white;
   }
 
@@ -434,6 +438,7 @@ body {
     bottom:23%;
     right:4%;
     color:#3473d9;
+    text-shadow:grey;
     font-size:160%;
   }
 
@@ -451,7 +456,7 @@ body {
   .GotoSIinput img{
     //margin-top:10px;
     display:block;
-    margin:0% 13%;
+    margin:0 13%;
     width:76%;
     height:120%;
   }
@@ -570,27 +575,30 @@ body {
     width:100%;
   }
 
+
   .category-button.btn-default.dropdown-toggle {
     width:100%;
-    padding:0;
-    margin-left:10px;
+    padding:1%;
+    margin-left:3%;
+    font-size:100%;
   }
 
   .btn.category {
     color:#3473d9;
     width:90%;
     padding:0;
-    margin:0;
+    margin:3%;
     display:block;
     background-color:white;
   }
 
   .dropdown-menu.dropdown-menu-center {
     width:100%;
-    margin-left:10px;
+    margin-left:3%;
   }
 
   .dropdown button {
+    height:7%;
     margin:0;
     text-align:center;
     border-radius:5px;
@@ -601,8 +609,8 @@ body {
   .category.content {
     border: 1px solid #a6a6a6;
     width:90%;
-    height: 100%;
-    margin: 10px;
+    height: 60%;
+    margin: 2% 0 2% 3%;
     border-radius:5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
   }
@@ -617,16 +625,16 @@ body {
   }
 
   .category.btn.submit {
-    margin:10px;
     color:white;
   }
 
   .GotoSIinput-text{
     position:fixed;
-    bottom:16%;
-    right:3%;
+    bottom:17%;
+    right:4%;
     color:#3473d9;
     text-shadow: grey;
+    font-size:125%;
   }
 
   .GotoSIinput{
@@ -761,27 +769,30 @@ body {
     width:100%;
   }
 
+
   .category-button.btn-default.dropdown-toggle {
     width:100%;
-    padding:0;
-    margin-left:10px;
+    padding:2%;
+    margin-left:3%;
+    font-size:100%;
   }
 
   .btn.category {
     color:#3473d9;
     width:90%;
     padding:0;
-    margin:0;
+    margin:3%;
     display:block;
     background-color:white;
   }
 
   .dropdown-menu.dropdown-menu-center {
     width:100%;
-    margin-left:10px;
+    margin-left:3%;
   }
 
   .dropdown button {
+    height:7%;
     margin:0;
     text-align:center;
     border-radius:5px;
@@ -792,8 +803,8 @@ body {
   .category.content {
     border: 1px solid #a6a6a6;
     width:90%;
-    height: 100%;
-    margin: 10px;
+    height: 60%;
+    margin: 2% 0 2% 3%;
     border-radius:5px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
   }
@@ -808,7 +819,6 @@ body {
   }
 
   .category.btn.submit {
-    margin:10px;
     color:white;
   }
 
@@ -817,7 +827,7 @@ body {
     bottom:13%;
     right:3%;
     color:#3473d9;
-    text-shadow: grey;
+    text-shadow:grey;
   }
 
   .GotoSIinput{
