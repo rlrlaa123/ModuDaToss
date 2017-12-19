@@ -62,12 +62,31 @@
         </div>
     </div>
     <p class="GotoSIInput-text">영업정보 등록</p>
-    <a href="/Choosecategory"><div class="GotoSIinput">
+    <a href="javascript:void(0)" onclick="SIinput({{Auth::user()}})" data-toggle="modal" data-target="#myModal"><div class="GotoSIinput">
             <img src="{{URL::asset('/img/trace.png')}}">
         </div>
     </a>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    로그인이 필요합니다.
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 <script>
-
+    function SIinput(user){
+        if(typeof user != "undefined") {
+            window.location.href = "/Choosecategory";
+        }
+        else {
+            $row = $(event.target).parent().next().next();
+                $row.append($('script[data-template="money"]').text());
+        }
+    }
 </script>

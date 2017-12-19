@@ -1,61 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="category">
-            <h3 class="category title" style="color:#3473d9;">
-                {{$category->category}}
-            </h3>
-            <div class="dropdown" style="width:90%;">
-                <button class="category-button btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                    {{$category->category}}
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    @foreach($categories as $category_select)
-                        <li><a href="/category/{{$category_select->id}}">{{$category_select->category}}</a></li>
-                    @endforeach
-                </ul>
+    <div class="container-fluid" style="">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="category">
+                            <h3 class="category title" style="color:#3473d9; width:90%;">
+                                {{$category->category}}
+                            </h3>
+                            <div class="dropdown" style="width:90%;">
+                                <button class="category-button btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                    영업라인업
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-center">
+                                    @foreach($categories as $category_select)
+                                        <li><a href="/category/{{$category_select->id}}">{{$category_select->category}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="category content" style="padding:3%;">
+                                <h3 style="margin:2%;">{{$category->category}}(이)란?</h3>
+                                <p>{{$category->content}}</p>
+                            </div>
+                            @if(Auth::user()->type!=1)
+                            @else
+                                <div class="btn submit" onclick="window.location='{{ route('SalesInfo.choosecategory') }}'">
+                                    영업정보 등록
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="category content">
-                <h3>{{$category->category}}(이)란?</h3>
-                <p>{{$category->content}}</p>
-            </div>
-            @if(Auth::user()->type!=2)
-            @else
-            <div class="btn submit" onclick="window.location='{{ route('SalesInfo.create') }}'">
-                영업정보 등록
-            </div>
-            @endif
         </div>
-            {{--<div class="col-lg-1" style="text-align:center;">--}}
-                {{--<h3 class="title category">{{$category->category}}</h3>--}}
-                {{--<div class="dropdown">--}}
-                    {{--<button class="btn-block category btn-default dropdown-toggle" type="button" data-toggle="dropdown">--}}
-                        {{--{{$category->category}}--}}
-                        {{--<span class="caret category"></span>--}}
-                    {{--</button>--}}
-                    {{--<ul class="dropdown-menu dropdown-menu-center">--}}
-                        {{--@foreach($categories as $category_select)--}}
-                            {{--<li><a href="/category/{{$category_select->id}}">{{$category_select->category}}</a></li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-                {{--<div class="text-center category">--}}
-                    {{--<h3>{{$category->category}}(이)란?</h3>--}}
-                    {{--<p>{{$category->content}}</p>--}}
-                {{--</div>--}}
-                {{--<div class="btn category" onclick="window.location='{{ route('SalesInfo.create') }}'">--}}
-                    {{--영업정보 등록--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-    {{--</div>--}}
+    </div>
 @stop
-
-{{--<script>--}}
-    {{--$(".dropdown-menu li a").click(function(){--}}
-        {{--$(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');--}}
-        {{--$(this).parents(".dropdown").find('.btn').val($(this).data('value'));--}}
-    {{--});--}}
-{{--</script>--}}
-{{--<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js" />--}}
+<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("div.container-fluid").css("max-height",$( window ).height());
+</script>
