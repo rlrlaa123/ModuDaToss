@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('accountNumber');
             $table->string('photo')->nullable();
             $table->string('signature')->nullable();
-            $table->boolean('type'); /* 영업사원:0, 파트너: 1 */
+            $table->boolean('type');
             $table->string('recommender')->nullable();
             $table->string('recommend_code');
             $table->string('category')->nullable();

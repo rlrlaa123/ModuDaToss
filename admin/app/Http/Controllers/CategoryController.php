@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use App\category;
 
@@ -99,9 +100,7 @@ class CategoryController extends Controller
         $Category -> category = $request -> category;
         $Category -> commision = $request -> commision;
         $Category -> content = $request -> content;
-
         $Category -> save();
-
         return redirect('/category');
     }
 

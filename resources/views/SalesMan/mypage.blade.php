@@ -56,7 +56,7 @@
                           <tbody>
                           <tr>
                               <td>회원 등급</td>
-                              <td>{{ $user->type }}</td>
+                              <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
                           </tr>
                           </tbody>
                           <tbody>

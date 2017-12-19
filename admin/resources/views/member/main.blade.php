@@ -32,6 +32,7 @@
 									<th>비고</th>
 								</tr>
 								</thead>
+
 								@if(isset($users) && count($users) > 0)
 									@if( Request::path() == 'member/0')
 										@foreach($users as $user)
@@ -45,20 +46,8 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
-												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+                                                <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
+                                                <td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
 										@endforeach
@@ -78,20 +67,8 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
-												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
+                                                <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
+                                                <td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
 										@endforeach
@@ -111,20 +88,7 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
+												<td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
 												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
@@ -145,19 +109,7 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
+												<td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
 												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
@@ -179,19 +131,7 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
+                                                <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
 												<td><a href="/member/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
@@ -212,19 +152,7 @@
 													<td>{{ '여자' }}</td>
 												@endif
 												<td>{{ $user->phoneNumber }}</td>
-												@if ($user->type == 0)
-													<td>일반회원</td>
-												@elseif ($user->type == 1)
-													<td>정회원</td>
-												@elseif ($user->type == 2)
-													<td>벤더사</td>
-												@elseif ($user->type == 3)
-													<td>차단회원</td>
-												@elseif ($user->type == 4)
-													<td>A 클래스 회원</td>
-												@elseif ($user->type == 5)
-													<td>정회원 대기 회원</td>
-												@endif
+                                                <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
 												<td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>
 											</tbody>
