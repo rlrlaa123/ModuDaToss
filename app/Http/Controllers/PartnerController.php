@@ -58,14 +58,9 @@ class PartnerController extends Controller
 
     public function showbystate($category,$state){
 
-      if($state == '전체'){
-          $SalesInfo = SalesInfo::where('Category',$category)->orderBy('created_at','desc')->get();
-          return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
+        $SalesInfo = SalesInfo::where('Category',$category)->where('state',$state)->orderBy('created_at','desc')->get();
+        return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
 
-      }else{
-          $SalesInfo = SalesInfo::where('Category',$category)->where('state',$state)->orderBy('created_at','desc')->get();
-          return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
-      }
     }
 
     /**

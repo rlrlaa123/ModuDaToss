@@ -264,13 +264,32 @@ class SalesController extends Controller
       //출금액 저장
       $user = User::where('id',$id)->first();
 
+      $Requestedmoney = $request->requestmoney;
+      $UserCommision = $user->Commision;
+      $UserReCommision = $user->RecommenderCommision;
+      $Leftovers = 0;
+
+      if( $Requestedmoney > $UserCommision){
+        $Leftovers = $Requestedmoney - $UserCommision;
+        $UserCommision = 0;
+        $UserReCommision = $UserReCommision - $Leftovers;
+      }else{
+        $UserCommision = $UserCommision - $Requestedmoney;
+      }
+      ////해당 영업사원에게 수수료 업데이트
+      User::where('id',$id)->update([
+            'Commision'=>$UserCommision,
+            'RecommenderCommision'=>$UserReCommision,
+      ]);
+
+      //return $user->Commision;
       $withdrawal = new withdrawalInfo;
 
       $withdrawal->memberID = $user->id;
       $withdrawal->memberName = $user->name;
       $withdrawal->bankName = $user->bankName;
       $withdrawal->account_number = $user->accountNumber;
-      $withdrawal->requestmoney=$request->input('requestmoney');
+      $withdrawal->requestmoney=$request->input('realrequest');
       $withdrawal->save();
 
       //제출한 출금액 만큼 빼기

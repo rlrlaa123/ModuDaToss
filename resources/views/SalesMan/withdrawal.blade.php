@@ -12,17 +12,21 @@
                   </div>
                   <div class="wdalbox">
                     <span class="bluetitle wd">출금 신청 가능 금액 </span>
-                    <span class="greytitle wd">{{($user->RecommenderCommision + $user->Commision)*(0.9)}} 원 = {{$user->RecommenderCommision + $user->Commision}} - {{($user->RecommenderCommision + $user->Commision)*(0.1)}}(보증금)</span>
-                  </div>
-                  <div class="wdalbox">
-                    <span class="bluetitle wd">실출금수령가능금액 </span>
-                    <span class="greytitle wd">{{($user->RecommenderCommision + $user->Commision)*(0.9)}} 원 = {{$user->RecommenderCommision + $user->Commision}} - {{($user->RecommenderCommision + $user->Commision)*(0.1)}}(부과세)</span>
+                    <span class="greytitle wd">{{number_format(($user->RecommenderCommision + $user->Commision)*(0.9))}} 원 = {{number_format($user->RecommenderCommision + $user->Commision)}} - {{number_format(($user->RecommenderCommision + $user->Commision)*(0.1))}}(보증금)</span>
                   </div>
                   <div class="wdalbox">
                     <span class="bluetitle wd">출금 금액</span>
-                    {{Form::number('requestmoney','',['class' => 'wd SI_input form-control','placeholder' => '출금 요청 금액','min'=>1,'max'=> ($user->RecommenderCommision + $user->Commision)*0.9])}}
+                    {{Form::number('requestmoney','',['id' => 'MoneyInput', 'class' => 'wd SI_input form-control','placeholder' => '출금 요청 금액','min'=>1,'max'=> ($user->RecommenderCommision + $user->Commision)*0.9])}}
+                    <input id="realrequest" type="hidden" name="realrequest" value="">
                   </div>
 
+                  <div class="wdalbox Cashcaculate">
+                    <div class="moneycaculate"><span class="moneycaculate" id="moneyinputed">0</span> 원 : 신청금액</div>
+                    <div class="moneycaculate2">  - <span class="moneycaculate2" id="Tax">0</span> 원 : 소득세(3.3%)</div>
+                    <div class="moneycaculate"><span class="moneycaculate" id="result">0</span>원 : 실수령가능액</div>
+                  </div><br><br>
+
+                  <br>
                   <div class="withdrawalinfo">
                     <span class="bluetitle wd">입금정보</span>
                     <span class="greytitle wd"> {{ $user->account_number}} ({{ $user->name}},{{ $user->bankName}}) </span>
@@ -49,6 +53,17 @@
             </div>
         </div>
       </div>
+<script>
+$(document).ready(function(){
+  $('.wd.SI_input').keyup(function(event){
+      $('#moneyinputed').text(event.target.value);
+      $('#Tax').text(parseInt((event.target.value)*0.033));
+      $('#result').text(event.target.value - parseInt((event.target.value)*0.033));
+      $('#realrequest').val(event.target.value - parseInt((event.target.value)*0.033));
+
+  })
+})
+</script>
   @endsection
 @else
   <p>접근 권한이 없습니다</p>
