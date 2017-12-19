@@ -69,10 +69,12 @@
                             <label for="images" class="name">사업장사진</label>
                             {{Form::file('images'),['class' => 'form-control']}}
                         </div>
+                        <!--
                         <div class="inputbox" style="height:250px">
                             <label for="images" class="name">서명</label>
                             <canvas id="canvas" style="float:right"></canvas>
                         </div>
+                        -->
 
                           {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                           {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
@@ -89,9 +91,11 @@
                       {!! Form::close() !!}
 
                     </div>
+                    <!--
                     <div id="save">
                       Save
                     </div>
+                  -->
                 </div>
             </div>
         </div>
@@ -101,6 +105,7 @@
        $("#postcodify_search_button").postcodifyPopUp();
      });
 
+     /*
      var canvas = document.getElementById('canvas');
      var context= canvas.getContext('2d');
 
@@ -167,10 +172,12 @@
        request.open('POST', 'save.php', true);
        request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
        request.send('img=' + data);
-       */
+
 
        //  window.open(data,'_blank','location=0, menubar=0');
      }
+     */
+
 
     </script>
 

@@ -5,9 +5,8 @@
 @if( isset(Auth::user()->name) )
 <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-8 col-md-offset-2 DetailContainer">
         <div class="SI_showtitle">자세한 영업 정보</div>
-          <br><br>
           <div class="panel panel-default">
             <div class="panel-head">
             </div>

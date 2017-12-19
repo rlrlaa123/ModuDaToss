@@ -252,7 +252,7 @@ class SalesController extends Controller
       //출금액 저장
       $user = User::where('id',$id)->first();
 
-      $Requestedmoney = $request->realrequest;
+      $Requestedmoney = $request->requestmoney;
       $UserCommision = $user->Commision;
       $UserReCommision = $user->RecommenderCommision;
       $Leftovers = 0;
