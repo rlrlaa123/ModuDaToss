@@ -88,6 +88,14 @@ Route::post('/regular/{id}',[
 ]);
 
 Route::get('/mypage/{id}', 'SalesController@mypage');
+Route::get('/mypage/{id}/edit',[
+    'as' => 'mypage.edit',
+    'uses' => 'SalesController@mypageedit'
+]);
+Route::post('/mypage/{id}/update', [
+    'as' => 'mypage.update',
+    'uses' => 'SalesController@mypageupdate'
+]);
 Route::get('/profit/{id}', 'SalesController@profit');
 Route::get('/profitdetail/{id}/','SalesController@profitdetail');
 Route::get('/Recommender/{id}', 'SalesController@Recommender');

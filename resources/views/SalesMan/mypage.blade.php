@@ -6,7 +6,6 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
               <div class="panel-header">
-
               </div>
               <div class="panel-body">
                   <div class="table-responsive">
@@ -72,6 +71,9 @@
                           </tr>
                           </tbody>
                       </table>
+                  </div>
+                  <div class="btn mypage-edit" onclick="window.location='{{ route('mypage.edit',$user->id) }}'">
+                     회원정보 수정
                   </div>
               </div>
             </div>

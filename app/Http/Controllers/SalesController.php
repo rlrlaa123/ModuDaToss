@@ -190,8 +190,20 @@ class SalesController extends Controller
 
     public function mypage($id)
     {
-        //
+        $user = User::find($id);
 
+        return view('/SalesMan/mypage')->with('user',$user);
+    }
+
+    public function mypageedit($id)
+    {
+        $user = User::find($id);
+
+        return view('/SalesMan/mypage/edit')->with('user',$user);
+    }
+
+    public function mypageupdate($id)
+    {
         $user = User::find($id);
 
         return view('/SalesMan/mypage')->with('user',$user);
