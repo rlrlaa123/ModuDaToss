@@ -17,6 +17,7 @@ class category extends Model
         'category',
         'commision',
         'content',
+        'image',
     ];
 
     protected $hidden = [
