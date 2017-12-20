@@ -69,6 +69,12 @@
                               <td>추천인코드</td>
                               <td>{{ $user->recommend_code}}</td>
                           </tr>
+                          @if( $user->type == 2)
+                              <tr>
+                                  <td>영업라인업</td>
+                                  <td>{{ $user->category }}</td>
+                              </tr>
+                          @endif
                           </tbody>
                       </table>
                   </div>

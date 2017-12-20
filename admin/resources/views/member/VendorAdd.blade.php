@@ -74,11 +74,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label>영업라인업:</label>
                             @php $n = count($Category); @endphp
-                            <select name="category">
+                            <select class="form-control" id="category" name="category">
                                 @for ($i = 0; $i < $n; $i++)
                                     <option value="{{ $Category[$i]['category'] }}">{{ $Category[$i]['category'] }}</option>
                                 @endfor
+                                {!! $errors->first('category', '<span class="form-error">:message</span>') !!}
                             </select>
                         </div>
 
