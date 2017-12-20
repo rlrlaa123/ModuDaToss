@@ -32,6 +32,7 @@
     </div>
     <div class="container__comment">
         @include('comments.index')
+{{--        @include('articles.comments.index')--}}
     </div>
 @stop
 

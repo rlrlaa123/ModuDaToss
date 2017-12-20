@@ -63,7 +63,7 @@ class CommentsController extends Controller
     {
         $comment->delete();
 
-        return response()->json([], 204, [], JSON_PRETTY_PRINT);
+        return response()->json([], 204);
     }
 
     /**

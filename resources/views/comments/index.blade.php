@@ -7,9 +7,39 @@
 </div>
 <div class="form__new__comment">
     @if($currentUser)
-        @include('comments.partial.create')
+        {{--댓글 작성 폼--}}
+        <div class="media media__create__initiate {{ isset($parentId) ? 'sub' : 'top' }}" style="margin:0px;">
+
+            <div class="media-body">
+                <form method="POST" action="{{ route('articles.comments.store', $article->id) }}" class="form-horizontal">
+                    {!! csrf_field() !!}
+
+                    @if(isset($parentId))
+                        <input type="hidden" name="parent_id" value="{{ $parentId }}">
+                    @endif
+
+                    <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}"style="padding:0; margin:0">
+                        <textarea name="content" class="form-control" style="margin:0">{{ old('content') }}</textarea>
+                        {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
+                    </div>
+
+                    <div class="text-right" style="margin:10px 0px 0px 0px;">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            전송하기
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     @else
-        @include('comments.partial.login')
+        {{--로그인 요구 폼--}}
+        <div class="media link__login__comment">
+            <div class="media-body">
+                <h4 class="media-heading text-center">
+                    <a href="{{ route('sessions.create') }}">로그인</a>하면 댓글을 쓸 수 있습니다.
+                </h4>
+            </div>
+        </div>
     @endif
 </div>
 <div class="list__comment">
@@ -25,8 +55,11 @@
 @section('script')
     @parent
     <script>
-        document.getElementById(".btn__reply__comment").style.display="none";
-        document.getElementById(".btn__edit__comment").style.display="none";
+        $(document).ready(function(){
+            $(".media__create__comment").hide();
+            $(".media__edit__comment").hide();
+        });
+
         // 댓글 삭제 요청을 처리한다.
         $('.btn__delete__comment').on('click', function(e) {
             var commentId = $(this).closest('.item__comment').data('id'),
@@ -58,24 +91,6 @@
 
             el__create.hide('fast');
             el__edit.toggle('fast').end().find('textarea').first().focus();
-        });
-
-        // Send save a vote request to the server
-        $('.btn__vote__comment').on('click', function(e) {
-            var self = $(this),
-                commentId = self.closest('.item__comment').data('id');
-
-            $.ajax({
-                type: 'POST',
-                url: '/comments/' + commentId + '/votes',
-                data: {
-                    vote: self.data('vote')
-                }
-            }).then(function (data) {
-                self.find('span').html(data.value).fadeIn();
-                self.attr('disabled', 'disabled');
-                self.siblings().attr('disabled', 'disabled');
-            });
         });
     </script>
 @endsection
