@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="panel-body">
-                  {!! Form::open(['action' => 'CategoryController@store', 'method' => 'POST']) !!}
+                  {!! Form::open(['action' => 'CategoryController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
                       {{Form::label('category', 'category')}}
                       {{Form::text('category','',['class' => 'form-control','placeholder' => '영업 라인업명'])}}
@@ -19,9 +19,12 @@
                       {{Form::label('commision','commision')}}
                       {{Form::text('commision','',['class' => 'form-control','placeholder' => '수수료'])}}
                     </div>
-                    <div>
+                    <div class="form-group">
                         {{Form::label('content', 'content')}}
-                        {{Form::textarea('content','',['class' => 'form-control','placeholder' => ''])}}
+                        {{Form::textarea('content','',['id'=>'ckeditor','class' => 'form-control','placeholder' => ''])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::file('image')}}
                     </div>
                     {{Form::submit('제출',['class' => 'btn btn-primary'])}}
                   {!! Form::close() !!}

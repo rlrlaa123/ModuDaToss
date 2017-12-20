@@ -166,6 +166,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        Unisharp\Ckeditor\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
