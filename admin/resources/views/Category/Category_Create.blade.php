@@ -21,7 +21,7 @@
                     </div>
                     <div>
                         {{Form::label('content', 'content')}}
-                        {{Form::textarea('content','',['class' => 'form-control','placeholder' => ''])}}
+                        {{Form::textarea('content','',['id'=>'ckeditor','class' => 'form-control','placeholder' => ''])}}
                     </div>
                     {{Form::submit('제출',['class' => 'btn btn-primary'])}}
                   {!! Form::close() !!}

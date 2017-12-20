@@ -23,8 +23,8 @@
                                 {!! $errors->first('commision', '<span class="form-error">:message</span>') !!}
                             </div>
                             <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-                                <textarea name="content" id="content" class="form-control" rows="10">{{ old('content', $Category->content) }}</textarea>
-                                {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
+                                <textarea name="content" id="ckeditor" class="form-control" rows="10">{{ old('content', $Category->content) }}</textarea>
+                                {!! $errors->first('category-ckeditor', '<span class="form-error">:message</span>') !!}
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">
@@ -45,4 +45,5 @@
         </div>
     </div>
 </div>
+
 @endsection
