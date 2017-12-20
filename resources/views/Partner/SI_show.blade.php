@@ -43,9 +43,9 @@
                             <tr>
                                 <td>
                                   @if($SI->state == '완료')
-                                    <a href="/detail/{{$SI->id}}"><button class="success">{{$SI->state}}</button></a>
+                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="success">{{$SI->state}}</button></a>
                                   @else
-                                    <a href="/detail/{{$SI->id}}"><button class="state">{{$SI->state}}</button></a>
+                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="state">{{$SI->state}}</button></a>
                                   @endif
                                 </td>
                                 <td>{{ $SI->created_at }}</td>

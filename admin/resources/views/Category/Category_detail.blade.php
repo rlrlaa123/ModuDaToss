@@ -36,7 +36,8 @@
                         <p> 현재 정보가 없습니다. </p>
                     @endif
                 </div>
-                {!! Form::open(['action' => ['CategoryController@destroy',$Category->id], 'method' => 'POST']) !!}
+                {{--<button class="category__delete btn-danger">업종 삭제</button> •--}}
+                {!! Form::open(['action' => ['CategoryController@destroy',$Category->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()']) !!}
                     {{Form::hidden('_method','DELETE')}}
                     {{Form::submit('업종 삭제',['class' => 'btn btn-primary'])}}
                 {!! Form::close() !!}
@@ -45,5 +46,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    function ConfirmDelete()
+    {
+        var x = confirm("정말 삭제하시겠습니까?");
+        if (x) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
 
 @endsection

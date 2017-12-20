@@ -69,7 +69,7 @@ class MemberController extends Controller
             'updated_at'=> date('Y-m-d H:i:s'),
         ]);
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     /**
