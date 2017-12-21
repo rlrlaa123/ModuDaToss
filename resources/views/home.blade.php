@@ -75,7 +75,15 @@
                     </div>
                 </div>
             @endif
-            <h4>커뮤니티</h4>
+            <h4 style="margin-bottom:3%;">커뮤니티</h4>
+            <div class="front_page container">
+                <div class="front_page image-container community">
+                    <a href="">#영업의 팁</a>
+                </div>
+                <div class="front_page image-container dashboard">
+                    <a href="{{ route('articles.index') }}">#커뮤니티</a>
+                </div>
+            </div>
         </div>
     </div>
     <p class="GotoSIInput-text">영업정보 등록</p>

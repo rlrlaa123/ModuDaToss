@@ -895,6 +895,36 @@ body {
   margin-top:1%;
 }
 
+// 메인페이지 커뮤니티 이미지
+.front_page.image-container.community {
+  margin: 0 7% 0 7%;
+  height:20%;
+  background-image: url("/img/community.jpeg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.front_page.image-container.community a {
+  color:white;
+  text-decoration:underline;
+  font-size:150%;
+}
+.front_page.image-container.dashboard {
+  margin: 0 7% 0 7%;
+  height:20%;
+  background-image: url("/img/dashboard.jpeg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.front_page.image-container.dashboard a {
+  color:white;
+  text-decoration:underline;
+  font-size:150%;
+}
+
 .panel-default > .panel-heading{
   border:none;
 }

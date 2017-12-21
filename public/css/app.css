@@ -9235,6 +9235,48 @@ body {
   margin-top: 1%;
 }
 
+.front_page.image-container.community {
+  margin: 0 7% 0 7%;
+  height: 20%;
+  background-image: url("/img/community.jpeg");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.front_page.image-container.community a {
+  color: white;
+  text-decoration: underline;
+  font-size: 150%;
+}
+
+.front_page.image-container.dashboard {
+  margin: 0 7% 0 7%;
+  height: 20%;
+  background-image: url("/img/dashboard.jpeg");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.front_page.image-container.dashboard a {
+  color: white;
+  text-decoration: underline;
+  font-size: 150%;
+}
+
 .panel-default > .panel-heading {
   border: none;
 }
