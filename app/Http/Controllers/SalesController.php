@@ -202,9 +202,15 @@ class SalesController extends Controller
         return view('/SalesMan/mypage/edit')->with('user',$user);
     }
 
-    public function mypageupdate($id)
+    public function mypageupdate(Request $request, $id)
     {
         $user = User::find($id);
+        $user->name = $request->name;
+        $user->bankName = $request->bankName;
+        $user->accountNumber = $request->accountNumber;
+        $user->photo = $request->photo;
+
+        $user->save();
 
         return view('/SalesMan/mypage')->with('user',$user);
     }
