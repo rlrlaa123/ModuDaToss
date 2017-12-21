@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
+            <button class="btn btn-primary btn-block" type="submit">
                 로그인
             </button>
         </div>
@@ -44,23 +44,27 @@
                 <a href="{{ route('remind.create') }}">비밀번호를 잊으셨나요?</a>
             </p>
         </div>
-
+        <hr>
         <div class="form-group">
-            <p class="text-muted">
-                깃허브 계정을로 로그인하세요. {{ config('app.name') }} 계정으로 로그인할 수도 있습니다.
-            </p>
-            <a class="btn btn-default btn-lg btn-block" href="{{ route('social.login', ['github']) }}" style="background-color:white; color:black;">
-                <img src="/img/github.png" width="5%">
+            <a class="btn btn-primary btn-block" href="{{ route('social.login', ['facebook']) }}" style="background-color:#3b5998; color:white; margin:1%; display:block;">
+                <img src="/img/facebook.png" width="20px">
                 <strong>
-                    <i class="fa fa-github"></i>
-                    Github 계정으로 로그인하기
+                    <i class="fa fa-facebook"></i>
+                    Facebook 계정으로 로그인하기
                 </strong>
             </a>
-            <a class="btn btn-default btn-lg btn-block" href="{{ route('social.login', ['facebook']) }}" style="background-color:#3b5998; color:white;">
-                <img src="/img/facebook.png" width="5%">
+            <a class="btn btn-primary btn-block" href="{{ route('social.login', ['naver']) }}" style="background-color:#3EAF0E; color:white; margin:1%; display:block;">
+                <img src="/img/naver.ico" width="20px">
                 <strong>
-                    <i class="fa fa-github"></i>
-                    Github 계정으로 로그인하기
+                    <i class="fa fa-facebook"></i>
+                    네이버 계정으로 로그인하기
+                </strong>
+            </a>
+            <a class="btn btn-primary btn-block" href="{{ route('social.login', ['kakao']) }}" style="background-color:#fcd411; color:#2e2e30; margin:1%; display:block;">
+                <img src="/img/kakao.png" width="20px">
+                <strong>
+                    <i class="fa fa-facebook"></i>
+                    Kakao 계정으로 로그인하기
                 </strong>
             </a>
         </div>
