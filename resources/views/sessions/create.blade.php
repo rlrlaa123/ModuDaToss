@@ -44,5 +44,19 @@
                 <a href="{{ route('remind.create') }}">비밀번호를 잊으셨나요?</a>
             </p>
         </div>
+
+        <div class="form-group">
+            <p class="text-muted">
+                깃허브 계정을로 로그인하세요. {{ config('app.name') }} 계정으로 로그인할 수도 있습니다.
+            </p>
+            <a class="btn btn-default btn-lg btn-block" href="{{ route('social.login', ['github']) }}" style="background-color:white; color:black;">
+                <img src="/img/github.png" width="5%">
+                <strong>
+                    <i class="fa fa-github"></i>
+                    Github 계정으로 로그인하기
+                </strong>
+            </a>
+        </div>
     </form>
+
 @stop
