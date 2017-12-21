@@ -30,7 +30,7 @@
                         @else
                             @if(Auth::user()->type!=1)
                             @else
-                                <div class="btn submit" onclick="window.location='{{ route('SalesInfo.choosecategory') }}'" style="display:block;">
+                                <div class="btn submit" onclick="window.location='{{ route('SalesInfo.choosecategory') }}'">
                                     영업정보 등록
                                 </div>
                             @endif

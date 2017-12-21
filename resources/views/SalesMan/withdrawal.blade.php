@@ -45,7 +45,7 @@
                   </div>
 
                   <div class="buttoncontainer">
-                    <button class="Requestwidthdrawal">출금 신청</button>
+                    <button class="btn Requestwidthdrawal">출금 신청</button>
                   {!! Form::close() !!}
                   </div>
 
