@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laracasts/flash": " 2.0.*",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "~2.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "nesbot/carbon": "^1.22",
