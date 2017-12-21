@@ -8360,8 +8360,13 @@ body {
   border-radius: 5px;
 }
 
-.navbar {
-  margin: 0;
+.navbar-brand {
+  margin-left: 0;
+}
+
+@font-face {
+  font-family: "Nanum Gothic";
+  src: url("/fonts/NanumGothic/NanumGothicCoding.ttf");
 }
 
 @media (min-width: 1281px) {
@@ -8389,10 +8394,9 @@ body {
     width: 25%;
     height: 25%;
     display: inline-block;
-    border: 1px solid #a6a6a6;
     border-radius: 5px;
-    -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
@@ -8612,10 +8616,9 @@ body {
     width: 25%;
     height: 25%;
     display: inline-block;
-    border: 1px solid #a6a6a6;
     border-radius: 5px;
-    -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
@@ -8836,10 +8839,9 @@ body {
     width: 24%;
     height: 18%;
     display: inline-block;
-    border: 1px solid #a6a6a6;
     border-radius: 5px;
-    -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 5%;
     margin-left: 1%;
     margin-right: 1%;
@@ -9027,10 +9029,9 @@ body {
     width: 25%;
     height: 13%;
     display: inline-block;
-    border: 1px solid #a6a6a6;
     border-radius: 5px;
-    -webkit-box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top: 5%;
     margin-left: 2%;
     margin-right: 2%;
@@ -9299,7 +9300,6 @@ body {
 }
 
 .navbar-brand {
-  margin-left: 150px;
   color: #3473d9;
   font-weight: lighter;
 }

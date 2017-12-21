@@ -57,6 +57,22 @@
                             <a href="{{ route('sessions.create') }}">로그인</a>
                         </li>
                         <li><a href="{{ route('users.create') }}">회원가입</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                영업 라인업 <span class="caret"></span>
+                            </a>
+                            @php $categories = \App\Category::all() @endphp
+                            @if(isset($categories))
+                                <ul class="dropdown-menu" role="menu">
+
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="/category/{{$category->id}}">{{$category->category}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
                         <li><a href="{{ route('articles.index') }}">게시판</a></li>
 {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                     @else
@@ -106,11 +122,6 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/profit/{{ Auth::user()->id }}">
-                                        수익 조회 및 출금
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="/Recommender/{{ Auth::user()->id }}">
                                     추천인 조회
                                     </a>
@@ -152,6 +163,13 @@
                             <li>
                                 <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
                             </li>
+                        @endif
+                        @if (Auth::user()->type == 1 || Auth::user()->type == 4)
+                        <li>
+                            <a href="/profit/{{ Auth::user()->id }}">
+                                수익 조회 및 출금
+                            </a>
+                        </li>
                         @endif
 
                         <li>
