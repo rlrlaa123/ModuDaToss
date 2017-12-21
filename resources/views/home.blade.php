@@ -31,29 +31,46 @@
             @else
                 <div class="front_page row">
                     <div class="front_page col realtime">
-                        <p class="realtime_bname">{{$salesinfos[0]->BusinessName}}</p>
+                        @php($businessName = array($salesinfos[0]->BusinessName,$salesinfos[1]->BusinessName,$salesinfos[2]->BusinessName,$salesinfos[3]->BusinessName))
+                        <p class="realtime_bname">
+                            {{(strlen($businessName[0])>5) ? iconv_substr($businessName[0],0,5,"utf-8").'...' : $businessName[0]}}
+                        </p>
                         <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
-                        <p>{{$salesinfos[0]->Category}}</p>
+                        <p>
+                            {{(strlen($salesinfos[0]->CustomerAddress) > 12) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
+                        </p>
                         <p>{{$salesinfos[0]->state}}</p>
                     </div>
                     <div class="front_page col realtime">
-                        <p class="realtime_bname">{{$salesinfos[1]->BusinessName}}</p>
+                        <p class="realtime_bname">
+                            {{(strlen($businessName[1]) > 12) ? iconv_substr($businessName[1],0,11,"utf-8").'...' : $businessName[1]}}
+                        </p>
                         <p class="realtime_name">{{$salesinfos[1]->SP_name}}</p>
-                        <p>{{$salesinfos[1]->Category}}</p>
+                        <p>
+                            {{(strlen($salesinfos[1]->CustomerAddress) > 12) ? iconv_substr($salesinfos[1]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[1]->CustomerAddress}}
+                        </p>
                         <p>{{$salesinfos[1]->state}}</p>
                     </div>
                 </div>
                 <div class="front_page row">
                     <div class="front_page col realtime">
-                        <p class="realtime_bname">{{$salesinfos[2]->BusinessName}}</>
+                        <p class="realtime_bname">
+                            {{(strlen($businessName[2]) > 12) ? iconv_substr($businessName[2],0,11,"utf-8").'...' : $businessName[2]}}
+                        </p>
                         <p class="realtime_name">{{$salesinfos[2]->SP_name}}</p>
-                        <p>{{$salesinfos[2]->Category}}</p>
+                        <p>
+                            {{(strlen($salesinfos[2]->CustomerAddress) > 12) ? iconv_substr($salesinfos[2]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[2]->CustomerAddress}}
+                        </p>
                         <p>{{$salesinfos[2]->state}}</p>
                     </div>
                     <div class="front_page col realtime">
-                        <p class="realtime_bname">{{$salesinfos[3]->BusinessName}}</>
+                        <p class="realtime_bname">
+                            {{(strlen($businessName[3]) > 12) ? iconv_substr($businessName[3],0,11,"utf-8").'...' : $businessName[3]}}
+                        </p>
                         <p class="realtime_name">{{$salesinfos[3]->SP_name}}</p>
-                        <p>{{$salesinfos[3]->Category}}</p>
+                        <p>
+                            {{(strlen($salesinfos[3]->CustomerAddress) > 12) ? iconv_substr($salesinfos[3]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[3]->CustomerAddress}}
+                        </p>
                         <p>{{$salesinfos[3]->state}}</p>
                     </div>
                 </div>

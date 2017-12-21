@@ -9,6 +9,7 @@
             position:fixed;
             overflow:auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
+            z-index: 1000;
         }
         .sideNav.open {
             display:block;
@@ -20,6 +21,7 @@
             overflow: auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             /*visibility:visible;*/
+            z-index: 1000;
         }
         .recommend {
              padding-left: 25px;
