@@ -26,7 +26,7 @@
                 </div>
                 <br><br>
                 <div class="buttoncontainer">
-                    <a href="/withdrawal/{{ Auth::user()->id }}"><button class="withdrawal">출금하러가기</button></a>
+                    <a href="/withdrawal/{{ Auth::user()->id }}"><button class="btn withdrawal">출금하러가기</button></a>
                 </div>
 
                 <a href="/Recommender/{{ Auth::user()->id }}">
