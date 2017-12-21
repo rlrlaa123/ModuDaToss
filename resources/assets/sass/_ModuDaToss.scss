@@ -60,6 +60,8 @@ body {
     color:#a6a6a6;
     margin-bottom:0;
     font-size: 150%;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.col img.img1{
@@ -79,6 +81,8 @@ body {
 
   .front_page.col p.num {
     color:#3473d9;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.line {
@@ -191,17 +195,18 @@ body {
     margin:0;
     text-align:center;
     border-radius:5px;
-    border: 1px solid #a6a6a6;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content {
-    border: 1px solid #a6a6a6;
     width:90%;
     height:60%;
     margin: 2% 0 0 3%;
     border-radius:5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
   }
 
   .category.content h3 {
@@ -272,6 +277,7 @@ body {
     height:25%;
     display:inline-block;
     border-radius:5px;
+    border:0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top:2%;
     margin-left:2%;
@@ -283,6 +289,8 @@ body {
     color:#a6a6a6;
     margin-bottom:0;
     font-size: 150%;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.col img.img1{
@@ -302,6 +310,8 @@ body {
 
   .front_page.col p.num {
     color:#3473d9;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.line {
@@ -413,8 +423,8 @@ body {
     margin:0;
     text-align:center;
     border-radius:5px;
-    border: 1px solid #a6a6a6;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content {
@@ -423,7 +433,8 @@ body {
     height:60%;
     margin: 2% 0 2% 3%;
     border-radius:5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content h3 {
@@ -495,6 +506,7 @@ body {
     height:18%;
     display:inline-block;
     border-radius:5px;
+    border:0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top:5%;
     margin-left:1%;
@@ -506,6 +518,8 @@ body {
     color:#a6a6a6;
     margin-bottom:0;
     font-size:120%;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.col img.img1{
@@ -526,6 +540,8 @@ body {
   .front_page.col p.num {
     color:#3473d9;
     font-size:120%;
+    height:25%;
+    padding:2%;
   }
 
   .front_page.line {
@@ -605,17 +621,17 @@ body {
     margin:0;
     text-align:center;
     border-radius:5px;
-    border: 1px solid #a6a6a6;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content {
-    border: 1px solid #a6a6a6;
     width:90%;
     height:60%;
     margin: 2% 0 2% 3%;
     border-radius:5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content h3 {
@@ -687,6 +703,7 @@ body {
     height:13%;
     display:inline-block;
     border-radius:5px;
+    border:0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-top:5%;
     //margin-bottom:5%;
@@ -699,6 +716,8 @@ body {
     color:#a6a6a6;
     margin-bottom:0;
     font-size:100%;
+    padding:2%;
+    height:30%;
   }
 
   .front_page.col img.img1{
@@ -718,6 +737,8 @@ body {
 
   .front_page.col p.num {
     color:#3473d9;
+    padding:2%;
+    height:30%;
   }
 
   .front_page.line {
@@ -745,7 +766,9 @@ body {
     margin:0;
     padding:0;
     color: #23243b;
-    font-size: 120%;
+    font-size: 110%;
+    height:34%;
+    padding-top:5%;
   }
 
   .front_page.col.realtime p {
@@ -754,6 +777,7 @@ body {
     padding:0 0 0 8%;
     width:100%;
     font-size:100%;
+    height:33%;
   }
 
   .front_page.col.realtime p.realtime_name {
@@ -762,6 +786,7 @@ body {
     margin:0;
     padding:0;
     font-size:100%;
+    height:34%;
   }
 
   // 영업 라인업 페이지 -
@@ -797,17 +822,17 @@ body {
     margin:0;
     text-align:center;
     border-radius:5px;
-    border: 1px solid #a6a6a6;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content {
-    border: 1px solid #a6a6a6;
     width:90%;
     height:60%;
     margin: 2% 0 2% 3%;
     border-radius:5px;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.3);
+    border:0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
   .category.content h3 {
