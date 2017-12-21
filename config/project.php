@@ -6,5 +6,5 @@
  * Time: 오후 10:11
  */
 return [
-    'url' => 'http://modudatoss.co.kr',
+    'url' => 'http://modu.com:8000',
 ];

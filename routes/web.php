@@ -130,3 +130,8 @@ Route::get('/servicecenter/{frequently}/{id}', 'ServiceCenterController@show');
 
 //영업 라인업
 Route::get('/category/{id}', 'CategoryController@show');
+
+Route::get('social/{provider}', [
+    'as' => 'social.login',
+    'uses' => 'SocialController@execute',
+]);

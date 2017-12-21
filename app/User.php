@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SalesInfo::class);
     }
+
+    public function scopeSocialUser(\Illuminate\Database\Eloquent\Builder $query, $email)
+    {
+        return $query->whereEmail($email)->whereNull('password')->whereActivated(1);
+    }
 }

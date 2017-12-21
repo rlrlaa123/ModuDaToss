@@ -166,11 +166,10 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
-
+        \Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -234,6 +233,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
         'Flash' => Laracasts\Flash\Flash::class,
-    ],
 
+        'Socialite' => \Laravel\Socialite\Facades\Socialite::class,
+    ],
 ];
