@@ -1,7 +1,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <style>
     @media screen and (max-width: 768px) {
-        .navbar-side .side-collapse {
+        .sideNav {
+            top:50px;
+            bottom:0;
+            right:-256px;
+            width:256px;
+            position:fixed;
+            overflow:auto;
+            transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
+        }
+        .sideNav.open {
+            display:block;
             top: 50px;
             bottom: 0;
             right: 0;
@@ -9,48 +19,32 @@
             position: fixed;
             overflow: auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
-            z-index:1000;
+            /*visibility:visible;*/
         }
-        .navbar-side .side-collapse.open {
-            width: 0;
-            /*right: 0;*/
-        }
-    }
-    .col-sm-6{
-      text-align:center;
-      background-color:skyblue;
-    }
-    .dropdown-menu {
-        width: 200px;
-    }
-    .recommend {
-        padding-left: 25px;
-        padding-bottom: 3px;
-        text-align: left;
-        border-radius: 5px;
-        -webkit-tap-highlight-color: transparent;
+        .recommend {
+             padding-left: 25px;
+             padding-bottom: 3px;
+             text-align: left;
+             border-radius: 5px;
+             -webkit-tap-highlight-color: transparent;
+         }
     }
 </style>
 
-<nav class="navbar navbar-default navbar-side">
-        <div class="navbar-header">
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse-side" data-target=".side-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}" style="color:#3473d9;">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
-
-        <div class="navbar-default side-collapse open">
+<div class="navbar navbar-default navbar-side">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{ url('/') }}" style="color:#3473d9;">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+        <nav class="navbar-default navbar-side sideNav">
             <div class="navbar-collapse">
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-left">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li>
@@ -74,21 +68,8 @@
                             @endif
                         </li>
                         <li><a href="{{ route('articles.index') }}">게시판</a></li>
-{{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
+                        {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                     @else
-                        {{--<div class="container">--}}
-                            {{--<h1 class="container">--}}
-                                {{--hello--}}
-                            {{--</h1>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--hello--}}
-                                {{--</div>--}}
-                                {{--<div class="col-sm-6">--}}
-                                    {{--hello--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -123,7 +104,7 @@
                                 </li>
                                 <li>
                                     <a href="/Recommender/{{ Auth::user()->id }}">
-                                    추천인 조회
+                                        추천인 조회
                                     </a>
                                 </li>
                                 <li>
@@ -165,11 +146,11 @@
                             </li>
                         @endif
                         @if (Auth::user()->type == 1 || Auth::user()->type == 4)
-                        <li>
-                            <a href="/profit/{{ Auth::user()->id }}">
-                                수익 조회 및 출금
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/profit/{{ Auth::user()->id }}">
+                                    수익 조회 및 출금
+                                </a>
+                            </li>
                         @endif
 
                         <li>
@@ -201,19 +182,26 @@
                         </li>
 
                         {{--<li>--}}
-                            {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
+                        {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
                         {{--</li>--}}
                     @endif
                 </ul>
             </div>
-        </div>
-
-</nav>
+        </nav>
+    </div>
+</div>
 
 <script>
-    $(document).ready(function() {
-        $('[data-toggle=collapse-side]').click(function(e) {
-            $('.side-collapse').toggleClass('open');
+    $(document).ready(function(event) {
+        $('.navbar-toggle').on('click', function (e) {
+            $('.sideNav').toggleClass('open');
+            e.stopPropagation();
+            return false;
         });
+
+        // $('*:not(.navbar-toggle)').on('click', function () {
+        //     $('.sideNav').removeClass('open');
+        // });
+
     });
 </script>
