@@ -122,6 +122,7 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             영업 라인업 <span class="caret"></span>
@@ -161,8 +162,22 @@
                         </li>
                     @endif
 
-                    <li>
-                        <a href="{{ route('articles.index') }}">게시판</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            커뮤니티 <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href={{ route('articles.index') }}>
+                                    자유게시판
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="">영업의 팁</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="dropdown">
