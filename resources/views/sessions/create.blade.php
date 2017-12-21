@@ -56,6 +56,13 @@
                     Github 계정으로 로그인하기
                 </strong>
             </a>
+            <a class="btn btn-default btn-lg btn-block" href="{{ route('social.login', ['facebook']) }}" style="background-color:#3b5998; color:white;">
+                <img src="/img/facebook.png" width="5%">
+                <strong>
+                    <i class="fa fa-github"></i>
+                    Github 계정으로 로그인하기
+                </strong>
+            </a>
         </div>
     </form>
 
