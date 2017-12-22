@@ -63,7 +63,7 @@
                         </div>
                         <div class="inputbox">
                           <label for="ContactTime" class="name">접촉시간</label>
-                          <input type="date" name="ContactTime" class="SI_input form-control" placeholder="접촉시간">
+                          <input type="datetime-local" name="ContactTime" class="SI_input form-control" placeholder="접촉시간">
                         </div>
                         <div class="inputbox">
                             <label for="images" class="name">사업장사진</label>
