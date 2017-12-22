@@ -101,6 +101,8 @@ Route::get('/profitdetail/{id}/','SalesController@profitdetail');
 Route::get('/Recommender/{id}', 'SalesController@Recommender');
 Route::get('/Recommenderdetail/{id}/{recommendeeid}','SalesController@Recommenderdetail');
 Route::get('/withdrawal/{id}' ,'SalesController@withdrawal');
+Route::get('/WithdrawalLog/{id}','SalesController@WithdrawalLog');
+Route::get('/DepositLog/{id}','SalesController@DepositLog');
 Route::post('/withdrawal/{id}' ,'SalesController@withdrawalrequest');
 Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
 Route::get('/detail/{SIid}','SalesController@showdetail');

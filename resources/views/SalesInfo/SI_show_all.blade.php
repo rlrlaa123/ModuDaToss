@@ -7,7 +7,6 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <div class="SI_showtitle">누적금액  <span class="Moneysum">*** 원</span></div>
                   <br><br>
                   <div class="divide">
                     <a href="/SalesInfo/{{Auth::user()->id}}" style="color:#b7babf;"><button class="SI_button" id="mine">나의 영업 현황</button></a>

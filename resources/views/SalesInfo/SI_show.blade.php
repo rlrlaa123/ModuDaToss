@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <div class="SI_showtitle">누적금액  <span class="Moneysum">*** 원</span></div>
+                  <div class="SI_showtitle">나의 누적금액  <span class="Moneysum">{{ $Accumulate }} 원</span></div>
                   <br><br>
                   <div class="divide">
                     <button class="SI_button" id="mine" style="color:#3473d9;">나의 영업 현황</button>

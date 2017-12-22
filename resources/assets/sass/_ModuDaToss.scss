@@ -1324,20 +1324,44 @@ table td{
   height:60px;
   position:fixed;
   top:70px;
-  right:30px;
+  right:45px;
 }
 .Gotorecom img{
   width:45px;
   height:55px;
 }
+.GotoDeposit{
+  position:fixed;
+  top:150px;
+  right:30px;
+}
+.GotoWithdrawal{
+  position:fixed;
+  top:240px;
+  right:30px;
+}
+.GotoDeposit, .GotoWithdrawal{
+  width:70px;
+  height:60px;
+}
+.GotoDeposit img, .GotoWithdrawal img{
+  width:55px;
+  height:55px;
+}
+.GotoDeposit p,.GotoWithdrawal p{
+  font-size:10px;
+  color:black;
+}
+
 
 ////////////추천인 조회
-.recommenderuppder{
-  width:100%;
-  height:50px;
-  font-size:12px;
-  color:#b7babf;
+.RecommendTitle{
+  margin-top:30px;
   text-align:center;
+}
+.Bluename{
+  font-size:18px;
+  color:blue;
 }
 .showithmoney{
   font-size:20px;

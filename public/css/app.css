@@ -9742,7 +9742,7 @@ table td {
   height: 60px;
   position: fixed;
   top: 70px;
-  right: 30px;
+  right: 45px;
 }
 
 .Gotorecom img {
@@ -9750,12 +9750,44 @@ table td {
   height: 55px;
 }
 
-.recommenderuppder {
-  width: 100%;
-  height: 50px;
-  font-size: 12px;
-  color: #b7babf;
+.GotoDeposit {
+  position: fixed;
+  top: 150px;
+  right: 30px;
+}
+
+.GotoWithdrawal {
+  position: fixed;
+  top: 240px;
+  right: 30px;
+}
+
+.GotoDeposit,
+.GotoWithdrawal {
+  width: 70px;
+  height: 60px;
+}
+
+.GotoDeposit img,
+.GotoWithdrawal img {
+  width: 55px;
+  height: 55px;
+}
+
+.GotoDeposit p,
+.GotoWithdrawal p {
+  font-size: 10px;
+  color: black;
+}
+
+.RecommendTitle {
+  margin-top: 30px;
   text-align: center;
+}
+
+.Bluename {
+  font-size: 18px;
+  color: blue;
 }
 
 .showithmoney {

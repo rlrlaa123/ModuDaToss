@@ -89,6 +89,21 @@
                     @endforeach
                   </div>
                 </div>
+                <div class="panel-footer">
+                  @if($SalesInfo[0]->state == '승인대기')
+                    <form method="post" action="/Grant">
+                      {{ csrf_field() }}
+                      <input type="hidden" name="SI_id" value="{{$SalesInfo[0]->id}}">
+                      <input type="hidden" name="category" value="{{$SalesInfo[0]->Category}}">
+                      <input type="number" value="" name="GrantedMoney" placeholder="최종승인금액">
+                      <input type="submit" value="최종승인">
+                    </form>
+
+                    <form method="get" action="/Reject">
+                      <input type="submit" value="승인거부">
+                    </form>
+                  @endif
+                </div>
             </div>
         </div>
     </div>

@@ -128,11 +128,14 @@ class SalesController extends Controller
         //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
         //return $SalesInfo;
 
+        $Accumulate = Savinghistory::where('SalesPerson_id',$id)->sum('MoneySum');
+
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo)->with('Accumulate',$Accumulate);
 
     }
     public function showall(){
+
 
       $SalesInfo = SalesInfo::get();
       return view('SalesInfo.SI_show_all')->with('SalesInfo',$SalesInfo);
@@ -140,8 +143,10 @@ class SalesController extends Controller
     //영업 리스트 항목별로
     public function showstate($id,$state){
 
+        $Accumulate = Savinghistory::where('SalesPerson_id',$id)->sum('MoneySum');
+
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
-        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo);
+        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo)->with('Accumulate',$Accumulate);
     }
     public function showstateall($state){
 
@@ -219,8 +224,10 @@ class SalesController extends Controller
     {
         //
         $user = User::find($id);
-        $SH = Savinghistory::where('SalesPerson_id',$id)->take(4)->orderBy('created_at','desc')->get();
-        return view('/SalesMan/profit')->with('user',$user)->with('SH',$SH);
+        $Accumulate = Savinghistory::where('SalesPerson_id',$user->id)->sum('MoneySum');
+        return view('/SalesMan/profit')->with('user',$user)
+                                        ->with('Accumulate',$Accumulate);
+
     }
     public function profitdetail($id){
         $user = User::find($id);
@@ -236,7 +243,7 @@ class SalesController extends Controller
         $recommendcode = $user->recommend_code;
         $recommendee = User::where('recommender',$recommendcode)->get();
 
-        $SH = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
+        $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->get();
 
         return view('/SalesMan/Recommender')->with('user',$user)
                                             ->with('SH',$SH)
@@ -304,5 +311,17 @@ class SalesController extends Controller
 
 
       return redirect('/profit'.'/'.$id);
+    }
+
+    public function WithdrawalLog($id){
+      $user = User::find($id);
+      $data = withdrawalInfo::where('memberID',$id)->orderBy('created_at','desc')->get();
+      return view('SalesMan.WithdrawalLog')->with('data',$data)->with('user',$user);
+    }
+
+    public function DepositLog($id){
+      $user = User::find($id);
+      $data = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
+      return view('SalesMan.DepositLog')->with('data',$data)->with('user',$user);
     }
 }

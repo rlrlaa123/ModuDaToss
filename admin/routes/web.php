@@ -32,6 +32,8 @@ Route::get('/member/a_class/create/{userid}','MemberController@UpdateAClass');
 Route::get('/show2','SIController@index');
 Route::get('/show2/detail/{id}','SIController@show');
 Route::get('/show2/{state}','SIController@Categorize');
+Route::post('/Grant','SIController@Grant');
+Route::get('/Reject','SIController@Reject');
 //상품
 Route::resource('/category','CategoryController');
 //인출

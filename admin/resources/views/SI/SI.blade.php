@@ -13,6 +13,7 @@
                         <li><a href="/show2">전체</a></li>
                         <li><a href="/show2/접수 완료">접수</a></li>
                         <li><a href="/show2/진행중">진행중</a></li>
+                        <li><a href="/show2/승인대기">승인대기</a></li>
                         <li><a href="/show2/완료">완료</a></li>
                         <li><a href="/show2/실패">실패</a></li>
                       </ul>

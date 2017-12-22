@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @if(Auth::user()->id == $user->id)
 @section('content')
-  <div class="recommenderupper">
-    {{Auth::user()->name}} 회원님의 추천인 목록
+  <div class="RecommendTitle">
+    <p class="Bluename">{{Auth::user()->name}}</p>
+    <p>회원님의 추천인 목록</p>
   </div><br>
   <div>
     <span class="bluetitle" style="float:left">추천인수</span>
@@ -16,6 +17,7 @@
               <th style="color:#b7babf">추천인이름</th>
               <th>부여 포인트</th>
               <th></th>
+              <th>발생시간</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +26,7 @@
               <td> {{ $sh->triggerName }} </td>
               <td style="color:#3473d9;">+ {{ $sh->MoneySum }} </td>
               <td><img src="{{ URL::asset('/img/coin.png')}}" width="30" height="30"></td>
+              <td>{{ $sh->created_at->format('m-d H:i') }}</td>
           </tr>
         @endforeach
         </tbody>

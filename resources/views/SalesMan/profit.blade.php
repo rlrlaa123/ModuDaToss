@@ -12,8 +12,8 @@
                     </div>
                     <br>
                     <div class="Accumulate">
-                        <span class="bluetitle">누적금액</span>
-                        <span class="greytitle">10000</span>
+                        <span class="bluetitle">총 누적금액</span>
+                        <span class="greytitle">{{ $Accumulate }}</span>
                     </div><br><br>
 
                     <div class="MoneyShow">
@@ -33,6 +33,18 @@
                     <div class="Gotorecom">
                         <img src="{{URL::asset('/img/recommendation.png')}}">
                     </div>
+                </a>
+                <a href="/DepositLog/{{ Auth::user()->id }}">
+                  <div class="GotoDeposit">
+                    <img src="{{URL::asset('/img/Profit/Deposit.png')}}">
+                    <p>나의 수수료 기록</p>
+                  </div>
+                </a>
+                <a href="/WithdrawalLog/{{ Auth::user()->id }}">
+                  <div class="GotoWithdrawal">
+                    <img src="{{URL::asset('/img/Profit/Withdrawal.png')}}">
+                    <p>나의 출금 기록</p>
+                  </div>
                 </a>
             </div>
         </div>
