@@ -39,7 +39,13 @@
                         <p>
                             {{(strlen($salesinfos[0]->CustomerAddress) > 12) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
                         </p>
-                        <p>{{$salesinfos[0]->state}}</p>
+                        @if($salesinfos[0]->state=='진행중')
+                            <p>{{$salesinfos[0]->state}}</p>
+                        @elseif($salesinfos[0]->state=='완료')
+                            <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
+                        @elseif($salesinfos[0]->state=='실패')
+                            <p style="color:red;">{{$salesinfos[0]->state}}</p>
+                        @endif
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
@@ -49,7 +55,13 @@
                         <p>
                             {{(strlen($salesinfos[1]->CustomerAddress) > 12) ? iconv_substr($salesinfos[1]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[1]->CustomerAddress}}
                         </p>
-                        <p>{{$salesinfos[1]->state}}</p>
+                        @if($salesinfos[1]->state=='진행중')
+                            <p>{{$salesinfos[1]->state}}</p>
+                        @elseif($salesinfos[1]->state=='완료')
+                            <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
+                        @elseif($salesinfos[1]->state=='실패')
+                            <p style="color:red;">{{$salesinfos[1]->state}}</p>
+                        @endif
                     </div>
                 </div>
                 <div class="front_page row">
@@ -61,7 +73,13 @@
                         <p>
                             {{(strlen($salesinfos[2]->CustomerAddress) > 12) ? iconv_substr($salesinfos[2]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[2]->CustomerAddress}}
                         </p>
-                        <p>{{$salesinfos[2]->state}}</p>
+                        @if($salesinfos[2]->state=='진행중')
+                            <p>{{$salesinfos[2]->state}}</p>
+                        @elseif($salesinfos[2]->state=='완료')
+                            <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
+                        @elseif($salesinfos[2]->state=='실패')
+                            <p style="color:red;">{{$salesinfos[2]->state}}</p>
+                        @endif
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
@@ -71,7 +89,13 @@
                         <p>
                             {{(strlen($salesinfos[3]->CustomerAddress) > 12) ? iconv_substr($salesinfos[3]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[3]->CustomerAddress}}
                         </p>
-                        <p>{{$salesinfos[3]->state}}</p>
+                        @if($salesinfos[3]->state=='진행중')
+                            <p>{{$salesinfos[3]->state}}</p>
+                        @elseif($salesinfos[3]->state=='완료')
+                            <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
+                        @elseif($salesinfos[3]->state=='실패')
+                            <p style="color:red;">{{$salesinfos[3]->state}}</p>
+                        @endif
                     </div>
                 </div>
             @endif

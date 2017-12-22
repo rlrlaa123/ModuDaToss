@@ -110,11 +110,13 @@
                                     내 정보 확인
                                 </a>
                             </li>
+                            @if (Auth::user()->type!=2)
                             <li>
                                 <a href="/Recommender/{{ Auth::user()->id }}">
                                     추천인 조회
                                 </a>
                             </li>
+                            @endif
                             <li>
                                 <a href="{{ route('sessions.destroy') }}">
                                     로그아웃
