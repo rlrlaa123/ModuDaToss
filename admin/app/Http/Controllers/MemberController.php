@@ -38,38 +38,76 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required',
-            'name' => 'required',
-            'gender' => 'required',
-            'phoneNumber' => 'required',
-            'bankName' => 'required',
-            'accountNumber' => 'required',
-            'category' => 'required',
-        ]);
+        if ($request->type==4)
+        {
+            $this->validate($request, [
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+                'name' => 'required',
+                'gender' => 'required',
+                'phoneNumber' => 'required',
+                'bankName' => 'required',
+                'accountNumber' => 'required',
+//                'category' => 'required',
+            ]);
 
-        $activated = 1;
+            $activated = 1;
 
-        DB::table('users')->insert([
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'name' => $request->name,
-            'gender' => $request->gender,
-            'phoneNumber' => $request->phoneNumber,
-            'bankName' => $request->bankName,
-            'accountNumber' => $request->accountNumber,
-            'photo' => $request->photo,
-            'signature' => $request->signature,
-            'category' => $request->category,
-            'type' => $request->type,
-            'activated' => $activated,
-            'recommend_code' => $request->recommend_code,
-            'created_at'=> date('Y-m-d H:i:s'),
-            'updated_at'=> date('Y-m-d H:i:s'),
-        ]);
+            DB::table('users')->insert([
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'phoneNumber' => $request->phoneNumber,
+                'bankName' => $request->bankName,
+                'accountNumber' => $request->accountNumber,
+                'photo' => $request->photo,
+                'signature' => $request->signature,
+//                'category' => $request->category,
+                'type' => $request->type,
+                'activated' => $activated,
+                'recommend_code' => $request->recommend_code,
+                'created_at'=> date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s'),
+            ]);
 
-        return redirect('/');
+            return redirect('/');
+        }
+        else {
+            $this->validate($request, [
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+                'name' => 'required',
+                'gender' => 'required',
+                'phoneNumber' => 'required',
+                'bankName' => 'required',
+                'accountNumber' => 'required',
+                'category' => 'required',
+            ]);
+
+            $activated = 1;
+
+            DB::table('users')->insert([
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'phoneNumber' => $request->phoneNumber,
+                'bankName' => $request->bankName,
+                'accountNumber' => $request->accountNumber,
+                'photo' => $request->photo,
+                'signature' => $request->signature,
+                'category' => $request->category,
+                'type' => $request->type,
+                'activated' => $activated,
+                'recommend_code' => $request->recommend_code,
+                'created_at'=> date('Y-m-d H:i:s'),
+                'updated_at'=> date('Y-m-d H:i:s'),
+            ]);
+
+            return redirect('/');
+        }
+
     }
 
     /**
