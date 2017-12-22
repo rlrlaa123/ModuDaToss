@@ -31,17 +31,17 @@
                     <span class="bluetitle wd">입금정보</span>
                     <span class="greytitle wd"> {{ $user->account_number}} ({{ $user->name}},{{ $user->bankName}}) </span>
                     <div class="Newinfocontainer">
-                      <button class="Newwithinfo">새로운 입금정보 입력</button>
+                      <a class="btn Newwithinfo" href="{{ route('mypage.edit', Auth::user()->id) }}">새로운 입금정보 입력</a>
                     </div>
                   </div><br>
 
                   <div class="wdalbox">
                     <span class="bluetitle wd"> 입금예정일 </span>
-                    <span class="greytitle wd"> 2017-1-11 </spa>
+                    <span class="greytitle wd"> 2017-1-11 </span>
                   </div>
 
                   <div class="Caution">
-                    <span class="greytitle wd"> Admin에서 부여하는 주의사항 정보들 </spa>
+                    <span class="greytitle wd"> Admin에서 부여하는 주의사항 정보들 </span>
                   </div>
 
                   <div class="buttoncontainer">
@@ -60,7 +60,6 @@ $(document).ready(function(){
       $('#Tax').text(parseInt((event.target.value)*0.033));
       $('#result').text(event.target.value - parseInt((event.target.value)*0.033));
       $('#realrequest').val(event.target.value - parseInt((event.target.value)*0.033));
-
   })
 })
 </script>

@@ -1,5 +1,4 @@
 @extends('layouts.app_home')
-
 @section('content')
     <div class="front_page">
         <img src="/img/banner.png">

@@ -16,33 +16,35 @@
                     </div>
 
                     <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>작성자</th>
-                                <th>제목</th>
-                                <th>내용</th>
-                                <th>생성일</th>
-                                <th>수정일</th>
-                                <th> 비고 </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($articles as $article)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <td>{{ $article->user->name }}</td>
-                                    <td>
-                                        <a href="{{ route('articles.show', $article->id) }}">
-                                            {{ $article->title }}
-                                        </a>
-                                    </td>
-                                    <td>{{ $article->content }}</td>
-                                    <td>{{ $article->created_at }}</td>
-                                    <td>{{ $article->updated_at }}</td>
+                                    <th>작성자</th>
+                                    <th>제목</th>
+                                    <th>내용</th>
+                                    <th>생성일</th>
+                                    <th>수정일</th>
+                                    <th> 비고 </th>
                                 </tr>
-                            </tbody>
-                            @endforeach
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($articles as $article)
+                                    <tr>
+                                        <td>{{ $article->user->name }}</td>
+                                        <td>
+                                            <a href="{{ route('articles.show', $article->id) }}">
+                                                {{ $article->title }}
+                                            </a>
+                                        </td>
+                                        <td>{{ $article->content }}</td>
+                                        <td>{{ $article->created_at }}</td>
+                                        <td>{{ $article->updated_at }}</td>
+                                    </tr>
+                                </tbody>
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

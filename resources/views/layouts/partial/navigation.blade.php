@@ -1,4 +1,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/js/clipboard.min.js"></script>
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
@@ -16,7 +17,7 @@
             top: 50px;
             bottom: 0;
             right: 0;
-            width: 256px;
+            width: 230px;
             position: fixed;
             overflow: auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
@@ -97,12 +98,30 @@
                                     </a>
                                 </li>
                             @elseif (Auth::user()->type==4)
-                                <li class="recommend">
-                                    추천인 코드 {{ Auth::user()->recommend_code }}
+                                <span style="margin-left:25px; color:#777">
+                                    추천인 코드
+                                </span>
+                                <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
+                                    {{ Auth::user()->recommend_code }}
+                                    <span>
+                                        {{--<button class="btn btn-copy" data-clipboard-target="#foo" style="background-color:transparent; color:#555; margin-left:10px; padding:6px 3px 6px 3px;">--}}
+                                        {{--복사하기--}}
+                                        {{--</button>--}}
+                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
+                                    </span>
                                 </li>
                             @elseif (Auth::user()->type==1)
-                                <li class="recommend">
-                                    추천인 코드 {{ Auth::user()->recommend_code }}
+                                <span style="margin-left:25px; color:#777">
+                                    추천인 코드
+                                </span>
+                                <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
+                                    {{ Auth::user()->recommend_code }}
+                                    <span>
+                                        {{--<button class="btn btn-copy" data-clipboard-target="#foo" style="background-color:transparent; color:#555; margin-left:10px; padding:6px 3px 6px 3px;">--}}
+                                            {{--복사하기--}}
+                                        {{--</button>--}}
+                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
+                                    </span>
                                 </li>
                             @endif
                             <li>
@@ -222,10 +241,25 @@
             e.stopPropagation();
             return false;
         });
-
         // $('*:not(.navbar-toggle)').on('click', function () {
         //     $('.sideNav').removeClass('open');
         // });
+    });
 
+    var clipboard = new Clipboard('.btn-copy');
+
+    clipboard.on('success', function(e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+
+        alert('복사되었습니다');
+
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
     });
 </script>
