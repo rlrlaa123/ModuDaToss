@@ -48,7 +48,7 @@
                   </tr>
                   <tr>
                     <th>예상 접촉 시간</th>
-                    <td>{{ $SalesInfo  -> ContactTime}}</td>
+                    <td>{{str_replace("T"," ",$SalesInfo -> ContactTime)}}</td>
                   </tr>
                   <tr>
                     <th>특이사항</th>
