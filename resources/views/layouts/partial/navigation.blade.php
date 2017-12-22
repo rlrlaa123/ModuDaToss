@@ -98,12 +98,18 @@
                                     </a>
                                 </li>
                             @elseif (Auth::user()->type==4)
-                                <li class="recommend" id="foo">
-                                    추천인 코드 {{ Auth::user()->recommend_code }}
+                                <span style="margin-left:25px; color:#777">
+                                    추천인 코드
+                                </span>
+                                <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
+                                    {{ Auth::user()->recommend_code }}
+                                    <span>
+                                        {{--<button class="btn btn-copy" data-clipboard-target="#foo" style="background-color:transparent; color:#555; margin-left:10px; padding:6px 3px 6px 3px;">--}}
+                                        {{--복사하기--}}
+                                        {{--</button>--}}
+                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
+                                    </span>
                                 </li>
-                                <button class="btn-copy" data-clipboard-target="#foo">
-                                    <img src="assets/clippy.svg" alt="Copy to clipboard">
-                                </button>
                             @elseif (Auth::user()->type==1)
                                 <span style="margin-left:25px; color:#777">
                                     추천인 코드
@@ -117,7 +123,6 @@
                                         <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
                                     </span>
                                 </li>
-
                             @endif
                             <li>
                                 <a href="/mypage/{{ Auth::user()->id }}">
