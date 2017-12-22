@@ -104,10 +104,7 @@
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
                                     {{ Auth::user()->recommend_code }}
                                     <span>
-                                        {{--<button class="btn btn-copy" data-clipboard-target="#foo" style="background-color:transparent; color:#555; margin-left:10px; padding:6px 3px 6px 3px;">--}}
-                                        {{--복사하기--}}
-                                        {{--</button>--}}
-                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
+                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin:3px 0 3px 5px;" value="{{ Auth::user()->recommend_code }}">
                                     </span>
                                 </li>
                             @elseif (Auth::user()->type==1)
@@ -117,10 +114,7 @@
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
                                     {{ Auth::user()->recommend_code }}
                                     <span>
-                                        {{--<button class="btn btn-copy" data-clipboard-target="#foo" style="background-color:transparent; color:#555; margin-left:10px; padding:6px 3px 6px 3px;">--}}
-                                            {{--복사하기--}}
-                                        {{--</button>--}}
-                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin-left:5px;" value="{{ Auth::user()->recommend_code }}">
+                                        <img class="btn-copy" data-clipboard-target="#foo" src="/img/clippy.svg" width="10%" style="margin:3px 0 3px 5px;" value="{{ Auth::user()->recommend_code }}">
                                     </span>
                                 </li>
                             @endif
