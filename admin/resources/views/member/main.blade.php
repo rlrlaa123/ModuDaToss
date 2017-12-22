@@ -27,7 +27,9 @@
 									<th>이름</th>
 									<th>이메일</th>
 									<th>성별</th>
+									@if( Request::path() != 'member/0')
 									<th>휴대폰 번호</th>
+									@endif
 									<th>회원 타입</th>
 									<th>비고</th>
 								</tr>
@@ -45,7 +47,6 @@
 												@else
 													<td>{{ '여자' }}</td>
 												@endif
-												<td>{{ $user->phoneNumber }}</td>
                                                 <td>{{Config::get('constants.USERTYPE.'.($user->type))}}</td>
                                                 <td><a href="/member/detail/{{$user->id}}">자세히 보기</a></td>
 											</tr>

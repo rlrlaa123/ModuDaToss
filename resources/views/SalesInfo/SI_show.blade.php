@@ -54,7 +54,7 @@
                                     <td>{{ $SI->BusinessName }}</td>
                                     <td>{{ $SI->CustomerName }}</td>
                                     <td>{{ $SI->PhoneNumber }}</td>
-                                    <td>{{ $SI->ContactTime }}</td>
+                                    <td>{{str_replace("T"," ",$SI -> ContactTime)}}</td>
                                 </tr>
                                 </tbody>
                             @endforeach

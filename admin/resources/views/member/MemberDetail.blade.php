@@ -11,7 +11,7 @@
                     <div class="panel-body">
                         @foreach( $users as $user)
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" style="vertical-align: middle">
                                     <tbody>
                                     <tr>
                                         <td>회원 아이디</td>
