@@ -19,6 +19,7 @@
                 <a href="/Partner/{{Auth::user()->category}}"><button type="button" class="btn btn-primary btn-sm">전체</button></a>
                 <a href="/Partner/{{Auth::user()->category}}/접수 완료"><button type="button" class="btn btn-primary btn-sm">접수</button></a>
                 <a href="/Partner/{{Auth::user()->category}}/진행중"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
+                <a href="/Partner/{{Auth::user()->category}}/승인대기"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
                 <a href="/Partner/{{Auth::user()->category}}/완료"><button type="button" class="btn btn-primary btn-sm">완료</button></a>
                 <a href="/Partner/{{Auth::user()->category}}/실패"><button type="button" class="btn btn-primary btn-sm">실패</button></a>
               </div>
@@ -37,30 +38,38 @@
                         <th>예상 연락가능시간</th>
                     </tr>
                     </thead>
-                    @if(count($SalesInfo) > 0)
-                        @foreach($SalesInfo as $SI)
+                        @forelse($SalesInfo as $SI)
                             <tbody>
                             <tr>
                                 <td>
-                                  @if($SI->state == '완료')
+                                  @if($SI->state == '진행중')
+                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="ongoing">{{$SI->state}}</button></a>
+                                  @elseif($SI->state == '승인대기')
+                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="waiting">{{$SI->state}}</button></a>
+                                  @elseif($SI->state == '완료')
                                     <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="success">{{$SI->state}}</button></a>
-                                  @else
-                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="state">{{$SI->state}}</button></a>
+                                  @elseif($SI->state == '실패')
+                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="fail">{{$SI->state}}</button></a>
                                   @endif
                                 </td>
-                                <td>{{ $SI->created_at }}</td>
+                                <td>{{ $SI->created_at->format('m-d H:i') }}</td>
                                 <td>{{ $SI->Category }}</td>
                                 <td>{{ $SI->BusinessName }}</td>
                                 <td>{{ $SI->CustomerName }}</td>
                                 <td>{{ $SI->PhoneNumber }}</td>
-                                <td>{{ $SI->ContactTime }}</td>
+                                <td>{{str_replace("T"," ",$SI -> ContactTime)}}</td>
                             </tr>
                             </tbody>
-                        @endforeach
+                        @empty
+                            <tbody>
+                              <tr>
+                                <td colspan='7'>
+                                  <p> 현재 영업 정보가 없습니다.</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                        @endforelse
                 </table>
-                  @else
-                    <p> 현재 영업 정보가 없습니다.</p>
-                  @endif
             </div>
         </div>
     </div>

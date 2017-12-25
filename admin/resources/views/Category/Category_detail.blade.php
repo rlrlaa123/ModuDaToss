@@ -10,7 +10,6 @@
                 </div>
 
                 <div class="panel-body">
-                    @if(count($Category) > 0)
                         <form action="{{ route('category.update',$Category->id) }}" method="POST">
                             {!! csrf_field() !!}
                             {!! method_field('PUT') !!}
@@ -32,15 +31,14 @@
                                 </button>
                             </div>
                         </form>
-                    @else
-                        <p> 현재 정보가 없습니다. </p>
-                    @endif
                 </div>
-                {{--<button class="category__delete btn-danger">업종 삭제</button> •--}}
-                {!! Form::open(['action' => ['CategoryController@destroy',$Category->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()']) !!}
-                    {{Form::hidden('_method','DELETE')}}
-                    {{Form::submit('업종 삭제',['class' => 'btn btn-primary'])}}
-                {!! Form::close() !!}
+                <div class="panel-footer">
+                  {{--<button class="category__delete btn-danger">업종 삭제</button> •--}}
+                  {!! Form::open(['action' => ['CategoryController@destroy',$Category->id], 'method' => 'POST', 'onsubmit' => 'return ConfirmDelete()']) !!}
+                      {{Form::hidden('_method','DELETE')}}
+                      {{Form::submit('업종 삭제',['class' => 'btn btn-primary'])}}
+                  {!! Form::close() !!}
+                </div>
                 </div>
             </div>
         </div>

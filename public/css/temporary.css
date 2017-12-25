@@ -1,0 +1,30 @@
+.ongoing{
+  width: 80px;
+  height: 25px;
+  background-color: #3473d9;
+  border: none;
+  border-radius: 20px;
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.waiting{
+  width: 80px;
+  height: 25px;
+  background-color: rgb(87, 193, 108);
+  border: none;
+  border-radius: 20px;
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.fail{
+  width: 80px;
+  height: 25px;
+  background-color: #CC0000;
+  border: none;
+  border-radius: 20px;
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+}

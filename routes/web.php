@@ -68,10 +68,12 @@ Route::post('auth/reset', [
     'uses' => 'PasswordsController@postReset',
 ]);
 
-//일반 영업사원
+//일반 영업사원 SalesController
 Route::resource('SalesInfo','SalesController');
 Route::get('/SalesInfoall','SalesController@showall');
 Route::get('/SalesInfoall/{state}','SalesController@showstateall');
+Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
+Route::get('/detail/{SIid}','SalesController@showdetail');
 Route::get('Choosecategory',[
   'as' => 'SalesInfo.choosecategory',
   'uses' => 'SalesController@Choosecategory'
@@ -87,34 +89,31 @@ Route::post('/regular/{id}',[
     'uses'=>'RegularMemberController@store'
 ]);
 
-Route::get('/mypage/{id}', 'SalesController@mypage');
+// 회원 개인페이지 MemberController
+Route::get('/mypage/{id}', 'MemberController@mypage');
 Route::get('/mypage/{id}/edit',[
     'as' => 'mypage.edit',
-    'uses' => 'SalesController@mypageedit'
+    'uses' => 'MemberController@mypageedit'
 ]);
 Route::post('/mypage/{id}/update', [
     'as' => 'mypage.update',
-    'uses' => 'SalesController@mypageupdate'
+    'uses' => 'MemberController@mypageupdate'
 ]);
-Route::get('/profit/{id}', 'SalesController@profit');
-Route::get('/profitdetail/{id}/','SalesController@profitdetail');
-Route::get('/Recommender/{id}', 'SalesController@Recommender');
-Route::get('/Recommenderdetail/{id}/{recommendeeid}','SalesController@Recommenderdetail');
-Route::get('/withdrawal/{id}' ,'SalesController@withdrawal');
-Route::get('/WithdrawalLog/{id}','SalesController@WithdrawalLog');
-Route::get('/DepositLog/{id}','SalesController@DepositLog');
-Route::post('/withdrawal/{id}' ,'SalesController@withdrawalrequest');
-Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
-Route::get('/detail/{SIid}','SalesController@showdetail');
+Route::get('/profit/{id}', 'MemberController@profit');
+Route::get('/profitdetail/{id}/','MemberController@profitdetail');
+Route::get('/Recommender/{id}', 'MemberController@Recommender');
+Route::get('/Recommenderdetail/{id}/{recommendeeid}','MemberController@Recommenderdetail');
+Route::get('/withdrawal/{id}' ,'MemberController@withdrawal');
+Route::get('/WithdrawalLog/{id}','MemberController@WithdrawalLog');
+Route::get('/DepositLog/{id}','MemberController@DepositLog');
+Route::post('/withdrawal/{id}' ,'MemberController@withdrawalrequest');
+
 
 
 //파트너
 Route::resource('Partner','PartnerController');
 Route::get('/Partner/{Category}/{state}','PartnerController@showbystate');
-Route::get('/Partner/detail/{Category}/{SalesPerson_id}','PartnerController@show3');
-
-//test
-Route::post('/test','PartnerController@show2');
+Route::get('/Partner/detail/{Category}/{SalesPerson_id}','PartnerController@showdetail');
 
 // 게시판
 Route::resource('articles','ArticlesController');
@@ -126,7 +125,6 @@ Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);
 //고객센터
 Route::get('/servicecenter/{notice}','ServiceCenterController@index');
 Route::get('/servicecenter/{notice}/{id}', 'ServiceCenterController@show');
-
 Route::get('/servicecenter/{frequently}','ServiceCenterController@index');
 Route::get('/servicecenter/{frequently}/{id}', 'ServiceCenterController@show');
 

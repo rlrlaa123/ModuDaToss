@@ -16,70 +16,60 @@ class WithdrawalController extends Controller
      */
     public function index()
     {
-
         //
         $now = new Carbon();
-        $beforMonth = new Carbon('-1 month');
+        $dataFormat = 'd';
+
+        if( intval($now->format($dataFormat)) > 11){
+
+          $dataFormat = 'Y-m';
+          $NextMonth = new Carbon('+1 month');
+          $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $now->format($dataFormat).'-11' , $NextMonth->format($dataFormat).'-11' ])->get();
+          $current = $now->format($dataFormat).'-11 ~ '.$NextMonth->format($dataFormat).'-11';
+          return view('withdrawal.withdrawalInfo',[
+            'WDI' => $WDI,
+            'place' => 0,
+            'Current' => $current,
+          ]);
+
+        }else{
+
+          $dataFormat = 'Y-m';
+          $beforMonth = new Carbon('-1 month');
+          $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get();
+          $current = $beforMonth->format($dataFormat).'-11 ~ '.$now->format($dataFormat).'-11';
+          return view('withdrawal.withdrawalInfo',[
+            'WDI' => $WDI,
+            'place' => 0,
+            'Current' => $current,
+          ]);
+
+        }
+
+    }
+
+
+    public function ExcelDownload($place,$Extension){
+
+      $now = new Carbon();
+      $dataFormat = 'd';
+      $data;
+      $current;
+
+      if( intval($now->format($dataFormat)) > 11){
+
+        $Next = $place+1;
+        $nowstring = $place.' month';
+        $NextMonthstring = $Next.' month';
+
+        $now = new Carbon($nowstring);
+        $NextMonth = new Carbon($NextMonthstring);
         $dataFormat = 'Y-m';
+        $current = $now->format($dataFormat).'-11 ~ '.$NextMonth->format($dataFormat).'-11';
+        $data = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $now->format($dataFormat).'-11' , $NextMonth->format($dataFormat).'-11' ])->get()->toArray();
 
-        $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get();
+      }else{
 
-        $place = 0;
-        return view('withdrawal.withdrawalInfo')->with('WDI',$WDI)->with('place',$place);
-    }
-
-
-    public function exceltest($place){
-
-      $before = $place-1;
-      $nowstring = $place.' month';
-      $beforeMonthstring = $before.' month';
-
-      $now = new Carbon($nowstring);
-      $beforMonth = new Carbon($beforeMonthstring);
-      $dataFormat = 'Y-m';
-
-      $data = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get()->toArray();
-
-      return Excel::create('itsolutionstuff_example', function($excel) use ($data) {
-			$excel->sheet('mySheet', function($sheet) use ($data)
-	        {
-				$sheet->fromArray($data);
-	        });
-		  })->export('xlsx');
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($place)
-    {
-        //
         $before = $place-1;
         $nowstring = $place.' month';
         $beforeMonthstring = $before.' month';
@@ -87,43 +77,72 @@ class WithdrawalController extends Controller
         $now = new Carbon($nowstring);
         $beforMonth = new Carbon($beforeMonthstring);
         $dataFormat = 'Y-m';
+        $current = $beforMonth->format($dataFormat).'-11 ~ '.$now->format($dataFormat).'-11';
+        $data = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get()->toArray();
+      }
 
-        $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get();
+      if($Extension == 'xlsx'){
 
-        return view('withdrawal.withdrawalInfo')->with('WDI',$WDI)->with('place',$place);
+        return Excel::create($current.'출금신청기록', function($excel) use ($data) {
+        $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+          $sheet->fromArray($data);
+            });
+        })->export('xlsx');
+
+      }else{
+
+        return Excel::create($current.'출금신청기록', function($excel) use ($data) {
+        $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+          $sheet->fromArray($data);
+            });
+        })->export('xls');
+      }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($place)
     {
-        //
+        $now = new Carbon();
+        $dataFormat = 'd';
+
+        if( intval($now->format($dataFormat)) > 11){
+
+          $Next = $place+1;
+          $nowstring = $place.' month';
+          $NextMonthstring = $Next.' month';
+
+          $now = new Carbon($nowstring);
+          $NextMonth = new Carbon($NextMonthstring);
+          $dataFormat = 'Y-m';
+
+          $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $now->format($dataFormat).'-11' , $NextMonth->format($dataFormat).'-11' ])->get();
+          $current = $now->format($dataFormat).'-11 ~ '.$NextMonth->format($dataFormat).'-11';
+          return view('withdrawal.withdrawalInfo',[
+            'WDI' => $WDI,
+            'place' => $place,
+            'Current' => $current,
+          ]);
+
+        }else{
+
+          $before = $place-1;
+          $nowstring = $place.' month';
+          $beforeMonthstring = $before.' month';
+
+          $now = new Carbon($nowstring);
+          $beforMonth = new Carbon($beforeMonthstring);
+          $dataFormat = 'Y-m';
+
+          $WDI = withdrawalInfo::orderBy('created_at','desc')->whereBetween('created_at',[ $beforMonth->format($dataFormat).'-11' , $now->format($dataFormat).'-11' ])->get();
+          $current = $beforMonth->format($dataFormat).'-11 ~ '.$now->format($dataFormat).'-11';
+          return view('withdrawal.withdrawalInfo',[
+            'WDI' => $WDI,
+            'place' => $place,
+            'Current' => $current,
+          ]);
+
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

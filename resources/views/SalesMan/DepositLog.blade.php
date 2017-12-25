@@ -19,8 +19,8 @@
         <tbody>
         @foreach($data as $dt)
           <tr>
-              <td> {{ $dt->MoneySum }} </td>
-              <td style="color:#3473d9;">+ {{ $dt->MoneyType }}원 </td>
+              <td> {{ $dt->MoneySum }} 원 </td>
+              <td style="color:#3473d9;">+ {{ $dt->MoneyType }} </td>
               <td>{{ $dt->created_at->format('m-d H:i') }}</td>
               <td>{{ $dt->triggerName }}</td>
           </tr>

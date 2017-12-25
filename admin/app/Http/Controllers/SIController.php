@@ -15,7 +15,7 @@ class SIController extends Controller
     {
         //
         //$SalesInfo = DB::select('select * from sales_infos');
-        $SalesInfo = SalesInfo::orderBy('created_at','desc')->get();
+        $SalesInfo = SalesInfo::orderBy('created_at','desc')->paginate(20);
 
         return view('SI.SI', ['SalesInfo' => $SalesInfo]);
 
@@ -23,7 +23,7 @@ class SIController extends Controller
 
     public function show($id){
         //$SalesInfo = DB::select('select * from sales_infos where id = ?',[$id]);
-        $SalesInfo = SalesInfo::where('id',$id)->orderBy('created_at','desc')->get();
+        $SalesInfo = SalesInfo::where('id',$id)->orderBy('created_at','desc')->first();
 
         return view('SI.SI_detail', ['SalesInfo' => $SalesInfo]);
     }
@@ -31,7 +31,7 @@ class SIController extends Controller
     public function Categorize($state){
 
         //$SalesInfo = DB::select('select * from sales_infos where state = ?',[$state]);
-        $SalesInfo = SalesInfo::where('state',$state)->orderBy('created_at','desc')->get();
+        $SalesInfo = SalesInfo::where('state',$state)->orderBy('created_at','desc')->paginate(20);
 
         return view('SI.SI', ['SalesInfo' => $SalesInfo]);
     }
@@ -57,7 +57,7 @@ class SIController extends Controller
       DB::table('savinghistories')->insert([
         'SalesPerson_id' => $SalesInfo->SalesPerson_id,
         'SalesPerson_name' => $SalesInfo->SP_name,
-        'MoneyType' => '영업사원수수료',
+        'MoneyType' => '거래성사수수료',
         'MoneySum' => ($request->GrantedMoney)*(($Commision)/100),
         'created_at' => now()
       ]);

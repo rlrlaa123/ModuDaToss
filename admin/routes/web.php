@@ -29,16 +29,18 @@ Route::get('/member/a_class/create','MemberController@CreateAClass');
 Route::get('/member/a_class/create/{userid}','MemberController@UpdateAClass');
 
 //영업 정보
-Route::get('/show2','SIController@index');
-Route::get('/show2/detail/{id}','SIController@show');
-Route::get('/show2/{state}','SIController@Categorize');
+Route::get('/SIshow','SIController@index');
+Route::get('/SIshow/detail/{id}','SIController@show');
+Route::get('/SIshow/{state}','SIController@Categorize');
 Route::post('/Grant','SIController@Grant');
 Route::get('/Reject','SIController@Reject');
+
 //상품
 Route::resource('/category','CategoryController');
+
 //인출
 Route::resource('/withdrawal','WithdrawalController');
-Route::get('/excel/{place}','WithdrawalController@exceltest');
+Route::get('/ExcelDownload/{place}/{Extension}','WithdrawalController@ExcelDownload');
 
 //게시판
 Route::resource('articles', 'ArticlesController');

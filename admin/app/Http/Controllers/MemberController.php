@@ -16,7 +16,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('member.main');
+        $users = DB::table('users')->get();
+        return view('member.main')->with('users',$users);
     }
 
     /**
@@ -116,31 +117,16 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($type)
     {
-        $users = DB::select('select * from users where type = ? ',[$id]);
-
-        return view('member.main', ['users' => $users]);
+        $users = DB::table('users')->where('type',$type)->get();
+        return view('member.main', [
+          'type' => $type,
+          'users' => $users,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         if($request->type == 0){

@@ -105,7 +105,7 @@
                 </table>
             @endforeach
           </div>
-          <div class="panel-footer" style="background-color:white">
+          <div class="panel-footer">
             @if($SI->state == '접수 완료')
             {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
               {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
@@ -115,40 +115,77 @@
             @endif
 
             @if($SI->state == '진행중')
-            {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
-            <div class="form-group">
-              <div class="col-sm-6">
-                {{Form::number('pay',' ',['class' => 'form-control','placeholder' => '체결금액','min' => 0,'required'=>true])}}
-              </div>
-              {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
-              {{Form::hidden('_method','PUT')}}
-              {{Form::submit('완료',['class' => 'btn btn-primary'])}}
-            </div>
-            {!! Form::close() !!}
-
-            <hr>
-
-            {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
-            <div class="form-group">
-              {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
-              <div class="col-sm-6">
-                {{ Form::select('reason', [
-                    '사유1' => '사유1',
-                    '사유2' => '사유2',
-                    '사유3' => '사유3',
-                    '사유4' => '사유4'
-                  ], null, ['class'=>'form-control','placeholder' => '사유선택'])}}
-              </div>
-              {{Form::hidden('_method','PUT')}}
-              {{Form::submit('실패',['class' => 'btn btn-primary'])}}
-              </div>
-            {!! Form::close() !!}
-
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Success">완료</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Fail">실패</button>
             @endif
             </div>
           </div>
         </div>
       </div>
+
+
+      <div class="modal fade" id="Success" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">완료</h4>
+            </div>
+            <div class="modal-body">
+              {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
+              <div class="form-group">
+                <div class="col-sm-6">
+                  {{Form::number('pay',' ',['class' => 'form-control','placeholder' => '체결금액','min' => 0,'required'=>true])}}
+                </div>
+                {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
+                {{Form::hidden('_method','PUT')}}
+                {{Form::submit('완료',['class' => 'btn btn-primary'])}}
+              </div>
+              {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal fade" id="Fail" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">실패</h4>
+            </div>
+            <div class="modal-body">
+              {!! Form::open(['action' => ['PartnerController@update', $SI->id], 'method' => 'POST']) !!}
+              <div class="form-group">
+                {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
+                <div class="col-sm-6">
+                  {{ Form::select('reason', [
+                      '사유1' => '사유1',
+                      '사유2' => '사유2',
+                      '사유3' => '사유3',
+                      '사유4' => '사유4'
+                    ], null, ['class'=>'form-control','placeholder' => '사유선택'])}}
+                </div>
+                {{Form::hidden('_method','PUT')}}
+                {{Form::submit('실패',['class' => 'btn btn-primary'])}}
+                </div>
+              {!! Form::close() !!}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   @endif
 <script>

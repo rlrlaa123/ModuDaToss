@@ -3,23 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-2" style="margin-left:0;">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  영업 정보
-                  <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                      <ul class="nav navbar-nav">
-                        <li><a href="/show2">전체</a></li>
-                        <li><a href="/show2/접수 완료">접수</a></li>
-                        <li><a href="/show2/진행중">진행중</a></li>
-                        <li><a href="/show2/승인대기">승인대기</a></li>
-                        <li><a href="/show2/완료">완료</a></li>
-                        <li><a href="/show2/실패">실패</a></li>
-                      </ul>
-                    </div>
-                  </nav>
+              <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/SIshow">영업정보관리</a>
+                  </div>
+                  <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                      <li><a href="/SIshow">전체</a></li>
+                      <li><a href="/SIshow/접수 완료">접수 완료</a></li>
+                      <li><a href="/SIshow/진행중">진행중</a></li>
+                      <li><a href="/SIshow/승인대기">승인대기</a></li>
+                      <li><a href="/SIshow/완료">완료</a></li>
+                      <li><a href="/SIshow/실패">실패</a></li>
+                    </ul>
+                  </div>
                 </div>
+              </nav>
+
 
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -46,15 +52,16 @@
                                     <td>{{ str_replace("T"," ",$SI -> ContactTime) }}</td>
                                     <td>{{ $SI->state }}</td>
                                     <td>{{ $SI->Category }}</td>
-                                    <td><a href="/show2/detail/{{ $SI -> id }}">이동</a></td>
+                                    <td><a href="/SIshow/detail/{{ $SI -> id }}">이동</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div class='panel-footer'>
+                    {{ $SalesInfo->links() }}
+                </div>
     </div>
 </div>
 @endsection
