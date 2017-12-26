@@ -8,7 +8,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="MoneyAll">
-                        <span>{{ number_format($user->Benefit + $user->Commision + $user->RecommenderCommision) }}</span>원
+                        <span>{{ number_format($user->Commision + $user->RecommenderCommision) }}</span>원
                     </div>
                     <br>
                     <div class="Accumulate">

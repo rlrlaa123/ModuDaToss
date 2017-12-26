@@ -23,8 +23,8 @@
                         </div>
 
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                            <input type="password" name="password" class="form-control" placeholder="비밀번호"/>
-                            {!! $errors->first('password', '<span class="form-error">:message</span>') !!}
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="비밀번호"/>
+                            {!! $errors->first('password_confirmation', '<span class="form-error">:message</span>') !!}
                         </div>
 
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">

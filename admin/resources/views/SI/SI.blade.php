@@ -42,8 +42,8 @@
                                 <th>비고</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @foreach($SalesInfo as $SI)
+                            @forelse($SalesInfo as $SI)
+                              <tbody>
                                 <tr>
                                     <td>{{ $SI->CustomerName }}</td>
                                     <td>{{ $SI->BusinessName }}</td>
@@ -54,8 +54,14 @@
                                     <td>{{ $SI->Category }}</td>
                                     <td><a href="/SIshow/detail/{{ $SI -> id }}">이동</a></td>
                                 </tr>
-                            @endforeach
-                            </tbody>
+                              </tbody>
+                            @empty
+                              <tbody>
+                                <tr>
+                                  <td colspan=8><p> 현재 영업 정보가 없습니다.</p></td>
+                                </tr>
+                              </tbody>
+                            @endforelse
                         </table>
                     </div>
                 </div>

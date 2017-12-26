@@ -67,7 +67,7 @@
                         </div>
                         <div class="inputbox">
                             <label for="images" class="name">사업장사진</label>
-                            {{Form::file('images'),['class' => 'form-control']}}
+                            <input type="file" name="images" multiple>
                         </div>
                         <!--
                         <div class="inputbox" style="height:250px">

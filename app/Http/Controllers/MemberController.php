@@ -60,16 +60,21 @@ class MemberController extends Controller
     {
         //
         $user = User::find($id);
+
         $recommendcode = $user->recommend_code;
+
         $recommendee = User::where('recommender',$recommendcode)->get();
 
-        $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->get();
+        $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('SalesPerson_id',$id)->Where('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->get();
 
-        return view('/SalesMan/Recommender')->with('user',$user)
-                                            ->with('SH',$SH)
-                                            ->with('recommendee',$recommendee);
+        return view('/SalesMan/Recommender',[
+          'user' => $user,
+          'SH' => $SH,
+          'recommendee' => $recommendee,
+        ]);
     }
     public function Recommenderdetail($id,$recommendeeid){
+
         $user = User::find($id);
         $SH = Savinghistory::where('SalesPerson_id',$id)->where('triggerid',$recommendeeid)->orderBy('created_at','desc')->get();
         $name = $SH[0]->triggerName;

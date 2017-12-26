@@ -72,6 +72,10 @@
                                 <input type="signature" name="signature" class="form-control" placeholder="서명" />
                                 {!! $errors->first('signature', '<span class="form-error">:message</span>') !!}
                             </div>
+                            <div class="form-group">
+                                <input type="recommend_code" name="recommend_code" class="form-control" value="{{ str_random(8) }}" readonly="readonly">
+                                {!! $errors->first('recommend_code', '<span class="form-error">:message</span>') !!}
+                            </div>
 
 
                             <div class="form-group">
