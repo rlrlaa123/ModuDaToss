@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "asm89/stack-cors": "dev-master as 0.2.2",
+        "barryvdh/laravel-cors": "^0.10.1",
         "doctrine/dbal": "^2.5",
         "erusev/parsedown-extra": " ~0.7.1",
         "fideloper/proxy": "~3.3",
