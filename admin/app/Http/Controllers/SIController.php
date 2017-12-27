@@ -45,8 +45,14 @@ class SIController extends Controller
       //영업사원정보
       $user = Real_User::where('id',$SalesInfo->SalesPerson_id)->first();
 
-      //추천인 정보
-      $Recommender = Real_User::where('recommend_code',$user->recommender)->first();
+      $Recommender;
+
+      if($user->recommender == NULL){
+
+      }else{
+        $Recommender = Real_User::where('recommend_code',$user->recommender)->first();
+      }
+
 
       //영업사원 수수료 지급
       $UserCommision = ($user->Commision) + ($request->GrantedMoney)*(($Commision)/100);
@@ -62,10 +68,8 @@ class SIController extends Controller
         'created_at' => now()
       ]);
 
-      if($Recommender == null){
 
-      }else{
-
+      if(isset($Recommender)){
         //추천인 수수료 지급
         $RecommenderCommision = ($Recommender->RecommenderCommision) + ($request->GrantedMoney)*(5/100);
         Real_User::where('id',$Recommender->id)->update([
@@ -81,13 +85,19 @@ class SIController extends Controller
           'triggerid' => $user->id,
           'triggerName' => $user->name,
         ]);
+      }else{
 
       }
 
+
+
       //A클래스 추천인 수수료 지급
       if(isset($user->AclassRecommender)){
+
         $Aclass = Real_User::where('recommend_code',$user->AclassRecommender)->first();
-        $AclassRecommendCommision = ($Aclass->RecommenderCommision) + ($request->GrandtedMoney)*(3/100);
+
+        $AclassRecommendCommision = ($Aclass->RecommenderCommision) + ($request->GrantedMoney)*(3/100);
+
         Real_user::where('id',$Aclass->id)->update([
             'RecommenderCommision' => $AclassRecommendCommision,
         ]);

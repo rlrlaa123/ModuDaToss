@@ -5,7 +5,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
               <div class="panel-body">
-                {!! Form::open(['action' => ['SalesController@withdrawalrequest',$user->id], 'method' => 'POST']) !!}
+                {!! Form::open(['action' => ['MemberController@withdrawalrequest',$user->id], 'method' => 'POST']) !!}
                   <div class="wdalbox">
                     <span class="bluetitle wd">현재 보유액 </span>
                     <span class="greytitle wd">{{number_format($user->Commision)}}원(거래수수료) + {{number_format($user->RecommenderCommision)}}원(추천인수당) = {{number_format($user->RecommenderCommision + $user->Commision)}} 원</span>

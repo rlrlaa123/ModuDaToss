@@ -8353,6 +8353,7 @@ button.close {
 @media screen and (min-width: 600px) {
   .sidenav {
     display: show;
+    margin-top: 40px;
   }
 
   .Dash.container {

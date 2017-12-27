@@ -28,7 +28,7 @@
                                     <h4 class="modal-title">{{$ct->category}} 영업라인의 팁</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>{{$ct->content}}</p>
+                                    <p>{!! $ct->content !!}</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
