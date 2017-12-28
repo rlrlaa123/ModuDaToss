@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -14,7 +14,7 @@
                             {!! csrf_field() !!}
                             @php($field = "CustomerName")
                             @php($message = "고객명")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -28,13 +28,13 @@
 
                             @php($field = "BusinessName")
                             @php($message = "사업장명")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
                                     </div>
                                     <div class="col-sm-10">
-                                        <input type="text" name={{$field}} class="form-control" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
+                                        <input type="text" name={{$field}} class="form-control" placeholder={{$message}} value="{{ old($field)  }}" autofocus/>
                                         {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
 
                             @php($field = "post_number")
                             @php($message = "고객주소")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -62,7 +62,7 @@
 
                             @php($field = "CustomerAddress")
                             @php($message = "주소지")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -76,7 +76,7 @@
 
                             @php($field = "CustomerAddress_detail")
                             @php($message = "주소지 추가")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -90,7 +90,7 @@
 
                             @php($field = "CustomerAddress_extra")
                             @php($message = "주소지 그외")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -103,8 +103,8 @@
                             </div>
 
                             @php($field = "PhoneNumber")
-                            @php($message = "전화 번호")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            @php($message = "전화번호")
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -118,7 +118,7 @@
 
                             @php($field = "Characteristic")
                             @php($message = "특이사항")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -132,7 +132,7 @@
 
                             @php($field = "note")
                             @php($message = "비고")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -146,7 +146,7 @@
 
                             @php($field = "CustomerEmail")
                             @php($message = "고객 이메일")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -160,7 +160,7 @@
 
                             @php($field = "ContactTime")
                             @php($message = "접촉시간")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -174,7 +174,7 @@
 
                             @php($field = "images")
                             @php($message = "사업장사진")
-                            <div class="form-group{{$errors->has($field) ? 'has-error' : '' }}">
+                            <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                                 <div class="row">
                                     <div class="col-sm-2 input_label">
                                         <label class="salesinfo_label">{{$message}}</label>
@@ -188,12 +188,12 @@
 
                             {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                             {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
-                            @foreach($passeddata['category'] as $ct)
-                                <input type="hidden" name="category[]" value="{{$ct}}">
-                            @endforeach
-                            @foreach($passeddata['money'] as $money)
-                                <input type="hidden" name="money[]" value="{{$money}}">
-                            @endforeach
+                            {{--@foreach($passeddata['category'] as $ct)--}}
+                                {{--<input type="hidden" name="category[]" value="{{$ct}}">--}}
+                            {{--@endforeach--}}
+                            {{--@foreach($passeddata['money'] as $money)--}}
+                                {{--<input type="hidden" name="money[]" value="{{$money}}">--}}
+                            {{--@endforeach--}}
 
                             <div class="form-group" style="text-align:center;">
                                 <button class="btn btn-primary btn-lg" type="submit">
