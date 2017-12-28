@@ -433,7 +433,6 @@ body {
   }
 
   .category.content {
-    border: 1px solid #a6a6a6;
     width:90%;
     height:60%;
     margin: 2% 0 2% 3%;
@@ -1014,14 +1013,32 @@ body {
   float:right;
   margin-right:20px;
 }
+//영업정보 등록 폼
+.salesinfo_label{
+  display:inline-block;
+}
+
+//영업정보 등록 폼 레이블
+.col-sm-2.input_label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:1%;
+  //margin-bottom: 5%;
+}
+
+//.col-sm-10 input{
+//  margin-bottom: 5%;
+//}
+
 .name{
-  width:40%;
+  width:30%;
   float:left;
   font-size:18px;
   font-weight:lighter;
   margin-top:5px;
 }
-.inputbox{
+.form-group.inputbox{
   width:100%;
   height:50px;
   margin-bottom:30px;

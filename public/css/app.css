@@ -8781,7 +8781,6 @@ body {
   }
 
   .category.content {
-    border: 1px solid #a6a6a6;
     width: 90%;
     height: 60%;
     margin: 2% 0 2% 3%;
@@ -9388,15 +9387,32 @@ body {
   margin-right: 20px;
 }
 
+.salesinfo_label {
+  display: inline-block;
+}
+
+.col-sm-2.input_label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 1%;
+}
+
 .name {
-  width: 40%;
+  width: 30%;
   float: left;
   font-size: 18px;
   font-weight: lighter;
   margin-top: 5px;
 }
 
-.inputbox {
+.form-group.inputbox {
   width: 100%;
   height: 50px;
   margin-bottom: 30px;
