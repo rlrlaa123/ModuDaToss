@@ -23,7 +23,7 @@ class SessionsController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        if(!auth()->attempt($request->only('email', 'password'), $request->has('remember'))) {
+        if(!auth()->attempt($request->only('email', 'password'))) {
 
             flash('이메일 또는 비밀번호가 맞지 않습니다.');
             return back()->withInput();

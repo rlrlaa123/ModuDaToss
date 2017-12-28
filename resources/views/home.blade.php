@@ -22,9 +22,6 @@
             </div>
             <hr class="front_page line">
             <h4>실시간 견적 리스트</h4>
-{{--            {{ app('request')->input('api/v1')[2] }}--}}
-{{--            {{$salesinfos[0]}}--}}
-            {{--{{route('api/v1/')}}--}}
             @php($salesinfos = \App\SalesInfo::orderBy('created_at','desc')->take(4)->get())
             @if(count($salesinfos) < 4)
             @else
@@ -109,31 +106,31 @@
             </div>
         </div>
     </div>
-
     <p class="GotoSIinput-text">영업정보 등록</p>
     <a href="javascript:void(0)" onclick="SIinput({{Auth::user()}})" data-toggle="modal" data-target="#myModal"><div class="GotoSIinput">
             <img src="{{URL::asset('/img/trace.png')}}">
         </div>
     </a>
-    <script>
-        function SIinput(user){
-            if(typeof user != "undefined") {
-                window.location.href = "/Choosecategory";
-            }
-            else {
-            }
+
+@endsection
+
+<script>
+    function SIinput(user){
+        if(typeof user != "undefined") {
+            window.location.href = "/Choosecategory";
         }
-    </script>
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <!-- Modal body -->
-                <div class="modal-body">
-                    로그인이 필요합니다.
-                </div>
+        else {
+        }
+    }
+</script>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                로그인이 필요합니다.
             </div>
         </div>
     </div>
-
-@endsection
+</div>
