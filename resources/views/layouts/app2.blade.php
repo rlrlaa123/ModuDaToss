@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="app">
-      <div class="upper">
+      <div class="upper" style="margin-bottom: 0;">
         <p>영업 정보 등록</p>
         <button class="return">
           <a href="{{ route('/') }}">돌아가기</a>
