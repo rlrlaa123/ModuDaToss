@@ -8597,6 +8597,10 @@ body {
     width: 76%;
     height: 120%;
   }
+
+  .recommend {
+    margin-left: 10%;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1280px) {
@@ -8825,6 +8829,10 @@ body {
     margin: 0 13%;
     width: 76%;
     height: 120%;
+  }
+
+  .recommend {
+    margin-left: 10%;
   }
 }
 

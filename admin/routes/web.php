@@ -48,3 +48,8 @@ Route::resource('articles', 'ArticlesController');
 // 댓글
 Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
 Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);
+
+// 기타관리
+Route::get('/etc','Etc\EtcController@index');
+Route::get('/etc/front/edit','Etc\FrontController@edit');
+Route::put('/etc/front/update','Etc\FrontController@update');
