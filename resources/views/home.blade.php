@@ -7,17 +7,17 @@
                 <div class="front_page col">
                     <p>등록된 정보</p>
                     <img class="img1" src="/img/information.png">
-                    <p class="num">94,953건</p>
+                    <p class="num">{{$front_img->front_img1}}건</p>
                 </div>
                 <div class="front_page col">
                     <p>등록된 정보</p>
                     <img class="img2" src="/img/money.png">
-                    <p class="num">3,897,125건</p>
+                    <p class="num">{{$front_img->front_img2}}건</p>
                 </div>
                 <div class="front_page col">
                     <p>등록된 정보</p>
                     <img class="img3" src="/img/man.png">
-                    <p class="num">2,084건</p>
+                    <p class="num">{{$front_img->front_img3}}건</p>
                 </div>
             </div>
             <hr class="front_page line">
@@ -109,11 +109,21 @@
             </div>
         </div>
     </div>
-    <p class="GotoSIInput-text">영업정보 등록</p>
+
+    <p class="GotoSIinput-text">영업정보 등록</p>
     <a href="javascript:void(0)" onclick="SIinput({{Auth::user()}})" data-toggle="modal" data-target="#myModal"><div class="GotoSIinput">
             <img src="{{URL::asset('/img/trace.png')}}">
         </div>
     </a>
+    <script>
+        function SIinput(user){
+            if(typeof user != "undefined") {
+                window.location.href = "/Choosecategory";
+            }
+            else {
+            }
+        }
+    </script>
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-sm">
@@ -125,14 +135,5 @@
             </div>
         </div>
     </div>
-@endsection
 
-<script>
-    function SIinput(user){
-        if(typeof user != "undefined") {
-            window.location.href = "/Choosecategory";
-        }
-        else {
-        }
-    }
-</script>
+@endsection

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Etc;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,6 +12,11 @@ class HomeController extends Controller
      *
      * @return void
      */
+    public function __construct()
+    {
+//        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -19,10 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $categories = \App\Category::all();
-//        flash('환영합니다.');
-//        $salesinfos = \App\SalesInfo::orderBy('created_at','desc')->take(4)->get();
-
-        return view('home');
+        $front_img = Etc::find(1);
+        return view('home',compact('front_img'));
     }
 }
