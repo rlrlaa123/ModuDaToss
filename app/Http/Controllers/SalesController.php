@@ -92,9 +92,7 @@ class SalesController extends Controller
           $SalesInfo->CustomerAddress_extra=$request->input('CustomerAddress_extra');
           $SalesInfo->PhoneNumber = $request->input('PhoneNumber');
           $SalesInfo->ContactTime = $request->input('ContactTime');
-          $SalesInfo->Characteristic = $request->input('Characteristic');
           $SalesInfo->Category = $request->category[$i];
-          $SalesInfo->note = $request->input('note');
           $SalesInfo->CustomerEmail = $request->input('CustomerEmail');
           $SalesInfo->pay = $request->money[$i];
           $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
