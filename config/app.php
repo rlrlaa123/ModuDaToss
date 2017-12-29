@@ -171,6 +171,8 @@ return [
          */
         \Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -236,5 +238,8 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
 
         'Socialite' => \Laravel\Socialite\Facades\Socialite::class,
+
+        'JWTAuth' => \Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => \Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 ];

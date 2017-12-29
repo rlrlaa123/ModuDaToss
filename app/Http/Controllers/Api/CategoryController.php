@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth', ['except' => ['show']]);
+    }
+
     public function show($id)
     {
         $category = \App\Category::where('id',$id)->first();
