@@ -57,7 +57,6 @@ class SalesController extends Controller
           'post_number' => 'required',
           'PhoneNumber' => 'required',
           'ContactTime' => 'required',
-          'CustomerEmail' => 'required',
           'SalesPerson_id' => 'required',
           'SP_name' => 'required',
           'images' => 'nullable|max:1999'
