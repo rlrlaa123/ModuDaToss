@@ -39,12 +39,14 @@
                         <p class="realtime_bname">
                             {{(strlen($businessName[0])>5) ? iconv_substr($businessName[0],0,5,"utf-8").'...' : $businessName[0]}}
                         </p>
-                        <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
+                        <p class="realtime_name">
+                            {{(strlen($salesinfos[0]->SP_name) > 3) ? iconv_substr($businessName[0],0,3,"utf-8").'...' : $businessName[0]}}
+                        </p>
                         <p>
                             {{(strlen($salesinfos[0]->CustomerAddress) > 12) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
                         </p>
                         @if($salesinfos[0]->state=='진행중')
-                            <p>{{$salesinfos[0]->state}}</p>
+                            <p style="color:forestgreen">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
