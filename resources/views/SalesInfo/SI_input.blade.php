@@ -188,12 +188,12 @@
 
                             {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                             {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
-                            {{--@foreach($passeddata['category'] as $ct)--}}
-                                {{--<input type="hidden" name="category[]" value="{{$ct}}">--}}
-                            {{--@endforeach--}}
-                            {{--@foreach($passeddata['money'] as $money)--}}
-                                {{--<input type="hidden" name="money[]" value="{{$money}}">--}}
-                            {{--@endforeach--}}
+                            @foreach($passeddata['category'] as $ct)
+                                <input type="hidden" name="category[]" value="{{$ct}}">
+                            @endforeach
+                            @foreach($passeddata['money'] as $money)
+                                <input type="hidden" name="money[]" value="{{$money}}">
+                            @endforeach
 
                             <div class="form-group" style="text-align:center;">
                                 <button class="btn btn-primary btn-lg" type="submit">
