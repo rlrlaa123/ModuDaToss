@@ -11,7 +11,6 @@
             <div class="panel-head">
             </div>
             <div class="panel-body">
-
               <table class="table" style="text-align:center">
                 <tbody>
                   <tr>
@@ -32,11 +31,19 @@
                   </tr>
                   <tr>
                     <th>고객 주소 Extra(1)</th>
-                    <td>{{ $SalesInfo -> CustomerAddress_detail}}</td>
+                    @if($SalesInfo -> CustomerAddress_detail == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> CustomerAddress_detail}}</td>
+                    @endif
                   </tr>
                   <tr>
                     <th>고객 주소 Extra(2)</th>
-                    <td>{{ $SalesInfo  -> CustomerAddress_extra}}</td>
+                    @if($SalesInfo -> CustomerAddress_extra == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> CustomerAddress_extra}}</td>
+                    @endif
                   </tr>
                   <tr>
                     <th>고객 전화 번호</th>
@@ -44,7 +51,11 @@
                   </tr>
                   <tr>
                     <th>고객 이메일</th>
-                    <td>{{ $SalesInfo -> CustomerEmail}}</td>
+                    @if($SalesInfo -> CustomerEmail == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> CustomerEmail}}</td>
+                    @endif
                   </tr>
                   <tr>
                     <th>예상 접촉 시간</th>
@@ -52,7 +63,11 @@
                   </tr>
                   <tr>
                     <th>특이사항</th>
-                    <td>{{ $SalesInfo  -> Characteristic}}</td>
+                    @if($SalesInfo -> Characteristic == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> Characteristic}}</td>
+                    @endif
                   </tr>
                   <tr>
                     <th>카테고리</th>
@@ -60,7 +75,11 @@
                   </tr>
                   <tr>
                     <th>예상 체결 금액</th>
-                    <td>{{ $SalesInfo -> pay }}</td>
+                    @if($SalesInfo -> pay == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> pay}}</td>
+                    @endif
                   </tr>
                   <tr>
                     <th>접수 시간</th>
@@ -72,7 +91,11 @@
                   </tr>
                   <tr>
                     <th>비고</th>
-                    <td>{{ $SalesInfo -> note}}</td>
+                    @if($SalesInfo -> note == '')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> note}}</td>
+                    @endif
                   </tr>
 
                   <tr>
@@ -81,7 +104,11 @@
                   </tr>
                   <tr>
                     <th>실패사유</th>
-                    <td>{{ $SalesInfo -> Fail_reason}}</td>
+                    @if($SalesInfo -> Fail_reason == 'none')
+                      <td>-</td>
+                    @else
+                      <td>{{ $SalesInfo -> Fail_reason}}</td>
+                    @endif
                   </tr>
                 </tbody>
 
