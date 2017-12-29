@@ -5,23 +5,31 @@
         <div class="front_page container">
             <div class="front_page row">
                 <div class="front_page col">
-                    <p>등록된 정보</p>
-                    <img class="img1" src="/img/information.png">
-                    <p class="num">{{$front_img->front_img1}}건</p>
+                    <div class="row front-img">
+                        <p>등록된 정보</p>
+                        <img class="img1" src="/img/information.png">
+                        <p class="num">{{$front_img->front_img1}}건</p>
+                    </div>
                 </div>
                 <div class="front_page col">
-                    <p>등록된 정보</p>
-                    <img class="img2" src="/img/money.png">
-                    <p class="num">{{$front_img->front_img2}}건</p>
+                    <div class="row front-img">
+                        <p>등록된 정보</p>
+                        <img class="img2" src="/img/money.png">
+                        <p class="num">{{$front_img->front_img2}}건</p>
+                    </div>
                 </div>
                 <div class="front_page col">
-                    <p>등록된 정보</p>
-                    <img class="img3" src="/img/man.png">
-                    <p class="num">{{$front_img->front_img3}}건</p>
+                    <div class="row front-img">
+                        <p>등록된 정보</p>
+                        <img class="img3" src="/img/man.png">
+                        <p class="num">{{$front_img->front_img3}}건</p>
+                    </div>
                 </div>
             </div>
             <hr class="front_page line">
-            <h4>실시간 견적 리스트</h4>
+            <div class="row wrapper">
+                <h4>실시간 견적 리스트</h4>
+            </div>
             @php($salesinfos = \App\SalesInfo::orderBy('created_at','desc')->take(4)->get())
             @if(count($salesinfos) < 4)
             @else
@@ -95,13 +103,19 @@
                     </div>
                 </div>
             @endif
-            <h4 style="margin-bottom:3%;">커뮤니티</h4>
+            <div class="row wrapper">
+                <h4 style="margin-bottom:3%;">커뮤니티</h4>
+            </div>
             <div class="front_page container">
-                <div class="front_page image-container community">
-                    <a href="">#영업의 팁</a>
+                <div class="row wrapper">
+                    <div class="front_page image-container community">
+                        <a href="">#영업의 팁</a>
+                    </div>
                 </div>
-                <div class="front_page image-container dashboard">
-                    <a href="{{ route('articles.index') }}">#커뮤니티</a>
+                <div class="row wrapper">
+                    <div class="front_page image-container dashboard">
+                        <a href="{{ route('articles.index') }}">#커뮤니티</a>
+                    </div>
                 </div>
             </div>
         </div>
