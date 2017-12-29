@@ -60,7 +60,7 @@ class SalesController extends Controller
           'CustomerEmail' => 'required',
           'SalesPerson_id' => 'required',
           'SP_name' => 'required',
-          'images' => 'image|nullable|max:1999'
+          'images' => 'nullable|max:1999'
         ]);
 
         //Handle File upload
