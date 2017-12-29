@@ -13,7 +13,8 @@
       <form method="get" action="/SalesInfo/create">
         @foreach($category as $ct)
             <div class="checkboxcontainer">
-                <label class="checkbox">{{$ct->category}}
+                <label class="checkbox">
+                    {{ (strlen($ct->category) > 18) ? iconv_substr($ct->category,0,6,"utf-8").'...' : $ct->category}}
                     <input class="checkbox_category" name='category[]'  value="{{$ct->category}}" type="checkbox">
                     <span class="checkmark"></span>
                 </label>

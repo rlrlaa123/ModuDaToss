@@ -13,10 +13,13 @@
     </div>
 
     <div class="text-right action__article">
+        @if(Auth::guest())
+        @else
         <a href="{{ route('articles.create') }}" class="btn btn-primary">
             <i class="fa fa-plus-circle"></i>
             새 글 쓰기
         </a>
+        @endif
     </div>
 
     <article>
