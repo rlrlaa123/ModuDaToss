@@ -13,8 +13,7 @@
             z-index: 1000;
         }
         .sideNav.open {
-            display:block;
-            top: 50px;
+            display:block;z
             bottom: 0;
             right: 0;
             width: 230px;
