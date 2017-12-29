@@ -55,28 +55,21 @@ class SalesController extends Controller
           'BusinessName' => 'required',
           'CustomerAddress' => 'required',
           'post_number' => 'required',
-          //'CustomerAddress_detail' => 'required',
           'PhoneNumber' => 'required',
           'ContactTime' => 'required',
-          //'Characteristic' => 'required',
-          //'note' => 'required',
           'CustomerEmail' => 'required',
           'SalesPerson_id' => 'required',
           'SP_name' => 'required',
-          'images' => 'image|nullable|max:1999'
+          'images' => 'nullable|max:1999'
         ]);
 
         //Handle File upload
         if($request->hasFile('images')){
 
           $filenameWithExt = $request->file('images')->getClientOriginalName();
-
           $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
           $extension = $request->file('images')->getClientOriginalExtension();
-
           $fileNameToStore = $filename.'_'.time().'.'.$extension;
-
           $path = $request->file('images')->storeAs('public/images',$fileNameToStore);
         }else{
           $fileNameToStore = 'noimages.jpg';

@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
         View::share($currentUser);
         Schema::defaultStringLength(191);
 //        View->with(compact('currentUser'));
+        app()->setLocale('ko');
+        \Carbon\Carbon::setLocale(app()->getLocale());
     }
 
     /**

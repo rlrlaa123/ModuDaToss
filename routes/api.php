@@ -26,5 +26,10 @@ Route::group(['domain' => config('API_DOMAIN'), 'namespace' => 'Api', 'as' => 'a
         ]);
         /* 카테고리 */
         Route::get('/category/{id}','CategoryController@show');
+        /* JWT 인증 */
+        Route::post('auth/login', 'AuthController@login');
+        Route::post('auth/logout', 'AuthController@logout');
+        Route::post('auth/refresh', 'AuthController@refresh');
+        Route::post('auth/me', 'AuthController@me');
     });
 });
