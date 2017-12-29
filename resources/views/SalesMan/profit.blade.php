@@ -36,14 +36,14 @@
                 </a>
                 <a href="/DepositLog/{{ Auth::user()->id }}">
                   <div class="GotoDeposit">
-                    <img src="{{URL::asset('/img/Profit/Deposit.png')}}">
-                    <p>나의 수수료 기록</p>
+                    <img src="{{URL::asset('/img/money-bag.png')}}">
+                    <p style="color:#b0d7ff">나의 수수료 기록</p>
                   </div>
                 </a>
                 <a href="/WithdrawalLog/{{ Auth::user()->id }}">
                   <div class="GotoWithdrawal">
-                    <img src="{{URL::asset('/img/Profit/Withdrawal.png')}}">
-                    <p>나의 출금 기록</p>
+                    <img src="{{URL::asset('/img/wallet.png')}}">
+                    <p style="color:#b0d7ff">나의 출금 기록</p>
                   </div>
                 </a>
             </div>
