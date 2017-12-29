@@ -37,14 +37,16 @@
                     <div class="front_page col realtime">
                         @php($businessName = array($salesinfos[0]->BusinessName,$salesinfos[1]->BusinessName,$salesinfos[2]->BusinessName,$salesinfos[3]->BusinessName))
                         <p class="realtime_bname">
-                            {{(strlen($businessName[0])>5) ? iconv_substr($businessName[0],0,5,"utf-8").'...' : $businessName[0]}}
+                            {{(strlen($businessName[0]) > 15) ? iconv_substr($businessName[0],0,5,"utf-8").'...' : $businessName[0]}}
                         </p>
-                        <p class="realtime_name">{{$salesinfos[0]->SP_name}}</p>
+                        <p class="realtime_name">
+                            {{ (strlen($salesinfos[0]->SP_name) > 9) ? iconv_substr($salesinfos[0]->SP_name,0,3,"utf-8").'...' : $salesinfos[0]->SP_name}}
+                        </p>
                         <p>
-                            {{(strlen($salesinfos[0]->CustomerAddress) > 12) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
+                            {{(strlen($salesinfos[0]->CustomerAddress) > 33) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
                         </p>
                         @if($salesinfos[0]->state=='진행중')
-                            <p>{{$salesinfos[0]->state}}</p>
+                            <p style="color:forestgreen">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
@@ -53,14 +55,17 @@
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[1]) > 12) ? iconv_substr($businessName[1],0,11,"utf-8").'...' : $businessName[1]}}
+                            {{(strlen($businessName[1]) > 15) ? iconv_substr($businessName[1],0,11,"utf-8").'...' : $businessName[1]}}
                         </p>
-                        <p class="realtime_name">{{$salesinfos[1]->SP_name}}</p>
+                        <p class="realtime_name">
+
+                            {{ (strlen($salesinfos[1]->SP_name) > 9) ? iconv_substr($salesinfos[1]->SP_name,0,3,"utf-8").'...' : $salesinfos[1]->SP_name}}
+                        </p>
                         <p>
-                            {{(strlen($salesinfos[1]->CustomerAddress) > 12) ? iconv_substr($salesinfos[1]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[1]->CustomerAddress}}
+                            {{(strlen($salesinfos[1]->CustomerAddress) > 33) ? iconv_substr($salesinfos[1]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[1]->CustomerAddress}}
                         </p>
                         @if($salesinfos[1]->state=='진행중')
-                            <p>{{$salesinfos[1]->state}}</p>
+                            <p style="color:forestgreen;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='실패')
@@ -71,14 +76,16 @@
                 <div class="front_page row">
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[2]) > 12) ? iconv_substr($businessName[2],0,11,"utf-8").'...' : $businessName[2]}}
+                            {{(strlen($businessName[2]) > 15) ? iconv_substr($businessName[2],0,11,"utf-8").'...' : $businessName[2]}}
                         </p>
-                        <p class="realtime_name">{{$salesinfos[2]->SP_name}}</p>
+                        <p class="realtime_name">
+                            {{ (strlen($salesinfos[2]->SP_name) > 9) ? iconv_substr($salesinfos[2]->SP_name,0,3,"utf-8").'...' : $salesinfos[2]->SP_name}}
+                        </p>
                         <p>
-                            {{(strlen($salesinfos[2]->CustomerAddress) > 12) ? iconv_substr($salesinfos[2]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[2]->CustomerAddress}}
+                            {{(strlen($salesinfos[2]->CustomerAddress) > 33) ? iconv_substr($salesinfos[2]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[2]->CustomerAddress}}
                         </p>
                         @if($salesinfos[2]->state=='진행중')
-                            <p>{{$salesinfos[2]->state}}</p>
+                            <p style="color:forestgreen;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='실패')
@@ -87,14 +94,17 @@
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[3]) > 12) ? iconv_substr($businessName[3],0,11,"utf-8").'...' : $businessName[3]}}
+                            {{(strlen($businessName[3]) > 15) ? iconv_substr($businessName[3],0,11,"utf-8").'...' : $businessName[3]}}
                         </p>
-                        <p class="realtime_name">{{$salesinfos[3]->SP_name}}</p>
+                        <p class="realtime_name">
+
+                            {{ (strlen($salesinfos[3]->SP_name) > 9) ? iconv_substr($salesinfos[3]->SP_name,0,3,"utf-8").'...' : $salesinfos[3]->SP_name}}
+                        </p>
                         <p>
-                            {{(strlen($salesinfos[3]->CustomerAddress) > 12) ? iconv_substr($salesinfos[3]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[3]->CustomerAddress}}
+                            {{(strlen($salesinfos[3]->CustomerAddress) > 33) ? iconv_substr($salesinfos[3]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[3]->CustomerAddress}}
                         </p>
                         @if($salesinfos[3]->state=='진행중')
-                            <p>{{$salesinfos[3]->state}}</p>
+                            <p style="color:forestgreen;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='실패')
