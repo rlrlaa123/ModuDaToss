@@ -4,7 +4,7 @@
     <div class="page-header">
 
         <h4><a href="{{ route('articles.index') }}">
-                포럼
+                자유게시판
             </a>
             <small> / {{ $article->title }}</small></h4>
     </div>

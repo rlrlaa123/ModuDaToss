@@ -18,17 +18,17 @@
             {!! $errors->first('password', '<span class="form-error">:message</span>')!!}
         </div>
 
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="remember" value="{{ old('remember', 1) }}" checked>
-                    로그인 기억하기
-                    <span class="text-danger">
-            (공용 컴퓨터에서는 사용하지 마세요!)
-          </span>
-                </label>
-            </div>
-        </div>
+        {{--<div class="form-group">--}}
+            {{--<div class="checkbox">--}}
+                {{--<label>--}}
+                    {{--<input type="checkbox" name="remember" value="{{ old('remember', 1) }}" checked>--}}
+                    {{--로그인 기억하기--}}
+                    {{--<span class="text-danger">--}}
+            {{--(공용 컴퓨터에서는 사용하지 마세요!)--}}
+          {{--</span>--}}
+                {{--</label>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">
@@ -37,14 +37,14 @@
         </div>
 
         <div>
-            <p class="text-center">
+            <p class="text-center" style="margin:0;">
                 <a href="{{ route('users.create') }}">회원이 아니라면</a>
             </p>
             {{--<p class="text-center">--}}
                 {{--<a href="{{ route('remind.create') }}">비밀번호를 잊으셨나요?</a>--}}
             {{--</p>--}}
         </div>
-        <hr>
+        <hr style="margin-top:10px;">
         <div class="form-group">
             <a class="btn btn-primary btn-block" href="{{ route('social.login', ['facebook']) }}" style="background-color:#3b5998; color:white; margin:1%; display:block;">
                 <img src="/img/facebook.png" width="20px">

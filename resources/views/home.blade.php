@@ -13,14 +13,14 @@
                 </div>
                 <div class="front_page col">
                     <div class="row front-img">
-                        <p>등록된 정보</p>
+                        <p>계약 누적액</p>
                         <img class="img2" src="/img/money.png">
                         <p class="num">{{$front_img->front_img2}}건</p>
                     </div>
                 </div>
                 <div class="front_page col">
                     <div class="row front-img">
-                        <p>등록된 정보</p>
+                        <p>영업사원 수</p>
                         <img class="img3" src="/img/man.png">
                         <p class="num">{{$front_img->front_img3}}건</p>
                     </div>
