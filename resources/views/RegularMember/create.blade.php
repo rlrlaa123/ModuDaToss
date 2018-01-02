@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-group {{ $errors->has('phoneNumber') ? 'has-error' : '' }}">
-            <input type="phoneNumber" name="phoneNumber" class="form-control" placeholder="휴대폰 번호" />
+            <input type="number" name="phoneNumber" class="form-control" placeholder="휴대폰 번호" />
             <div class="row">
                 <div class="col-xs-6">
                     {!! $errors->first('phoneNumber', '<span class="form-error">:message</span>') !!}
