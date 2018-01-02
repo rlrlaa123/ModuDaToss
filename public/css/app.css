@@ -8364,10 +8364,6 @@ body {
   margin-left: 0;
 }
 
-.navbar {
-  margin-bottom: 0;
-}
-
 @font-face {
   font-family: "Nanum Gothic";
   src: url("/fonts/NanumGothic/NanumGothicCoding.ttf");
