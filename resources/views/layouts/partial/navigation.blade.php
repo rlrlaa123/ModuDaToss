@@ -244,9 +244,9 @@
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {
             $('.sideNav').toggleClass('open');
-            window.onscroll = function () {
-                $('.sideNav').toggleClass('up');
-            };
+            // window.onscroll = function () {
+            //     $('.sideNav').toggleClass('up');
+            // };
             // if($(document).scrollTop = 50) {
             //     console.log('hello');
             //     $('.sideNav').toggleClass('open');
