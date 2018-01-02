@@ -20,7 +20,7 @@
 {{--@endif--}}
         </a>
         @if(Request::path() == 'articles')
-            <p class="fa fa-content fa-5x"> {{ $article->content }}</p>
+            <p class="fa fa-content fa-5x"> {!! $article->content !!}</p>
         @endif
     </div>
 </div>

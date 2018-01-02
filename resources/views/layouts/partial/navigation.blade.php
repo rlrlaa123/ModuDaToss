@@ -1,9 +1,9 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/clipboard.min.js"></script>
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            top:50px;
+            /*top:50px;*/
             bottom:0;
             right:-256px;
             width:256px;
@@ -13,7 +13,20 @@
             z-index: 1000;
         }
         .sideNav.open {
-            display:block;z
+            top:50px;
+            display:block;
+            bottom: 0;
+            right: 0;
+            width: 230px;
+            position: fixed;
+            overflow: auto;
+            transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
+            /*visibility:visible;*/
+            z-index: 1000;
+        }
+        .sideNav.up {
+            top:0;
+            display:block;
             bottom: 0;
             right: 0;
             width: 230px;
@@ -231,12 +244,16 @@
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {
             $('.sideNav').toggleClass('open');
+            window.onscroll = function () {
+                $('.sideNav').toggleClass('up');
+            };
+            // if($(document).scrollTop = 50) {
+            //     console.log('hello');
+            //     $('.sideNav').toggleClass('open');
+            // }
             e.stopPropagation();
             return false;
         });
-        // $('*:not(.navbar-toggle)').on('click', function () {
-        //     $('.sideNav').removeClass('open');
-        // });
     });
 
     var clipboard = new Clipboard('.btn-copy');
