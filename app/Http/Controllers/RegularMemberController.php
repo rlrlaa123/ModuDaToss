@@ -13,26 +13,13 @@ class RegularMemberController extends Controller
 
     public function store(Request $request)
     {
-//        $this->validate($request, [
-//            'gender' => 'required',
-//            'phoneNumber' => 'required|min:11|int',
-//            'bankName' => 'required',
-//            'accountNumber' => 'required',
-//            'recommend_code' => 'required',
-//        ]);
-
-        $rules = [
+        $this->validate($request, [
             'gender' => 'required',
-            'phoneNumber' => 'required|min:11|int',
+            'phoneNumber' => 'required|min:11',
             'bankName' => 'required',
             'accountNumber' => 'required',
             'recommend_code' => 'required',
-        ];
-
-        $messages = [
-            'phoneNumber.integer' => "휴대폰 번호는 '-' 없이 숫자만 입력하세요.",
-        ];
-        $this->validate($request, $rules, $messages);
+        ]);
 
         $user = \App\User::where('id',$request->id)->first();
         $user->gender = $request->gender;
