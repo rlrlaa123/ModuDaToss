@@ -3,7 +3,7 @@
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            top:0;
+            top:50px;
             bottom:0;
             right:-256px;
             width:256px;
@@ -13,7 +13,7 @@
             z-index: 1000;
         }
         .sideNav.open {
-            top:0;
+            top:50px;
             display:block;
             bottom: 0;
             right: 0;
