@@ -3,7 +3,7 @@
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            top:50px;
+            top:0;
             bottom:0;
             right:-256px;
             width:256px;
@@ -13,31 +13,6 @@
             z-index: 1000;
         }
         .sideNav.open {
-            opacity: 1;
-            top:50px;
-            display:block;
-            bottom: 0;
-            right: 0;
-            width: 230px;
-            position: fixed;
-            overflow: auto;
-            transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
-            /*visibility:visible;*/
-            z-index: 1000;
-        }
-        .sideNav.down {
-            top:50px;
-            display:block;
-            bottom: 0;
-            right: 0;
-            width: 230px;
-            position: fixed;
-            overflow: auto;
-            transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
-            /*visibility:visible;*/
-            z-index: 1000;
-        }
-        .sideNav.up {
             top:0;
             display:block;
             bottom: 0;
@@ -63,6 +38,21 @@
             text-align: left;
             border-radius: 5px;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        .closebtn {
+            /*position:absolute;*/
+            /*top:0;*/
+            /*right:25px;*/
+            font-size: 24px;
+            text-align:right;
+            text-decoration: none;
+            color: #818181;
+            display: block;
+            margin-left:180px;
+        }
+        .closebtn:hover {
+            color: black;
         }
     }
 </style>
@@ -269,7 +259,6 @@
             }
         });
     });
-
 
     var clipboard = new Clipboard('.btn-copy');
 
