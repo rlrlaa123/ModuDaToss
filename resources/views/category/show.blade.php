@@ -24,7 +24,7 @@
                         </div>
                         <div class="category content" style="padding:3%; overflow-y:scroll;">
                             <p>
-                                <h3 style="margin:2%;">{{$category->category}}(이)란?</h3>
+                                <h3 style="margin:2%; font-weight:lighter;">{{$category->category}}(이)란?</h3>
                                 <p>{!!$category->content!!}</p>
                             </p>
                         </div>
