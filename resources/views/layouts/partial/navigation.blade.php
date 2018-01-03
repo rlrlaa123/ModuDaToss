@@ -3,7 +3,7 @@
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            /*top:50px;*/
+            top:50px;
             bottom:0;
             right:-256px;
             width:256px;
@@ -13,6 +13,19 @@
             z-index: 1000;
         }
         .sideNav.open {
+            opacity: 1;
+            top:50px;
+            display:block;
+            bottom: 0;
+            right: 0;
+            width: 230px;
+            position: fixed;
+            overflow: auto;
+            transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
+            /*visibility:visible;*/
+            z-index: 1000;
+        }
+        .sideNav.down {
             top:50px;
             display:block;
             bottom: 0;
@@ -244,17 +257,19 @@
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {
             $('.sideNav').toggleClass('open');
-            // window.onscroll = function () {
-            //     $('.sideNav').toggleClass('up');
-            // };
-            // if($(document).scrollTop = 50) {
-            //     console.log('hello');
-            //     $('.sideNav').toggleClass('open');
-            // }
+
             e.stopPropagation();
             return false;
         });
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var _opened = $('.sideNav').hasClass("sideNav open");
+            if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+                $('.sideNav').toggleClass('open');
+            }
+        });
     });
+
 
     var clipboard = new Clipboard('.btn-copy');
 
