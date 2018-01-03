@@ -11,8 +11,10 @@
             overflow:auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             z-index: 1000;
+            background-color:white;
         }
         .sideNav.open {
+            background-color:white;
             top:50px;
             display:block;
             bottom: 0;
@@ -39,20 +41,10 @@
             border-radius: 5px;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .closebtn {
-            /*position:absolute;*/
-            /*top:0;*/
-            /*right:25px;*/
-            font-size: 24px;
-            text-align:right;
-            text-decoration: none;
-            color: #818181;
-            display: block;
-            margin-left:180px;
-        }
-        .closebtn:hover {
-            color: black;
+        .navbar-default {
+            background-color:white;
+            border-color:white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
         }
     }
 </style>
@@ -67,7 +59,7 @@
     <a class="navbar-brand" href="/" style="color:#3473d9;">
         {{ config('app.name', 'Laravel') }}
     </a>
-    <ul class="navbar-default navbar-collapse sideNav" style="margin-bottom:0; padding:0;">
+    <ul class="navbar-default navbar-collapse sideNav" style="margin-bottom:0; padding:0; border-color:white;">
         <div class="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -113,7 +105,7 @@
                                     </a>
                                 </li>
                             @elseif (Auth::user()->type==4)
-                                <span style="margin-left:25px; color:#777">
+                                <span style="margin-left:25px; color:#3473d9">
                                     추천인 코드
                                 </span>
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
@@ -123,7 +115,7 @@
                                     </span>
                                 </li>
                             @elseif (Auth::user()->type==1)
-                                <span style="margin-left:25px; color:#777">
+                                <span style="margin-left:25px; color:#3473d9">
                                     추천인 코드
                                 </span>
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
