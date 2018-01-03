@@ -1,9 +1,7 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="/js/clipboard.min.js"></script>
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            top:50px;
+            top:0;
             bottom:0;
             right:-256px;
             width:256px;
@@ -12,10 +10,11 @@
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             z-index: 1000;
             background-color:white;
+            border-radius:5px;
         }
         .sideNav.open {
             background-color:white;
-            top:50px;
+            top:0;
             display:block;
             bottom: 0;
             right: 0;
@@ -25,6 +24,7 @@
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             /*visibility:visible;*/
             z-index: 1000;
+            border-radius:5px;
         }
         .recommend {
              padding-left: 25px;
@@ -85,7 +85,6 @@
                         @endif
                     </li>
                     <li><a href="{{ route('articles.index') }}">게시판</a></li>
-                    {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -234,7 +233,7 @@
         </div>
     </ul>
 </nav>
-
+<script src="js/clipboard.min.js"></script>
 <script>
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {
@@ -268,4 +267,10 @@
         console.error('Action:', e.action);
         console.error('Trigger:', e.trigger);
     });
+    // function myFunction() {
+    //     var copyText = document.getElementById("foo.recommend");
+    //     copyText.select();
+    //     document.execCommand("Copy");
+    //     alert("Copied the text: " + copyText.value);
+    // }
 </script>
