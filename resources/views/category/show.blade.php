@@ -8,7 +8,7 @@
             <div class="col-md-8 col-md-offset-2">
                     <div class="panel-heading">
                     <div class="category">
-                        <h3 class="category title" style="color:#3473d9; width:90%;">
+                        <h3 class="category title" style="color:#3473d9; width:90%; font-weight:lighter;">
                             {{$category->category}}
                         </h3>
                         <div class="dropdown" style="width:90%;">
