@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <form action="{{ route('SalesInfo.store') }}" method="POST" role="form" style="font-size:13px;">
+                    <form action="{{ route('SalesInfo.store') }}" method="POST" role="form" enctype="multipart/form-data" style="font-size:13px;">
                         {!! csrf_field() !!}
                         @php($field = "CustomerName")
                         @php($message = "고객명")

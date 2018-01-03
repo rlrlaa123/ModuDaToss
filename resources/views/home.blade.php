@@ -47,6 +47,8 @@
                         </p>
                         @if($salesinfos[0]->state=='진행중')
                             <p style="color:forestgreen">{{$salesinfos[0]->state}}</p>
+                        @elseif($salesinfos[2]->state=='승인대기')
+                            <p style="color:yellow;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[0]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
@@ -66,6 +68,8 @@
                         </p>
                         @if($salesinfos[1]->state=='진행중')
                             <p style="color:forestgreen;">{{$salesinfos[1]->state}}</p>
+                        @elseif($salesinfos[2]->state=='승인대기')
+                            <p style="color:yellow;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[1]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='실패')
@@ -86,6 +90,8 @@
                         </p>
                         @if($salesinfos[2]->state=='진행중')
                             <p style="color:forestgreen;">{{$salesinfos[2]->state}}</p>
+                        @elseif($salesinfos[2]->state=='승인대기')
+                            <p style="color:yellow;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='실패')
@@ -105,6 +111,8 @@
                         </p>
                         @if($salesinfos[3]->state=='진행중')
                             <p style="color:forestgreen;">{{$salesinfos[3]->state}}</p>
+                        @elseif($salesinfos[2]->state=='승인대기')
+                            <p style="color:yellow;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[3]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='실패')
