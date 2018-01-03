@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <form action="{{ route('SalesInfo.store') }}" method="POST" role="form" style="font-size:13px;">
+                    <form action="{{ route('SalesInfo.store') }}" method="POST" role="form" enctype="multipart/form-data" style="font-size:13px;">
                         {!! csrf_field() !!}
                         @php($field = "CustomerName")
                         @php($message = "고객명")
@@ -185,8 +185,19 @@
                             </div>
                         </div>
 
+                        <div id="sketchpadapp">
+                          <div class="leftside">
+                               <button id="clearbutton" onclick="clearCanvas(canvas,ctx);">clear</button>
+                          </div>
+                          <div class="rightside">
+                              <canvas id="sketchpad" height="300" width="400">
+                              </canvas>
+                          </div>
+                        </div>
+
                         {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                         {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
+                        {{Form::hidden('Signature','abc',['id'=>'Signature'])}}
                         @foreach($passeddata['category'] as $ct)
                             <input type="hidden" name="category[]" value="{{$ct}}">
                         @endforeach
@@ -195,7 +206,7 @@
                         @endforeach
 
                         <div class="form-group" style="text-align:center;">
-                            <button class="btn btn-primary btn-lg" type="submit">
+                            <button id="button" class="btn btn-primary btn-lg" type="submit">
                                 등록하기
                             </button>
                         </div>
@@ -205,84 +216,143 @@
         </div>
     </div>
     <script>
-     $(function() {
-       $("#postcodify_search_button").postcodifyPopUp();
-     });
-
-     /*
-     var canvas = document.getElementById('canvas');
-     var context= canvas.getContext('2d');
-
-     var radius = 1;
-     var dragging = false;
-
-     canvas.width = 500;
-     canvas.height = 200;
-
-
-
-     function clearCanvas(canvas){
-       canvas.width = canvas.width;
-     }
-
-     context.lineWidth = radius*2;
-
-     var putPoint = function(e){
-       if(dragging){
-         context.lineTo(e.offsetX,e.offsetY);
-         context.stroke();
-         context.beginPath();
-         context.arc(e.offsetX, e.offsetY ,radius ,0 ,Math.PI+2);
-         context.fill();
-         context.beginPath();
-         context.moveTo(e.offsetX,e.offsetY);
-       }
-     };
-
-     var engage = function(e){
-       dragging = true;
-       putPoint(e);
-     }
-
-     var disengage = function(){
-       dragging = false;
-       context.beginPath();
-     }
-     canvas.addEventListener('mousedown',engage);
-     canvas.addEventListener('mousemove',putPoint);
-     canvas.addEventListener('mouseup',disengage);
-
-
-     var saveButton = document.getElementById('save');
-
-     saveButton.addEventListener('click',saveImage);
-
-     function saveImage(canvas){
-       var data = canvas.toDataURL();
-
-       window.open(data, '_blank', 'location=0, menubar=0, ');
-
-       //var request = new XMLHttpRequest();
-       /*
-
-       request.onreadystatechange = function(){
-         if(requests.readyState == 4 && request.status == 200){
-           //do our stuff
-           var response = request.responseText;
-           console.log(response);
-         }
-       }
-
-       request.open('POST', 'save.php', true);
-       request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-       request.send('img=' + data);
-
-
-       //  window.open(data,'_blank','location=0, menubar=0');
-     }
-     */
-
 
     </script>
+    <script>
+    $(function() {
+      $("#postcodify_search_button").postcodifyPopUp();
+    });
 
+    var data;
+
+    $('#button').click(function(event){
+      event.preventDefault();
+      if (confirm('영업정보를 이대로 제출하시겠습니까?')) {
+
+         alert('서명저장시작');
+         data = canvas.toDataURL();
+         $.ajax({
+           headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+             'Content-type': 'application/x-www-form-urlencoded',
+           },
+           url: '/SignatureStore',
+           type:'post',
+           data:{signature:data},
+           success:function(data){
+             console.log(data);
+             $('#Signature').val(data);
+           }
+
+         })
+         $('form').submit();
+       } else {
+         return false;
+       }
+
+    });
+
+    var canvas,ctx;
+    var mouseX,mouseY,mouseDown=0;
+    var touchX,touchY;
+    function drawDot(ctx,x,y,size) {
+      r=0; g=0; b=0; a=255;
+
+      ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
+      ctx.lineWidth = size*2;
+      ctx.lineTo(x,y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI*2, true);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+    }
+
+    function clearCanvas(canvas,ctx) {
+      event.preventDefault();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function sketchpad_mouseDown() {
+      mouseDown=1;
+      ctx.beginPath();
+      event.preventDefault();
+      drawDot(ctx,mouseX,mouseY,1);
+    }
+
+    function sketchpad_mouseUp() {
+      mouseDown=0;
+    }
+
+    function sketchpad_mouseMove(e) {
+      getMousePos(e);
+      if (mouseDown==1) {
+          drawDot(ctx,mouseX,mouseY,1);
+      }
+    }
+
+    function getMousePos(e) {
+      if (!e)
+          var e = event;
+
+      if (e.offsetX) {
+          mouseX = e.offsetX;
+          mouseY = e.offsetY;
+      }
+      else if (e.layerX) {
+          mouseX = e.layerX;
+          mouseY = e.layerY;
+      }
+    }
+
+    function sketchpad_touchStart() {
+      getTouchPos();
+      drawDot(ctx,touchX,touchY,1);
+      event.preventDefault();
+    }
+
+    function sketchpad_touchMove(e) {
+      getTouchPos(e);
+      drawDot(ctx,touchX,touchY,1);
+      event.preventDefault();
+    }
+
+    function sketchpad_touchend(e){
+
+    ctx.beginPath();
+    event.preventDefault();
+    }
+
+    function getTouchPos(e) {
+      if (!e)
+          var e = event;
+
+      if(e.touches) {
+          if (e.touches.length == 1) { // Only deal with one finger
+              var touch = e.touches[0]; // Get the information for finger #1
+              touchX=touch.pageX-touch.target.offsetLeft;
+              touchY=touch.pageY-touch.target.offsetTop;
+          }
+      }
+    }
+
+    canvas = document.getElementById('sketchpad');
+
+    if (canvas.getContext)
+      ctx = canvas.getContext('2d');
+
+    if (ctx) {
+      // React to mouse events on the canvas, and mouseup on the entire document
+      canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
+      canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
+      window.addEventListener('mouseup', sketchpad_mouseUp, false);
+
+      // React to touch events on the canvas
+      canvas.addEventListener('touchstart', sketchpad_touchStart, false);
+      canvas.addEventListener('touchmove', sketchpad_touchMove, false);
+      canvas.addEventListener('touchend', sketchpad_touchend, false);
+    }
+    </script>
 @endsection

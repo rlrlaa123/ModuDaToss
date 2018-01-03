@@ -19,20 +19,20 @@ class SalesInfo extends Model
 
      public $timestamps = true;
 
-    protected $fillable = [
-        'CustomerName',
-        'BusinessName',
-        'CustomerAddress',
-        'PhoneNumber',
-        'ContactTime',
-        'Characteristic',
-        'Category',
-        'note',
-        'CustomerEmail',
-        'pay',
-        'SalesPerson_id',
-        'SP_name',
-    ];
+      protected $fillable = [
+          'CustomerName',
+          'BusinessName',
+          'CustomerAddress',
+          'PhoneNumber',
+          'ContactTime',
+          'Characteristic',
+          'Category',
+          'note',
+          'CustomerEmail',
+          'pay',
+          'SalesPerson_id',
+          'SP_name',
+      ];
 //
 //    protected $with = [
 //        'SalesPerson_id',

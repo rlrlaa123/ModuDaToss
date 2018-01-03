@@ -17,6 +17,7 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -28,9 +29,10 @@ class SalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function Choosecategory(){
+
         $category = Category::all();
 
-        return view('SalesInfo.SI_input_category')->with('category',$category);
+        return view('SalesInfo.SI_input_category')->with('category',$category)->with('SPname',auth()->user()->name);
 
     }
 
@@ -48,8 +50,8 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
+        return $request->all();
         $NumberofCategory = count($request->category);
-
         $this->validate($request, [
           'CustomerName' => 'required',
           'BusinessName' => 'required',
@@ -95,6 +97,29 @@ class SalesController extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function SignatureStore(Request $request){
+
+      $data = $request->signature;
+
+      $data = str_replace('data:image/png;base64,', '', $data);
+
+      $data = str_replace(' ', '+', $data);
+
+      $img = base64_decode($data);
+
+      $imgname = uniqid().'.png';
+
+      $path = $_SERVER['DOCUMENT_ROOT'].'/img/'.$imgname;
+
+      if(file_put_contents($path, $img)){
+        return $imgname;
+      }else{
+        header("HTTP/1.1 500 Internal Server Error");
+      }
+      return "ok?";
+
     }
 
     public function show($id)

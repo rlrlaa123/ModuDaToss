@@ -7,6 +7,7 @@
     <div class="panel-heading">
         <span class="bluetitle">Step 1</span>
         <span class="greytitle">영업카테고리선택</span>
+        <p>{{ $SPname }}</p>
         <button type="button" class="SIreset">reset</button>
     </div>
     <div class="panel-body">

@@ -78,6 +78,7 @@ Route::get('Choosecategory',[
   'as' => 'SalesInfo.choosecategory',
   'uses' => 'SalesController@Choosecategory'
 ]);
+Route::post('/SignatureStore','SalesController@SignatureStore');
 
 // 정회원 등록
 Route::get('regular/{id}',[
