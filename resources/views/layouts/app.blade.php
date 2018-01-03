@@ -65,7 +65,6 @@
     @endif
 </div>
 
-
 <!-- Scripts -->
 <script src="{{ elixir('js/app.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
