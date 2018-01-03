@@ -50,7 +50,8 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+        $imgname = $this->SignatureStore($request->Signature);
+
         $NumberofCategory = count($request->category);
         $this->validate($request, [
           'CustomerName' => 'required',
@@ -93,15 +94,16 @@ class SalesController extends Controller
           $SalesInfo->SP_name = $request->input('SP_name');
           $SalesInfo->state= '진행중';
           $SalesInfo->images = $fileNameToStore;
+          $SalesInfo->signature = $imgname;
           $SalesInfo->save();
         }
 
         return redirect('/');
     }
 
-    public function SignatureStore(Request $request){
+    public function SignatureStore($Signature){
 
-      $data = $request->signature;
+      $data = $Signature;
 
       $data = str_replace('data:image/png;base64,', '', $data);
 

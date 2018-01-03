@@ -119,6 +119,11 @@
                 <img src="/storage/images/{{$SalesInfo -> images}}" style="width:100%">
               </div>
 
+              <div class="SI_showtitle">서명</div>
+              <br><br><br>
+                <img src="/img/{{ $SalesInfo -> signature }}" style="width:100%">
+              </div>
+
             </div>
             <div class="panel-footer">
             </div>

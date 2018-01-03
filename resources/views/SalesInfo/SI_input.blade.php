@@ -225,7 +225,8 @@
 
     var data;
 
-    $('#button').click(function(event){
+    /*
+    $('form').on('click','#button',function(event){
       event.preventDefault();
       if (confirm('영업정보를 이대로 제출하시겠습니까?')) {
 
@@ -251,6 +252,7 @@
        }
 
     });
+    */
 
     var canvas,ctx;
     var mouseX,mouseY,mouseDown=0;
@@ -284,6 +286,8 @@
 
     function sketchpad_mouseUp() {
       mouseDown=0;
+      data = canvas.toDataURL();
+      $('#Signature').val(data);
     }
 
     function sketchpad_mouseMove(e) {
@@ -320,9 +324,10 @@
     }
 
     function sketchpad_touchend(e){
-
-    ctx.beginPath();
-    event.preventDefault();
+      ctx.beginPath();
+      data = canvas.toDataURL();
+      $('#Signature').val(data);
+      event.preventDefault();
     }
 
     function getTouchPos(e) {
