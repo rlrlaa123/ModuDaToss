@@ -49,6 +49,7 @@
                             <p style="color:forestgreen">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='승인대기')
                             <p>{{$salesinfos[0]->state}}</p>
+                            <p style="color:yellow;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
@@ -70,6 +71,7 @@
                             <p style="color:forestgreen;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='승인대기')
                             <p>{{$salesinfos[1]->state}}</p>
+                            <p style="color:yellow;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='실패')
@@ -113,6 +115,7 @@
                             <p style="color:forestgreen;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='승인대기')
                             <p>{{$salesinfos[3]->state}}</p>
+                            <p style="color:yellow;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='실패')

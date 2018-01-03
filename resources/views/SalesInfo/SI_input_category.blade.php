@@ -68,7 +68,7 @@ $(document).ready(function(){
         $row = $(event.target).parent().next().next().find('input');
         $row.remove();
       }
-  })
+  });
 
   $('.SIreset').click(function(){
     location.reload();
