@@ -61,7 +61,7 @@ class SalesController extends Controller
           'ContactTime' => 'required',
           'SalesPerson_id' => 'required',
           'SP_name' => 'required',
-          'images' => 'nullable|max:1999'
+          'images' => 'image|nullable|max:1999'
         ]);
 
         //Handle File upload

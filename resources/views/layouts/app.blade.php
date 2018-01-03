@@ -41,6 +41,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 @yield('style')
 
 <!-- Scripts -->
@@ -65,10 +68,13 @@
     @endif
 </div>
 
-
 <!-- Scripts -->
 <script src="{{ elixir('js/app.js') }}"></script>
-
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'ckeditor' );
+</script>
 @yield('script')
 </body>
 </html>

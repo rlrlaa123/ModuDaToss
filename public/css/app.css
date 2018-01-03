@@ -8364,10 +8364,6 @@ body {
   margin-left: 0;
 }
 
-.navbar {
-  margin-bottom: 0;
-}
-
 @font-face {
   font-family: "Nanum Gothic";
   src: url("/fonts/NanumGothic/NanumGothicCoding.ttf");
@@ -10206,7 +10202,7 @@ body {
 
   .front_page.col.realtime p.realtime_bname {
     display: inline-block;
-    width: 55%;
+    width: 50%;
     margin: 0;
     padding: 0;
     color: #23243b;
@@ -10226,7 +10222,7 @@ body {
 
   .front_page.col.realtime p.realtime_name {
     display: inline-block;
-    width: 30%;
+    width: 35%;
     margin: 0;
     padding: 0;
     font-size: 100%;
@@ -10619,6 +10615,12 @@ body {
 
 .form-group.comment-area {
   margin-top: 1%;
+}
+
+.btn-copy {
+  height: 40px;
+  width: 30px;
+  margin: 3px 0 3px 12px;
 }
 
 .panel-default > .panel-heading {

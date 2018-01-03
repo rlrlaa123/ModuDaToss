@@ -1,9 +1,7 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="/js/clipboard.min.js"></script>
 <style>
     @media screen and (max-width: 768px) {
         .sideNav {
-            top:50px;
+            top:0;
             bottom:0;
             right:-256px;
             width:256px;
@@ -11,9 +9,13 @@
             overflow:auto;
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             z-index: 1000;
+            background-color:white;
+            border-radius:5px;
         }
         .sideNav.open {
-            display:block;z
+            background-color:white;
+            top:0;
+            display:block;
             bottom: 0;
             right: 0;
             width: 230px;
@@ -22,6 +24,7 @@
             transition: all 0.3s cubic-bezier(.87, -.41, .19, 1.44);
             /*visibility:visible;*/
             z-index: 1000;
+            border-radius:5px;
         }
         .recommend {
              padding-left: 25px;
@@ -38,6 +41,11 @@
             border-radius: 5px;
             -webkit-tap-highlight-color: transparent;
         }
+        .navbar-default {
+            background-color:white;
+            border-color:white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+        }
     }
 </style>
 
@@ -51,7 +59,7 @@
     <a class="navbar-brand" href="/" style="color:#3473d9;">
         {{ config('app.name', 'Laravel') }}
     </a>
-    <ul class="navbar-default navbar-collapse sideNav" style="margin-bottom:0; padding:0;">
+    <ul class="navbar-default navbar-collapse sideNav" style="margin-bottom:0; padding:0; border-color:white;">
         <div class="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -77,7 +85,6 @@
                         @endif
                     </li>
                     <li><a href="{{ route('articles.index') }}">게시판</a></li>
-                    {{--                        <li><a href="{{ route('income.inquiry') }}">수익조회 및 출금</a></li>--}}
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -97,7 +104,7 @@
                                     </a>
                                 </li>
                             @elseif (Auth::user()->type==4)
-                                <span style="margin-left:25px; color:#777">
+                                <span style="margin-left:25px; color:#3473d9">
                                     추천인 코드
                                 </span>
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
@@ -107,7 +114,7 @@
                                     </span>
                                 </li>
                             @elseif (Auth::user()->type==1)
-                                <span style="margin-left:25px; color:#777">
+                                <span style="margin-left:25px; color:#3473d9">
                                     추천인 코드
                                 </span>
                                 <li class="recommend" id="foo" style="display:inline; padding-left:2px; color:#777">
@@ -226,17 +233,22 @@
         </div>
     </ul>
 </nav>
-
+<script src="js/clipboard.min.js"></script>
 <script>
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {
             $('.sideNav').toggleClass('open');
+
             e.stopPropagation();
             return false;
         });
-        // $('*:not(.navbar-toggle)').on('click', function () {
-        //     $('.sideNav').removeClass('open');
-        // });
+        $(document).click(function(event) {
+            var clickover = $(event.target);
+            var _opened = $('.sideNav').hasClass("sideNav open");
+            if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+                $('.sideNav').toggleClass('open');
+            }
+        });
     });
 
     var clipboard = new Clipboard('.btn-copy');
@@ -255,4 +267,10 @@
         console.error('Action:', e.action);
         console.error('Trigger:', e.trigger);
     });
+    // function myFunction() {
+    //     var copyText = document.getElementById("foo.recommend");
+    //     copyText.select();
+    //     document.execCommand("Copy");
+    //     alert("Copied the text: " + copyText.value);
+    // }
 </script>

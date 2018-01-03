@@ -1,12 +1,14 @@
 @extends('layouts.app')
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 @section('content')
-    <div class="container-fluid" style="">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                     <div class="panel-heading">
                     <div class="category">
-                        <h3 class="category title" style="color:#3473d9; width:90%;">
+                        <h3 class="category title" style="color:#3473d9; width:90%; font-weight:lighter;">
                             {{$category->category}}
                         </h3>
                         <div class="dropdown" style="width:90%;">
@@ -22,7 +24,7 @@
                         </div>
                         <div class="category content" style="padding:3%; overflow-y:scroll;">
                             <p>
-                                <h3 style="margin:2%;">{{$category->category}}(이)란?</h3>
+                                <h3 style="margin:2%; font-weight:lighter;">{{$category->category}}(이)란?</h3>
                                 <p>{!!$category->content!!}</p>
                             </p>
                         </div>
