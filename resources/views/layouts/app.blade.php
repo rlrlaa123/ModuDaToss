@@ -75,6 +75,7 @@
 <script>
     CKEDITOR.replace( 'ckeditor' );
 </script>
+
 @yield('script')
 </body>
 </html>
