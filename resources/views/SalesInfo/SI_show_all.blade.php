@@ -15,11 +15,11 @@
 
                   <br><br><br>
 
-                  <div class="container">
+                  <div class="container statebox">
                     <a href="/SalesInfoall"><button type="button" class="btn btn-primary btn-sm">전체</button></a>
                     <a href="/SalesInfoall/접수 완료"><button type="button" class="btn btn-primary btn-sm">접수</button></a>
                     <a href="/SalesInfoall/진행중"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
-                    <a href="/SalesInfoall/승인대기"><button type="button" class="btn btn-primary btn-sm">승인대기</button></a>
+                    <a href="/SalesInfoall/승인대기"><button type="button" class="btn btn-primary btn-sm Wt">승인중</button></a>
                     <a href="/SalesInfoall/완료"><button type="button" class="btn btn-primary btn-sm">완료</button></a>
                     <a href="/SalesInfoall/실패"><button type="button" class="btn btn-primary btn-sm">실패</button></a>
                   </div>
@@ -57,7 +57,7 @@
                                     <td>{{ $SI->BusinessName }}</td>
                                     <td>{{ $SI->CustomerName }}</td>
                                     <td>{{ $SI->PhoneNumber }}</td>
-                                    <td>{{str_replace("T"," ",$SI -> ContactTime)}}</td>
+                                    <td>{{ str_replace("T"," ",$SI -> ContactTime) }}</td>
                                 </tr>
                                 </tbody>
                             @empty

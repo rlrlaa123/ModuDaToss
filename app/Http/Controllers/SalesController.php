@@ -32,7 +32,7 @@ class SalesController extends Controller
 
         $category = Category::all();
 
-        return view('SalesInfo.SI_input_category')->with('category',$category)->with('SPname',auth()->user()->name);
+        return view('SalesInfo.SI_input_category')->with('category',$category);
 
     }
 
@@ -50,8 +50,7 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
-        $imgname = $this->SignatureStore($request->Signature);
-
+        return $request->all();
         $NumberofCategory = count($request->category);
         $this->validate($request, [
           'CustomerName' => 'required',
@@ -76,6 +75,8 @@ class SalesController extends Controller
         }else{
           $fileNameToStore = 'noimages.jpg';
         }
+
+        $imgname = $this->SignatureStore($request->Signature);
 
         for($i = 0; $i < $NumberofCategory ; $i++){
           $SalesInfo = new SalesInfo;
@@ -120,7 +121,6 @@ class SalesController extends Controller
       }else{
         header("HTTP/1.1 500 Internal Server Error");
       }
-      return "ok?";
 
     }
 

@@ -223,37 +223,6 @@
       $("#postcodify_search_button").postcodifyPopUp();
     });
 
-    var data;
-
-    /*
-    $('form').on('click','#button',function(event){
-      event.preventDefault();
-      if (confirm('영업정보를 이대로 제출하시겠습니까?')) {
-
-         alert('서명저장시작');
-         data = canvas.toDataURL();
-         $.ajax({
-           headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-             'Content-type': 'application/x-www-form-urlencoded',
-           },
-           url: '/SignatureStore',
-           type:'post',
-           data:{signature:data},
-           success:function(data){
-             console.log(data);
-             $('#Signature').val(data);
-           }
-
-         })
-         $('form').submit();
-       } else {
-         return false;
-       }
-
-    });
-    */
-
     var canvas,ctx;
     var mouseX,mouseY,mouseDown=0;
     var touchX,touchY;
@@ -352,7 +321,7 @@
       // React to mouse events on the canvas, and mouseup on the entire document
       canvas.addEventListener('mousedown', sketchpad_mouseDown, false);
       canvas.addEventListener('mousemove', sketchpad_mouseMove, false);
-      window.addEventListener('mouseup', sketchpad_mouseUp, false);
+      canvas.addEventListener('mouseup', sketchpad_mouseUp, false);
 
       // React to touch events on the canvas
       canvas.addEventListener('touchstart', sketchpad_touchStart, false);

@@ -63,7 +63,13 @@ class MemberController extends Controller
 
         $recommendcode = $user->recommend_code;
 
-        $recommendee = User::where('recommender',$recommendcode)->get();
+        $recommendee;
+
+        if($recommendcode == NULL){
+          $recommendee = 0;
+        }else{
+          $recommendee = count(User::where('recommender',$recommendcode)->get());
+        }
 
         $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('SalesPerson_id',$id)->Where('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->get();
 

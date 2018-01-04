@@ -7,7 +7,7 @@
   </div><br>
   <div>
     <span class="bluetitle" style="float:left">추천인수</span>
-    <span class="greytitle" style="float:left;margin-top:3px" id="number">총 {{ count($recommendee)}} 명</p>
+    <span class="greytitle" style="float:left;margin-top:3px" id="number">총 {{ $recommendee}} 명</p>
   </div>
   <br><br><br>
   <div class="recommendercontainer">
