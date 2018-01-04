@@ -19,7 +19,6 @@ class MemberController extends Controller
         $users = DB::table('users')->get();
         return view('member.main')->with('users',$users);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +29,6 @@ class MemberController extends Controller
         $Category = category::all();
         return view('member.VendorAdd')->with('Category',$Category);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -105,12 +103,9 @@ class MemberController extends Controller
                 'created_at'=> date('Y-m-d H:i:s'),
                 'updated_at'=> date('Y-m-d H:i:s'),
             ]);
-
             return redirect('/');
         }
-
     }
-
     /**
      * Display the specified resource.
      *
