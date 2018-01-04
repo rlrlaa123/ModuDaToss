@@ -46,11 +46,11 @@
                                 <div class="col-xs-2 col-sm-2 input_label">
                                     <label class="salesinfo_label">{{$message}}</label>
                                 </div>
-                                <div class="col-xs-7 col-sm-6">
+                                <div class="col-xs-7 col-sm-9">
                                     <input type="text" name="{{$field}}" class="form-control postcodify_postcode5" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
                                     {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                 </div>
-                                <div class="col-xs-2 col-sm-2" style="text-align:right; padding:0;">
+                                <div class="col-xs-2 col-sm-1" style="text-align:right; padding:0;">
                                     <input type="button"
                                            id="postcodify_search_button"
                                            value="주소지 검색"

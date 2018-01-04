@@ -233,7 +233,9 @@
         </div>
     </ul>
 </nav>
-<script src="js/clipboard.min.js"></script>
+
+<script src="/js/clipboard.min.js"></script>
+
 <script>
     $(document).ready(function(event) {
         $('.navbar-toggle').on('click', function (e) {

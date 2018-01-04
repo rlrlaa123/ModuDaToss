@@ -19,7 +19,8 @@
         "laravelcollective/html": "^5.4.0",
         "nesbot/carbon": "^1.22",
         "tymon/jwt-auth": "dev-develop",
-        "unisharp/laravel-ckeditor": "^4.6"
+        "unisharp/laravel-ckeditor": "^4.6",
+        "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
