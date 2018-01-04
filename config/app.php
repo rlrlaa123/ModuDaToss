@@ -172,6 +172,8 @@ return [
         \Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        \Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+        \Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -241,5 +243,6 @@ return [
 
         'JWTAuth' => \Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => \Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Image' => \Intervention\Image\Facades\Image::class,
     ],
 ];
