@@ -37,7 +37,7 @@
                     <div class="front_page col realtime">
                         @php($businessName = array($salesinfos[0]->BusinessName,$salesinfos[1]->BusinessName,$salesinfos[2]->BusinessName,$salesinfos[3]->BusinessName))
                         <p class="realtime_bname">
-                            {{(strlen($businessName[0]) > 15) ? iconv_substr($businessName[0],0,5,"utf-8").'..' : $businessName[0]}}
+                            {{(strlen($businessName[0]) > 15) ? iconv_substr($businessName[0],0,4,"utf-8").'...' : $businessName[0]}}
                         </p>
                         <p class="realtime_name">
                             {{ (strlen($salesinfos[0]->SP_name) > 9) ? iconv_substr($salesinfos[0]->SP_name,0,3,"utf-8").'...' : $salesinfos[0]->SP_name}}
@@ -57,7 +57,7 @@
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[1]) > 15) ? iconv_substr($businessName[1],0,5,"utf-8").'..' : $businessName[1]}}
+                            {{(strlen($businessName[1]) > 15) ? iconv_substr($businessName[1],0,4,"utf-8").'...' : $businessName[1]}}
                         </p>
                         <p class="realtime_name">
 
@@ -80,7 +80,7 @@
                 <div class="front_page row">
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[2]) > 15) ? iconv_substr($businessName[2],0,5,"utf-8").'..' : $businessName[2]}}
+                            {{(strlen($businessName[2]) > 15) ? iconv_substr($businessName[2],0,4,"utf-8").'...' : $businessName[2]}}
                         </p>
                         <p class="realtime_name">
                             {{ (strlen($salesinfos[2]->SP_name) > 9) ? iconv_substr($salesinfos[2]->SP_name,0,3,"utf-8").'...' : $salesinfos[2]->SP_name}}
@@ -100,7 +100,7 @@
                     </div>
                     <div class="front_page col realtime">
                         <p class="realtime_bname">
-                            {{(strlen($businessName[3]) > 15) ? iconv_substr($businessName[3],0,5,"utf-8").'..' : $businessName[3]}}
+                            {{(strlen($businessName[3]) > 15) ? iconv_substr($businessName[3],0,4,"utf-8").'...' : $businessName[3]}}
                         </p>
                         <p class="realtime_name">
 
