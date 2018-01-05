@@ -67,7 +67,7 @@
                     <li>
                         <a href="{{ route('sessions.create') }}">로그인</a>
                     </li>
-                    <li><a href="{{ route('users.create') }}">회원가입</a></li>
+                    {{--<li><a href="{{ route('users.create') }}">회원가입</a></li>--}}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             영업 라인업 <span class="caret"></span>
@@ -194,7 +194,6 @@
                                     자유게시판
                                 </a>
                             </li>
-
                             <li>
                                 <a href="">영업의 팁</a>
                             </li>
@@ -224,10 +223,6 @@
                             </li>
                         </ul>
                     </li>
-
-                    {{--<li>--}}
-                    {{--<a href="{{ route('income.inquiry') }}">수익조회 및 출금</a>--}}
-                    {{--</li>--}}
                 @endif
             </ul>
         </div>
