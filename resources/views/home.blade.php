@@ -138,6 +138,12 @@
             </div>
         </div>
     </div>
+
+    <button class="btn btn-default" onclick="permission()">permission</button>
+
+    <button class="btn btn-default" onclick="notification()">notification</button>
+
+
     <p class="GotoSIinput-text">영업정보 등록</p>
     <a href="javascript:void(0)" onclick="SIinput({{Auth::user()}})" data-toggle="modal" data-target="#myModal"><div class="GotoSIinput">
             <img src="{{URL::asset('/img/trace.png')}}">
@@ -152,6 +158,16 @@
             window.location.href = "/Choosecategory";
         }
         else {
+        }
+    }
+    function permission() {
+        Notification.requestPermission();
+    }
+    function notification() {
+        if (Notification.permission == 'granted')
+        {
+            var e = new Notification('Test Notification');
+            console.log('sent notification');
         }
     }
 </script>
