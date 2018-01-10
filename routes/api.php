@@ -13,23 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::group(['domain' => config('API_DOMAIN'), 'namespace' => 'Api', 'as' => 'api.'], function() {
-    Route::group([
-    ], function(){
-        /* 환영 메시지 */
-        Route::get('/', [
-            'uses' => 'HomeController@index',
-        ]);
-        /* 카테고리 */
-        Route::get('/category/{id}','CategoryController@show');
-        /* JWT 인증 */
-        Route::post('auth/login', 'AuthController@login');
-        Route::post('auth/logout', 'AuthController@logout');
-        Route::post('auth/refresh', 'AuthController@refresh');
-        Route::post('auth/me', 'AuthController@me');
-    });
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//Route::group(['domain' => config('API_DOMAIN'), 'namespace' => 'Api', 'as' => 'api.'], function() {
+//    Route::group([
+//    ], function(){
+//        /* 환영 메시지 */
+//        Route::get('/', [
+//            'uses' => 'HomeController@index',
+//        ]);
+//        /* 카테고리 */
+//        Route::get('/category/{id}','CategoryController@show');
+//        /* JWT 인증 */
+//        Route::post('auth/login', 'AuthController@login');
+//        Route::post('auth/logout', 'AuthController@logout');
+//        Route::post('auth/refresh', 'AuthController@refresh');
+//        Route::post('auth/me', 'AuthController@me');
+//    });
+//});

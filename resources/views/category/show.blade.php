@@ -22,7 +22,7 @@
                         <div class="category content" style="padding:3%; overflow-y:scroll;">
                             <p>
                                 <h3 style="margin:2%; font-weight:lighter;">{{$category->category}}(이)란?</h3>
-                                <p>{!!$category->content!!}</p>
+                                <p id="category_content">{!!$category->content!!}</p>
                             </p>
                         </div>
                         @if(Auth::guest())
@@ -39,8 +39,16 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var img_list = document.getElementsByTagName('img');
+            for(i=0; i<img_list.length; i++) {
+                var str= document.getElementsByTagName('img')[i].src;
+                document.getElementsByTagName('img')[i].src=str.replace('http://127.0.0.1:8000','http://127.0.0.1:8001');
+            }
+        });
+        $("div.container-fluid").css("max-height",$( window ).height());
+    </script>
 @stop
-<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript">
-    $("div.container-fluid").css("max-height",$( window ).height());
-</script>

@@ -171,7 +171,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        \Petehouston\Tinymce\TinymceServiceProvider::class,
         /*
          * Application Service Providers...
          */

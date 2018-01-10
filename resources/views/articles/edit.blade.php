@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@include('mceImageUpload::upload_form')
+@include('layouts.tinymce')
 @section('content')
     <div class="page-header">
         <h4><a href="{{ route('articles.index') }}">

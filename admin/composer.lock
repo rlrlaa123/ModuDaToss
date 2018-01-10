@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1e1b0e9d595a9b504d484d8b29ab2e1",
+    "content-hash": "5061377faa9aee5f7c7825f25be65787",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1024,6 +1024,52 @@
                 "random"
             ],
             "time": "2017-09-27T21:40:39+00:00"
+        },
+        {
+            "name": "petehouston/laravel-tinymce-simple-imageupload",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/petehouston/laravel-tinymce-simple-imageupload.git",
+                "reference": "0f65b8e9619dc4e24313ce5fdcf4053dd099d178"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/petehouston/laravel-tinymce-simple-imageupload/zipball/0f65b8e9619dc4e24313ce5fdcf4053dd099d178",
+                "reference": "0f65b8e9619dc4e24313ce5fdcf4053dd099d178",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": "~5.5|~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Petehouston\\Tinymce\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pete Houston",
+                    "email": "contact@petehouston.com",
+                    "homepage": "http://petehouston.com"
+                }
+            ],
+            "description": "Simple image upload for TinyMCE in Laravel.",
+            "homepage": "https://github.com/petehouston/laravel-tinymce-simple-imageupload",
+            "keywords": [
+                "Image upload",
+                "laravel",
+                "laravel 5",
+                "php",
+                "tinymce"
+            ],
+            "time": "2016-11-01T08:52:37+00:00"
         },
         {
             "name": "psr/container",
