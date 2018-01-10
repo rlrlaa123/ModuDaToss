@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@include('mceImageUpload::upload_form')
+@include('layouts.tinymce')
 @section('content')
     <h1>새 포럼 글 쓰기</h1>
 

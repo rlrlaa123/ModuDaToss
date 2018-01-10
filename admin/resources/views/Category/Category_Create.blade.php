@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@include('mceImageUpload::upload_form')
+@include('layouts.tinymce')
 @section('content')
 <div class="container">
     <div class="row">
@@ -21,9 +22,6 @@
                     <div class="form-group">
                         {{Form::label('content', '영업팁')}}
                         {{Form::textarea('content','',['id'=>'ckeditor','class' => 'form-control','placeholder' => ''])}}
-                    </div>
-                    <div class="form-group">
-                        {{Form::file('image')}}
                     </div>
                 </div>
                 <div class="panel-footer">

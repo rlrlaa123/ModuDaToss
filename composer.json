@@ -18,9 +18,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "nesbot/carbon": "^1.22",
-        "tymon/jwt-auth": "dev-develop",
-        "unisharp/laravel-ckeditor": "^4.6",
-        "unisharp/laravel-filemanager": "~1.8"
+        "petehouston/laravel-tinymce-simple-imageupload": "^1.1",
+        "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

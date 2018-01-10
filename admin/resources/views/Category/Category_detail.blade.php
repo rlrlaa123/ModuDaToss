@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@include('mceImageUpload::upload_form')
+@include('layouts.tinymce')
 @section('content')
 <div class="container">
     <div class="row">

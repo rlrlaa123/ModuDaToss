@@ -44,33 +44,12 @@ class CategoryController extends Controller
         $this->validate($request, [
             'category' => 'required',
             'commision' => 'required',
-//            'image' => 'image|nullable|max:1999',
         ]);
-
-//        // Handle File Upload
-//        if($request->hasFile('image'))
-//        {
-//            // Get filename with extension
-//            $filenameWithExt = $request->file('image')->getClientOriginalName();
-//            // Get just filename
-//            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-//            // Get just extension
-//            $extension = $request->file('image')->getClientOriginalExtension();
-//            // File name to store
-//            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-//            // Upload Image
-//            $path = $request->file('image')->storeAs('public/category_image',$fileNameToStore);
-//        }
-//        else
-//        {
-//            $fileNameToStore = 'noimage.jpg';
-//        }
 
         $category = new category;
         $category->category = $request->input('category');
         $category->commision = $request->input('commision');
         $category->content = $request->input('content');
-//        $category->image = $fileNameToStore;
 
         $category->save();
 

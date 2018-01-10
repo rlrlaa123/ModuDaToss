@@ -172,9 +172,7 @@ return [
         \Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-        \Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
-        \Intervention\Image\ImageServiceProvider::class,
-
+        \Petehouston\Tinymce\TinymceServiceProvider::class,
         /*
          * Application Service Providers...
          */

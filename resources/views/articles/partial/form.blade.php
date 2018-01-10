@@ -6,6 +6,6 @@
 
 <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
     <label for="content">본문</label>
-    <textarea name="content" id="ckeditor" rows="10" class="form-control">{{ old('content', $article->content) }}</textarea>
+    <textarea name="content" rows="10" class="form-control">{{ old('content', $article->content) }}</textarea>
     {!! $errors->first('content', '<span class="form-error">:message</span>') !!}
 </div>
