@@ -3,7 +3,7 @@
 @section('content')
     <div class="SIupper">
 
-      <p class="SItitle">나의 영업 정보</p>
+      <p class="SItitle"># 나의 영업 정보</p>
       <label class="switch">
         <input type="checkbox" checked>
         <span class="slider round">
@@ -72,10 +72,10 @@ $(document).ready(function(){
   $('.slider').click(function(){
     if(current_state == 'My'){
       current_state = 'All';
-      $('.SItitle').text('전체 영업 정보');
+      $('.SItitle').text('# 전체 영업 정보');
     }else{
       current_state = 'My';
-      $('.SItitle').text('나의 영업 정보');
+      $('.SItitle').text('# 나의 영업 정보');
     }
     state = "전체";
     current_page = 1;
