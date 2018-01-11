@@ -31,6 +31,7 @@
 
         </tbody>
       </table>
+      <div class='loader'></div>
     </div>
 
     <div class="SImenu">
@@ -78,6 +79,8 @@ $(document).ready(function(){
     }
     state = "전체";
     current_page = 1;
+
+    setInterval(function(){ myTimer() }, 3000);
     fetchdata();
   })
 
@@ -101,17 +104,24 @@ $(document).ready(function(){
        type:'get',
        success:function(data){
          var data = data.data;
+
          var text = "";
-         for( i in data){
-           text += "<tr><td>"+data[i]['state']+"</td>";
-           text += "<td>"+data[i]['BusinessName']+"</td>";
-           text += "<td>"+data[i]['CustomerName']+"</td>";
-           text += "<td>"+data[i]['Category']+"</td>";
-           text += "<td>"+data[i]['CustomerAddress']+"</td>";
-           text += "<td>"+data[i]['created_at']+"</td>";
-           text += "<td>"+data[i]['PhoneNumber']+"</td>";
-           text += "<td><a href='/detail/"+data[i]['id']+"'>자세히 -> </td></tr>";
+
+         if(data.length == 0 && current_page < 2){
+           text = "<tr><td colspan='8'>현재 해당 영업정보가 없습니다</td></tr>";
+         }else{
+           for( i in data){
+             text += "<tr><td>"+data[i]['state']+"</td>";
+             text += "<td>"+data[i]['BusinessName']+"</td>";
+             text += "<td>"+data[i]['CustomerName']+"</td>";
+             text += "<td>"+data[i]['Category']+"</td>";
+             text += "<td>"+data[i]['CustomerAddress']+"</td>";
+             text += "<td>"+data[i]['created_at']+"</td>";
+             text += "<td>"+data[i]['PhoneNumber']+"</td>";
+             text += "<td><a href='/detail/"+data[i]['id']+"'>자세히 -> </td></tr>";
+           }
          }
+
          if(current_page == 1){
            $('#tbody').children().remove();
            $('#tbody').append(text);

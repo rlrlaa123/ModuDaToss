@@ -10545,7 +10545,6 @@ body {
 }
 
 .greytitle {
-  color: #b7babf;
   margin-left: 20px;
 }
 
@@ -10734,13 +10733,7 @@ body {
 
 table th {
   color: #3473d9;
-  font-weight: lighter;
   text-align: center;
-}
-
-table td {
-  color: #b7babf;
-  font-weight: lighter;
 }
 
 .state {
@@ -10853,7 +10846,6 @@ table td {
 
 .Accumulate {
   text-align: center;
-  font-weight: lighter;
 }
 
 .MoneyShow {
@@ -10867,7 +10859,6 @@ table td {
 
 .MoneyShow .bluetitle {
   font-size: 15px;
-  font-weight: lighter;
 }
 
 .buttoncontainer {

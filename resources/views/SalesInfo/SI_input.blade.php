@@ -1,15 +1,15 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="container">
+<div class="SI_input_container">
         <div class="panel panel-default" style="margin-top:0;">
-            <div class="panel-heading">
+            <div class="panel-heading step2_title">
               <span class="bluetitle">Step 2</span>
               <span class="greytitle">고객정보 등록</span>
             </div>
             <div class="panel-body">
-                <div class="row">
                     <form action="{{ route('SalesInfo.store') }}" method="POST" role="form" enctype="multipart/form-data" style="font-size:13px;">
+
                         {!! csrf_field() !!}
                         @php($field = "CustomerName")
                         @php($message = "고객명")
@@ -46,16 +46,16 @@
                                 <div class="col-xs-2 col-sm-2 input_label">
                                     <label class="salesinfo_label">{{$message}}</label>
                                 </div>
-                                <div class="col-xs-9 col-sm-10">
+                                <div class="col-xs-5 col-sm-6">
                                     <input type="text" name="{{$field}}" class="form-control postcodify_postcode5" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
                                     {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                 </div>
-                            </div>
-                            <div class="postbutton">
-                              <input type="button"
-                                     id="postcodify_search_button"
-                                     value="주소지 검색"
-                                     class="btn btn-default">
+                                <div class="col-xs-4 col-sm-4" id="postalbutton">
+                                  <input type="button"
+                                         id="postcodify_search_button"
+                                         value="주소지 검색"
+                                         class="btn btn-default">
+                                </div>
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@
                         </div>
 
                         @php($field = "CustomerAddress_detail")
-                        @php($message = "주소지 추가")
+                        @php($message = "주소지 추가(1)")
                         <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                             <div class="row wrapper-input">
                                 <div class="col-xs-2 col-sm-2 input_label">
@@ -88,7 +88,7 @@
                         </div>
 
                         @php($field = "CustomerAddress_extra")
-                        @php($message = "주소지 그외")
+                        @php($message = "주소지 추가(2)")
                         <div class="form-group {{$errors->has($field) ? 'has-error' : '' }}">
                             <div class="row wrapper-input">
                                 <div class="col-xs-2 col-sm-2 input_label">
@@ -178,7 +178,7 @@
                                 <div class="col-xs-2 col-sm-2 input_label">
                                     <label class="salesinfo_label">{{$message}}</label>
                                 </div>
-                                <div class="col-xs-9 col-sm-10">
+                                <div class="col-xs-9 col-sm-10 BP">
                                     <input id="uploadFile" type="file" name="{{$field}}" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
                                     {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                 </div>
@@ -189,7 +189,7 @@
 
                         <div id="sketchpadapp">
                           <div class="leftside">
-                                <label class="salesinfo_label">서명</label>
+                              <label class="salesinfo_label">영업사원 서명</label>
                                <button id="clearbutton" onclick="clearCanvas(canvas,ctx);">clear</button>
                           </div>
                           <div class="rightside">
@@ -215,9 +215,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
-    </div>
+      </div>
     <script>
 
     </script>
