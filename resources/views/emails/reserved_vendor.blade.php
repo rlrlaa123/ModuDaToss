@@ -39,7 +39,7 @@
         <p>연락가능시간: <i>{{ $SalesInfo ->ContactTime }}</i></p>
         <p>특이사항: <i>{{ $SalesInfo ->Characteristic }}</i></p>
         <p>업종명: <i>{{ $SalesInfo ->Category }}</i></p>
-        <p>예상 체결 금액: <i>{{ $SalesInfo ->pay }}</i></p>
+        <p style="color:#3473d9">예상 체결 금액: <i>{{ $SalesInfo ->pay }}</i></p>
         <p>접수시간: <i>{{ $SalesInfo ->created_at }}</i></p>
         <p style="color:#3473d9">현재 진행 상태: <i>{{ $SalesInfo ->state }}</i></p>
         <p>비고 사항: <i>{{ $SalesInfo ->note }}</i></p>
