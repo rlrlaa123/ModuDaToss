@@ -8364,6 +8364,13 @@ body {
   margin-left: 0;
 }
 
+.navbar-default {
+  background-color: white;
+  border-color: white;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
 @font-face {
   font-family: "Nanum Gothic";
   src: url("/fonts/NanumGothic/NanumGothicCoding.ttf");
