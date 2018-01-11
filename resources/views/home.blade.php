@@ -127,12 +127,12 @@
             <div class="front_page container">
                 <div class="row wrapper">
                     <div class="front_page image-container community">
-                        <a href="">#영업의 팁</a>
+                        <a href="{{ route('articles.index',3) }}">#영업의 팁</a>
                     </div>
                 </div>
                 <div class="row wrapper">
                     <div class="front_page image-container dashboard">
-                        <a href="{{ route('articles.index') }}">#커뮤니티</a>
+                        <a href="{{ route('articles.index',4) }}">#자유게시판</a>
                     </div>
                 </div>
             </div>

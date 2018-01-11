@@ -3,8 +3,8 @@
 @section('content')
     <div class="page-header">
 
-        <h4><a href="{{ route('articles.index') }}">
-                자유게시판
+        <h4><a href="{{ route('articles.index',$dashboard->id) }}">
+                {{ $dashboard->name }}
             </a>
             <small> / {{ $article->title }}</small></h4>
     </div>
@@ -12,12 +12,12 @@
     <article data-id="{{ $article->id }}">
         @include('articles.partial.article', compact('article'))
 
-        <p>{!! ($article->content) !!}</p>
+        <p style="margin:10px;">{!! ($article->content) !!}</p>
     </article>
 
     <div class="text-center action__article">
         @can('update', $article)
-            <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-info">
+            <a href="{{ route('articles.edit', [$dashboard->id,$article->id]) }}" class="btn btn-info">
                 <i class="fa fa-pencild"></i> 글 수정
             </a>
         @endcan
@@ -26,7 +26,7 @@
                 <i class="fa fa-trash-o"></i> 글 삭제
             </button>
         @endcan
-        <a href="{{ route('articles.index') }}" class="btn btn-default">
+        <a href="{{ route('articles.index',$dashboard->id) }}" class="btn btn-default">
             <i class="fa fa-list"></i> 글 목록
         </a>
     </div>
@@ -46,13 +46,14 @@
 
         $('.button__delete').on('click', function(e) {
             var articleId = $('article').data('id');
+            var dashboardId = {!! json_encode($dashboard->id) !!};
 
             if(confirm('글을 삭제합니다.')) {
                 $.ajax({
                     type: 'DELETE',
-                    url: '/articles/' + articleId
+                    url: '/dashboard/' + dashboardId + '/articles/' + articleId
                 }).then(function() {
-                    window.location.href='/articles';
+                    window.location.href='/dashboard/' + dashboardId + '/articles/';
                 });
             }
         });

@@ -9,6 +9,7 @@ class Article extends Model
     protected $fillable = [
         'title',
         'content',
+        'dashboard_id',
     ];
 
     protected $with = [
@@ -24,6 +25,10 @@ class Article extends Model
 //    public function tags() {
 //        return $this->belongsToMany(Tag::class);
 //    }
+    public function dashboard()
+    {
+        return $this->belongsTo(Dashboard::class);
+    }
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
