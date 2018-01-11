@@ -115,10 +115,12 @@ Route::get('/Recommenders','MemberController@Recommenders');
 Route::get('/recomfetch/{userid}','MemberController@recomfetch');
 
 
+
 //파트너
-Route::resource('Partner','PartnerController');
-Route::get('/Partner/{Category}/{state}','PartnerController@showbystate');
-Route::get('/Partner/detail/{Category}/{SalesPerson_id}','PartnerController@showdetail');
+Route::get('/Partner','PartnerController@show');
+Route::get('/Partner/SIshow','PartnerController@SIshow');
+Route::get('/Partner/detail/{id}','PartnerController@showdetail');
+Route::post('/Partner/update','PartnerController@update');
 
 //고객센터
 Route::get('/servicecenter/{notice}','ServiceCenterController@index');
