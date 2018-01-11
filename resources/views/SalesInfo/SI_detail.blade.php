@@ -107,13 +107,20 @@
             @endif
 
             <div class="SIdetailtitle imgtitle">사업장 사진</div>
+
             <div class='imagecontainer' style="text-align:center;">
-              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:275px;">
+              @if($SalesInfo -> images == 'noimages.jpg')
+              @else
+                <img src="/storage/images/{{$SalesInfo -> images}}" style="width:275px;">
+              @endif
             </div>
 
             <div class="SIdetailtitle imgtitle">서명</div>
             <div class='imagecontainer'>
-              <img src="/img/{{ $SalesInfo -> signature }}" style="width:100%">
+              @if($SalesInfo -> signature == 'nosignature')
+              @else
+                <img src="/img/signature/{{ $SalesInfo -> signature }}" style="width:100%">
+              @endif
             </div>
           </div>
         </div>

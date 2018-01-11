@@ -3,7 +3,7 @@
 @section('content')
     <div class="SIupper">
 
-      <p class="SItitle">나의 영업 정보</p>
+      <p class="SItitle"># 나의 영업 정보</p>
       <label class="switch">
         <input type="checkbox" checked>
         <span class="slider round">
@@ -31,6 +31,7 @@
 
         </tbody>
       </table>
+      <div class='loader'></div>
     </div>
 
     <div class="SImenu">
@@ -71,13 +72,14 @@ $(document).ready(function(){
   $('.slider').click(function(){
     if(current_state == 'My'){
       current_state = 'All';
-      $('.SItitle').text('전체 영업 정보');
+      $('.SItitle').text('# 전체 영업 정보');
     }else{
       current_state = 'My';
-      $('.SItitle').text('나의 영업 정보');
+      $('.SItitle').text('# 나의 영업 정보');
     }
     state = "전체";
     current_page = 1;
+
     fetchdata();
   })
 
@@ -101,17 +103,24 @@ $(document).ready(function(){
        type:'get',
        success:function(data){
          var data = data.data;
+
          var text = "";
-         for( i in data){
-           text += "<tr><td>"+data[i]['state']+"</td>";
-           text += "<td>"+data[i]['BusinessName']+"</td>";
-           text += "<td>"+data[i]['CustomerName']+"</td>";
-           text += "<td>"+data[i]['Category']+"</td>";
-           text += "<td>"+data[i]['CustomerAddress']+"</td>";
-           text += "<td>"+data[i]['created_at']+"</td>";
-           text += "<td>"+data[i]['PhoneNumber']+"</td>";
-           text += "<td><a href='/detail/"+data[i]['id']+"'>자세히 -> </td></tr>";
+
+         if(data.length == 0 && current_page < 2){
+           text = "<tr><td colspan='8'>현재 해당 영업정보가 없습니다</td></tr>";
+         }else{
+           for( i in data){
+             text += "<tr><td>"+data[i]['state']+"</td>";
+             text += "<td>"+data[i]['BusinessName']+"</td>";
+             text += "<td>"+data[i]['CustomerName']+"</td>";
+             text += "<td>"+data[i]['Category']+"</td>";
+             text += "<td>"+data[i]['CustomerAddress']+"</td>";
+             text += "<td>"+data[i]['created_at']+"</td>";
+             text += "<td>"+data[i]['PhoneNumber']+"</td>";
+             text += "<td><a href='/detail/"+data[i]['id']+"'>자세히 -> </td></tr>";
+           }
          }
+
          if(current_page == 1){
            $('#tbody').children().remove();
            $('#tbody').append(text);

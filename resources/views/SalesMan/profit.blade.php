@@ -40,8 +40,4 @@
       <p>나의 출금 기록</p>
     </div></a>
   </div>
-
-<script>
-
-</script>
 @endsection
