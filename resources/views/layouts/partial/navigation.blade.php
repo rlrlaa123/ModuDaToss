@@ -84,7 +84,24 @@
                             </ul>
                         @endif
                     </li>
-                    <li><a href="{{ route('articles.index') }}">게시판</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            커뮤니티 <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            @php $dashboards = \App\Dashboard::all() @endphp
+                            @foreach($dashboards as $dashboard)
+                                <li>
+                                    <a href={{ route('articles.index',$dashboard->id) }}>
+                                        {{ $dashboard->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -189,14 +206,14 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            @php $dashboards = \App\Dashboard::all() @endphp
+                            @foreach($dashboards as $dashboard)
                             <li>
-                                <a href={{ route('articles.index') }}>
-                                    자유게시판
+                                <a href={{ route('articles.index',$dashboard->id) }}>
+                                    {{ $dashboard->name }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="">영업의 팁</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </li>
 

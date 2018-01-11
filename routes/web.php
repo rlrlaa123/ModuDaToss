@@ -115,13 +115,6 @@ Route::resource('Partner','PartnerController');
 Route::get('/Partner/{Category}/{state}','PartnerController@showbystate');
 Route::get('/Partner/detail/{Category}/{SalesPerson_id}','PartnerController@showdetail');
 
-// 게시판
-Route::resource('articles','ArticlesController');
-
-// 댓글
-Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
-Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);
-
 //고객센터
 Route::get('/servicecenter/{notice}','ServiceCenterController@index');
 Route::get('/servicecenter/{notice}/{id}', 'ServiceCenterController@show');
@@ -136,4 +129,22 @@ Route::get('social/{provider}', [
     'uses' => 'SocialController@execute',
 ]);
 
-//Route::group('');
+Route::get('/dashboard/{id}', function() {
+
+    $articles = \App\Article::latest()->paginate(5);
+
+    return view('dashboards.index',compact('articles'));
+});
+
+Route::prefix('dashboard/{dashboard}')->group(function() {
+// 게시판
+    Route::resource('articles','ArticlesController');
+
+// 댓글
+    Route::resource('comments', 'CommentsController', ['only' => ['update', 'destroy']]);
+    Route::resource('articles.comments', 'CommentsController', ['only' => 'store']);
+});
+
+//Route::prefix('dashboard/{dashboard}')->group(function () {
+//    Route::resource('article', 'ArticleController');
+//});

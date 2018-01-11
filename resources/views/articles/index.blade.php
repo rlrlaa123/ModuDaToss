@@ -3,8 +3,8 @@
 @section('content')
     <div class="page-header">
         <h4>
-            <a href="{{ route('articles.index') }}">
-                자유게시판
+            <a href="{{ route('articles.index',$dashboard->id) }}">
+                {{ $dashboard->name }}
             </a>
             <small>
                 / 글 목록
@@ -15,7 +15,7 @@
     <div class="text-right action__article">
         @if(Auth::guest())
         @else
-        <a href="{{ route('articles.create') }}" class="btn btn-primary">
+        <a href="{{ route('articles.create',$dashboard->id) }}" class="btn btn-primary">
             <i class="fa fa-plus-circle"></i>
             새 글 쓰기
         </a>

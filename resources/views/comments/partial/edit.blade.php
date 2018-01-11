@@ -1,6 +1,6 @@
 <div class="media media__edit__comment">
     <div class="media-body">
-        <form method="POST" action="{{ route('comments.update', $comment->id) }}" class="form-horizontal">
+        <form method="POST" action="{{ route('comments.update', [$dashboard->id,$comment->id]) }}" class="form-horizontal">
             {!! csrf_field() !!}
             {!! method_field('PUT') !!}
 

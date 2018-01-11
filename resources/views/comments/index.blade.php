@@ -11,7 +11,7 @@
         <div class="media media__create__initiate {{ isset($parentId) ? 'sub' : 'top' }}" style="margin:0px;">
 
             <div class="media-body">
-                <form method="POST" action="{{ route('articles.comments.store', $article->id) }}" class="form-horizontal">
+                <form method="POST" action="{{ route('articles.comments.store', [$dashboard->id, $article->id]) }}" class="form-horizontal">
                     {!! csrf_field() !!}
 
                     @if(isset($parentId))
@@ -64,11 +64,12 @@
         $('.btn__delete__comment').on('click', function(e) {
             var commentId = $(this).closest('.item__comment').data('id'),
                 articleId = $('#item__article').data('id');
+            var dashboardId = {!! json_encode($dashboard->id) !!};
 
             if (confirm('삭제할까요?')) {
                 $.ajax({
                     type: 'DELETE',
-                    url: "/comments/" + commentId
+                    url: "/dashboard/" + dashboardId + "/comments/" + commentId
                 }).then(function() {
                     $('#comment_' + commentId).fadeOut(1000, function () { $(this).remove(); });
                 });

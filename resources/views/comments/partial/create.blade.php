@@ -6,7 +6,7 @@
 <div class="media media__create__comment {{ isset($parentId) ? 'sub' : 'top' }}" style="margin:0px;">
 
     <div class="media-body">
-        <form method="POST" action="{{ route('articles.comments.store', $article->id) }}" class="form-horizontal">
+        <form method="POST" action="{{ route('articles.comments.store', [$dashboard->id,$article->id]) }}" class="form-horizontal">
             {!! csrf_field() !!}
 
             @if(isset($parentId))

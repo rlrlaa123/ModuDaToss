@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-block">
-        <form method="POST" action="/articles/{id}/comment">
+        <form method="POST" action="{{ route('articles.comments.store',[$dashboard->id,$article->id]) }}">
             {{ csrf_field() }}
             <div class="form-group comment-area">
                 <textarea name="body" placeholder="댓글 작성" class="form-control"></textarea>

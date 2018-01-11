@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dashboard;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,8 +24,10 @@ class CommentsController extends Controller
      * @param \App\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\CommentsRequest $request, \App\Article $article)
+    public function store($dashboard_id, \App\Http\Requests\CommentsRequest $request, \App\Article $article)
     {
+        $dashboard = Dashboard::find($dashboard_id);
+
         $comment = $article->comments()->create(array_merge(
             $request->all(),
             ['user_id' => $request->user()->id]
@@ -32,7 +35,7 @@ class CommentsController extends Controller
 
         flash()->success('작성하신 댓글을 저장했습니다.');
 
-        return redirect(route('articles.show', $article->id) . '#comment_' .$comment->id);
+        return redirect(route('articles.show', [$dashboard,$article->id]) . '#comment_' .$comment->id);
     }
 
     /**
@@ -42,14 +45,16 @@ class CommentsController extends Controller
      * @param \App\Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Http\Requests\CommentsRequest $request, \App\Comment $comment)
+    public function update($dashboard_id, \App\Http\Requests\CommentsRequest $request, \App\Comment $comment)
     {
+        $dashboard = Dashboard::find($dashboard_id);
+
         $comment->update($request->all());
 
 //        event(new \App\Events\ModelChanged(['articles']));
 
         return redirect(
-            route('articles.show', $comment->commentable->id) . '#comment_' . $comment->id
+            route('articles.show', [$dashboard,$comment->commentable->id]) . '#comment_' . $comment->id
         );
     }
 
@@ -59,7 +64,7 @@ class CommentsController extends Controller
      * @param \App\Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\Comment $comment)
+    public function destroy($dashboard_id, \App\Comment $comment)
     {
         $comment->delete();
 

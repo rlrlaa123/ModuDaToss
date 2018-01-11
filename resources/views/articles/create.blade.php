@@ -6,7 +6,7 @@
 
     <hr/>
 
-    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('articles.store',$dashboard->id) }}" method="POST" enctype="multipart/form-data">
         {!! csrf_field() !!}
 
         @include('articles.partial.form')
