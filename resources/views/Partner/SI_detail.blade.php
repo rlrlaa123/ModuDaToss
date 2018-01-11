@@ -108,13 +108,20 @@
 
           <div class="SIdetailtitle imgtitle">사업장 사진</div>
           <div class='imagecontainer'>
-            <img src="/storage/images/{{$SI-> images}}" style="width:275px;">
+            @if($SI-> images == 'noimages.jpg')
+            @else
+              <img src="/storage/images/{{$SI -> images}}" style="width:275px;">
+            @endif
           </div>
 
           <div class="SIdetailtitle imgtitle">서명</div>
           <div class='imagecontainer'>
-            <img src="/img/{{ $SI-> signature }}" style="width:100%">
+            @if($SI -> signature == 'nosignature')
+            @else
+              <img src="/img/signature/{{ $SI -> signature }}" style="width:100%">
+            @endif
           </div>
+
           <div class="SIdetailtitle imgtitle">
             @if($SI->state == '접수 완료')
             <form action='/Partner/update' method='POST'>

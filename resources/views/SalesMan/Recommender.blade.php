@@ -30,7 +30,11 @@
             @endforeach
             </tbody>
           </table>
+          <div class='page_container'>
+            {{ $SH->links() }}
+          </div>
       </div>
+
 
   <div class="Membermenu">
     <a href="/profit"><div>

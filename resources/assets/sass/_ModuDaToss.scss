@@ -202,16 +202,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 150px;
-    right: 40px;
-    color: #3473d9;
-    text-shadow: grey;
-    font-size:30px;
-  }
-
   .GotoSIinput {
     width: 150px;
     height: 150px;
@@ -438,16 +428,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 150px;
-    right: 45px;
-    color: #3473d9;
-    text-shadow: grey;
-    font-size:25px;
-  }
-
   .GotoSIinput {
     width: 140px;
     height: 140px;
@@ -674,16 +654,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 150px;
-    right: 45px;
-    color: #3473d9;
-    text-shadow: grey;
-    font-size:25px;
-  }
-
   .GotoSIinput {
     width: 140px;
     height: 140px;
@@ -910,16 +880,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 175px;
-    right: 55px;
-    color: #3473d9;
-    text-shadow: grey;
-    font-size:25px;
-  }
-
   .GotoSIinput {
     width: 160px;
     height: 160px;
@@ -1146,16 +1106,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 90px;
-    right: 45px;
-    color: #3473d9;
-    text-shadow: grey;
-    font-size:15px;
-  }
-
   .GotoSIinput {
     width: 85px;
     height: 85px;
@@ -1381,15 +1331,6 @@ body {
   .category.btn.submit {
     color: white;
   }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 115px;
-    right: 25px;
-    color: #3473d9;
-    text-shadow: grey;
-  }
-
   .GotoSIinput {
     width: 100px;
     height: 100px;
@@ -1614,14 +1555,6 @@ body {
 
   .category.btn.submit {
     color: white;
-  }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    color: #3473d9;
-    text-shadow: grey;
   }
 
   .GotoSIinput {
@@ -1850,14 +1783,6 @@ body {
     color: white;
   }
 
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 90px;
-    right: 15px;
-    color: #3473d9;
-    text-shadow: grey;
-  }
-
   .GotoSIinput {
     width: 80px;
     height: 80px;
@@ -2069,7 +1994,6 @@ body {
   font-size:18px;
 }
 .greytitle{
-  color:#b7babf;
   margin-left:20px;
 }
 .SIreset{
@@ -2237,13 +2161,9 @@ body {
 }
 table th{
   color: #3473d9;
-  font-weight:lighter;
   text-align:center;
 }
-table td{
-  color:#b7babf;
-  font-weight:lighter;
-}
+
 .state{
   width:80px;
   height:25px;
@@ -2340,7 +2260,6 @@ table td{
 }
 .Accumulate{
   text-align:center;
-  font-weight:lighter;
 }
 .MoneyShow{
   text-align:center;
@@ -2352,12 +2271,6 @@ table td{
 }
 .MoneyShow .bluetitle{
   font-size:15px;
-  font-weight:lighter;
-}
-.buttoncontainer{
-  width:40%;
-  height:100px;
-  margin:auto;
 }
 .withdrawal{
   width:100%;
@@ -2367,40 +2280,6 @@ table td{
   //font-size:18px;
   color:white;
 }
-.Gotorecom{
-  width:50px;
-  height:60px;
-  position:fixed;
-  top:70px;
-  right:45px;
-}
-.Gotorecom img{
-  width:45px;
-  height:55px;
-}
-.GotoDeposit{
-  position:fixed;
-  top:150px;
-  right:30px;
-}
-.GotoWithdrawal{
-  position:fixed;
-  top:240px;
-  right:30px;
-}
-.GotoDeposit, .GotoWithdrawal{
-  width:70px;
-  height:60px;
-}
-.GotoDeposit img, .GotoWithdrawal img{
-  width:55px;
-  height:55px;
-}
-.GotoDeposit p,.GotoWithdrawal p{
-  font-size:10px;
-  color:black;
-}
-
 
 ////////////추천인 조회
 .RecommendTitle{
@@ -2594,14 +2473,6 @@ table td{
 
   .category.btn.submit {
     color: white;
-  }
-
-  .GotoSIinput-text {
-    position: fixed;
-    bottom: 90px;
-    right: 15px;
-    color: #3473d9;
-    text-shadow: grey;
   }
 
   .GotoSIinput {

@@ -54,8 +54,7 @@ class MemberController extends Controller
         $id = auth()->user()->id;
         $user = User::find($id);
         $Accumulate = Savinghistory::where('SalesPerson_id',$user->id)->sum('MoneySum');
-        return view('/SalesMan/profit')->with('user',$user)
-                                        ->with('Accumulate',$Accumulate);
+        return view('/SalesMan/profit', compact('user','Accumulate'));
     }
 
     public function Recommender()
@@ -75,13 +74,9 @@ class MemberController extends Controller
           $recommendee = count(User::where('recommender',$recommendcode)->get());
         }
 
-        $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('SalesPerson_id',$id)->Where('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->get();
+        $SH = Savinghistory::where('SalesPerson_id',$id)->where('MoneyType','추천인수수료')->orWhere('SalesPerson_id',$id)->Where('MoneyType','A클래스회원수수료')->orderBy('created_at','desc')->paginate(11);
 
-        return view('/SalesMan/Recommender',[
-          'user' => $user,
-          'SH' => $SH,
-          'recommendee' => $recommendee,
-        ]);
+        return view('/SalesMan/Recommender',compact('user','SH','recommendee'));
     }
 
 
@@ -92,7 +87,7 @@ class MemberController extends Controller
 
         $user = User::find($id);
 
-        return view('/SalesMan/withdrawal')->with('user',$user);
+        return view('/SalesMan/withdrawal',compact('user'));
     }
 
     public function withdrawalrequest(Request $request){
@@ -135,34 +130,26 @@ class MemberController extends Controller
       $withdrawal->requestmoney=$request->input('realrequest');
       $withdrawal->save();
 
-      //제출한 출금액 만큼 빼기
-
-      //아직 구조를 모르겠다.
-
-
       return redirect('/profit');
     }
 
     public function WithdrawalLog(){
       $id = auth()->user()->id;
       $user = User::find($id);
-      $data = withdrawalInfo::where('memberID',$id)->orderBy('created_at','desc')->get();
-      return view('SalesMan.WithdrawalLog')->with('data',$data);
+      $data = withdrawalInfo::where('memberID',$id)->orderBy('created_at','desc')->paginate(11);
+      return view('SalesMan.WithdrawalLog',compact('data'));
     }
 
     public function DepositLog(){
       $id = auth()->user()->id;
       $user = User::find($id);
-      $data = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-      return view('SalesMan.DepositLog')->with('data',$data);
+      $data = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->paginate(11);
+      return view('SalesMan.DepositLog',compact('data'));
     }
 
     public function Recommenders(){
-      $id = auth()->user()->id;
-      $user = User::find($id);
 
-      $recommenders = User::where('recommender',$user->recommend_code)->get();
-      return view('SalesMan.recommenders',compact('recommenders'));
+      return view('SalesMan.recommenders');
     }
 
     public function recomfetch($id){

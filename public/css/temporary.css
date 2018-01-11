@@ -14,7 +14,13 @@
   display:grid;
   grid-template-columns:repeat(1,1fr);
   grid-gap:5px;
+
 }
+
+.Membermenu div:hover{
+  transform: scale(1.2);
+}
+
 .Membermenu img{
   width:22px;
   height:22px;
@@ -41,6 +47,7 @@
   display:grid;
   grid-template-columns:50% 50%;
   align-items:center;
+  margin:20px 0px;
 }
 
 .NumberOfRecommender a{
@@ -55,7 +62,9 @@
   font-size:10px;
 }
 
+
 .loader {
+  display:none;
   border: 8px solid #f3f3f3;
   border-radius: 50%;
   border-top: 8px solid #3498db;
@@ -80,22 +89,22 @@
 /*SIshow */
 .SIupper{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:50% 50%;
+  align-items:center;
   align-items:center;
   margin:30px 0px;
+  padding:0 20px;
 }
 .SIupper p{
-  align-self:center;
-  justify-self:center;
+  justify-self:start;
   color:#3473d9;
   font-size:20px;
   margin-bottom:-4px;
 }
 .SIupper label{
-  align-self:center;
-  justify-self:center;
+  justify-self:end;
+  margin-bottom:0px;
 }
-
 .SIupper label .my{
   position:absolute;
   color:white;
@@ -124,6 +133,9 @@
   display:grid;
   grid-template-columns:repeat(1,1fr);
   grid-gap:5px;
+}
+.SImenu div:hover{
+  transform:scale(1.1);
 }
 .SImenu img{
   width:22px;
@@ -207,6 +219,7 @@ input:checked + .slider:before {
   height:100%;
   margin-bottom:80px;
 }
+
 /*SI detaiil */
 
 .SIdetail{
@@ -241,6 +254,7 @@ input:checked + .slider:before {
   grid-column: 1/3;
 }
 
+
 /*recommenders */
 
 .recom-container{
@@ -272,9 +286,9 @@ input:checked + .slider:before {
   width:45px;
   height:45px;
   border-radius:100px;
-  border:1px solid black;
   align-self:center;
   justify-self:center;
+  background-image:url('../img/user.png');
   background-size: 45px 45px;
 }
 
@@ -293,8 +307,85 @@ input:checked + .slider:before {
 .money_container table td{
   color:rgba(0,0,0,0.7);
 }
+.page_container{
+  display:grid;
+  grid-template-columns:1fr;
+  justify-items:center;
+}
 
+
+/*SI_input_category */
+.button_container{
+  display:grid;
+  grid-template-columns:1fr;
+  align-items:center;
+  justify-items:center;
+}
+
+/*SI_input */
+.step2_title{
+  display:grid;
+  grid-template-columns:30% 70%;
+  align-items:center;
+}
+.step2_title .bluetitle{
+  margin-left:15px;
+}
+.row.wrapper-input{
+  width:100%;
+  margin:0px;
+}
+#postalbutton{
+  padding:0px;
+}
+#uploadFile{
+  width:100%;
+}
+#image_preview{
+  width:80%;
+  height:200px;
+  margin:auto;
+  border:1px solid rgba(0,0,0,0.2);
+  border-radius:15px;
+  padding:10px;
+}
+#image_preview img{
+  width:100%;
+  height:180px;
+}
+#sketchpadapp{
+  width:302px;
+  height:200px;
+  margin:auto;
+  margin-top:50px;
+}
+.leftside{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  justify-items:center;
+  margin-bottom:10px;
+}
+.leftside button{
+  width:50px;
+  height:20px;
+  background-color:#3473d9;
+  color:white;
+  border-radius:10px;
+  border:none;
+}
+#sketchpad{
+  border-radius:15px;
+  border:1px solid rgba(0,0,0,0.2);
+}
 /* 여기 부터 이상문이 관여한 파트 */
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 420px) {
+/* Styles */
+  .SI_input_container label{
+    font-size:10px;
+  }
+}
+
 @media only screen and (max-device-width : 767px) {
 /* Styles */
 

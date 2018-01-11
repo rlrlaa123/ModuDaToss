@@ -147,7 +147,6 @@
         </div>
     </div>
 
-    <p class="GotoSIinput-text">영업정보 등록</p>
     <a href="javascript:void(0)" onclick="SIinput({{Auth::user()}})" data-toggle="modal" data-target="#myModal"><div class="GotoSIinput">
             <img src="{{URL::asset('/img/trace.png')}}">
         </div>
