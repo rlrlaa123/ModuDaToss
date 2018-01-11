@@ -142,10 +142,17 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="/mypage">
+                                <a href="/mypage/{{ Auth::user()->id }}">
                                     내 정보 확인
                                 </a>
                             </li>
+                            @if (Auth::user()->type!=2)
+                            <li>
+                                <a href="/Recommender/{{ Auth::user()->id }}">
+                                    추천인 조회
+                                </a>
+                            </li>
+                            @endif
                             <li>
                                 <a href="{{ route('sessions.destroy') }}">
                                     로그아웃
@@ -173,7 +180,7 @@
 
                     @if (Auth::user()->type == 2)
                         <li>
-                            <a href="/Partner">(벤더)영업 정보 확인</a>
+                            <a href="/Partner/{{ Auth::user()->category}}">(벤더)영업 정보 확인</a>
                         </li>
                     @endif
 
@@ -182,12 +189,12 @@
                             <a href="{{ route('SalesInfo.choosecategory') }}">영업 정보 등록</a>
                         </li>
                         <li>
-                            <a href="/SalesInfo">영업 정보 확인</a>
+                            <a href="/SalesInfo/{{ Auth::user()->id}}">영업 정보 확인</a>
                         </li>
                     @endif
                     @if (Auth::user()->type == 1 || Auth::user()->type == 4)
                         <li>
-                            <a href="/profit">
+                            <a href="/profit/{{ Auth::user()->id }}">
                                 수익 조회 및 출금
                             </a>
                         </li>
