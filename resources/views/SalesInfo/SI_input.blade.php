@@ -200,7 +200,7 @@
 
                         {{Form::hidden('SalesPerson_id', Auth::user()->id,['class' => 'form-control'])}}
                         {{Form::hidden('SP_name', Auth::user()->name,['class' => 'form-control'])}}
-                        {{Form::hidden('Signature','abc',['id'=>'Signature'])}}
+                        {{Form::hidden('Signature',null,['id'=>'Signature'])}}
                         @foreach($passeddata['category'] as $ct)
                             <input type="hidden" name="category[]" value="{{$ct}}">
                         @endforeach

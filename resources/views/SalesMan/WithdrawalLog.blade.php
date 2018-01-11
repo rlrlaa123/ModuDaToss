@@ -25,6 +25,9 @@
             @endforeach
             </tbody>
           </table>
+          <div class='page_container'>
+            {{ $data->links() }}
+          </div>
       </div>
 
   <div class="Membermenu">

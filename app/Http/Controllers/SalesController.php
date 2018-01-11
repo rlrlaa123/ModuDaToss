@@ -57,6 +57,7 @@ class SalesController extends Controller
     {
 
         $NumberofCategory = count($request->category);
+
         $this->validate($request, [
           'CustomerName' => 'required',
           'BusinessName' => 'required',
@@ -69,6 +70,12 @@ class SalesController extends Controller
           'images' => 'image|nullable|max:1999'
         ]);
 
+        $imgname = 'nosignature';
+
+        if($request->Signature != null){
+          $imgname = $this->SignatureStore($request->Signature);
+        }
+
         //Handle File upload
         if($request->hasFile('images')){
 
@@ -77,11 +84,11 @@ class SalesController extends Controller
           $extension = $request->file('images')->getClientOriginalExtension();
           $fileNameToStore = $filename.'_'.time().'.'.$extension;
           $path = $request->file('images')->storeAs('public/images',$fileNameToStore);
+
         }else{
           $fileNameToStore = 'noimages.jpg';
         }
 
-        $imgname = $this->SignatureStore($request->Signature);
 
         for($i = 0; $i < $NumberofCategory ; $i++){
           $SalesInfo = new SalesInfo;
@@ -119,12 +126,12 @@ class SalesController extends Controller
 
       $imgname = uniqid().'.png';
 
-      $path = $_SERVER['DOCUMENT_ROOT'].'/img/'.$imgname;
+      $path = $_SERVER['DOCUMENT_ROOT'].'/img/signature/'.$imgname;
 
       if(file_put_contents($path, $img)){
         return $imgname;
       }else{
-        header("HTTP/1.1 500 Internal Server Error");
+        return 'fail';
       }
 
     }

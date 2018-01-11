@@ -18,7 +18,7 @@
 }
 
 .Membermenu div:hover{
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .Membermenu img{
@@ -61,6 +61,7 @@
   height:30px;
   font-size:10px;
 }
+
 
 .loader {
   display:none;
@@ -218,6 +219,7 @@ input:checked + .slider:before {
   height:100%;
   margin-bottom:80px;
 }
+
 /*SI detaiil */
 
 .SIdetail{
@@ -251,6 +253,7 @@ input:checked + .slider:before {
 .SIdetail .imagecontainer{
   grid-column: 1/3;
 }
+
 
 /*recommenders */
 
@@ -304,6 +307,12 @@ input:checked + .slider:before {
 .money_container table td{
   color:rgba(0,0,0,0.7);
 }
+.page_container{
+  display:grid;
+  grid-template-columns:1fr;
+  justify-items:center;
+}
+
 
 /*SI_input_category */
 .button_container{
@@ -322,7 +331,6 @@ input:checked + .slider:before {
 .step2_title .bluetitle{
   margin-left:15px;
 }
-
 .row.wrapper-input{
   width:100%;
   margin:0px;
@@ -330,7 +338,6 @@ input:checked + .slider:before {
 #postalbutton{
   padding:0px;
 }
-
 #uploadFile{
   width:100%;
 }
@@ -342,12 +349,10 @@ input:checked + .slider:before {
   border-radius:15px;
   padding:10px;
 }
-
 #image_preview img{
   width:100%;
   height:180px;
 }
-
 #sketchpadapp{
   width:302px;
   height:200px;
@@ -368,7 +373,6 @@ input:checked + .slider:before {
   border-radius:10px;
   border:none;
 }
-
 #sketchpad{
   border-radius:15px;
   border:1px solid rgba(0,0,0,0.2);

@@ -80,7 +80,6 @@ $(document).ready(function(){
     state = "전체";
     current_page = 1;
 
-    setInterval(function(){ myTimer() }, 3000);
     fetchdata();
   })
 
