@@ -256,6 +256,7 @@
     function clearCanvas(canvas,ctx) {
       event.preventDefault();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      $('#Signature').val(null);
     }
 
     function sketchpad_mouseDown() {
