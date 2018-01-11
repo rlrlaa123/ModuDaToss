@@ -22,24 +22,33 @@ class PartnerController extends Controller
         //
     }
 
-    public function show($id)
+    public function show()
     {
-        //
-        $SalesInfo = SalesInfo::where('Category',$id)->orderBy('created_at','desc')->get();
-        return view('/Partner/SI_show')->with('SalesInfo',$SalesInfo);
+        return view('/Partner/SI_show');
     }
 
-    public function showbystate($category,$state){
+    public function SIshow(Request $request){
 
-        $SalesInfo = SalesInfo::where('Category',$category)->where('state',$state)->orderBy('created_at','desc')->get();
-        return view('Partner.SI_show')->with('SalesInfo',$SalesInfo);
+      $category = auth()->user()->category;
+
+      if($request->state == '전체'){
+
+          $SalesInfo = SalesInfo::where('Category',$category)->orderBy('created_at','desc')->paginate(11);
+
+      }else{
+
+        $SalesInfo = SalesInfo::where('Category',$category)->where('state',$request->state)->orderBy('created_at','desc')->paginate(11);
+
+      }
+
+      return $SalesInfo;
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $id = $request->SI;
         $SI = DB::table('sales_infos')->where('id',$id)->first();
-        $category = DB::table('categories')->where('category',$SI->Category)->first();
 
         if( $SI->state == '접수 완료'){
             DB::table('sales_infos')->where('id',$id)->update(['state' => '진행중']);
@@ -60,14 +69,12 @@ class PartnerController extends Controller
 
     }
 
-    public function showdetail($id,$id2)
+    public function showdetail($id)
     {
-        //$id = $request->category;
-        //
-        //$SalesInfo = SalesInfo::where('Category',$id)->get();
-        $SalesInfo = DB::table('sales_infos')->where('id',$id2)->get();
+
+        $SalesInfo = SalesInfo::where('id',$id)->first();
         //return $SalesInfo;
-        return view('Partner/SI_detail')->with('SalesInfo',$SalesInfo);
+        return view('Partner/SI_detail')->with('SI',$SalesInfo);
     }
 
 }

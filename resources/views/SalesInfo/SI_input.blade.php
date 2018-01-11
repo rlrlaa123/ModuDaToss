@@ -46,16 +46,16 @@
                                 <div class="col-xs-2 col-sm-2 input_label">
                                     <label class="salesinfo_label">{{$message}}</label>
                                 </div>
-                                <div class="col-xs-7 col-sm-9">
+                                <div class="col-xs-9 col-sm-10">
                                     <input type="text" name="{{$field}}" class="form-control postcodify_postcode5" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
                                     {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                 </div>
-                                <div class="col-xs-2 col-sm-1" style="text-align:right; padding:0;">
-                                    <input type="button"
-                                           id="postcodify_search_button"
-                                           value="주소지 검색"
-                                           class="btn btn-default">
-                                </div>
+                            </div>
+                            <div class="postbutton">
+                              <input type="button"
+                                     id="postcodify_search_button"
+                                     value="주소지 검색"
+                                     class="btn btn-default">
                             </div>
                         </div>
 
@@ -179,18 +179,21 @@
                                     <label class="salesinfo_label">{{$message}}</label>
                                 </div>
                                 <div class="col-xs-9 col-sm-10">
-                                    <input type="file" name="{{$field}}" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
+                                    <input id="uploadFile" type="file" name="{{$field}}" placeholder={{$message}} value="{{ old($field)  }}" autofocus>
                                     {!! $errors->first($field, '<span class="form-error">:message</span>') !!}
                                 </div>
                             </div>
                         </div>
 
+                        <div id="image_preview">image_preview</div>
+
                         <div id="sketchpadapp">
                           <div class="leftside">
+                                <label class="salesinfo_label">서명</label>
                                <button id="clearbutton" onclick="clearCanvas(canvas,ctx);">clear</button>
                           </div>
                           <div class="rightside">
-                              <canvas id="sketchpad" height="300" width="400">
+                              <canvas id="sketchpad">
                               </canvas>
                           </div>
                         </div>
@@ -219,6 +222,16 @@
 
     </script>
     <script>
+
+    $("#uploadFile").change(function(){
+       $('#image_preview').html("");
+       var total_file=document.getElementById("uploadFile").files.length;
+       for(var i=0;i<total_file;i++)
+       {
+        $('#image_preview').append("<img src='"+URL.createObjectURL(event.target.files[i])+"'>");
+       }
+    });
+
     $(function() {
       $("#postcodify_search_button").postcodifyPopUp();
     });

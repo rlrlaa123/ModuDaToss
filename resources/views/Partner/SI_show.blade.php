@@ -1,82 +1,106 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
 @section('content')
+    <div class="SIupper">
 
-@if( isset(Auth::user()->name) )
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-              <br><br>
-              <div class="divide">
-                <a href="#" style="color:#b7babf;"><button class="SI_button" id="mine">나의 영업 현황</button></a>
-                <button class="SI_button" id="all" style="color:#3473d9;">전체 영업 현황</button>
-              </div>
+      <p class="SItitle">나의 영업 정보</p>
 
-              <br><br><br>
-
-              <div class="container">
-                <a href="/Partner/{{Auth::user()->category}}"><button type="button" class="btn btn-primary btn-sm">전체</button></a>
-                <a href="/Partner/{{Auth::user()->category}}/접수 완료"><button type="button" class="btn btn-primary btn-sm">접수</button></a>
-                <a href="/Partner/{{Auth::user()->category}}/진행중"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
-                <a href="/Partner/{{Auth::user()->category}}/승인대기"><button type="button" class="btn btn-primary btn-sm">진행중</button></a>
-                <a href="/Partner/{{Auth::user()->category}}/완료"><button type="button" class="btn btn-primary btn-sm">완료</button></a>
-                <a href="/Partner/{{Auth::user()->category}}/실패"><button type="button" class="btn btn-primary btn-sm">실패</button></a>
-              </div>
-            </div>
-        <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table showmine" style="border:none">
-                    <thead>
-                    <tr>
-                        <th> </th>
-                        <th>날짜</th>
-                        <th>카테고리</th>
-                        <th>사업장</th>
-                        <th>고객명</th>
-                        <th>연락처</th>
-                        <th>예상 연락가능시간</th>
-                    </tr>
-                    </thead>
-                        @forelse($SalesInfo as $SI)
-                            <tbody>
-                            <tr>
-                                <td>
-                                  @if($SI->state == '진행중')
-                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="ongoing">{{$SI->state}}</button></a>
-                                  @elseif($SI->state == '승인대기')
-                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="waiting">{{$SI->state}}</button></a>
-                                  @elseif($SI->state == '완료')
-                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="success">{{$SI->state}}</button></a>
-                                  @elseif($SI->state == '실패')
-                                    <a href="/Partner/detail/{{$SI->Category}}/{{$SI->id}}"><button class="fail">{{$SI->state}}</button></a>
-                                  @endif
-                                </td>
-                                <td>{{ $SI->created_at->format('m-d H:i') }}</td>
-                                <td>{{ $SI->Category }}</td>
-                                <td>{{ $SI->BusinessName }}</td>
-                                <td>{{ $SI->CustomerName }}</td>
-                                <td>{{ $SI->PhoneNumber }}</td>
-                                <td>{{str_replace("T"," ",$SI -> ContactTime)}}</td>
-                            </tr>
-                            </tbody>
-                        @empty
-                            <tbody>
-                              <tr>
-                                <td colspan='7'>
-                                  <p> 현재 영업 정보가 없습니다.</p>
-                                </td>
-                              </tr>
-                            </tbody>
-                        @endforelse
-                </table>
-            </div>
-        </div>
     </div>
-  </div>
-</div>
-@else
-    <p> 로그인하세요.</p>
-@endif
+    <div class="table-responsive SIshowtable">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>상태</th>
+            <th>사업장명</th>
+            <th>고객명</th>
+            <th>업종명</th>
+            <th>고객주소</th>
+            <th>발생시간</th>
+            <th>전화번호</th>
+            <th>자세히</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
 
+        </tbody>
+      </table>
+    </div>
+
+    <div class="SImenu">
+      <div>
+        <img src="{{ URL::asset('/img/all.png')}}">
+        <p>전체</p>
+      </div>
+      <div>
+        <img src="{{ URL::asset('/img/invoice.png')}}">
+        <p>접수 완료</p>
+      </div>
+      <div>
+        <img src="{{ URL::asset('/img/play.png')}}">
+        <p>진행중</p>
+      </div>
+      <div>
+        <img src="{{ URL::asset('/img/hourglass.png')}}">
+        <p>승인대기</p>
+      </div>
+      <div>
+        <img src="{{ URL::asset('/img/success.png')}}">
+        <p>완료</p>
+      </div>
+      <div>
+        <img src="{{ URL::asset('/img/close.png')}}">
+        <p>실패</p>
+      </div>
+    </div>
+<script>
+
+$(document).ready(function(){
+  var current_page = 1;
+  var state = "전체";
+
+  fetchdata();
+
+
+  $('.SImenu div').click(function(){
+    state = $(this).find('p').text();
+    current_page = 1;
+    fetchdata();
+  })
+
+  $(window).scroll(function(){
+    if($(window).scrollTop() == $(document).height() - $(window).height()){
+      current_page ++;
+      fetchdata();
+    }
+   });
+
+   function fetchdata(){
+     $.ajax({
+       url:'/Partner/SIshow?state='+state+'&page='+current_page,
+       type:'get',
+       success:function(data){
+         var data = data.data;
+         var text = "";
+         for( i in data){
+           text += "<tr><td>"+data[i]['state']+"</td>";
+           text += "<td>"+data[i]['BusinessName']+"</td>";
+           text += "<td>"+data[i]['CustomerName']+"</td>";
+           text += "<td>"+data[i]['Category']+"</td>";
+           text += "<td>"+data[i]['CustomerAddress']+"</td>";
+           text += "<td>"+data[i]['created_at']+"</td>";
+           text += "<td>"+data[i]['PhoneNumber']+"</td>";
+           text += "<td><a href='/Partner/detail/"+data[i]['id']+"'>자세히 -> </td></tr>";
+         }
+         if(current_page == 1){
+           $('#tbody').children().remove();
+           $('#tbody').append(text);
+         }else{
+           $('#tbody').append(text);
+         }
+       }
+     })
+   }
+})
+
+</script>
 @endsection

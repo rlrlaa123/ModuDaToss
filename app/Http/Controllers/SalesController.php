@@ -9,6 +9,7 @@ use App\Category;
 use App\withdrawalInfo;
 use App\Savinghistory;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
 {
@@ -50,7 +51,7 @@ class SalesController extends Controller
 
     public function store(Request $request)
     {
-        return $request->all();
+
         $NumberofCategory = count($request->category);
         $this->validate($request, [
           'CustomerName' => 'required',
@@ -124,35 +125,50 @@ class SalesController extends Controller
 
     }
 
-    public function show($id)
+    public function show()
     {
-        //$SalesInfo = DB::table('sales_infos')->where('SalesPerson_id', $id);
-        //return $SalesInfo;
+        return view('SalesInfo.SI_show');
+    }
 
-        $Accumulate = Savinghistory::where('SalesPerson_id',$id)->sum('MoneySum');
-        $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-        return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo)->with('Accumulate',$Accumulate);
+    public function SIshow(Request $request)
+    {
+        $id = auth()->user()->id;
+        if($request->state == '전체'){
+          $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->orderBy('created_at','desc')->paginate(11);
+        }else{
+          $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$request->state)->orderBy('created_at','desc')->paginate(11);
+        }
+        return $SalesInfo;
+    }
+
+    public function showall(Request $request){
+
+      if($request->state == '전체'){
+        $SalesInfo = SalesInfo::orderBy('created_at','desc')->paginate(11);
+      }else{
+        $SalesInfo = SalesInfo::where('state',$request->state)->orderBy('created_at','desc')->paginate(11);
+      }
+      return $SalesInfo;
 
     }
-    public function showall(){
-
-
-      $SalesInfo = SalesInfo::get();
-      return view('SalesInfo.SI_show_all')->with('SalesInfo',$SalesInfo);
-    }
+    /*
     //영업 리스트 항목별로
-    public function showstate($id,$state){
+    public function showstate($state){
+
+        $id = auth()->user()->id;
 
         $Accumulate = Savinghistory::where('SalesPerson_id',$id)->sum('MoneySum');
 
         $SalesInfo = SalesInfo::where('SalesPerson_id',$id)->where('state',$state)->orderBy('created_at','desc')->get();
         return view('SalesInfo.SI_show')->with('SalesInfo',$SalesInfo)->with('Accumulate',$Accumulate);
     }
+
     public function showstateall($state){
 
         $SalesInfo = SalesInfo::where('state',$state)->orderBy('created_at','desc')->get();
         return view('SalesInfo.SI_show_all')->with('SalesInfo',$SalesInfo);
     }
+    */
     //영업정보별 자세히 보기
     public function showdetail($SI_id){
       $SalesInfo = SalesInfo::where('id',$SI_id)->first();
