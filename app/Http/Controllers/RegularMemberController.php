@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class RegularMemberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create($userid)
     {
         return view('RegularMember.create',compact('userid'));

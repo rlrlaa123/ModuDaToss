@@ -44,7 +44,7 @@
         .navbar-default {
             background-color:white;
             border-color:white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
     }
 </style>
