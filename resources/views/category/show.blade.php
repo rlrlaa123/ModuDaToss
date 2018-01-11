@@ -5,11 +5,11 @@
             <div class="col-md-8 col-md-offset-2">
                     <div class="panel-heading">
                     <div class="category">
-                        <h3 class="category title" style="color:#3473d9; width:90%; font-weight:lighter;">
+                        <h4 class="category title" style="color:#3473d9; width:90%; font-weight:lighter;">
                             {{$category->category}}
-                        </h3>
+                        </h4>
                         <div class="dropdown" style="width:90%;">
-                            <button class="category-button btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <button class="category-button btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="height:35px;">
                                 영업라인업
                                 <span class="caret"></span>
                             </button>
@@ -21,7 +21,7 @@
                         </div>
                         <div class="category content" style="padding:3%; overflow-y:scroll;">
                             <p>
-                                <h3 style="margin:2%; font-weight:lighter;">{{$category->category}}(이)란?</h3>
+                                <h4 style="margin:2%; font-weight:lighter;">{{$category->category}}(이)란?</h4>
                                 <p id="category_content">{!!$category->content!!}</p>
                             </p>
                         </div>

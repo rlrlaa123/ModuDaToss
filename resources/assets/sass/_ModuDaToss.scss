@@ -1672,6 +1672,7 @@ body {
     font-size:150%;
   }
 }
+
 @media (min-width: 320px) and (max-width: 480px) and (orientation: landscape) {
   .front_page {
     text-align: center;
@@ -2417,6 +2418,7 @@ table td{
 .DetailContainer{
   margin-top:50px;
 }
+
 @media (min-width: 320px) and (max-width: 480px) {
   .front_page {
     text-align: center;
@@ -2574,7 +2576,7 @@ table td{
 
   .category.content {
     width: 90%;
-    height: 300px;
+    height: 400px;
     margin: 2% 0 2% 3%;
     border-radius: 5px;
     border: 0;
@@ -2582,7 +2584,7 @@ table td{
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
-  .category.content h3 {
+  .category.content h4 {
     color: #4e85de;
   }
 

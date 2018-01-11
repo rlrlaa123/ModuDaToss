@@ -46,9 +46,9 @@
                             {{(strlen($salesinfos[0]->CustomerAddress) > 33) ? iconv_substr($salesinfos[0]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[0]->CustomerAddress}}
                         </p>
                         @if($salesinfos[0]->state=='진행중')
-                            <p style="color:forestgreen">{{$salesinfos[0]->state}}</p>
-                        @elseif($salesinfos[0]->state=='승인대기')
-                            <p style="color:black;">{{$salesinfos[0]->state}}</p>
+                            <p style="color:#3473d9">{{$salesinfos[0]->state}}</p>
+                        @elseif($salesinfos[0]->state=='접수 완료')
+                            <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
@@ -67,13 +67,13 @@
                             {{(strlen($salesinfos[1]->CustomerAddress) > 33) ? iconv_substr($salesinfos[1]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[1]->CustomerAddress}}
                         </p>
                         @if($salesinfos[1]->state=='진행중')
-                            <p style="color:forestgreen;">{{$salesinfos[1]->state}}</p>
-                        @elseif($salesinfos[1]->state=='승인대기')
-                            <p style="color:black;">{{$salesinfos[1]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
+                        @elseif($salesinfos[1]->state=='접수 완료')
+                            <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='실패')
-                            <p style="color:red;">{{$salesinfos[1]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @endif
                     </div>
                 </div>
@@ -89,13 +89,13 @@
                             {{(strlen($salesinfos[2]->CustomerAddress) > 33) ? iconv_substr($salesinfos[2]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[2]->CustomerAddress}}
                         </p>
                         @if($salesinfos[2]->state=='진행중')
-                            <p style="color:forestgreen;">{{$salesinfos[2]->state}}</p>
-                        @elseif($salesinfos[2]->state=='승인대기')
-                            <p style="color:black;">{{$salesinfos[2]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
+                        @elseif($salesinfos[2]->state=='접수 완료')
+                            <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='실패')
-                            <p style="color:red;">{{$salesinfos[2]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @endif
                     </div>
                     <div class="front_page col realtime">
@@ -110,13 +110,13 @@
                             {{(strlen($salesinfos[3]->CustomerAddress) > 33) ? iconv_substr($salesinfos[3]->CustomerAddress,0,11,"utf-8").'...' : $salesinfos[3]->CustomerAddress}}
                         </p>
                         @if($salesinfos[3]->state=='진행중')
-                            <p style="color:forestgreen;">{{$salesinfos[3]->state}}</p>
-                        @elseif($salesinfos[3]->state=='승인대기')
-                            <p style="color:black;">{{$salesinfos[3]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
+                        @elseif($salesinfos[3]->state=='접수 완료')
+                            <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='완료')
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='실패')
-                            <p style="color:red;">{{$salesinfos[3]->state}}</p>
+                            <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @endif
                     </div>
                 </div>

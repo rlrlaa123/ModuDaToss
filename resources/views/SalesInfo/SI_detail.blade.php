@@ -70,7 +70,7 @@
               @if($SalesInfo -> pay == '')
                 -
               @else
-                {{ $SalesInfo -> pay}}<
+                {{ $SalesInfo -> pay}}
               @endif
             </div>
 
@@ -107,8 +107,8 @@
             @endif
 
             <div class="SIdetailtitle imgtitle">사업장 사진</div>
-            <div class='imagecontainer'>
-              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:100%">
+            <div class='imagecontainer' style="text-align:center;">
+              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:55%">
             </div>
 
             <div class="SIdetailtitle imgtitle">서명</div>

@@ -98,11 +98,13 @@ class SalesController extends Controller
           $SalesInfo->pay = $request->money[$i];
           $SalesInfo->SalesPerson_id = $request->input('SalesPerson_id');
           $SalesInfo->SP_name = $request->input('SP_name');
-          $SalesInfo->state= '진행중';
+          $SalesInfo->state= '접수 완료';
           $SalesInfo->images = $fileNameToStore;
           $SalesInfo->signature = $imgname;
           $SalesInfo->save();
         }
+
+        event('sales.completed',[$SalesInfo->Category,$SalesInfo->id]);
 
         return redirect('/');
     }

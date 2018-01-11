@@ -70,7 +70,7 @@
             @if($SI-> pay == '')
               -
             @else
-              {{ $SI-> pay}}<
+              {{ $SI-> pay}}
             @endif
           </div>
 

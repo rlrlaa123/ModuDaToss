@@ -155,3 +155,36 @@ Route::prefix('dashboard/{dashboard}')->group(function() {
 //Route::prefix('dashboard/{dashboard}')->group(function () {
 //    Route::resource('article', 'ArticleController');
 //});
+
+// 메일
+Route::get('mail/completed',[
+    'as' => 'mail.completed',
+    'uses' => 'MailController@salesCompleted'
+]);
+
+Event::listen('sales.completed', function($category,$sales_id){
+    $vendors = \App\User::where('category',$category)->get();
+    $SalesInfo = \App\SalesInfo::find($sales_id);
+
+    \Illuminate\Support\Facades\Mail::send('emails.completed',['SalesInfo'=>$SalesInfo],function($message) use ($vendors,$SalesInfo){
+        for($i=0; $i<count($vendors);$i++)
+        {
+            $message->to($vendors[$i]->email)->subject('[모두다던져] 모두다던져 알림입니다.');
+        }
+    });
+
+    $front_img = \App\Etc::find(1);
+    return view('home',compact('front_img'));
+});
+
+Event::listen('sales.proceed', function($SalesPerson_id,$sales_id){
+    $SalesInfo = \App\SalesInfo::find($sales_id);
+    $SalesPerson = \App\User::find($SalesPerson_id);
+    \Illuminate\Support\Facades\Mail::send('emails.proceed',['SalesInfo'=>$SalesInfo], function($message) use ($SalesPerson,$SalesInfo) {
+        $message->to($SalesPerson->email)->subject('[모두다던져] 모두다던져 알림입니다.');
+    });
+});
+
+Route::get('hello', function() {
+    return view('emails.proceed');
+});

@@ -56,6 +56,7 @@ class PartnerController extends Controller
 
         if( $SI->state == '접수 완료'){
             DB::table('sales_infos')->where('id',$id)->update(['state' => '진행중']);
+            event('sales.proceed',[$SI->SalesPerson_id,$SI->id]);
         }else if($SI->state == '진행중'){
 
             if(isset($request->reason))
