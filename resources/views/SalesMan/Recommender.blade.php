@@ -1,41 +1,56 @@
-@extends('layouts.app')
-@if(Auth::user()->id == $user->id)
+@extends('layouts.app3')
 @section('content')
-  <div class="RecommendTitle">
-    <p class="Bluename">{{Auth::user()->name}}</p>
-    <p>회원님의 추천인 목록</p>
-  </div><br>
-  <div>
-    <span class="bluetitle" style="float:left">추천인수</span>
-    <span class="greytitle" style="float:left;margin-top:3px" id="number">총 {{ $recommendee}} 명</p>
+
+      <div class="Mmtitle">
+        <span class="bluetitle">{{ Auth::user()->name }}</span>
+        <p>님의 추천인 목록
+      </div>
+      <div class="NumberOfRecommender">
+        <a href="/Recommenders"><button class='btn'>추천인 계보도</button></a>
+        <span>추천인수 총 {{ $recommendee}} 명</span>
+      </div>
+      <div class='money_container'>
+        <table class="table showithmoney" style="text-align:center">
+            <thead>
+              <tr>
+                  <th>추천인이름</th>
+                  <th>부여 포인트</th>
+                  <th></th>
+                  <th>발생시간</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($SH as $sh)
+              <tr>
+                  <td> {{ $sh->triggerName }} </td>
+                  <td>+ {{ $sh->MoneySum }} 원 </td>
+                  <td><img src="{{ URL::asset('/img/coin.png')}}" width="30" height="30"></td>
+                  <td>{{ $sh->created_at->format('m-d H:i') }}</td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
+      </div>
+
+  <div class="Membermenu">
+    <a href="/profit"><div>
+      <img src="{{ URL::asset('/img/withdrawl.png')}}">
+      <p>수익조회 및 출금</p>
+    </div></a>
+    <a href="/Recommender"><div>
+      <img src="{{ URL::asset('/img/Recommender.png')}}">
+      <p>추천인 조회</p>
+    </div></a>
+    <a href="/DepositLog"><div>
+      <img src="{{ URL::asset('/img/Money2.png')}}">
+      <p>나의 수수료 기록</p>
+    </div></a>
+    <a href="/WithdrawalLog"><div>
+      <img src="{{ URL::asset('/img/Log.png')}}">
+      <p>나의 출금 기록</p>
+    </div></a>
   </div>
-  <br><br><br>
-  <div class="recommendercontainer">
-    <table class="table showithmoney" style="text-align:center">
-        <thead>
-          <tr>
-              <th style="color:#b7babf">추천인이름</th>
-              <th>부여 포인트</th>
-              <th></th>
-              <th>발생시간</th>
-          </tr>
-        </thead>
-        <tbody>
-        @foreach($SH as $sh)
-          <tr>
-              <td> {{ $sh->triggerName }} </td>
-              <td style="color:#3473d9;">+ {{ $sh->MoneySum }} </td>
-              <td><img src="{{ URL::asset('/img/coin.png')}}" width="30" height="30"></td>
-              <td>{{ $sh->created_at->format('m-d H:i') }}</td>
-          </tr>
-        @endforeach
-        </tbody>
-      </table>
-  </div>
+<script>
 
-
-
+</script>
 @endsection
-@else
-    <p>접근 권한이 없습니다</p>
-@endif

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@if(Auth::user()->id == $user->id)
   @section('content')
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -63,7 +62,4 @@ $(document).ready(function(){
   })
 })
 </script>
-  @endsection
-@else
-  <p>접근 권한이 없습니다</p>
-@endif
+@endsection

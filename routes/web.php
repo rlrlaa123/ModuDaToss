@@ -69,10 +69,16 @@ Route::post('auth/reset', [
 ]);
 
 //일반 영업사원 SalesController
-Route::resource('SalesInfo','SalesController');
-Route::get('/SalesInfoall','SalesController@showall');
-Route::get('/SalesInfoall/{state}','SalesController@showstateall');
-Route::get('/SalesInfo/{id}/{state}','SalesController@showstate');
+
+Route::get('/SalesInfo','SalesController@show');
+Route::get('/SalesInfo/create','SalesController@create');
+Route::post('/SalesInfo',[
+  'as' => 'SalesInfo.store',
+  'uses' => 'SalesController@store',
+]);
+
+Route::get('/My','SalesController@SIshow');
+Route::get('/All','SalesController@showall');
 Route::get('/detail/{SIid}','SalesController@showdetail');
 Route::get('Choosecategory',[
   'as' => 'SalesInfo.choosecategory',
@@ -90,24 +96,23 @@ Route::post('/regular/{id}',[
 ]);
 
 // 회원 개인페이지 MemberController
-Route::get('/mypage/{id}', 'MemberController@mypage');
-Route::get('/mypage/{id}/edit',[
+Route::get('/mypage', 'MemberController@mypage');
+Route::get('/mypage/edit',[
     'as' => 'mypage.edit',
     'uses' => 'MemberController@mypageedit'
 ]);
-Route::post('/mypage/{id}/update', [
+Route::post('/mypage/update', [
     'as' => 'mypage.update',
     'uses' => 'MemberController@mypageupdate'
 ]);
-Route::get('/profit/{id}', 'MemberController@profit');
-Route::get('/profitdetail/{id}/','MemberController@profitdetail');
-Route::get('/Recommender/{id}', 'MemberController@Recommender');
-Route::get('/Recommenderdetail/{id}/{recommendeeid}','MemberController@Recommenderdetail');
-Route::get('/withdrawal/{id}' ,'MemberController@withdrawal');
-Route::get('/WithdrawalLog/{id}','MemberController@WithdrawalLog');
-Route::get('/DepositLog/{id}','MemberController@DepositLog');
-Route::post('/withdrawal/{id}' ,'MemberController@withdrawalrequest');
-
+Route::get('/profit', 'MemberController@profit');
+Route::get('/Recommender', 'MemberController@Recommender');
+Route::get('/withdrawal' ,'MemberController@withdrawal');
+Route::get('/WithdrawalLog','MemberController@WithdrawalLog');
+Route::get('/DepositLog','MemberController@DepositLog');
+Route::post('/withdrawal' ,'MemberController@withdrawalrequest');
+Route::get('/Recommenders','MemberController@Recommenders');
+Route::get('/recomfetch/{userid}','MemberController@recomfetch');
 
 
 //파트너

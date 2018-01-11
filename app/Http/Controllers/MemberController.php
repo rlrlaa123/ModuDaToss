@@ -13,22 +13,26 @@ use DB;
 class MemberController extends Controller
 {
     //
-    public function mypage($id)
+    public function mypage()
     {
+        $id = auth()->user()->id;
         $user = User::find($id);
-
         return view('/SalesMan/mypage')->with('user',$user);
     }
 
-    public function mypageedit($id)
+    public function mypageedit()
     {
+        $id = auth()->user()->id;
+
         $user = User::find($id);
 
         return view('/SalesMan/mypage/edit')->with('user',$user);
     }
 
-    public function mypageupdate(Request $request, $id)
+    public function mypageupdate(Request $request)
     {
+        $id = auth()->user()->id;
+
         $user = User::find($id);
         $user->name = $request->name;
         $user->bankName = $request->bankName;
@@ -40,25 +44,21 @@ class MemberController extends Controller
         return view('/SalesMan/mypage')->with('user',$user);
     }
 
-    public function profit($id)
+    public function profit()
     {
         //
+        $id = auth()->user()->id;
         $user = User::find($id);
         $Accumulate = Savinghistory::where('SalesPerson_id',$user->id)->sum('MoneySum');
         return view('/SalesMan/profit')->with('user',$user)
                                         ->with('Accumulate',$Accumulate);
-
-    }
-    public function profitdetail($id){
-        $user = User::find($id);
-        $SH = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-        return view('/SalesMan/profitdetail')->with('user',$user)->with('SH',$SH);
-
     }
 
-    public function Recommender($id)
+    public function Recommender()
     {
         //
+        $id = auth()->user()->id;
+
         $user = User::find($id);
 
         $recommendcode = $user->recommend_code;
@@ -79,28 +79,23 @@ class MemberController extends Controller
           'recommendee' => $recommendee,
         ]);
     }
-    public function Recommenderdetail($id,$recommendeeid){
 
-        $user = User::find($id);
-        $SH = Savinghistory::where('SalesPerson_id',$id)->where('triggerid',$recommendeeid)->orderBy('created_at','desc')->get();
-        $name = $SH[0]->triggerName;
 
-        return view('/SalesMan/Recommenderdetail')->with('user',$user)
-                                                  ->with('Name',$name)
-                                                  ->with('SH',$SH);
-    }
-
-    public function withdrawal($id)
+    public function withdrawal()
     {
         //
+        $id = auth()->user()->id;
+
         $user = User::find($id);
 
         return view('/SalesMan/withdrawal')->with('user',$user);
     }
 
-    public function withdrawalrequest(Request $request, $id){
+    public function withdrawalrequest(Request $request){
 
       //출금액은 반드시 필요
+      $id = auth()->user()->id;
+
       $this->validate($request, [
         'requestmoney' => 'required',
       ]);
@@ -141,18 +136,37 @@ class MemberController extends Controller
       //아직 구조를 모르겠다.
 
 
-      return redirect('/profit'.'/'.$id);
+      return redirect('/profit');
     }
 
-    public function WithdrawalLog($id){
+    public function WithdrawalLog(){
+      $id = auth()->user()->id;
       $user = User::find($id);
       $data = withdrawalInfo::where('memberID',$id)->orderBy('created_at','desc')->get();
-      return view('SalesMan.WithdrawalLog')->with('data',$data)->with('user',$user);
+      return view('SalesMan.WithdrawalLog')->with('data',$data);
     }
 
-    public function DepositLog($id){
+    public function DepositLog(){
+      $id = auth()->user()->id;
       $user = User::find($id);
       $data = Savinghistory::where('SalesPerson_id',$id)->orderBy('created_at','desc')->get();
-      return view('SalesMan.DepositLog')->with('data',$data)->with('user',$user);
+      return view('SalesMan.DepositLog')->with('data',$data);
     }
+
+    public function Recommenders(){
+      $id = auth()->user()->id;
+      $user = User::find($id);
+
+      $recommenders = User::where('recommender',$user->recommend_code)->get();
+      return view('SalesMan.recommenders',compact('recommenders'));
+    }
+
+    public function recomfetch($id){
+
+      $recommenders = DB::table('users')->where('recommender',$id)->get();
+
+      return $recommenders;
+
+    }
+
 }

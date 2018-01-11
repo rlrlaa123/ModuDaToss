@@ -1,137 +1,121 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
 @section('content')
-
-@if( isset(Auth::user()->name) )
-<div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 DetailContainer">
-        <div class="SI_showtitle">자세한 영업 정보</div>
-          <div class="panel panel-default">
-            <div class="panel-head">
+  <div class="container">
+          <div class="SIdetail">
+            <div class="SI_showtitle">
+              <div>상세 영업 정보</div>
             </div>
-            <div class="panel-body">
-              <table class="table" style="text-align:center">
-                <tbody>
-                  <tr>
-                    <th>고객명</th>
-                    <td>{{ $SalesInfo -> CustomerName}}</td>
-                  </tr>
-                  <tr>
-                    <th>사업장명</th>
-                    <td>{{ $SalesInfo  -> BusinessName}}</td>
-                  </tr>
-                  <tr>
-                    <th>고객 주소</th>
-                    <td>{{ $SalesInfo  -> CustomerAddress}}</td>
-                  </tr>
-                  <tr>
-                    <th>우편번호</th>
-                    <td>{{ $SalesInfo  -> post_number}}</td>
-                  </tr>
-                  <tr>
-                    <th>고객 주소 Extra(1)</th>
-                    @if($SalesInfo -> CustomerAddress_detail == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> CustomerAddress_detail}}</td>
-                    @endif
-                  </tr>
-                  <tr>
-                    <th>고객 주소 Extra(2)</th>
-                    @if($SalesInfo -> CustomerAddress_extra == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> CustomerAddress_extra}}</td>
-                    @endif
-                  </tr>
-                  <tr>
-                    <th>고객 전화 번호</th>
-                    <td>{{ $SalesInfo  -> PhoneNumber}}</td>
-                  </tr>
-                  <tr>
-                    <th>고객 이메일</th>
-                    @if($SalesInfo -> CustomerEmail == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> CustomerEmail}}</td>
-                    @endif
-                  </tr>
-                  <tr>
-                    <th>예상 접촉 시간</th>
-                    <td>{{str_replace("T"," ",$SalesInfo -> ContactTime)}}</td>
-                  </tr>
-                  <tr>
-                    <th>특이사항</th>
-                    @if($SalesInfo -> Characteristic == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> Characteristic}}</td>
-                    @endif
-                  </tr>
-                  <tr>
-                    <th>카테고리</th>
-                    <td>{{ $SalesInfo  -> Category}}</td>
-                  </tr>
-                  <tr>
-                    <th>예상 체결 금액</th>
-                    @if($SalesInfo -> pay == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> pay}}</td>
-                    @endif
-                  </tr>
-                  <tr>
-                    <th>접수 시간</th>
-                    <td>{{ $SalesInfo -> created_at}}</td>
-                  </tr>
-                  <tr>
-                    <th>현재 거래 상태</th>
-                    <td>{{ $SalesInfo -> state}}</td>
-                  </tr>
-                  <tr>
-                    <th>비고</th>
-                    @if($SalesInfo -> note == '')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> note}}</td>
-                    @endif
-                  </tr>
+            <div class="SIdetailtitle">고객명</div>
+            <div>{{ $SalesInfo -> CustomerName}}</div>
 
-                  <tr>
-                    <th>접수한 영업 사원</th>
-                    <td>{{ $SalesInfo -> SP_name}}</td>
-                  </tr>
-                  <tr>
-                    <th>실패사유</th>
-                    @if($SalesInfo -> Fail_reason == 'none')
-                      <td>-</td>
-                    @else
-                      <td>{{ $SalesInfo -> Fail_reason}}</td>
-                    @endif
-                  </tr>
-                </tbody>
+            <div class="SIdetailtitle">사업장명</div>
+            <div>{{ $SalesInfo  -> BusinessName}}</div>
 
-              </table>
-              <div class="col-md-4 col-sm-4">
-              <div class="SI_showtitle">사업장 사진</div>
-              <br><br><br>
-                <img src="/storage/images/{{$SalesInfo -> images}}" style="width:100%">
-              </div>
+            <div class="SIdetailtitle">고객 주소</div>
+            <div>{{ $SalesInfo  -> CustomerAddress}}</div>
 
-              <div class="SI_showtitle">서명</div>
-              <br><br><br>
-                <img src="/img/{{ $SalesInfo -> signature }}" style="width:100%">
-              </div>
+            <div class="SIdetailtitle">우편번호</div>
+            <div>{{ $SalesInfo  -> post_number}}</div>
 
-            </div>
-            <div class="panel-footer">
+            <div class="SIdetailtitle">고객 주소 Extra(1)</div>
+            <div>
+              @if($SalesInfo -> CustomerAddress_detail == '')
+                -
+              @else
+                {{ $SalesInfo -> CustomerAddress_detail}}
+              @endif
             </div>
 
-      </div>
-    </div>
-</div>
-@else
-    <p> 로그인하세요.</p>
-@endif
+            <div class="SIdetailtitle">고객 주소 Extra(2)</div>
+            <div>
+              @if($SalesInfo -> CustomerAddress_extra == '')
+                -
+              @else
+                {{ $SalesInfo -> CustomerAddress_extra}}
+              @endif
+            </div>
+
+            <div class="SIdetailtitle">고객 전화번호</div>
+            <div>{{ $SalesInfo  -> PhoneNumber}}</div>
+
+            <div class="SIdetailtitle">고객 이메일</div>
+            <div>
+              @if($SalesInfo -> CustomerEmail == '')
+                -
+              @else
+                {{ $SalesInfo -> CustomerEmail}}
+              @endif
+            </div>
+
+            <div class="SIdetailtitle">연락가능시간</div>
+            <div>{{str_replace("T"," ",$SalesInfo -> ContactTime)}}</div>
+
+            <div class="SIdetailtitle">특이사항</div>
+            <div>
+              @if($SalesInfo -> Characteristic == '')
+                -
+              @else
+                {{ $SalesInfo -> Characteristic}}
+              @endif
+            </div>
+
+            <div class="SIdetailtitle">업종명</div>
+            <div>
+              {{ $SalesInfo  -> Category}}
+            </div>
+
+            <div class="SIdetailtitle">예상 체결 금액</div>
+            <div>
+              @if($SalesInfo -> pay == '')
+                -
+              @else
+                {{ $SalesInfo -> pay}}<
+              @endif
+            </div>
+
+            <div class="SIdetailtitle">접수시간</div>
+            <div>
+              {{ $SalesInfo -> created_at}}
+            </div>
+
+            <div class="SIdetailtitle">현재 진행 상태</div>
+            <div>
+              {{ $SalesInfo -> state}}
+            </div>
+
+            <div class="SIdetailtitle">비고 사항</div>
+            <div>
+              @if($SalesInfo -> note == '')
+                  -
+              @else
+                {{ $SalesInfo -> note}}
+              @endif
+            </div>
+
+            <div class="SIdetailtitle">접수 영업 사원</div>
+            <div>
+              {{ $SalesInfo -> SP_name}}
+            </div>
+
+            @if($SalesInfo -> Fail_reason == 'none')
+            @else
+            <div class="SIdetailtitle">실패사유</div>
+            <div>
+                {{ $SalesInfo -> Fail_reason}}
+            </div>
+            @endif
+
+            <div class="SIdetailtitle imgtitle">사업장 사진</div>
+            <div class='imagecontainer'>
+              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:100%">
+            </div>
+
+            <div class="SIdetailtitle imgtitle">서명</div>
+            <div class='imagecontainer'>
+              <img src="/img/{{ $SalesInfo -> signature }}" style="width:100%">
+            </div>
+          </div>
+        </div>
+  </div>
 @endsection

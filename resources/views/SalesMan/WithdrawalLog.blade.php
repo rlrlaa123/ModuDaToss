@@ -1,37 +1,51 @@
-@extends('layouts.app')
-@if(Auth::user()->id == $user->id)
+@extends('layouts.app3')
 @section('content')
-  <div class="RecommendTitle">
-    <p class="Bluename">{{Auth::user()->name}}</p>
-    <p>회원님의 출금신청기록</p>
-  </div><br>
-  <br><br><br>
-  <div class="recommendercontainer">
-    <table class="table showithmoney" style="text-align:center">
-        <thead>
-          <tr>
-              <th style="color:#b7babf">신청금액</th>
-              <th>은행명</th>
-              <th>계좌번호</th>
-              <th>신청시간</th>
-          </tr>
-        </thead>
-        <tbody>
-        @foreach($data as $dt)
-          <tr>
-              <td> {{ $dt->requestmoney }}원 </td>
-              <td style="color:#3473d9;">{{ $dt->bankName }} </td>
-              <td>{{ $dt->account_number }}</td>
-              <td>{{ $dt->created_at->format('m-d H:i') }}</td>
-          </tr>
-        @endforeach
-        </tbody>
-      </table>
+      <div class="Mmtitle">
+        <span class="bluetitle">{{ Auth::user()->name }}</span>
+        <p>회원님의 출금신청 기록
+      </div>
+      <div class='money_container'>
+        <table class="table showithmoney" style="text-align:center">
+            <thead>
+              <tr>
+                  <th>신청금액</th>
+                  <th>은행명</th>
+                  <th>계좌번호</th>
+                  <th>신청시간</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($data as $dt)
+              <tr>
+                  <td> {{ $dt->requestmoney }}원 </td>
+                  <td>{{ $dt->bankName }} </td>
+                  <td>{{ $dt->account_number }}</td>
+                  <td>{{ $dt->created_at->format('m-d H:i') }}</td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
+      </div>
+
+  <div class="Membermenu">
+    <a href="/profit"><div>
+      <img src="{{ URL::asset('/img/withdrawl.png')}}">
+      <p>수익조회 및 출금</p>
+    </div></a>
+    <a href="/Recommender"><div>
+      <img src="{{ URL::asset('/img/Recommender.png')}}">
+      <p>추천인 조회</p>
+    </div></a>
+    <a href="/DepositLog"><div>
+      <img src="{{ URL::asset('/img/Money2.png')}}">
+      <p>나의 수수료 기록</p>
+    </div></a>
+    <a href="/WithdrawalLog"><div>
+      <img src="{{ URL::asset('/img/Log.png')}}">
+      <p>나의 출금 기록</p>
+    </div></a>
   </div>
+<script>
 
-
-
+</script>
 @endsection
-@else
-    <p>접근 권한이 없습니다</p>
-@endif
