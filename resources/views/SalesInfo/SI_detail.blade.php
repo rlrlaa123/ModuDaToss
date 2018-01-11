@@ -108,7 +108,7 @@
 
             <div class="SIdetailtitle imgtitle">사업장 사진</div>
             <div class='imagecontainer' style="text-align:center;">
-              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:55%">
+              <img src="/storage/images/{{$SalesInfo -> images}}" style="width:275px;">
             </div>
 
             <div class="SIdetailtitle imgtitle">서명</div>

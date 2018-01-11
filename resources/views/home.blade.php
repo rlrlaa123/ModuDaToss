@@ -53,6 +53,8 @@
                             <p style="color:#3473d9;">{{$salesinfos[0]->state}}</p>
                         @elseif($salesinfos[0]->state=='실패')
                             <p style="color:red;">{{$salesinfos[0]->state}}</p>
+                        @else
+                            <p style="color:#3473d9">{{$salesinfos[0]->state}}</p>
                         @endif
                     </div>
                     <div class="front_page col realtime">
@@ -74,6 +76,8 @@
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
                         @elseif($salesinfos[1]->state=='실패')
                             <p style="color:#3473d9;">{{$salesinfos[1]->state}}</p>
+                        @else
+                            <p style="color:#3473d9">{{$salesinfos[1]->state}}</p>
                         @endif
                     </div>
                 </div>
@@ -96,6 +100,8 @@
                             <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
                         @elseif($salesinfos[2]->state=='실패')
                             <p style="color:#3473d9;">{{$salesinfos[2]->state}}</p>
+                        @else
+                            <p style="color:#3473d9">{{$salesinfos[2]->state}}</p>
                         @endif
                     </div>
                     <div class="front_page col realtime">
@@ -117,6 +123,8 @@
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
                         @elseif($salesinfos[3]->state=='실패')
                             <p style="color:#3473d9;">{{$salesinfos[3]->state}}</p>
+                        @else
+                            <p style="color:#3473d9">{{$salesinfos[3]->state}}</p>
                         @endif
                     </div>
                 </div>

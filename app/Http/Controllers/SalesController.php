@@ -104,7 +104,8 @@ class SalesController extends Controller
           $SalesInfo->save();
         }
 
-        event('sales.completed',[$SalesInfo->Category,$SalesInfo->id]);
+        event('sales.reserved.vendor',[$SalesInfo->Category,$SalesInfo->id]);
+        event('sales.reserved.user',[$SalesInfo->id]);
 
         return redirect('/');
     }

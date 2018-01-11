@@ -108,7 +108,7 @@
 
           <div class="SIdetailtitle imgtitle">사업장 사진</div>
           <div class='imagecontainer'>
-            <img src="/storage/images/{{$SI-> images}}" style="width:100%">
+            <img src="/storage/images/{{$SI-> images}}" style="width:275px;">
           </div>
 
           <div class="SIdetailtitle imgtitle">서명</div>
@@ -174,14 +174,16 @@
           {{ csrf_field() }}
         <div class="form-group">
           <input type="hidden" name="SI" value="{{ $SI->id}}">
-          <div class="col-sm-6">
-            {{ Form::select('reason', [
-                '사유1' => '사유1',
-                '사유2' => '사유2',
-                '사유3' => '사유3',
-                '사유4' => '사유4'
-              ], null, ['class'=>'form-control','placeholder' => '사유선택'])}}
-          </div>
+          <input type="text" name="reason" class='form-control' placeholder="실패사유" required>
+
+          {{--<div class="col-sm-6">--}}
+            {{--{{ Form::select('reason', [--}}
+                {{--'사유1' => '사유1',--}}
+                {{--'사유2' => '사유2',--}}
+                {{--'사유3' => '사유3',--}}
+                {{--'사유4' => '사유4'--}}
+              {{--], null, ['class'=>'form-control','placeholder' => '사유선택'])}}--}}
+          {{--</div>--}}
           {{Form::submit('실패',['class' => 'btn btn-primary'])}}
           </div>
         {!! Form::close() !!}

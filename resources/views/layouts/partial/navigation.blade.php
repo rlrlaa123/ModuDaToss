@@ -210,29 +210,29 @@
                         </ul>
                     </li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            고객센터 <span class="caret"></span>
-                        </a>
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
+                            {{--고객센터 <span class="caret"></span>--}}
+                        {{--</a>--}}
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href={{url('servicecenter/notice')}}>
-                                    공지사항
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    자주 묻는 질문
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    문의하기
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        {{--<ul class="dropdown-menu" role="menu">--}}
+                            {{--<li>--}}
+                                {{--<a href={{url('servicecenter/notice')}}>--}}
+                                    {{--공지사항--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="">--}}
+                                    {{--자주 묻는 질문--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<a href="">--}}
+                                    {{--문의하기--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
                 @endif
             </ul>
         </div>

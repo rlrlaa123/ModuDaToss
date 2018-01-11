@@ -26,8 +26,8 @@
 </style>
 
 <div class="box">
-    <h2 style="color:#3473d9">접수하신 영업정보가 진행중입니다!</h2>
-    <h5><i>벤더사가 거래금액을 체결하여 승인할 것입니다.</i></h5>
+    <h2 style="color:#3473d9">요청하신 접수가 완료 되었습니다! </h2>
+    <h5 ><i>벤더사의 승인을 기다려주십시오.</i></h5>
     <article>
         <p>고객명: <i>{{ $SalesInfo ->CustomerName }}</i></p>
         <p>사업장명: <i>{{ $SalesInfo ->BusinessName }}</i></p>
@@ -40,10 +40,11 @@
         <p>연락가능시간: <i>{{ $SalesInfo ->ContactTime }}</i></p>
         <p>특이사항: <i>{{ $SalesInfo ->Characteristic }}</i></p>
         <p>업종명: <i>{{ $SalesInfo ->Category }}</i></p>
-        <p style="color:#3473d9">예상 체결 금액: <i>{{ $SalesInfo ->pay }}</i></p>
+        <p>예상 체결 금액: <i>{{ $SalesInfo ->pay }}</i></p>
         <p>접수시간: <i>{{ $SalesInfo ->created_at }}</i></p>
         <p style="color:#3473d9">현재 진행 상태: <i>{{ $SalesInfo ->state }}</i></p>
         <p>비고 사항: <i>{{ $SalesInfo ->note }}</i></p>
         <p>접수 영업 사원: <i>{{ $SalesInfo ->SP_name }}</i></p>
     </article>
+
 </div>

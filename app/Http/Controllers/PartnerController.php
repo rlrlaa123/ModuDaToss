@@ -64,10 +64,12 @@ class PartnerController extends Controller
                 DB::table('sales_infos')->where('id',$id)->update(['state' => '실패']);
                 DB::table('sales_infos')->where('id',$id)->update(['Fail_reason' => $request->reason]);
                 DB::table('sales_infos')->where('id',$id)->update(['pay' => 0]);
+                event('sales.rejected',[$SI->id]);
 
             }else{
                 DB::table('sales_infos')->where('id',$id)->update(['pay'=>$request->pay]);
                 DB::table('sales_infos')->where('id',$id)->update(['state' => '승인대기']);
+                event('sales.permitted',[$SI->id]);
             }
         }
         return redirect('/');
