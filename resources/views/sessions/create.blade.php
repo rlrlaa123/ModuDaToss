@@ -53,18 +53,18 @@
                     Facebook 계정으로 로그인하기
                 </strong>
             </a>
-            <a class="btn btn-primary btn-block" href="{{ route('social.login', ['naver']) }}" style="background-color:#3EAF0E; color:white; margin:1%; display:block;">
+            <a class="btn btn-primary btn-block" href="{{ route('sessions.create') }}" style="background-color:#3EAF0E; color:white; margin:1%; display:block;">
                 <img src="/img/naver.ico" width="20px">
                 <strong>
                     <i class="fa fa-facebook"></i>
-                    네이버 계정으로 로그인하기
+                    준비중입니다.
                 </strong>
             </a>
-            <a class="btn btn-primary btn-block" href="{{ route('social.login', ['kakao']) }}" style="background-color:#fcd411; color:#2e2e30; margin:1%; display:block;">
+            <a class="btn btn-primary btn-block" href="{{ route('sessions.create') }}" style="background-color:#fcd411; color:#2e2e30; margin:1%; display:block;">
                 <img src="/img/kakao.png" width="20px">
                 <strong>
                     <i class="fa fa-facebook"></i>
-                    Kakao 계정으로 로그인하기
+                    준비중입니다.
                 </strong>
             </a>
         </div>
